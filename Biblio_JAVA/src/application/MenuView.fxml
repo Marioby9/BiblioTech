@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pFondoMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #002c43;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+   <children>
+      <ImageView fx:id="fotoPerfil1" fitHeight="180.0" fitWidth="180.0" layoutX="90.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/logAzulSF.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgFondoMenu" fitHeight="650.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../backgrounds/panelMenu.png" />
+         </image>
+      </ImageView>
+      <Pane layoutY="234.0" prefHeight="382.0" prefWidth="360.0">
+         <children>
+            <Label fx:id="lblNomUsuario" alignment="CENTER" layoutX="105.0" layoutY="14.0" prefHeight="29.0" prefWidth="150.0" text="NomUsuario" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Pane id="panelP" layoutY="75.0" onMouseClicked="#clickBPerfil" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="30.0" prefWidth="65.0" text="Perfil" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/profile.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="135.0" onMouseClicked="#clickBLibros" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="7.0" prefHeight="30.0" prefWidth="65.0" text="Libros" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libro.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="195.0" onMouseClicked="#clickBJuegos" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="35.0" prefWidth="76.0" text="Juegos" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/juegos.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="255.0" onMouseClicked="#clickBMusica" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="35.0" prefWidth="76.0" text="Música" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/musica.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="315.0" onMouseClicked="#clickBAjustes" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="35.0" prefWidth="76.0" text="Ajustes" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/rueda.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="pPerfil" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+         <children>
+            <Label fx:id="lblBienvenidoPerfil" layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Bienvenido, NomUsuario" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="365.0" prefHeight="30.0" prefWidth="217.0" text="Ajustes de Perfil:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="438.0" prefHeight="30.0" prefWidth="171.0" text="Nombre Usuario:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="488.0" prefHeight="30.0" prefWidth="186.0" text="Correo electrónico:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="543.0" prefHeight="30.0" prefWidth="186.0" text="Contraseña: " textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="fotoPerfil" fitHeight="180.0" fitWidth="180.0" layoutX="230.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/logAzulSF.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="271.0" fitWidth="330.0" layoutX="155.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/panelCambiarFoto.png" />
+               </image>
+            </ImageView>
+            <ImageView id="bPerfil" fx:id="bEditarFoto" fitHeight="50.0" fitWidth="36.0" layoutX="367.0" layoutY="274.0" onMouseClicked="#clickBEditarFoto" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/editarBlue.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pProfilePics" layoutX="416.0" layoutY="76.0" prefHeight="245.0" prefWidth="211.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 3px; -fx-background-radius: 20px; -fx-border-radius: 20px;" visible="false">
+               <children>
+                  <ImageView id="fperfil" fx:id="foto1" fitHeight="50.0" fitWidth="49.0" layoutX="14.0" layoutY="20.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto2" fitHeight="50.0" fitWidth="49.0" layoutX="81.0" layoutY="20.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto3" fitHeight="50.0" fitWidth="49.0" layoutX="148.0" layoutY="20.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto4" fitHeight="50.0" fitWidth="49.0" layoutX="14.0" layoutY="98.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto7" fitHeight="50.0" fitWidth="49.0" layoutX="14.0" layoutY="174.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-8.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto5" fitHeight="50.0" fitWidth="49.0" layoutX="81.0" layoutY="98.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-5.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto8" fitHeight="50.0" fitWidth="49.0" layoutX="81.0" layoutY="174.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-9.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto6" fitHeight="50.0" fitWidth="49.0" layoutX="148.0" layoutY="98.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-7.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fperfil" fx:id="foto9" fitHeight="50.0" fitWidth="49.0" layoutX="148.0" layoutY="174.0" onMouseClicked="#clickFoto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../profilePics/Perfil-10.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView id="bPerfil" fx:id="bEliminarFoto" fitHeight="50.0" fitWidth="36.0" layoutX="239.0" layoutY="274.0" onMouseClicked="#clickBEliminarFoto" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/delete.png" />
+               </image>
+            </ImageView>
+            <TextField id="txtCambioPerfil" fx:id="txtCambioUsuario" layoutX="244.0" layoutY="432.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: NONE; -fx-border-color: white; -fx-border-width: 0 0 1 0;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField id="txtCambioPerfil" fx:id="txtCambioCorreo" layoutX="244.0" layoutY="483.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: NONE; -fx-border-color: white; -fx-border-width: 0 0 1 0;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField id="txtCambioPerfil" fx:id="txtCambioPassword" layoutX="244.0" layoutY="537.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: NONE; -fx-border-color: white; -fx-border-width: 0 0 1 0;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="443.0" layoutY="595.0" onMouseClicked="#clickBGuardarCambios" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Cambios">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pLibros" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pListaLibros.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibFavoritos" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="29.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibAmor" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="282.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibAventuras" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="153.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibTerror" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="409.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibComedia" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="539.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pLibFavoritos" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pLibrosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pLibAventuras" prefHeight="650.0" prefWidth="640.0">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pLibrosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pLibAmor" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pLibrosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pLibTerror" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pLibrosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pLibComedia" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pLibrosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libroColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" visible="false">
+         <children>
+            <Pane fx:id="pJuegos1" prefHeight="650.0" prefWidth="640.0">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pJuegosLleno.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pListaJuegos.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueFavoritos" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="26.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueAccion" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="152.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueDeportes" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="280.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueTerror" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="408.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueShooter" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="537.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pJueFavoritos" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pJuegosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pJueAccion" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pJuegosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pJueDeportes" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pJuegosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pJueTerror" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pJuegosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="pJueShooter" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pJuegosVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="17.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="134.0" fitWidth="150.0" layoutX="342.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/agregar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="23.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="fMusica" fitHeight="124.0" fitWidth="122.0" layoutX="348.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/mandoColor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane fx:id="pMusica" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;" visible="false">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pMusicaVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusReggaeton" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="23.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusPop" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="149.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusElectronica" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="278.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusFlamenco" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="405.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusRock" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="533.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pReggaeton" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pListaReggaetonVacio.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="49.0" fitWidth="49.0" layoutX="49.0" layoutY="190.0" onMouseClicked="#clickBackMusica" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/backMusica.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane id="scrollPane" fx:id="pListaReggaeton" layoutX="9.0" layoutY="260.0" prefHeight="265.0" prefWidth="622.0">
+                     <content>
+                        <AnchorPane fx:id="pCancionesReg" minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="622.0" style="-fx-background-color: NONE;">
+                           <children>
+                              <Pane fx:id="pCReg1" layoutX="48.0" layoutY="15.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                              <Pane fx:id="pCReg2" layoutX="48.0" layoutY="62.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="pPop" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pPop.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="49.0" fitWidth="49.0" layoutX="49.0" layoutY="190.0" onMouseClicked="#clickBackMusica" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/backMusica.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane id="scrollPane" fx:id="pListaPop" layoutX="9.0" layoutY="260.0" prefHeight="265.0" prefWidth="622.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="622.0" style="-fx-background-color: NONE;">
+                           <children>
+                              <Pane fx:id="pCReg11" layoutX="48.0" layoutY="15.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                              <Pane fx:id="pCReg21" layoutX="48.0" layoutY="62.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="pElectronica" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pElectronica.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="49.0" fitWidth="49.0" layoutX="49.0" layoutY="190.0" onMouseClicked="#clickBackMusica" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/backMusica.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane id="scrollPane" fx:id="pListaElectronica" layoutX="9.0" layoutY="260.0" prefHeight="265.0" prefWidth="622.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="622.0" style="-fx-background-color: NONE;">
+                           <children>
+                              <Pane fx:id="pCReg111" layoutX="48.0" layoutY="15.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                              <Pane fx:id="pCReg211" layoutX="48.0" layoutY="62.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="pFlamenco" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pFlamenco.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="49.0" fitWidth="49.0" layoutX="49.0" layoutY="190.0" onMouseClicked="#clickBackMusica" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/backMusica.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane id="scrollPane" fx:id="pListaFlamenco" layoutX="9.0" layoutY="260.0" prefHeight="265.0" prefWidth="622.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="622.0" style="-fx-background-color: NONE;">
+                           <children>
+                              <Pane fx:id="pCReg1111" layoutX="48.0" layoutY="15.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                              <Pane fx:id="pCReg2111" layoutX="48.0" layoutY="62.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="pRock" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pRock.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="49.0" fitWidth="49.0" layoutX="49.0" layoutY="190.0" onMouseClicked="#clickBackMusica" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/backMusica.png" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane id="scrollPane" fx:id="pListaRock" layoutX="9.0" layoutY="260.0" prefHeight="265.0" prefWidth="622.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="622.0" style="-fx-background-color: NONE;">
+                           <children>
+                              <Pane fx:id="pCReg11111" layoutX="48.0" layoutY="15.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                              <Pane fx:id="pCReg21111" layoutX="48.0" layoutY="62.0" prefHeight="40.0" prefWidth="525.0" style="-fx-background-color: black; -fx-background-radius: 20px;" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;" visible="false">
+         <children>
+            <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label id="bEliminarCuenta" alignment="CENTER" layoutX="434.0" layoutY="573.0" onMouseClicked="#clickBEliminarCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Eliminar Cuenta" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="86.0" layoutY="574.0" onMouseClicked="#clickBGuardarAjustes" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Ajustes">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="117.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Sonido:" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="86.0" layoutY="171.0" prefHeight="78.0" prefWidth="116.0" text="Volumen: " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="268.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Aplicación:" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="86.0" layoutY="325.0" prefHeight="78.0" prefWidth="171.0" text="Cambiar Color:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Slider id="sldVolumen" fx:id="barraVolAjustes" layoutX="223.0" layoutY="196.0" onMouseDragged="#arrastraVolAjustes" prefHeight="20.0" prefWidth="275.0" />
+            <Label fx:id="lblColorTema" layoutX="275.0" layoutY="344.0" prefHeight="41.0" prefWidth="76.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
+            <ImageView id="bPerfil" fx:id="bEditarColor" fitHeight="41.0" fitWidth="41.0" layoutX="365.0" layoutY="344.0" onMouseClicked="#clickBEditarColor" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/editarBlue.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pPanelColores" layoutX="414.0" layoutY="249.0" prefHeight="167.0" prefWidth="211.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 3px; -fx-background-radius: 20px; -fx-border-radius: 20px;" visible="false">
+               <children>
+                  <Label id="fperfil" fx:id="lblColorAzul" layoutX="14.0" layoutY="20.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorNaranja" layoutX="14.0" layoutY="98.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #fb7b14; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorVerde" layoutX="81.0" layoutY="59.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #9fb65a; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorRojo" layoutX="148.0" layoutY="20.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #c0060e; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorMorado" layoutX="148.0" layoutY="98.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #954c7b; -fx-border-color: white; -fx-border-width: 3px;" />
+               </children>
+            </Pane>
+            <Label fx:id="lblVolAjustes" alignment="CENTER" layoutX="506.0" layoutY="194.0" prefHeight="40.0" prefWidth="90.0" text="00" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <ImageView id="bPerfil" fx:id="bInformacion" fitHeight="49.0" fitWidth="65.0" layoutX="361.0" layoutY="416.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/information.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="86.0" layoutY="401.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <ImageView id="bPerfil" fx:id="bVolver" fitHeight="41.0" fitWidth="49.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#clickBVolver" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/logout.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
