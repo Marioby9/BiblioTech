@@ -1,1 +1,0 @@
-START /B javaw.exe -jar --module-path="javafx-sdk-19\lib" --add-modules=javafx.controls,javafx.fxml Bibliotech.jar
