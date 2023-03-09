@@ -342,7 +342,7 @@ public class MenuController {
 			String nuevaCon = txtCambioPassword.getText();
 			try {
 				c1.updateTabla("USUARIO", "CONTRASEÑA", nuevaCon, "ID = "+Integer.toString(u1.getID_Usuario()));
-				u1.setContraseña(nuevaCon);
+				u1.setContrasena(nuevaCon);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

@@ -19,7 +19,7 @@ public class Conexion {
 	static Connection connection = null;
 
 	static int Id;
-	static String contraseña;
+	static String contrasena;
 	static String nickname;
 	static String correo;
 
@@ -97,7 +97,7 @@ public class Conexion {
 
 		pst.setInt(1, u.getID_Usuario());
 		pst.setString(2, u.getNickname());
-		pst.setString(3, u.getContraseña());
+		pst.setString(3, u.getContrasena());
 		pst.setString(4, u.getCorreo());
 
 		insertado = pst.executeUpdate()>0; 
@@ -142,8 +142,8 @@ public class Conexion {
 
 		while(rs.next()) {
 			nickname = rs.getString("nickname");
-			contraseña = rs.getString("contraseña");
-			if(nickname.equals(nombre) && contraseña.equals(password)) {
+			contrasena = rs.getString("contraseña");
+			if(nickname.equals(nombre) && contrasena.equals(password)){
 
 				accede = true;
 			}

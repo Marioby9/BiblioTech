@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import utilidades.Conexion;
 import utilidades.Usuario;
+import utilidades.Correo;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -192,7 +193,7 @@ public class LogInController{
 	}
 
 	@FXML
-	void clickBRegisDef(ActionEvent event) {  //COMPRUEBA QUE CORREO VÁLIDO // PASSWORD Y CONFIRMPASSWORD COINCIDAN
+	void clickBRegisDef(ActionEvent event) {  //COMPRUEBA QUE CORREO VALIDO // PASSWORD Y CONFIRMPASSWORD COINCIDAN
 		String pass1 = txtPassRegis.getText();
 		String pass2 = txtConfPassRegis.getText();
 		String correo = txtCorreoReg.getText();
@@ -209,7 +210,7 @@ public class LogInController{
 				txtConfPassRegis.setText("");
 				cambiarLado = false;
 			}
-			else if(txtUsuReg.getText().equals("")) { //COMPRUEBA QUE NO DEJE EL CAMPO USUARIO VACÍO
+			else if(txtUsuReg.getText().equals("")) { //COMPRUEBA QUE NO DEJE EL CAMPO USUARIO VACIO
 				btnCompRegis.setStyle("-fx-text-fill: RED; -fx-background-color: White ");
 				btnCompRegis.setUnderline(false);
 				btnCompRegis.setText("ERROR. Nombre usuario no válido.");
@@ -223,11 +224,12 @@ public class LogInController{
 				Usuario u1 = new Usuario(nom, pass1, correo);
 				try {
 					if(c1.registraUsuario(u1)) { 
+						System.out.println(Correo.enviarMailConf(correo, nom, pass1)); //MUESTRA SI HA PODIDO ENVIAR EL CORREO O NO
 						System.out.println("Usuario registrado correctamente");
 						btnCompRegis.setVisible(true);
 						btnCompRegis.setUnderline(true);
 						btnCompRegis.setStyle("-fx-text-fill: GREEN; -fx-background-color: White "); //
-
+						
 
 						btnCompRegis.setText("¡Cuenta creada con éxito!. Ir a iniciar sesión");
 						cambiarLado = true;

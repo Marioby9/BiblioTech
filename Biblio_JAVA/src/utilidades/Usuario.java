@@ -7,19 +7,19 @@ public class Usuario {
 	private int ID_Usuario;
 	private String Nickname;
 	private String Correo;
-	private String Contraseña;
+	private String Contrasena;
 	public static Usuario uActual;
 	
-	public Usuario(String nickname, String constraseña, String correo) {
+	public Usuario(String nickname, String constrasena, String correo) {
 		
 			try {
-				ID_Usuario = c1.consultaNum("USUARIO", "MAX(ID)", null) +1; //COGE EL ID MÁS ALTO QUE HAYA EN LA TABLA Y LE SUMA 1.
+				ID_Usuario = c1.consultaNum("USUARIO", "MAX(ID)", null) +1; //COGE EL ID MAS ALTO QUE HAYA EN LA TABLA Y LE SUMA 1.
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}  
 			this.Nickname = nickname;
-			this.Contraseña = constraseña;
+			this.Contrasena = constrasena;
 			this.Correo = correo;
 	}
 
@@ -29,8 +29,8 @@ public class Usuario {
 	public String getCorreo() {
 		return Correo;
 	}	
-	public String getContraseña() {
-		return Contraseña;
+	public String getContrasena() {
+		return Contrasena;
 	}
 	public int getID_Usuario() {
 		return ID_Usuario;
@@ -43,8 +43,8 @@ public class Usuario {
 	public void setCorreo(String correo) {
 		Correo = correo;
 	}
-	public void setContraseña(String contraseña) {
-		Contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		Contrasena = contrasena;
 	}
 	
 	public static Usuario getUsuario() {

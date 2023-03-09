@@ -15,14 +15,14 @@ import javax.mail.internet.MimeMessage;
 public class Correo {
 
 	/*
-	 * RECIBE COMO PARÁMETROS EL CORREO DESTINO, EL NOMBRE DE USUARIO (AL REGISRARSE), CONTRASEÑA
+	 * RECIBE COMO PARAMETROS EL CORREO DESTINO, EL NOMBRE DE USUARIO (AL REGISTRARSE), CONTRASENA
 	 * ENVIA UN CORREO AL DESTINATARIO CON SUS CREDENCIALES UNA VEZ CREADA LA CUENTA
 	 * DEVUELVE UN MENSAJE DE CONFIRMACIÓN DE QUE SE HA CUMPLIDO LA FUNCIÓN (SE HA REGISTRADO, HA ENVIADO Y HA CERRADO CORRECTAMENTE LA SESIÓN)
 	 */
 	
-	private static String enviarMailConf(String destinatario, String nickname, String password) { //DEVUELVE UN MENSAJE EN FUNCIÓN DE SI SE HA ENVIADO O NO
+	public static String enviarMailConf(String destinatario, String nickname, String password) { //DEVUELVE UN MENSAJE EN FUNCIÓN DE SI SE HA ENVIADO O NO
 		String remitente = "probibliotech"; //lo que va antes de @gmail.com
-		String clave = "alhzzfootohncplh"; //GOOGLE desactivó en Mayo de 2022 el acceso a cuentas desde aplicaciones poco seguras. Hemos tenido que activar la verif. 2 pasos y añadir contraseña del correo para aplicación externa (Copiar desde generar contraseña para dispositivos (conf GMAIL))
+		String clave = "imxjsectmdojtian"; //GOOGLE desactivó en Mayo de 2022 el acceso a cuentas desde aplicaciones poco seguras. Hemos tenido que activar la verif. 2 pasos y añadir contraseña del correo para aplicación externa (Copiar desde generar contraseña para dispositivos (conf GMAIL))
 		String asunto = "Confirmación de cuenta Bibliotech";
 		String cuerpo = "Enhorabuena, su cuenta ha sido creada correctamente\n\n\nCorreo electrónico: "+destinatario+"\nNombre de usuario: "+nickname+"\nContraseña: "+password;
 		
