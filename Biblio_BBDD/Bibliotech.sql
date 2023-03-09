@@ -25,26 +25,6 @@ Nombre      varchar2(25) Not Null,
 constraint Pk_Bibliotecas Primary key(ID_biblio, ID_usuario)
 );
 
-/*
-create table Elementos
-(
-ID_element    number(3),
-Titulo      varchar2(30) Not Null,
-Ano_lanz    date Not Null,
-constraint Pk_Elementos Primary key(ID_element)
-);
-
-
-create table Elementos_Bibliotecas
-(
-ID_element   number(3) references Elementos  on delete cascade ,
-ID_Usuario   number(3),
-ID_biblio   number(3),  
-constraint Pk_Elementos_Biblio Primary key(ID_element, ID_biblio, ID_Usuario),
-constraint FK_Elementos_Biblio Foreign key (ID_biblio, ID_Usuario) references Bibliotecas on delete cascade
-);
-*/
-
 create table Juegos
 (
 ID_Juego number(3),
