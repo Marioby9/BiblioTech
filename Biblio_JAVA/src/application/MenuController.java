@@ -30,56 +30,56 @@ public class MenuController {
 	//PANELES
 	@FXML private AnchorPane pFondoMenu;
 	@FXML private ImageView imgFondoMenu;
-	
-	
+
+
 	//PANEL PERFIL
 	@FXML private Pane pPerfil;
-		@FXML private ImageView bEditarFoto, bEliminarFoto;		
-		@FXML private Label lblNomUsuario, lblBienvenidoPerfil;
-		@FXML private Pane pProfilePics;
-		@FXML private ImageView fotoPerfil, fotoPerfil1;
-			Image fPerfil, fPerfil1;
-			int numFPerfil;
-		@FXML private ImageView foto1, foto2, foto3, foto4, foto5, foto6, foto7,foto8, foto9;
-		@FXML private TextField txtCambioCorreo, txtCambioPassword, txtCambioUsuario;
+	@FXML private ImageView bEditarFoto, bEliminarFoto;		
+	@FXML private Label lblNomUsuario, lblBienvenidoPerfil;
+	@FXML private Pane pProfilePics;
+	@FXML private ImageView fotoPerfil, fotoPerfil1;
+	Image fPerfil, fPerfil1;
+	int numFPerfil;
+	@FXML private ImageView foto1, foto2, foto3, foto4, foto5, foto6, foto7,foto8, foto9;
+	@FXML private TextField txtCambioCorreo, txtCambioPassword, txtCambioUsuario;
 
 
 	//PANEL JUEGOS
 	@FXML private Pane pJuegos;
-		//BOTONES PJUEGOS
-	 	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror;
+	//BOTONES PJUEGOS
+	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror;
 
 
-	  //PANELES LISTA JUEGOS
-	    @FXML private Pane pJueAccion, pJueDeportes, pJueFavoritos, pJueShooter, pJueTerror;
+	//PANELES LISTA JUEGOS
+	@FXML private Pane pJueAccion, pJueDeportes, pJueFavoritos, pJueShooter, pJueTerror;
 
-	    
+
 	//PANEL LIBROS 
 	@FXML private Pane pLibros;
-		//BOTONES PLIBROS
-	    @FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror;
+	//BOTONES PLIBROS
+	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror;
 
-	    
-	    //PANELES LISTA LIBROS
-	    @FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia;
+
+	//PANELES LISTA LIBROS
+	@FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia;
 
 
 	//MUSICA
 	@FXML private Pane pMusica;
-		//BOTONES PMUSICA
-	    @FXML private ImageView bMusElectronica, bMusFlamenco, bMusPop, bMusReggaeton, bMusRock;
-	
-		//PANELES LISTAS MUSICA + SCROLLPANES CANCIONES
-		@FXML private Pane pReggaeton, pPop, pElectronica, pFlamenco, pRock;
-		@FXML private ScrollPane pListaReggaeton, pListaPop, pListaElectronica, pListaFlamenco, pListaRock;
+	//BOTONES PMUSICA
+	@FXML private ImageView bMusElectronica, bMusFlamenco, bMusPop, bMusReggaeton, bMusRock;
+
+	//PANELES LISTAS MUSICA + SCROLLPANES CANCIONES
+	@FXML private Pane pReggaeton, pPop, pElectronica, pFlamenco, pRock;
+	@FXML private ScrollPane pListaReggaeton, pListaPop, pListaElectronica, pListaFlamenco, pListaRock;
 
 
 	//CONTROLADOR
 	LogInController controlador;
 	//MENU IZQUIERDA OPCIONES
-	
+
 	@FXML private ImageView bVolver;
-	
+
 
 	//PANEL AJUSTES:
 	@FXML private Pane pAjustes;
@@ -226,37 +226,37 @@ public class MenuController {
 
 	@FXML void clickBLibros(MouseEvent event) {
 		pLibros.setVisible(true);
-			pLibFavoritos.setVisible(false);
-			pLibAventuras.setVisible(false);
-			pLibAmor.setVisible(false);
-			pLibTerror.setVisible(false);
-			pLibComedia.setVisible(false);
-			
+		pLibFavoritos.setVisible(false);
+		pLibAventuras.setVisible(false);
+		pLibAmor.setVisible(false);
+		pLibTerror.setVisible(false);
+		pLibComedia.setVisible(false);
+
 		pPerfil.setVisible(false);
 		pJuegos.setVisible(false);
 		pMusica.setVisible(false);
 		pAjustes.setVisible(false);
 		pProfilePics.setVisible(false);
 		pPanelColores.setVisible(false);
-		
+
 
 	}
 
 	@FXML void clickBJuegos(MouseEvent event) {
 		pJuegos.setVisible(true);
-			pJueFavoritos.setVisible(false);
-			pJueAccion.setVisible(false);
-			pJueDeportes.setVisible(false);
-			pJueTerror.setVisible(false);
-			pJueShooter.setVisible(false);
-			
+		pJueFavoritos.setVisible(false);
+		pJueAccion.setVisible(false);
+		pJueDeportes.setVisible(false);
+		pJueTerror.setVisible(false);
+		pJueShooter.setVisible(false);
+
 		pPerfil.setVisible(false);
 		pLibros.setVisible(false);
 		pMusica.setVisible(false);
 		pAjustes.setVisible(false);
 		pProfilePics.setVisible(false);
 		pPanelColores.setVisible(false);
-		
+
 
 	}
 
@@ -412,7 +412,7 @@ public class MenuController {
 
 	}
 
-	
+
 	//LIBROS:
 
 	@FXML void clickListaLibros(MouseEvent event) {
@@ -431,10 +431,10 @@ public class MenuController {
 		else if(event.getSource()==bLibFavoritos) {
 			pLibFavoritos.setVisible(true);
 		}
-		
-		
+
+
 	}
-	
+
 	//JUEGOS
 	//JUEGOS:
 	@FXML void clickListaJuegos(MouseEvent event) {
@@ -454,8 +454,8 @@ public class MenuController {
 		else if(event.getSource()==bJueShooter) {
 			pJueShooter.setVisible(true);
 		}
-		
-		
+
+
 	}
 
 
@@ -478,7 +478,7 @@ public class MenuController {
 			pRock.setVisible(true);
 		}
 	}
-	
+
 
 	@FXML void clickBackMusica(MouseEvent event) {
 		pMusica.setVisible(true);
@@ -608,11 +608,11 @@ public class MenuController {
 	@FXML void clickBInformacion(MouseEvent event) {
 
 	}
- 
+
 	//FUNCIONES VARIAS 
 
 
-	void cambiaColorFondo(){
+	private void cambiaColorFondo(){
 		if(color==0) { imgFondoMenu.setImage(new Image(getClass().getResourceAsStream("/backgrounds/panelMenu.png"))); 				lblColorTema.setStyle("-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;"); } 	
 		else if(color==1) {  imgFondoMenu.setImage(new Image(getClass().getResourceAsStream("/backgrounds/panelMenu1.png")));  		lblColorTema.setStyle("-fx-background-color: #fb7b14; -fx-border-color: white; -fx-border-width: 3px;");}
 		else if(color==2) { imgFondoMenu.setImage(new Image(getClass().getResourceAsStream("/backgrounds/panelMenu3.png"))); 		lblColorTema.setStyle("-fx-background-color: #9fb65a; -fx-border-color: white; -fx-border-width: 3px;");	}
@@ -623,7 +623,7 @@ public class MenuController {
 
 
 
-	void cambiaFPerfil(){
+	private void cambiaFPerfil(){
 
 		if(numFPerfil==0) { 			fotoPerfil.setImage(fPerfil);	  } 	
 		else if(numFPerfil==1) {  fotoPerfil.setImage(foto1.getImage()); }
@@ -640,8 +640,8 @@ public class MenuController {
 
 	}
 
-	
-	
+
+
 
 
 

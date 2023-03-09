@@ -1,11 +1,17 @@
+/*SCRIPT BIBLIOTECH TOMAS, MARIO, RAUL 2023*/
+
+/*
 drop table Usuario;
 drop table Bibliotecas;
-drop table Elementos;
-drop table Elementos_Bibliotecas;
 drop table Juegos;
 drop table Libros;
 drop table Canciones;
 drop table Ajustes;
+
+SELECT * FROM USUARIO ORDER BY ID;
+DELETE FROM USUARIO;
+COMMIT; 
+*/
 
 create table Usuario 
 (
@@ -16,6 +22,7 @@ Correo varchar(40) Not Null,
 constraint Pk_Usuarioid Primary key(ID)
 );
 
+
 create table Bibliotecas
 (
 Cod_Biblioteca number(3),
@@ -24,6 +31,7 @@ ID_Usuario  number(3) references Usuario on delete cascade,
 Nombre      varchar2(25) Not Null,
 constraint Pk_Bibliotecas Primary key(ID_biblio, ID_usuario)
 );
+
 
 create table Juegos
 (
@@ -60,8 +68,6 @@ INSERT INTO JUEGOS (id_juego, Titulo, Genero, Plataforma, Lanzamiento,  Terminad
 INSERT INTO JUEGOS (id_juego, Titulo, Genero, Plataforma, Lanzamiento, Terminado)  VALUES(014,'RESIDENT EVIL 5','TERROR', 'PC', 2009, 'NO');  
 INSERT INTO JUEGOS (id_juego, Titulo, Genero, Plataforma, Lanzamiento, Terminado)  VALUES(015,'OUTLAST','TERROR', 'PC', 2013, 'NO');  
 INSERT INTO JUEGOS (id_juego, Titulo, Genero, Plataforma, Lanzamiento, Terminado)  VALUES(016,'VISAGE','TERROR', 'PC', 2020, 'NO');  
-
-
 
 
 
@@ -130,26 +136,7 @@ constraint ck_Volumen check (Volumen between 0 and 100),
 constraint ck_Cfondo check (Cfondo between 0 and 4)
 );
 
-/*INSERTS PARA VALORES POR DEFECTO*/
-/*USUARIOS*/
-INSERT INTO USUARIO VALUES (001,  'ADMIN', 'ADMIN', 'mmartin.mrmg@gmail.com');
-
-/*LIBROS*/
-
-COMMIT;
 
 
-
-/*SELECTS */
-SELECT * FROM USUARIO ORDER BY ID;
-SELECT * FROM AJUSTES ORDER BY ID_USUARIO;
-SELECT * FROM LIBROS;
-SELECT * FROM CANCIONES;
-
-
-
-select correo from usuario where nickname = 'ADMIN';
-DELETE FROM USUARIO WHERE ID BETWEEN  4 AND 10  ;
-DELETE FROM AJUSTES WHERE ID_USUARIO = 1;
 
 

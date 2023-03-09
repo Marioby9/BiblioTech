@@ -61,6 +61,7 @@ public class LogInController{
 
 	public void initialize() { //FUNCION INICIAL (SE EJECUTA ANTES QUE EL CONSTRUCTOR)
 		c1 = new Conexion();
+		if(!Main.existeAdmin) {creaAdmin();}
 		initComponents();
 		
 
@@ -71,6 +72,7 @@ public class LogInController{
 		lblshowPassReg.setVisible(false);
 		lblShowConfPassReg.setVisible(false);
 		lblshowPassLogin.setVisible(false);
+		
 	}
 
 	@FXML
@@ -91,6 +93,47 @@ public class LogInController{
 		pFondoIzq.setVisible(false);
 		pRegistro.setVisible(false);
 		
+	}
+
+	
+
+	@FXML
+	void ClickbReg(MouseEvent event) { //PASAR A REGISTRAR DESDE VENTANA INCIAL
+		pInicio.setVisible(false);
+		pFondoDer.setVisible(false);
+		pIncioSesion.setVisible(false);
+		pFondoIzq.setVisible(true);
+	}
+
+	@FXML
+	void clickBackLogin(ActionEvent event) { //PASAR DE REGISTRO A INICIO SESION
+
+		pFondoIzq.setVisible(false);
+		pRegistro.setVisible(false);
+		pFondoDer.setVisible(true);
+		pIncioSesion.setVisible(true);
+		btnCompRegis.setText(""); 
+		vaciarTxtField();
+	}
+
+	@FXML
+	void clickbVolverIni(MouseEvent event) { //VOLVER AL INICIO TOTAL DESDE INICIO SESION O REGISTRAR
+		pInicio.setVisible(true);
+		pIncioSesion.setVisible(true);
+		pRegistro.setVisible(true);
+		pFondoDer.setVisible(true);
+		pFondoIzq.setVisible(true);
+		btnCompRegis.setText("");
+		vaciarTxtField();
+	}
+
+	@FXML
+	void clickBackRegis(ActionEvent event) { //PASAR DE INICIO SESION A REGISTRO
+		pFondoDer.setVisible(false);
+		pIncioSesion.setVisible(false);
+		pFondoIzq.setVisible(true);
+		pRegistro.setVisible(true);
+		vaciarTxtField();
 	}
 
 	@FXML
@@ -152,46 +195,8 @@ public class LogInController{
 			e.printStackTrace();
 		}
 	}
-
-	@FXML
-	void ClickbReg(MouseEvent event) { //PASAR A REGISTRAR DESDE VENTANA INCIAL
-		pInicio.setVisible(false);
-		pFondoDer.setVisible(false);
-		pIncioSesion.setVisible(false);
-		pFondoIzq.setVisible(true);
-	}
-
-	@FXML
-	void clickBackLogin(ActionEvent event) { //PASAR DE REGISTRO A INICIO SESION
-
-		pFondoIzq.setVisible(false);
-		pRegistro.setVisible(false);
-		pFondoDer.setVisible(true);
-		pIncioSesion.setVisible(true);
-		btnCompRegis.setText(""); 
-		vaciarTxtField();
-	}
-
-	@FXML
-	void clickbVolverIni(MouseEvent event) { //VOLVER AL INICIO TOTAL DESDE INICIO SESION O REGISTRAR
-		pInicio.setVisible(true);
-		pIncioSesion.setVisible(true);
-		pRegistro.setVisible(true);
-		pFondoDer.setVisible(true);
-		pFondoIzq.setVisible(true);
-		btnCompRegis.setText("");
-		vaciarTxtField();
-	}
-
-	@FXML
-	void clickBackRegis(ActionEvent event) { //PASAR DE INICIO SESION A REGISTRO
-		pFondoDer.setVisible(false);
-		pIncioSesion.setVisible(false);
-		pFondoIzq.setVisible(true);
-		pRegistro.setVisible(true);
-		vaciarTxtField();
-	}
-
+	
+	
 	@FXML
 	void clickBRegisDef(ActionEvent event) {  //COMPRUEBA QUE CORREO VALIDO // PASSWORD Y CONFIRMPASSWORD COINCIDAN
 		String pass1 = txtPassRegis.getText();
@@ -311,8 +316,9 @@ public class LogInController{
 
 
 
-	//FUNCIONES
-	public void vaciarTxtField() {//VACIA TODOS LOS CAMPOS . 
+	//FUNCIONES VARIAS
+	
+	private void vaciarTxtField() {//VACIA TODOS LOS CAMPOS . 
 		txtUsuReg.setText("");
 		txtCorreoReg.setText("");
 		txtPassRegis.setText(""); 
@@ -324,8 +330,27 @@ public class LogInController{
 		cambiarLado = false; //REINICIAMOS BOOLEAN PARA QUE EL btnCompRegis NO FUNCIONE
 	}
 
-	
+	private void creaAdmin() { //COMPRUEBA NADA MÁS INICIAR QUE HAYA UN USUARIO ADMIN CREADO, SINO LO CREA. USUARIO ADMIN NO SE PUEDE BORRAR
+		try {
+			int num = c1.consultaNum("USUARIO", "ID", "UPPER(NICKNAME) = 'ADMIN'");
+			if(num==0) {
+				Usuario u = new Usuario("ADMIN", "ADMIN","admin@gmail.com" );
+				c1.registraUsuario(u);
+				System.out.println("ADMIN CREADO");
+				Main.existeAdmin = true;
 
+			}
+			else {
+				System.out.println("EL ADMIN EXISTE");
+				Main.existeAdmin = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
 
 
 
