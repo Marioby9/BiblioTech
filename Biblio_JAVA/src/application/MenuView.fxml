@@ -937,7 +937,7 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;" visible="false">
+      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
          <children>
             <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
                <font>
@@ -995,9 +995,9 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <ImageView id="bPerfil" fx:id="bInformacion" fitHeight="49.0" fitWidth="65.0" layoutX="361.0" layoutY="416.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="bPerfil" fx:id="bWeb" fitHeight="41.0" fitWidth="41.0" layoutX="361.0" layoutY="462.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icons/information.png" />
+                  <Image url="@../icons/internet.png" />
                </image>
             </ImageView>
             <Label layoutX="86.0" layoutY="401.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE">
@@ -1005,6 +1005,21 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="136.0" layoutY="463.0" prefHeight="40.0" prefWidth="225.0" text="- Visita nuestra WEB:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="505.0" prefHeight="40.0" prefWidth="211.0" text="- Visita el repositorio:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <ImageView id="bPerfil" fx:id="bGithub" fitHeight="41.0" fitWidth="41.0" layoutX="361.0" layoutY="505.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/github.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <ImageView id="bPerfil" fx:id="bVolver" fitHeight="41.0" fitWidth="49.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#clickBVolver" pickOnBounds="true" preserveRatio="true">
          <image>

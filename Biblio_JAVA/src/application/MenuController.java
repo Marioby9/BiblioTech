@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 import java.util.logging.Level;
@@ -24,6 +25,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import utilidades.Conexion;
+import utilidades.Correo;
 import utilidades.Usuario;
 
 public class MenuController {
@@ -72,7 +74,7 @@ public class MenuController {
 	//PANELES LISTAS MUSICA + SCROLLPANES CANCIONES
 	@FXML private Pane pReggaeton, pPop, pElectronica, pFlamenco, pRock;
 	@FXML private ScrollPane pListaReggaeton, pListaPop, pListaElectronica, pListaFlamenco, pListaRock;
-
+	
 
 	//CONTROLADOR
 	LogInController controlador;
@@ -84,7 +86,7 @@ public class MenuController {
 	//PANEL AJUSTES:
 	@FXML private Pane pAjustes;
 	@FXML private Label lblColorTema;
-	@FXML private ImageView bEditarColor;
+	@FXML private ImageView bEditarColor, bWeb, bGithub;
 	@FXML private Pane pPanelColores;		boolean abierto;  int color;
 	@FXML private Slider barraVolAjustes;
 	@FXML private Label lblVolAjustes;
@@ -605,8 +607,22 @@ public class MenuController {
 	}
 
 
-	@FXML void clickBInformacion(MouseEvent event) {
-
+	@FXML void clickBInformacion(MouseEvent event) { //PULSA ENLACE WEB O REPOSITORIO
+		String enlace;
+		if(event.getSource() == bWeb) {
+			enlace = "https://probibliotech.000webhostapp.com/";
+		}
+		else {
+			enlace = "https://github.com/Marioby9/BiblioTech";
+		}
+		try {
+			Correo.abrirURL(enlace);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	//FUNCIONES VARIAS 

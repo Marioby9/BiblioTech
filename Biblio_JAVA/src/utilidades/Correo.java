@@ -11,6 +11,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 
 public class Correo {
 
@@ -61,12 +66,13 @@ public class Correo {
 		}
 	}
 
-
-
-
-	public static void main(String[] args) {
-		Correo.enviarMailConf("tommylaker99@gmail.com", "Mario", "Mariomg");
+	public static void abrirURL(String url) throws IOException, URISyntaxException { //ABRE UN ENLACE WEB DESDE LA APLICACION
+	    if (Desktop.isDesktopSupported()) {
+	        Desktop desktop = Desktop.getDesktop();
+	            desktop.browse(new URI(url));
+	    } else {
+	       System.out.println("No se puede abrir el navegador");
+	    }
 	}
-	
 	
 }
