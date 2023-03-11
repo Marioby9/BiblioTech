@@ -8,6 +8,7 @@ module Proyecto {
 	requires java.desktop;
 	requires java.sql;
 	requires java.mail;
+	requires java.xml;
 
 	
 	opens application to javafx.graphics, javafx.fxml;

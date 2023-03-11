@@ -53,7 +53,7 @@ public class MenuController {
 
 
 	//PANELES LISTA JUEGOS
-	@FXML private Pane pJueAccion, pJueDeportes, pJueFavoritos, pJueShooter, pJueTerror;
+	@FXML private Pane pJueAccion, pJueDeportes, pJueFavoritos, pJueShooter, pJueTerror, pJuegoIndiv;
 
 
 	//PANEL LIBROS 
@@ -63,7 +63,7 @@ public class MenuController {
 
 
 	//PANELES LISTA LIBROS
-	@FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia;
+	@FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia, pLibroIndiv;
 
 
 	//MUSICA
@@ -118,6 +118,8 @@ public class MenuController {
 		pElectronica.setVisible(false);
 		pFlamenco.setVisible(false);
 		pRock.setVisible(false);
+		pLibroIndiv.setVisible(false);
+		pJuegoIndiv.setVisible(false);
 
 
 		pProfilePics.setVisible(false);
