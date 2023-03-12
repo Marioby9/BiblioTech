@@ -49,7 +49,7 @@ public class MenuController {
 	//PANEL JUEGOS
 	@FXML private Pane pJuegos;
 	//BOTONES PJUEGOS
-	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror;
+	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror, btnBackPaneJuegos;
 
 
 	//PANELES LISTA JUEGOS
@@ -59,13 +59,13 @@ public class MenuController {
 	//PANEL LIBROS 
 	@FXML private Pane pLibros;
 	//BOTONES PLIBROS
-	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror;
+	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror, btnBackPaneLibros;
 
 
 	//PANELES LISTA LIBROS
 	@FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia, pLibroIndiv;
 
-
+	
 	//MUSICA
 	@FXML private Pane pMusica;
 	//BOTONES PMUSICA
@@ -74,7 +74,7 @@ public class MenuController {
 	//PANELES LISTAS MUSICA + SCROLLPANES CANCIONES
 	@FXML private Pane pReggaeton, pPop, pElectronica, pFlamenco, pRock;
 	@FXML private ScrollPane pListaReggaeton, pListaPop, pListaElectronica, pListaFlamenco, pListaRock;
-	
+
 
 	//CONTROLADOR
 	LogInController controlador;
@@ -225,6 +225,8 @@ public class MenuController {
 		pAjustes.setVisible(false);
 		pProfilePics.setVisible(false);
 		pPanelColores.setVisible(false);
+		pJuegoIndiv.setVisible(false);
+		pLibroIndiv.setVisible(false);
 
 	}
 
@@ -242,7 +244,8 @@ public class MenuController {
 		pAjustes.setVisible(false);
 		pProfilePics.setVisible(false);
 		pPanelColores.setVisible(false);
-
+		pJuegoIndiv.setVisible(false);
+		pLibroIndiv.setVisible(false);
 
 	}
 
@@ -260,7 +263,8 @@ public class MenuController {
 		pAjustes.setVisible(false);
 		pProfilePics.setVisible(false);
 		pPanelColores.setVisible(false);
-
+		pJuegoIndiv.setVisible(false);
+		pLibroIndiv.setVisible(false);
 
 	}
 
@@ -278,7 +282,8 @@ public class MenuController {
 		pElectronica.setVisible(false);
 		pFlamenco.setVisible(false);
 		pRock.setVisible(false);
-
+		pJuegoIndiv.setVisible(false);
+		pLibroIndiv.setVisible(false);
 
 	}
 
@@ -290,7 +295,8 @@ public class MenuController {
 		pAjustes.setVisible(true);
 		pProfilePics.setVisible(false);
 		pPanelColores.setVisible(false);
-
+		pJuegoIndiv.setVisible(false);
+		pLibroIndiv.setVisible(false);
 	}
 
 
@@ -462,6 +468,27 @@ public class MenuController {
 
 	}
 
+	//PANEL INDIVIDUAL JUEGOS LIBROS
+	@FXML void openSingleBookPane(MouseEvent event) { //ABRE EL PANEL INDIVIDUAL AL PULSAR EN UNO DE LOS LIBROS
+		pLibroIndiv.setVisible(true);
+
+	}
+
+	@FXML void openSingleGamePane(MouseEvent event) {
+		pJuegoIndiv.setVisible(true);
+	}
+
+	@FXML void backSinglePane(MouseEvent event) {
+
+		if(event.getSource() == btnBackPaneLibros) {
+			pLibroIndiv.setVisible(false);
+		}
+		else if(event.getSource() == btnBackPaneJuegos) {
+			pJuegoIndiv.setVisible(false);
+
+		}
+	}
+
 
 	//MUSICA:
 	@FXML void clickListaMusica(MouseEvent event) {
@@ -624,7 +651,7 @@ public class MenuController {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	//FUNCIONES VARIAS 
