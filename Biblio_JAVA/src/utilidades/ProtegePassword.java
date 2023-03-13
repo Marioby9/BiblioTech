@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class ProtegePassword {
 
-	private static final String algoritmo = "SHA-256"; //PARA CIFRADO HASH
+	private static final String algoritmo = "SHA-224"; //PARA CIFRADO HASH
 
 	/**
 	 * //RECIBE LA CONTRASENA ESCRITA Y LA CONVIERTE A HASH. DESPUES LA PASA A STRING PARA PODER INSERTAR EL HASH EN LA BBDD

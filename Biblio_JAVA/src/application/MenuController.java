@@ -53,8 +53,13 @@ public class MenuController {
 
 
 	//PANELES LISTA JUEGOS
+	@FXML private Label lblTituloJuegoInd, lblNHorasJuegoInd, lblPlataformaJuegoInd, lblGeneroJuegoInd, lblYearJuegoInd;
 	@FXML private Pane pJueAccion, pJueDeportes, pJueFavoritos, pJueShooter, pJueTerror, pJuegoIndiv;
-
+	@FXML private ImageView jueAccion1, jueAccion2, jueAccion3, jueAccion4;
+	@FXML private ImageView jueDeportes1, jueDeportes2, jueDeportes3, jueDeportes4;
+	@FXML private ImageView jueTerror1, jueTerror2, jueTerror3, jueTerror4;
+	@FXML private ImageView jueShooter1, jueShooter2, jueShooter3, jueShooter4;
+	
 
 	//PANEL LIBROS 
 	@FXML private Pane pLibros;
@@ -64,8 +69,13 @@ public class MenuController {
 
 	//PANELES LISTA LIBROS
 	@FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia, pLibroIndiv;
+	@FXML private Label lblTituloLibroInd, lblAutorLibroInd, lblNPagsLibro, lblGeneroLibroInd, lblYearLibroInd;
+	@FXML private ImageView libAventuras1, libAventuras2, libAventuras3, libAventuras4;
+	@FXML private ImageView libAmor1, libAmor2, libAmor3, libAmor4;
+	@FXML private ImageView libTerror1, libTerror2, libTerror3, libTerror4;
+	@FXML private ImageView libComedia1, libComedia2, libComedia3, libComedia4;
 
-	
+
 	//MUSICA
 	@FXML private Pane pMusica;
 	//BOTONES PMUSICA
@@ -445,7 +455,7 @@ public class MenuController {
 
 	}
 
-	//JUEGOS
+
 	//JUEGOS:
 	@FXML void clickListaJuegos(MouseEvent event) {
 		if(event.getSource()==bJueFavoritos) {
@@ -469,13 +479,58 @@ public class MenuController {
 	}
 
 	//PANEL INDIVIDUAL JUEGOS LIBROS
-	@FXML void openSingleBookPane(MouseEvent event) { //ABRE EL PANEL INDIVIDUAL AL PULSAR EN UNO DE LOS LIBROS
-		pLibroIndiv.setVisible(true);
+	@FXML void openSingleBookPane(MouseEvent event) { //CAMBIA LOS PARAMETROS EN FUNCION DEL PANEL QUE SE PULSE
 
+		int nPanel = 0;
+		String categoria = "";
+		if(event.getSource() == libAventuras1) {categoria = "AVENTURAS"; nPanel = 1;}
+		else if(event.getSource() == libAventuras2) {categoria = "AVENTURAS"; nPanel = 2;}
+		else if(event.getSource() == libAventuras3) {categoria = "AVENTURAS"; nPanel = 3;}
+		else if(event.getSource() == libAventuras4) {categoria = "AVENTURAS"; nPanel = 4;}
+		
+		if(event.getSource() == libAmor1) {categoria = "AMOR"; nPanel = 1;}
+		else if(event.getSource() == libAmor2) {categoria = "AMOR"; nPanel = 2;}
+		else if(event.getSource() == libAmor3) {categoria = "AMOR"; nPanel = 3;}
+		else if(event.getSource() == libAmor4) {categoria = "AMOR"; nPanel = 4;}
+
+		if(event.getSource() == libComedia1) {categoria = "COMEDIA"; nPanel = 1;}
+		else if(event.getSource() == libComedia2) {categoria = "COMEDIA"; nPanel = 2;}
+		else if(event.getSource() == libComedia3) {categoria = "COMEDIA"; nPanel = 3;}
+		else if(event.getSource() == libComedia4) {categoria = "COMEDIA"; nPanel = 4;}
+
+		if(event.getSource() == libTerror1) {categoria = "TERROR"; nPanel = 1;}
+		else if(event.getSource() == libTerror2) {categoria = "TERROR"; nPanel = 2;}
+		else if(event.getSource() == libTerror3) {categoria = "TERROR"; nPanel = 3;}
+		else if(event.getSource() == libTerror4) {categoria = "TERROR"; nPanel = 4;}
+		
+		fillSingleBookPane(nPanel, categoria);
+		
 	}
 
 	@FXML void openSingleGamePane(MouseEvent event) {
-		pJuegoIndiv.setVisible(true);
+		int nPanel = 0;
+		String categoria = "";
+		if(event.getSource() == jueAccion1) {categoria = "ACCION"; nPanel = 1;}
+		else if(event.getSource() == jueAccion2) {categoria = "ACCION"; nPanel = 2;}
+		else if(event.getSource() == jueAccion3) {categoria = "ACCION"; nPanel = 3;}
+		else if(event.getSource() == jueAccion4) {categoria = "ACCION"; nPanel = 4;}
+		
+		if(event.getSource() == jueDeportes1) {categoria = "DEPORTES"; nPanel = 1;}
+		else if(event.getSource() == jueDeportes2) {categoria = "DEPORTES"; nPanel = 2;}
+		else if(event.getSource() == jueDeportes3) {categoria = "DEPORTES"; nPanel = 3;}
+		else if(event.getSource() == jueDeportes4) {categoria = "DEPORTES"; nPanel = 4;}
+
+		if(event.getSource() == jueTerror1) {categoria = "TERROR"; nPanel = 1;}
+		else if(event.getSource() == jueTerror2) {categoria = "TERROR"; nPanel = 2;}
+		else if(event.getSource() == jueTerror3) {categoria = "TERROR"; nPanel = 3;}
+		else if(event.getSource() == jueTerror4) {categoria = "TERROR"; nPanel = 4;}
+
+		if(event.getSource() == jueShooter1) {categoria = "SHOOTER"; nPanel = 1;}
+		else if(event.getSource() == jueShooter2) {categoria = "SHOOTER"; nPanel = 2;}
+		else if(event.getSource() == jueShooter3) {categoria = "SHOOTER"; nPanel = 3;}
+		else if(event.getSource() == jueShooter4) {categoria = "SHOOTER"; nPanel = 4;}
+		
+		fillSingleGamePane(nPanel, categoria);
 	}
 
 	@FXML void backSinglePane(MouseEvent event) {
@@ -654,6 +709,7 @@ public class MenuController {
 
 	}
 
+	
 	//FUNCIONES VARIAS 
 
 
@@ -686,7 +742,54 @@ public class MenuController {
 	}
 
 
+	private void fillSingleBookPane(int nPanel, String categoria) { //RELLENA LOS DATOS DEL PANEL INDIVDUAL
+		String autor = "";
+		String titulo = "";
+		int N_paginas = 0; 
+		int year = 0;
+		pLibroIndiv.setVisible(true);
+		try {
+			autor = c1.consultaStr("LIBROS", "AUTOR", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			titulo = c1.consultaStr("LIBROS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			N_paginas = c1.consultaNum("LIBROS", "N_PAGINAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			year = c1.consultaNum("LIBROS", "ANO_LANZ", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			
+			lblAutorLibroInd.setText(autor);
+			lblTituloLibroInd.setText(titulo);
+			lblNPagsLibro.setText(Integer.toString(N_paginas));
+			lblGeneroLibroInd.setText(categoria);
+			lblYearLibroInd.setText(Integer.toString(year));
+			
 
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void fillSingleGamePane(int nPanel, String categoria) { //RELLENA LOS DATOS DEL PANEL INDIVDUAL
+		String plataforma = "";
+		String titulo = "";
+		int N_Horas = 0; 
+		int year = 0;
+		
+		pJuegoIndiv.setVisible(true);
+		try {
+			titulo = c1.consultaStr("JUEGOS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			plataforma = c1.consultaStr("JUEGOS", "PLATAFORMA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			N_Horas = c1.consultaNum("JUEGOS", "H_JUGADAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			year = c1.consultaNum("JUEGOS", "LANZAMIENTO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			
+			lblPlataformaJuegoInd.setText(plataforma);
+			lblTituloJuegoInd.setText(titulo);
+			lblGeneroJuegoInd.setText(categoria);
+			lblNHorasJuegoInd.setText(Integer.toString(N_Horas));
+			lblYearJuegoInd.setText(Integer.toString(year));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 
