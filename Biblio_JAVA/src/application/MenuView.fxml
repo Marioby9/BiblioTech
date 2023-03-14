@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -508,31 +509,47 @@
                         <Image url="@../icons/flechaBack.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lblTituloLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="90.0" prefHeight="50.0" prefWidth="260.0" text="Label">
+                  <Label fx:id="lblTituloLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="90.0" prefHeight="50.0" prefWidth="275.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblAutorLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="176.0" prefHeight="50.0" prefWidth="275.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblNPagsLibro" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="272.0" prefHeight="32.0" prefWidth="65.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblYearLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="260.0" prefHeight="50.0" prefWidth="260.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblGeneroLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="521.0" prefHeight="41.0" prefWidth="240.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
+                  <ImageView fx:id="portadaLibro" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children></Pane>
@@ -834,31 +851,51 @@
                         <Image url="@../icons/flechaBack.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lblTituloJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="298.0" layoutY="91.0" prefHeight="50.0" prefWidth="260.0" text="Label">
+                  <Label fx:id="lblTituloJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="91.0" prefHeight="50.0" prefWidth="275.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
-                  <Label fx:id="lblNHorasJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="270.0" prefHeight="36.0" prefWidth="65.0" text="Label">
+                  <Label fx:id="lblNHorasJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="270.0" prefHeight="36.0" prefWidth="82.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblPlataformaJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="520.0" prefHeight="41.0" prefWidth="246.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblGeneroJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="482.0" prefHeight="41.0" prefWidth="246.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
                   <Label fx:id="lblYearJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="305.0" layoutY="265.0" prefHeight="41.0" prefWidth="246.0" text="Label">
                      <font>
-                        <Font name="Britannic Bold" size="16.0" />
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
                   </Label>
+                  <ImageView fx:id="portadaJuego" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../caratulas/uncharted.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children></Pane>

@@ -49,7 +49,7 @@ public class MenuController {
 	//PANEL JUEGOS
 	@FXML private Pane pJuegos;
 	//BOTONES PJUEGOS
-	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror, btnBackPaneJuegos;
+	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror, btnBackPaneJuegos, portadaJuego;
 
 
 	//PANELES LISTA JUEGOS
@@ -59,12 +59,12 @@ public class MenuController {
 	@FXML private ImageView jueDeportes1, jueDeportes2, jueDeportes3, jueDeportes4;
 	@FXML private ImageView jueTerror1, jueTerror2, jueTerror3, jueTerror4;
 	@FXML private ImageView jueShooter1, jueShooter2, jueShooter3, jueShooter4;
-	
+
 
 	//PANEL LIBROS 
 	@FXML private Pane pLibros;
 	//BOTONES PLIBROS
-	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror, btnBackPaneLibros;
+	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror, btnBackPaneLibros, portadaLibro;
 
 
 	//PANELES LISTA LIBROS
@@ -487,7 +487,7 @@ public class MenuController {
 		else if(event.getSource() == libAventuras2) {categoria = "AVENTURAS"; nPanel = 2;}
 		else if(event.getSource() == libAventuras3) {categoria = "AVENTURAS"; nPanel = 3;}
 		else if(event.getSource() == libAventuras4) {categoria = "AVENTURAS"; nPanel = 4;}
-		
+
 		if(event.getSource() == libAmor1) {categoria = "AMOR"; nPanel = 1;}
 		else if(event.getSource() == libAmor2) {categoria = "AMOR"; nPanel = 2;}
 		else if(event.getSource() == libAmor3) {categoria = "AMOR"; nPanel = 3;}
@@ -502,9 +502,9 @@ public class MenuController {
 		else if(event.getSource() == libTerror2) {categoria = "TERROR"; nPanel = 2;}
 		else if(event.getSource() == libTerror3) {categoria = "TERROR"; nPanel = 3;}
 		else if(event.getSource() == libTerror4) {categoria = "TERROR"; nPanel = 4;}
-		
+
 		fillSingleBookPane(nPanel, categoria);
-		
+
 	}
 
 	@FXML void openSingleGamePane(MouseEvent event) {
@@ -514,7 +514,7 @@ public class MenuController {
 		else if(event.getSource() == jueAccion2) {categoria = "ACCION"; nPanel = 2;}
 		else if(event.getSource() == jueAccion3) {categoria = "ACCION"; nPanel = 3;}
 		else if(event.getSource() == jueAccion4) {categoria = "ACCION"; nPanel = 4;}
-		
+
 		if(event.getSource() == jueDeportes1) {categoria = "DEPORTES"; nPanel = 1;}
 		else if(event.getSource() == jueDeportes2) {categoria = "DEPORTES"; nPanel = 2;}
 		else if(event.getSource() == jueDeportes3) {categoria = "DEPORTES"; nPanel = 3;}
@@ -529,7 +529,7 @@ public class MenuController {
 		else if(event.getSource() == jueShooter2) {categoria = "SHOOTER"; nPanel = 2;}
 		else if(event.getSource() == jueShooter3) {categoria = "SHOOTER"; nPanel = 3;}
 		else if(event.getSource() == jueShooter4) {categoria = "SHOOTER"; nPanel = 4;}
-		
+
 		fillSingleGamePane(nPanel, categoria);
 	}
 
@@ -709,7 +709,7 @@ public class MenuController {
 
 	}
 
-	
+
 	//FUNCIONES VARIAS 
 
 
@@ -747,49 +747,61 @@ public class MenuController {
 		String titulo = "";
 		int N_paginas = 0; 
 		int year = 0;
+		String portada = "";
 		pLibroIndiv.setVisible(true);
+
 		try {
 			autor = c1.consultaStr("LIBROS", "AUTOR", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
 			titulo = c1.consultaStr("LIBROS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
 			N_paginas = c1.consultaNum("LIBROS", "N_PAGINAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
 			year = c1.consultaNum("LIBROS", "ANO_LANZ", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-			
+			portada = c1.consultaStr("LIBROS", "PORTADA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+
 			lblAutorLibroInd.setText(autor);
 			lblTituloLibroInd.setText(titulo);
 			lblNPagsLibro.setText(Integer.toString(N_paginas));
 			lblGeneroLibroInd.setText(categoria);
 			lblYearLibroInd.setText(Integer.toString(year));
-			
 
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void fillSingleGamePane(int nPanel, String categoria) { //RELLENA LOS DATOS DEL PANEL INDIVDUAL
-		String plataforma = "";
-		String titulo = "";
-		int N_Horas = 0; 
-		int year = 0;
+			Image image = new Image(getClass().getResource(portada).toString()); 
+			portadaLibro.setImage(image);
 		
-		pJuegoIndiv.setVisible(true);
-		try {
-			titulo = c1.consultaStr("JUEGOS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-			plataforma = c1.consultaStr("JUEGOS", "PLATAFORMA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-			N_Horas = c1.consultaNum("JUEGOS", "H_JUGADAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-			year = c1.consultaNum("JUEGOS", "LANZAMIENTO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-			
-			lblPlataformaJuegoInd.setText(plataforma);
-			lblTituloJuegoInd.setText(titulo);
-			lblGeneroJuegoInd.setText(categoria);
-			lblNHorasJuegoInd.setText(Integer.toString(N_Horas));
-			lblYearJuegoInd.setText(Integer.toString(year));
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
+	} catch (SQLException e) {
+		e.printStackTrace();
 	}
+}
+
+private void fillSingleGamePane(int nPanel, String categoria) { //RELLENA LOS DATOS DEL PANEL INDIVDUAL
+	String plataforma = "";
+	String titulo = "";
+	int N_Horas = 0; 
+	int year = 0;
+	String portada = "";
+
+	pJuegoIndiv.setVisible(true);
+
+	try {
+		titulo = c1.consultaStr("JUEGOS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+		plataforma = c1.consultaStr("JUEGOS", "PLATAFORMA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+		N_Horas = c1.consultaNum("JUEGOS", "H_JUGADAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+		year = c1.consultaNum("JUEGOS", "LANZAMIENTO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+		portada = c1.consultaStr("JUEGOS", "PORTADA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+
+		lblPlataformaJuegoInd.setText(plataforma);
+		lblTituloJuegoInd.setText(titulo);
+		lblGeneroJuegoInd.setText(categoria);
+		lblNHorasJuegoInd.setText(Integer.toString(N_Horas));
+		lblYearJuegoInd.setText(Integer.toString(year));
+
+		Image image = new Image(getClass().getResource(portada).toString()); 
+		portadaJuego.setImage(image);
+
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
 
 
 
