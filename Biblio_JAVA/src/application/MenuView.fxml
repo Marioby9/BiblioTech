@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -509,7 +510,7 @@
                         <Image url="@../icons/flechaBack.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lblTituloLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="90.0" prefHeight="50.0" prefWidth="275.0" text="Label">
+                  <Label fx:id="lblTituloLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="90.0" prefHeight="50.0" prefWidth="280.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -517,7 +518,11 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblAutorLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="176.0" prefHeight="50.0" prefWidth="275.0" text="Label">
+                  <TextField fx:id="txtFieldTitLibro" layoutX="291.0" layoutY="93.0" prefHeight="45.0" prefWidth="277.0" promptText="Nuevo Titulo" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font></TextField>
+                  <Label fx:id="lblAutorLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="176.0" prefHeight="50.0" prefWidth="280.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -525,7 +530,12 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblNPagsLibro" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="272.0" prefHeight="32.0" prefWidth="65.0" text="Label">
+                  <TextField fx:id="txtFieldAutorLibro" layoutX="291.0" layoutY="178.0" prefHeight="45.0" prefWidth="277.0" promptText="Nuevo Autor" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblNPagsLibro" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="272.0" prefHeight="33.0" prefWidth="65.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -533,7 +543,11 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblYearLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="260.0" prefHeight="50.0" prefWidth="260.0" text="Label">
+                  <TextField fx:id="txtFieldPagLibro" layoutX="201.0" layoutY="272.0" prefHeight="30.0" prefWidth="65.0" promptText="HH" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font></TextField>
+                  <Label fx:id="lblYearLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="260.0" prefHeight="50.0" prefWidth="280.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -541,6 +555,11 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
+                  <TextField fx:id="txtFieldFechaLibro" layoutX="291.0" layoutY="262.0" prefHeight="45.0" prefWidth="277.0" promptText="Nueva Fecha" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
                   <Label fx:id="lblGeneroLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="521.0" prefHeight="41.0" prefWidth="240.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
@@ -550,10 +569,22 @@
                      </effect>
                   </Label>
                   <ImageView fx:id="portadaLibro" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea fx:id="txtAreaResumenLibro" layoutX="71.0" layoutY="369.0" prefHeight="153.0" prefWidth="496.0" visible="false" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="lblResumenLibroInd" alignment="TOP_LEFT" layoutX="71.0" layoutY="369.0" prefHeight="153.0" prefWidth="496.0" text="Label" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="17.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect></Label>
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" visible="false">
+      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
          <children>
             <Pane fx:id="pJuegos1" prefHeight="650.0" prefWidth="640.0">
                <children>
@@ -851,7 +882,7 @@
                         <Image url="@../icons/flechaBack.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lblTituloJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="91.0" prefHeight="50.0" prefWidth="275.0" text="Label">
+                  <Label fx:id="lblTituloJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="90.0" prefHeight="50.0" prefWidth="280.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -859,7 +890,12 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblNHorasJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="270.0" prefHeight="36.0" prefWidth="82.0" text="Label">
+                  <TextField fx:id="txtFieldTitJuego" layoutX="291.0" layoutY="93.0" prefHeight="45.0" prefWidth="277.0" promptText="Nuevo Titulo" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblCompaniaJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="176.0" prefHeight="50.0" prefWidth="280.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -867,7 +903,12 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblPlataformaJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="520.0" prefHeight="41.0" prefWidth="246.0" text="Label">
+                  <TextField fx:id="txtFieldCompaniaJuegoInd" layoutX="291.0" layoutY="178.0" prefHeight="45.0" prefWidth="277.0" promptText="Nueva Compañía" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblNHorasJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="272.0" prefHeight="33.0" prefWidth="90.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -875,7 +916,12 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblGeneroJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="482.0" prefHeight="41.0" prefWidth="246.0" text="Label">
+                  <TextField fx:id="txtFieldHorJuego" layoutX="176.0" layoutY="272.0" prefHeight="30.0" prefWidth="90.0" promptText="HH" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblYearJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="260.0" prefHeight="50.0" prefWidth="280.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -883,7 +929,12 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <Label fx:id="lblYearJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="305.0" layoutY="265.0" prefHeight="41.0" prefWidth="246.0" text="Label">
+                  <TextField fx:id="txtFieldFechaJuego" layoutX="291.0" layoutY="262.0" prefHeight="45.0" prefWidth="277.0" promptText="Nueva Fecha" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblGeneroJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="484.0" prefHeight="41.0" prefWidth="240.0" text="Label">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
@@ -891,11 +942,38 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <ImageView fx:id="portadaJuego" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../caratulas/uncharted.png" />
-                     </image>
-                  </ImageView>
+                  <TextField fx:id="txtFieldGeneroJuego" layoutX="326.0" layoutY="484.0" prefHeight="41.0" prefWidth="240.0" promptText="Nuevo Genero" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fx:id="portadaJuego" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea fx:id="txtAreaResumenJuego" layoutX="71.0" layoutY="369.0" prefHeight="113.0" prefWidth="496.0" promptText="Nuevo Resumen" visible="false" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="lblResumenJuegoInd" alignment="TOP_LEFT" layoutX="71.0" layoutY="369.0" prefHeight="113.0" prefWidth="496.0" text="Label" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="17.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <Label fx:id="lblPlataformaJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="521.0" prefHeight="41.0" prefWidth="240.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldPlataformaJuego" layoutX="326.0" layoutY="521.0" prefHeight="41.0" prefWidth="240.0" promptText="Nueva Plataforma" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
          </children></Pane>

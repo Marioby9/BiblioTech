@@ -1,13 +1,11 @@
 package application;
 
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +25,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import utilidades.Conexion;
 import utilidades.Correo;
+import utilidades.Ficheros;
 import utilidades.Usuario;
 
 public class MenuController {
@@ -50,16 +50,17 @@ public class MenuController {
 	@FXML private Pane pJuegos;
 	//BOTONES PJUEGOS
 	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror, btnBackPaneJuegos, portadaJuego;
-
+	
 
 	//PANELES LISTA JUEGOS
-	@FXML private Label lblTituloJuegoInd, lblNHorasJuegoInd, lblPlataformaJuegoInd, lblGeneroJuegoInd, lblYearJuegoInd;
+	@FXML private Label lblTituloJuegoInd, lblNHorasJuegoInd, lblPlataformaJuegoInd, lblGeneroJuegoInd, lblYearJuegoInd, lblResumenJuegoInd, lblCompaniaJuegoInd;
 	@FXML private Pane pJueAccion, pJueDeportes, pJueFavoritos, pJueShooter, pJueTerror, pJuegoIndiv;
 	@FXML private ImageView jueAccion1, jueAccion2, jueAccion3, jueAccion4;
 	@FXML private ImageView jueDeportes1, jueDeportes2, jueDeportes3, jueDeportes4;
 	@FXML private ImageView jueTerror1, jueTerror2, jueTerror3, jueTerror4;
 	@FXML private ImageView jueShooter1, jueShooter2, jueShooter3, jueShooter4;
-
+	@FXML private TextArea txtAreaResumenJuego;
+	@FXML private TextField txtFieldTitJuego, txtFieldPlataformaJuego, txtFieldGeneroJuego, txtFieldFechaJuego, txtFieldHorJuego, txtFieldCompaniaJuegoInd;
 
 	//PANEL LIBROS 
 	@FXML private Pane pLibros;
@@ -69,7 +70,9 @@ public class MenuController {
 
 	//PANELES LISTA LIBROS
 	@FXML private Pane pLibFavoritos, pLibAventuras, pLibAmor, pLibTerror, pLibComedia, pLibroIndiv;
-	@FXML private Label lblTituloLibroInd, lblAutorLibroInd, lblNPagsLibro, lblGeneroLibroInd, lblYearLibroInd;
+	@FXML private Label lblTituloLibroInd, lblAutorLibroInd, lblNPagsLibro, lblGeneroLibroInd, lblYearLibroInd, lblResumenLibroInd;
+	@FXML private TextArea txtAreaResumenLibro;
+	@FXML private TextField txtFieldTitLibro, txtFieldAutorLibro, txtFieldFechaLibro, txtFieldPagLibro;
 	@FXML private ImageView libAventuras1, libAventuras2, libAventuras3, libAventuras4;
 	@FXML private ImageView libAmor1, libAmor2, libAmor3, libAmor4;
 	@FXML private ImageView libTerror1, libTerror2, libTerror3, libTerror4;
@@ -84,6 +87,9 @@ public class MenuController {
 	//PANELES LISTAS MUSICA + SCROLLPANES CANCIONES
 	@FXML private Pane pReggaeton, pPop, pElectronica, pFlamenco, pRock;
 	@FXML private ScrollPane pListaReggaeton, pListaPop, pListaElectronica, pListaFlamenco, pListaRock;
+	MediaPlayer reproductor;
+	boolean activo = false;
+
 
 
 	//CONTROLADOR
@@ -157,7 +163,7 @@ public class MenuController {
 		//INICIAR COMPONENTES PARA CADA USUARIO
 		lblBienvenidoPerfil.setText("Bienvenido, "+ u1.getNickname());
 		lblNomUsuario.setText(u1.getNickname());
-
+		initPanelesIndiv();
 
 		//QUITAR BARRA HORIZONTAL DE SCROLLPANES
 		pListaReggaeton.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -177,9 +183,6 @@ public class MenuController {
 
 		barraVolAjustes.setValue(vol);
 		lblVolAjustes.setText(Integer.toString((int)(Math.floor(barraVolAjustes.getValue()))));
-
-
-
 
 
 	}
@@ -585,14 +588,14 @@ public class MenuController {
 
 	//MEDIAPLAYER (PRUEBA)
 	@FXML
-	void clickBPlayMusica(ActionEvent event) {
+	void clickBPlayMusica(MouseEvent event) {
 
 
 		//Media media = new Media(getClass().getResource("/canciones/cancion1.mp3").toExternalForm()); //FUNCIONA EN ECLIPSE Y NO EN EJECUTABLE
-		Media media = new Media(getClass().getResource("/canciones/shakira-bzrp.mp3").toString()); 	   //FUNCIONA EN ECLIPSE Y NO EN EJECUTABLE
 
-		MediaPlayer reproductor = new MediaPlayer(media);
-		boolean activo = false;
+		Media media = new Media(getClass().getResource("/canciones/shakira-bzrp.mp3").toString()); 	   //BUENO EN ECLIPSE (USAR)
+		reproductor = new MediaPlayer(media);
+
 		double volumen;
 		try {
 			volumen = c1.consultaNum("Ajustes", "Volumen", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
@@ -748,7 +751,7 @@ public class MenuController {
 		int N_paginas = 0; 
 		int year = 0;
 		String portada = "";
-		pLibroIndiv.setVisible(true);
+		String resumen = "";
 
 		try {
 			autor = c1.consultaStr("LIBROS", "AUTOR", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
@@ -756,54 +759,98 @@ public class MenuController {
 			N_paginas = c1.consultaNum("LIBROS", "N_PAGINAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
 			year = c1.consultaNum("LIBROS", "ANO_LANZ", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
 			portada = c1.consultaStr("LIBROS", "PORTADA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-
+			resumen = c1.consultaStr("LIBROS", "RESUMEN", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+					
 			lblAutorLibroInd.setText(autor);
 			lblTituloLibroInd.setText(titulo);
 			lblNPagsLibro.setText(Integer.toString(N_paginas));
 			lblGeneroLibroInd.setText(categoria);
 			lblYearLibroInd.setText(Integer.toString(year));
-
+			
+			
 			Image image = new Image(getClass().getResource(portada).toString()); 
 			portadaLibro.setImage(image);
+
+			lblResumenLibroInd.setText(Ficheros.leeResumen(resumen));
+			
+			pLibroIndiv.setVisible(true);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void fillSingleGamePane(int nPanel, String categoria) { //RELLENA LOS DATOS DEL PANEL INDIVDUAL
+		String plataforma = "";
+		String titulo = "";
+		int N_Horas = 0; 
+		int year = 0;
+		String portada = "";
+		String resumen = "";
+		String compania = "";
+		pJuegoIndiv.setVisible(true);
+
+		try {
+			titulo = c1.consultaStr("JUEGOS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			plataforma = c1.consultaStr("JUEGOS", "PLATAFORMA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			N_Horas = c1.consultaNum("JUEGOS", "H_JUGADAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			year = c1.consultaNum("JUEGOS", "LANZAMIENTO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			portada = c1.consultaStr("JUEGOS", "PORTADA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+			resumen = c1.consultaStr("JUEGOS", "RESUMEN", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
+
+			
+			lblPlataformaJuegoInd.setText(plataforma);
+			lblTituloJuegoInd.setText(titulo);
+			lblGeneroJuegoInd.setText(categoria);
+			lblNHorasJuegoInd.setText(Integer.toString(N_Horas));
+			lblYearJuegoInd.setText(Integer.toString(year));
+			lblCompaniaJuegoInd.setText(compania);
+			
+			Image image = new Image(getClass().getResource(portada).toString()); 
+			portadaJuego.setImage(image);
+						
+			lblResumenJuegoInd.setText(Ficheros.leeResumen(resumen));
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void initPanelesIndiv() {
+		lblAutorLibroInd.setVisible(true);
+		lblGeneroLibroInd.setVisible(true);
+		lblNPagsLibro.setVisible(true);
+		lblTituloLibroInd.setVisible(true);
+		lblYearLibroInd.setVisible(true);
+
+		lblTituloJuegoInd.setVisible(true);
+		lblGeneroJuegoInd.setVisible(true);
+		lblPlataformaJuegoInd.setVisible(true);
+		lblYearJuegoInd.setVisible(true);
+		lblCompaniaJuegoInd.setVisible(true);
+		lblNHorasJuegoInd.setVisible(true);
+		lblResumenJuegoInd.setVisible(true);
+		
+		txtAreaResumenLibro.setVisible(false);
+		txtFieldAutorLibro.setVisible(false);
+		txtFieldFechaLibro.setVisible(false);
+		txtFieldTitLibro.setVisible(false);
+		txtFieldPagLibro.setVisible(false);
+		
+		
+		txtAreaResumenJuego.setVisible(false);
+		txtFieldTitJuego.setVisible(false);
+		txtFieldGeneroJuego.setVisible(false);
+		txtFieldCompaniaJuegoInd.setVisible(false);
+		txtFieldFechaJuego.setVisible(false);
+		txtFieldHorJuego.setVisible(false);
+		txtFieldPlataformaJuego.setVisible(false);
+		
 		
 
-	} catch (SQLException e) {
-		e.printStackTrace();
+
 	}
-}
-
-private void fillSingleGamePane(int nPanel, String categoria) { //RELLENA LOS DATOS DEL PANEL INDIVDUAL
-	String plataforma = "";
-	String titulo = "";
-	int N_Horas = 0; 
-	int year = 0;
-	String portada = "";
-
-	pJuegoIndiv.setVisible(true);
-
-	try {
-		titulo = c1.consultaStr("JUEGOS", "TITULO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-		plataforma = c1.consultaStr("JUEGOS", "PLATAFORMA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-		N_Horas = c1.consultaNum("JUEGOS", "H_JUGADAS", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-		year = c1.consultaNum("JUEGOS", "LANZAMIENTO", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-		portada = c1.consultaStr("JUEGOS", "PORTADA", "UPPER(GENERO) = '"+ categoria+"' AND NPANEL = "+nPanel);
-
-		lblPlataformaJuegoInd.setText(plataforma);
-		lblTituloJuegoInd.setText(titulo);
-		lblGeneroJuegoInd.setText(categoria);
-		lblNHorasJuegoInd.setText(Integer.toString(N_Horas));
-		lblYearJuegoInd.setText(Integer.toString(year));
-
-		Image image = new Image(getClass().getResource(portada).toString()); 
-		portadaJuego.setImage(image);
-
-
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-}
-
-
 
 
 }
