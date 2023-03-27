@@ -13,6 +13,7 @@ DELETE FROM USUARIO;
 COMMIT; 
 */
 
+
 create table Usuario 
 (
 ID          number(3),
