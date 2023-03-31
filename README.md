@@ -1,4 +1,4 @@
 # BiblioTech
 
-Enlace a nuestra web: https://probibliotech.000webhostapp.com/
+Enlace a nuestra web: https://byruby12.github.io/Bibliotech/
 
