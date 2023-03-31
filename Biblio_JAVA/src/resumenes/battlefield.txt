@@ -1,4 +1,0 @@
-Battlefield es una serie de juegos de disparos en primera persona 
-que se enfoca en combates en grandes escenarios con vehículos y 
-equipos militares. Los jugadores pueden elegir entre diferentes clases 
-de personajes con habilidades únicas y trabajar en equipo para cumplir objetivos.
