@@ -1082,7 +1082,7 @@ public class MenuController {
 	@FXML void clickBInformacion(MouseEvent event) { //PULSA ENLACE WEB O REPOSITORIO
 		String enlace;
 		if(event.getSource() == bWeb) {
-			enlace = "https://probibliotech.000webhostapp.com/";
+			enlace = "https://byruby12.github.io/Bibliotech/";
 		}
 		else {
 			enlace = "https://github.com/Marioby9/BiblioTech";
@@ -1163,7 +1163,7 @@ public class MenuController {
 
 	}
 
-	//LIBROS
+	//LIBROS Y JUEGOS FUNCIONES EQUIVALENTES
 	private void rellenaTablaLibros(String categoria) {
 
 		try {
@@ -1210,52 +1210,7 @@ public class MenuController {
 
 	}
 
-	@FXML void clickEligeLibro(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
-		libActual = tablaLibros.getSelectionModel().getSelectedItem();
-
-		if(libActual!=null) {
-			String portada = libActual.getPortada(); 
-			if(portada!=null) {
-				try {
-					Image image = new Image(getClass().getResource(portada).toString()); //RUTA RELATIVA
-					portadaListaLib.setImage(image);
-				} catch (Exception e) {
-					Image image = new Image(portada); //RUTA ABSOLUTA
-					portadaListaLib.setImage(image);
-
-
-				}
-			}
-			else {
-				portadaListaLib.setImage(null);
-			}
-
-
-			lblTituloListaLib.setText(libActual.getTitulo());
-		}
-	}
-
-	@FXML void cambiaPortadaLibro(MouseEvent event) { //SOLO DISPONIBLE CUANDO EDITAS O AGREGAS UN LIBRO
-
-		if(accLibro.equalsIgnoreCase("EDITAR") || accLibro.equalsIgnoreCase("AGREGAR") ) { 
-
-			FileChooser fChooser = new FileChooser();
-			fChooser.setTitle("Selecciona una imagen");
-			fChooser.getExtensionFilters().addAll(
-					new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg")
-					);
-			File selectedFile = fChooser.showOpenDialog(null);
-			if (selectedFile != null) {
-				rutaPortadaLib = selectedFile.toURI().toString();
-				Image image = new Image(rutaPortadaLib);
-				portadaLibro.setImage(image);
-				cambiaPortadaLib = true;
-			}
-		}
-
-	}
 	
-	//JUEGOS
 	private void rellenaTablaJuegos(String categoria) {
 
 		try {
@@ -1302,6 +1257,30 @@ public class MenuController {
 
 	}
 	
+	@FXML void clickEligeLibro(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
+		libActual = tablaLibros.getSelectionModel().getSelectedItem();
+
+		if(libActual!=null) {
+			String portada = libActual.getPortada(); 
+			if(portada!=null) {
+				try {
+					Image image = new Image(getClass().getResource(portada).toString()); //RUTA RELATIVA
+					portadaListaLib.setImage(image);
+				} catch (Exception e) {
+					Image image = new Image(portada); //RUTA ABSOLUTA
+					portadaListaLib.setImage(image);
+
+
+				}
+			}
+			else {
+				portadaListaLib.setImage(null);
+			}
+
+
+			lblTituloListaLib.setText(libActual.getTitulo());
+		}
+	}
 	
 	@FXML void clickEligeJuego(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
 		jueActual = tablaJuegos.getSelectionModel().getSelectedItem();
@@ -1326,6 +1305,27 @@ public class MenuController {
 
 			lblTituloListaJue.setText(jueActual.getTitulo());
 		}
+	}
+	
+	
+	@FXML void cambiaPortadaLibro(MouseEvent event) { //SOLO DISPONIBLE CUANDO EDITAS O AGREGAS UN LIBRO
+
+		if(accLibro.equalsIgnoreCase("EDITAR") || accLibro.equalsIgnoreCase("AGREGAR") ) { 
+
+			FileChooser fChooser = new FileChooser();
+			fChooser.setTitle("Selecciona una imagen");
+			fChooser.getExtensionFilters().addAll(
+					new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg")
+					);
+			File selectedFile = fChooser.showOpenDialog(null);
+			if (selectedFile != null) {
+				rutaPortadaLib = selectedFile.toURI().toString();
+				Image image = new Image(rutaPortadaLib);
+				portadaLibro.setImage(image);
+				cambiaPortadaLib = true;
+			}
+		}
+
 	}
 	
 	@FXML void cambiaPortadaJuego(MouseEvent event) { //SOLO DISPONIBLE CUANDO EDITAS O AGREGAS UN JUEGO
