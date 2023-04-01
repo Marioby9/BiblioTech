@@ -13,6 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pFondoMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #002c43;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
@@ -894,7 +895,7 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;" visible="false">
+      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
          <children>
             <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
                <font>
@@ -952,29 +953,49 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <ImageView id="bPerfil" fx:id="bWeb" fitHeight="41.0" fitWidth="41.0" layoutX="361.0" layoutY="462.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/internet.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="86.0" layoutY="401.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE">
+            <Label layoutX="40.0" layoutY="401.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE" underline="true">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="136.0" layoutY="463.0" prefHeight="40.0" prefWidth="225.0" text="- Visita nuestra WEB:" textFill="WHITE">
+            <Pane layoutX="40.0" layoutY="472.0" prefHeight="70.0" prefWidth="302.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 3PX;">
+               <children>
+                  <ImageView id="bPerfil" fx:id="bGithub" fitHeight="43.0" fitWidth="45.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/github.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="bWeb" fitHeight="45.0" fitWidth="49.0" layoutX="72.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/web.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="45.0" fitWidth="49.0" layoutX="129.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/twitter.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="45.0" fitWidth="45.0" layoutX="186.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/instagram.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fitHeight="45.0" fitWidth="45.0" layoutX="243.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/youtube.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Line endX="-19.60003662109375" endY="64.99993896484375" layoutX="386.0" layoutY="497.0" startX="-19.60003662109375" startY="-64.60003662109375" stroke="WHITE" strokeWidth="3.0" />
+            <Label alignment="CENTER" layoutX="413.0" layoutY="401.0" prefHeight="78.0" prefWidth="186.0" text="Carpeta Musica" textFill="WHITE" underline="true">
                <font>
-                  <Font name="System Bold" size="19.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="505.0" prefHeight="40.0" prefWidth="211.0" text="- Visita el repositorio:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Label>
-            <ImageView id="bPerfil" fx:id="bGithub" fitHeight="41.0" fitWidth="41.0" layoutX="361.0" layoutY="505.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="bPerfil" fx:id="bCarpMusica" fitHeight="70.0" fitWidth="76.0" layoutX="471.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icons/github.png" />
+                  <Image url="@../icons/directory.png" />
                </image>
             </ImageView>
          </children></Pane>
