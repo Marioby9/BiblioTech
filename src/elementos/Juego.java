@@ -10,6 +10,7 @@ public class Juego {
 	private int hJugadas;
 	private int lanzamiento;
 	private String terminado;
+	private String favorito;
 	private String portada;
 	private String resumen;
 	private String empresa;
@@ -117,6 +118,14 @@ public class Juego {
 
 	public void setResumen(String resumen) {
 		this.resumen = resumen;
+	}
+
+	public String getFavorito() {
+		return favorito;
+	}
+
+	public void setFavorito(String favorito) {
+		this.favorito = favorito;
 	}
 
 
