@@ -611,15 +611,18 @@ public class MenuController {
 
 			}
 			else {
+				lblErrorLib.setText("ERROR: Campos incompletos");
 				lblErrorLib.setVisible(true);
 
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorLib.setText("ERROR: No se pudo editar");
 			lblErrorLib.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorLib.setText("ERROR: No se pudo editar");
 			lblErrorLib.setVisible(true);
 
 
@@ -649,19 +652,19 @@ public class MenuController {
 				lblErrorLib.setVisible(false);
 			}
 			else {
+				lblErrorLib.setText("ERROR: Campos incompletos");
 				lblErrorLib.setVisible(true);
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorLib.setText("ERROR: No se pudo añadir");
 			lblErrorLib.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorLib.setText("ERROR: No se pudo añadir");
 			lblErrorLib.setVisible(true);
-			e.printStackTrace();
-
 		}
-
 
 	}
 
@@ -812,7 +815,7 @@ public class MenuController {
 		bGuardaEditaJuego.setVisible(false);
 		lblErrorJue.setVisible(false);
 		cambiaPortadaJue = false;
-
+		
 
 
 		//LABELS INVISIBLES
@@ -831,6 +834,7 @@ public class MenuController {
 
 	@FXML void clickGuardaJuegoEditado(MouseEvent event) { 
 		try {
+			
 			String titulo = txtFieldTitJuego.getText();
 			String empresa = txtFieldCompaniaJuegoInd.getText();
 			String plataforma = txtFieldPlataformaJuego.getText();
@@ -857,15 +861,18 @@ public class MenuController {
 
 			}
 			else {
+				lblErrorJue.setText("ERROR: Campos incompletos");
 				lblErrorJue.setVisible(true);
 
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorJue.setText("ERROR: No se pudo editar");
 			lblErrorJue.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorJue.setText("ERROR: No se pudo editar");
 			lblErrorJue.setVisible(true);
 
 
@@ -874,6 +881,7 @@ public class MenuController {
 
 	@FXML void clickGuardaJuegoAgregado(MouseEvent event) {
 		try {
+			
 			String titulo = txtFieldTitJuego.getText();
 			String empresa = txtFieldCompaniaJuegoInd.getText();
 			String plataforma = txtFieldPlataformaJuego.getText();
@@ -882,7 +890,7 @@ public class MenuController {
 			int horas = Integer.parseInt(txtFieldHorJuego.getText());
 			int id_juego = c1.consultaNum("JUEGOS", "MAX(ID_JUEGO)", null) +1;
 
-			if(!titulo.equals("") && !empresa.equals("") && lanzamiento >= 0 && horas >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN) Y NO SER NEGATIVOS
+			if(!titulo.equals("") && !plataforma.equals("") && lanzamiento >= 0 && horas >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN) Y NO SER NEGATIVOS
 				jueActual.setTitulo(titulo); jueActual.setPlataforma(plataforma); jueActual.setLanzamiento(lanzamiento); jueActual.sethJugadas(horas);;
 				jueActual.setResumen(resumen); jueActual.setEmpresa(empresa); jueActual.setID_Juego(id_juego); jueActual.setID_Usuario(u1.getID_Usuario());
 
@@ -896,14 +904,17 @@ public class MenuController {
 				lblErrorJue.setVisible(false);
 			}
 			else {
+				lblErrorJue.setText("ERROR: Campos incompletos");
 				lblErrorJue.setVisible(true);
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorJue.setText("ERROR: No se pudo añadir");
 			lblErrorJue.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorJue.setText("ERROR: No se pudo añadir");
 			lblErrorLib.setVisible(true);
 			e.printStackTrace();
 

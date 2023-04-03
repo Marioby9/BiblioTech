@@ -225,7 +225,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pLibros" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+      <Pane fx:id="pLibros" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" visible="false">
          <children>
             <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -465,9 +465,9 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <Label fx:id="lblErrorLib" alignment="CENTER" layoutX="45.0" layoutY="592.0" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: WHITE; -fx-border-color: BLACK; -fx-border-width: 3;" text="¡ERROR!" textFill="#991d1d" visible="false">
+                  <Label fx:id="lblErrorLib" alignment="CENTER" layoutX="14.0" layoutY="599.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-width: 3;" text="ERROR: No se pudo añadir" underline="true" visible="false">
                      <font>
-                        <Font name="Franklin Gothic Heavy" size="25.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                </children>
@@ -514,7 +514,7 @@
                   <Image url="@../icons/controller.png" />
                </image>
             </ImageView>
-            <Pane fx:id="pListaJuegos" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css">
+            <Pane fx:id="pListaJuegos" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" visible="false">
                <children>
                   <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -716,9 +716,9 @@
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
                   </TextField>
-                  <Pane id="verListView" fx:id="bGuardaEditaJuego" layoutX="211.0" layoutY="594.0" onMouseClicked="#clickGuardaJuegoEditado" prefHeight="41.0" prefWidth="217.0" styleClass="verListview" visible="false">
+                  <Pane id="verListView" fx:id="bGuardaEditaJuego" layoutX="207.0" layoutY="594.0" onMouseClicked="#clickGuardaJuegoEditado" prefHeight="41.0" prefWidth="224.0" styleClass="verListview">
                      <children>
-                        <Label alignment="CENTER" layoutX="46.0" layoutY="5.0" prefHeight="30.0" prefWidth="158.0" style="-fx-text-fill: BLACK;" text="GUARDAR JUEGO">
+                        <Label alignment="CENTER" layoutX="46.0" layoutY="5.0" prefHeight="30.0" prefWidth="171.0" style="-fx-text-fill: BLACK;" text="GUARDAR JUEGO">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="20.0" />
                            </font>
@@ -744,9 +744,9 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <Label fx:id="lblErrorJue" alignment="CENTER" layoutX="45.0" layoutY="592.0" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: WHITE; -fx-border-color: BLACK; -fx-border-width: 3;" text="¡ERROR!" textFill="#991d1d" visible="false">
+                  <Label fx:id="lblErrorJue" alignment="CENTER" layoutX="14.0" layoutY="599.0" prefHeight="30.0" prefWidth="186.0" style="-fx-border-width: 3;" text="ERROR: No se pudo añadir" underline="true" visible="false">
                      <font>
-                        <Font name="Franklin Gothic Heavy" size="25.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                </children>
