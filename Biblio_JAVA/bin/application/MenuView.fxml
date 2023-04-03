@@ -257,7 +257,7 @@
                   <Image url="@../icons/book.png" />
                </image>
             </ImageView>
-            <Pane fx:id="pListaLibros" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" visible="false">
+            <Pane fx:id="pListaLibros" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css">
                <children>
                   <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -288,7 +288,7 @@
                         <Image url="@../icons/refresh.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fitHeight="41.0" fitWidth="41.0" layoutX="560.0" layoutY="218.0" onMouseClicked="#agregaSinglePaneLib" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="addBook" fitHeight="41.0" fitWidth="41.0" layoutX="560.0" layoutY="218.0" onMouseClicked="#agregaSinglePaneLib" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/addBook.png" />
                      </image>
@@ -296,6 +296,11 @@
                   <Pane layoutX="31.0" layoutY="36.0" prefHeight="220.0" prefWidth="205.0" style="-fx-border-width: 5px; -fx-border-color: black;">
                      <children>
                         <ImageView fx:id="portadaListaLib" fitHeight="212.0" fitWidth="197.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView id="botones" fx:id="bFavLib" fitHeight="50.0" fitWidth="41.0" layoutX="170.0" layoutY="187.0" onMouseClicked="#clickBFavLib" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/favBlanco.png" />
+                           </image>
+                        </ImageView>
                      </children></Pane>
                   <Label fx:id="lblTituloListaLib" alignment="CENTER" layoutX="257.0" layoutY="36.0" prefHeight="62.0" prefWidth="360.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-background-color: white; -fx-text-fill: black; -fx-border-radius: 15; -fx-background-radius: 15;" text="TITULO" underline="true">
                      <font>
@@ -468,7 +473,7 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" visible="false">
          <children>
             <Pane prefHeight="650.0" prefWidth="640.0">
                <children>
@@ -540,14 +545,19 @@
                         <Image url="@../icons/refresh.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fitHeight="41.0" fitWidth="41.0" layoutX="560.0" layoutY="218.0" onMouseClicked="#agregaSinglePaneJue" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="addGame" fitHeight="41.0" fitWidth="41.0" layoutX="560.0" layoutY="218.0" onMouseClicked="#agregaSinglePaneJue" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/addBook.png" />
+                        <Image url="@../icons/addGame.png" />
                      </image>
                   </ImageView>
                   <Pane layoutX="31.0" layoutY="36.0" prefHeight="220.0" prefWidth="205.0" style="-fx-border-width: 5px; -fx-border-color: black;">
                      <children>
                         <ImageView fx:id="portadaListaJue" fitHeight="212.0" fitWidth="197.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView id="botones" fx:id="bFavJue" fitHeight="50.0" fitWidth="41.0" layoutX="170.0" layoutY="187.0" onMouseClicked="#clickBFavJue" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/favBlanco.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <Label fx:id="lblTituloListaJue" alignment="CENTER" layoutX="257.0" layoutY="36.0" prefHeight="62.0" prefWidth="360.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-background-color: white; -fx-text-fill: black; -fx-border-radius: 15; -fx-background-radius: 15;" text="TITULO" underline="true">
@@ -602,7 +612,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="pJuegoIndiv" prefHeight="650.0" prefWidth="640.0">
+            <Pane fx:id="pJuegoIndiv" prefHeight="650.0" prefWidth="640.0" visible="false">
                <children>
                   <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -895,7 +905,7 @@
                </children>
             </Pane>
          </children></Pane>
-      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;" visible="false">
          <children>
             <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
                <font>

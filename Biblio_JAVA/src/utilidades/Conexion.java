@@ -264,11 +264,11 @@ public class Conexion {
 
 	public ObservableList<Libro> fillListBooks(String genero, int id_user) throws SQLException{ 
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
-		String titulo, autor, portada, resumen, terminado;
+		String titulo, autor, portada, resumen, terminado, favorito;
 		int id_libro, id_usuario, n_pags, ano_lanz;
 
 		st = connection.createStatement();
-		String sql =  "SELECT ID_LIBRO, ID_USUARIO, TITULO, AUTOR, GENERO, N_PAGINAS, ANO_LANZ, TERMINADO, PORTADA, RESUMEN FROM LIBROS WHERE UPPER(GENERO) = '" + genero
+		String sql =  "SELECT ID_LIBRO, ID_USUARIO, TITULO, AUTOR, GENERO, N_PAGINAS, ANO_LANZ, TERMINADO, FAVORITO, PORTADA, RESUMEN FROM LIBROS WHERE UPPER(GENERO) = '" + genero
 				+"' AND (ID_USUARIO IS NULL OR ID_USUARIO = "+id_user+")";
 
 		ResultSet rs = st.executeQuery(sql);
@@ -283,8 +283,45 @@ public class Conexion {
 			ano_lanz = rs.getInt("ANO_LANZ");
 			id_libro = rs.getInt("ID_LIBRO");
 			id_usuario = rs.getInt("ID_USUARIO");
+			favorito = rs.getString("FAVORITO");
 
-			listaLibros.add(new Libro(id_libro, id_usuario, titulo, genero, autor, n_pags, ano_lanz, terminado, portada, resumen));
+			Libro lib = new Libro(id_libro, id_usuario, titulo, genero, autor, n_pags, ano_lanz, terminado, portada, resumen);
+			lib.setFavorito(favorito);
+			listaLibros.add(lib);
+		}
+		st.close();
+
+
+
+		return listaLibros;
+	}
+	
+	
+	public ObservableList<Libro> fillFavBooks(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
+		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
+		String titulo, autor, portada, resumen, terminado, genero;
+		int id_libro, id_usuario, n_pags, ano_lanz;
+
+		st = connection.createStatement();
+		String sql =  "SELECT ID_LIBRO, ID_USUARIO, TITULO, AUTOR, GENERO, N_PAGINAS, ANO_LANZ, TERMINADO, PORTADA, RESUMEN FROM LIBROS WHERE UPPER(FAVORITO) = 'SI' AND (ID_USUARIO IS NULL OR ID_USUARIO = "+id_user+")";
+
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			titulo = rs.getString("TITULO");
+			autor = rs.getString("AUTOR");
+			portada = rs.getString("PORTADA");
+			resumen = rs.getString("RESUMEN");
+			terminado = rs.getString("TERMINADO");
+			n_pags = rs.getInt("N_PAGINAS");
+			ano_lanz = rs.getInt("ANO_LANZ");
+			id_libro = rs.getInt("ID_LIBRO");
+			id_usuario = rs.getInt("ID_USUARIO");
+			genero = rs.getString("GENERO");
+
+			Libro lib = new Libro(id_libro, id_usuario, titulo, genero, autor, n_pags, ano_lanz, terminado, portada, resumen);
+			lib.setFavorito("SI");
+			listaLibros.add(lib);
 		}
 		st.close();
 
@@ -385,12 +422,12 @@ public class Conexion {
 	
 	public ObservableList<Juego> fillListGames(String genero, int id_user) throws SQLException{ 
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
-		String titulo, plataforma, portada, resumen, terminado, empresa;
+		String titulo, plataforma, portada, resumen, terminado, empresa, favorito;
 		int id_Juego, id_usuario, ano_lanz;
 		int hJugadas;
 
 		st = connection.createStatement();
-		String sql =  "SELECT ID_JUEGO, ID_USUARIO, TITULO, GENERO, PLATAFORMA, TERMINADO, LANZAMIENTO, H_JUGADAS, PORTADA, RESUMEN, EMPRESA FROM JUEGOS WHERE UPPER(GENERO) = '" + genero
+		String sql =  "SELECT ID_JUEGO, ID_USUARIO, TITULO, GENERO, PLATAFORMA, TERMINADO, FAVORITO, LANZAMIENTO, H_JUGADAS, PORTADA, RESUMEN, EMPRESA FROM JUEGOS WHERE UPPER(GENERO) = '" + genero
 				+"' AND (ID_USUARIO IS NULL OR ID_USUARIO = "+id_user+")";
 
 		ResultSet rs = st.executeQuery(sql);
@@ -407,9 +444,12 @@ public class Conexion {
 			portada = rs.getString("PORTADA");
 			resumen = rs.getString("RESUMEN");
 			empresa = rs.getString("EMPRESA");
+			favorito = rs.getString("FAVORITO");
 			
-
-			listaJuegos.add(new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa));
+			
+			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
+			juego.setFavorito(favorito);
+			listaJuegos.add(juego);
 		}
 		st.close();
 
@@ -418,7 +458,43 @@ public class Conexion {
 		return listaJuegos;
 	}
 	
+	public ObservableList<Juego> fillFavGames(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
+		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
+		String titulo, plataforma, portada, resumen, terminado, empresa, genero;
+		int id_Juego, id_usuario, ano_lanz;
+		int hJugadas;
 
+		st = connection.createStatement();
+		String sql =  "SELECT ID_JUEGO, ID_USUARIO, TITULO, GENERO, PLATAFORMA, TERMINADO, LANZAMIENTO, H_JUGADAS, PORTADA, RESUMEN, EMPRESA FROM JUEGOS WHERE UPPER(FAVORITO) = 'SI' AND (ID_USUARIO IS NULL OR ID_USUARIO = "+id_user+")";
+
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			id_Juego = rs.getInt("ID_JUEGO");
+			id_usuario = rs.getInt("ID_USUARIO");
+			titulo = rs.getString("TITULO");
+			plataforma = rs.getString("PLATAFORMA");
+			terminado = rs.getString("TERMINADO");
+			ano_lanz = rs.getInt("LANZAMIENTO");
+			hJugadas = rs.getInt("H_JUGADAS");
+			portada = rs.getString("PORTADA");
+			resumen = rs.getString("RESUMEN");
+			empresa = rs.getString("EMPRESA");
+			genero = rs.getString("GENERO");
+			
+			
+			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
+			juego.setFavorito("SI");
+			listaJuegos.add(juego);
+		}
+		st.close();
+
+
+
+		return listaJuegos;
+	}
+	
+	
 	//CIERRE CONEXION
 	public static void cerrar() throws SQLException {
 

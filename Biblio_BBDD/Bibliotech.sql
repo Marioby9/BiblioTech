@@ -33,6 +33,7 @@ Nombre      varchar2(25) Not Null,
 constraint Pk_Bibliotecas Primary key(ID_biblio, ID_usuario)
 );
 
+
 create table Juegos
 (
 ID_Juego number(3),
@@ -44,7 +45,7 @@ Empresa varchar2(20),
 H_jugadas   number(7,2),
 Lanzamiento number(4),
 Terminado   varchar2(10) Not Null,
-Favorito varchar2(2),
+Favorito varchar2(2) default 'NO',
 Portada varchar2(99),
 Resumen CLOB,
 
@@ -84,7 +85,7 @@ N_paginas   number(4) Not Null,
 Autor       varchar2(30) default 'Anónimo' Not Null,
 Ano_Lanz  number(4) not null,
 Terminado   varchar2(10) Not Null,
-Favorito varchar2(2),
+Favorito varchar2(2) default 'NO',
 Portada varchar2(99),
 Resumen CLOB,
 
@@ -219,6 +220,6 @@ UPDATE LIBROS  SET  RESUMEN =  '"Mortadelo y Filemón" de Francisco Ibáñez. El li
 
 COMMIT;
 
-SELECT * FROM LIBROS;
 
 
+SELECT * FROM JUEGOS;

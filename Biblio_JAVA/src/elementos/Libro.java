@@ -13,6 +13,7 @@ public class Libro {
 	private String terminado;
 	private String portada;
 	private String resumen;
+	private String favorito;
 	
 	public Libro(int iD_Libro, int iD_Usuario, String titulo, String genero, String autor, int nPaginas,
 			int lanzamiento, String terminado, String portada, String resumen) {
@@ -110,6 +111,14 @@ public class Libro {
 		this.resumen = resumen;
 	}
 
+	public String getFavorito() {
+		return favorito;
+	}
+
+	public void setFavorito(String favorito) {
+		this.favorito = favorito;
+	}
+	
 
 	@Override
 	public String toString() {

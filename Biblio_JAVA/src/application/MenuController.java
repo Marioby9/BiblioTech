@@ -58,7 +58,7 @@ public class MenuController {
 	//PANEL JUEGOS
 	@FXML private Pane pJuegos, pJuegoIndiv, pListaJuegos, bGuardaEditaJuego, bGuardaAgregaJuego;
 	//BOTONES PJUEGOS
-	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror, btnBackPaneJuegos, portadaListaJue, portadaJuego;
+	@FXML private ImageView bJueAccion, bJueDeportes, bJueFavoritos, bJueShooter, bJueTerror, btnBackPaneJuegos, bFavJue, addGame, portadaListaJue, portadaJuego;
 	@FXML private TableView<Juego> tablaJuegos;
 	@FXML private TableColumn<Juego, String> tituloJue;
 	@FXML private TableColumn<Juego, String> plataformaJue;
@@ -69,19 +69,19 @@ public class MenuController {
 	String accJuego = "";
 	String rutaPortadaJue = "";
 	boolean cambiaPortadaJue = false; //CUANDO QUIERAS SUBIR UN ARCHIVO, SE PONDRA TRUE
-	
-	
+
+
 	//PANELES LISTA JUEGOS
 	@FXML private Label lblTituloJuegoInd, lblNHorasJuegoInd, lblPlataformaJuegoInd, lblGeneroJuegoInd, lblYearJuegoInd, lblResumenJuegoInd, lblCompaniaJuegoInd, lblTituloListaJue, lblErrorJue;
 	@FXML private TextArea txtAreaResumenJuego;
 	@FXML private TextField txtFieldTitJuego, txtFieldPlataformaJuego, txtFieldGeneroJuego, txtFieldFechaJuego, txtFieldHorJuego, txtFieldCompaniaJuegoInd;
-	
+
 
 
 	//PANEL LIBROS 
 	@FXML private Pane pLibros, pLibroIndiv, pListaLibros, bGuardaEditaLibro, bGuardaAgregaLibro;
 	//BOTONES PLIBROS
-	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror, btnBackPaneLibros, portadaListaLib, portadaLibro;
+	@FXML private ImageView bLibAmor, bLibAventuras, bLibComedia, bLibFavoritos, bLibTerror, btnBackPaneLibros, bFavLib, addBook, portadaListaLib, portadaLibro;
 	@FXML private TableView<Libro> tablaLibros;
 	@FXML private TableColumn<Libro, String> tituloLib;
 	@FXML private TableColumn<Libro, String> autorLib;
@@ -443,7 +443,7 @@ public class MenuController {
 	@FXML void clickListaLibros(MouseEvent e) { //RELLENA LA TABLA DE CADA UNA DE LAS LISTAS. JUGANDO CON EL VALOR DE CATEGORIA (GENERO)
 
 		pListaLibros.setVisible(true);
-
+		addBook.setVisible(true);
 		if(e.getSource()==bLibAventuras) {
 			categLib = "AVENTURAS";
 		}
@@ -458,6 +458,7 @@ public class MenuController {
 		}
 		else if(e.getSource()==bLibFavoritos) {
 			categLib = "FAVORITOS";
+			addBook.setVisible(false);
 		}
 
 
@@ -567,8 +568,8 @@ public class MenuController {
 		bGuardaEditaLibro.setVisible(false);
 		lblErrorLib.setVisible(false);
 		cambiaPortadaLib = false;
-		
-		
+
+
 
 		//LABELS INVISIBLES
 		lblTituloLibroInd.setVisible(false); lblAutorLibroInd.setVisible(false); lblNPagsLibro.setVisible(false); lblYearLibroInd.setVisible(false); lblResumenLibroInd.setVisible(false); portadaLibro.setImage(null);
@@ -665,12 +666,14 @@ public class MenuController {
 	}
 
 	@FXML void clickBEliminaLibro(MouseEvent event){
-		try {
-			if(c1.eliminaLibro(libActual)) {
-				System.out.println("Libro eliminado");
+		if(libActual != null) {
+			try {
+				if(c1.eliminaLibro(libActual)) {
+					System.out.println("Libro eliminado");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -686,9 +689,11 @@ public class MenuController {
 	@FXML void clickListaJuegos(MouseEvent event) {
 
 		pListaJuegos.setVisible(true);
-
+		addGame.setVisible(true);
+		
 		if(event.getSource()==bJueFavoritos) {
 			categJue = "FAVORITOS";
+			addGame.setVisible(false);
 		}
 		else if(event.getSource()==bJueAccion) {
 			categJue = "ACCION";
@@ -702,10 +707,10 @@ public class MenuController {
 		else if(event.getSource()==bJueShooter) {
 			categJue = "SHOOTER";
 		}
-
+		
 		rellenaTablaJuegos(categJue);
 	}
-	
+
 	@FXML void showSinglePaneJue(){
 		if(jueActual!=null) {
 			accJuego = "";
@@ -751,7 +756,7 @@ public class MenuController {
 	}
 
 	@FXML void editSinglePaneJue(){
-		
+
 		if(jueActual!=null && jueActual.getID_Usuario()>0) { //NO PUEDES EDITAR LOS POR DEFECTO
 			accJuego = "EDITAR";
 			pJuegoIndiv.setVisible(true);
@@ -763,11 +768,11 @@ public class MenuController {
 			//LABELS INVISIBLES
 			lblTituloJuegoInd.setVisible(false); lblPlataformaJuegoInd.setVisible(false); lblNHorasJuegoInd.setVisible(false); lblYearJuegoInd.setVisible(false); 
 			lblCompaniaJuegoInd.setVisible(false); lblResumenJuegoInd.setVisible(false); 
-			
+
 			//TEXTFIELDS VISIBLES
 			txtFieldTitJuego.setVisible(true); txtFieldCompaniaJuegoInd.setVisible(true); txtFieldHorJuego.setVisible(true); txtFieldFechaJuego.setVisible(true); txtAreaResumenJuego.setVisible(true);
 			txtFieldPlataformaJuego.setVisible(true); 
-			
+
 			//PONER LOS DATOS QUE TIENEN ACTUALMENTE Y EDITAR A PARTIR DE AHI
 			txtFieldTitJuego.setText(jueActual.getTitulo()); 						txtFieldCompaniaJuegoInd.setText(jueActual.getEmpresa()); 
 			txtFieldHorJuego.setText(Integer.toString(jueActual.gethJugadas())); 	txtFieldFechaJuego.setText(Integer.toString(jueActual.getLanzamiento())); 
@@ -795,7 +800,7 @@ public class MenuController {
 
 		}
 
-		
+
 
 	}
 
@@ -807,23 +812,23 @@ public class MenuController {
 		bGuardaEditaJuego.setVisible(false);
 		lblErrorJue.setVisible(false);
 		cambiaPortadaJue = false;
-		
-		
+
+
 
 		//LABELS INVISIBLES
 		lblTituloJuegoInd.setVisible(false); lblPlataformaJuegoInd.setVisible(false); lblNHorasJuegoInd.setVisible(false); lblYearJuegoInd.setVisible(false); 
 		lblCompaniaJuegoInd.setVisible(false); lblResumenJuegoInd.setVisible(false); portadaJuego.setImage(null);
-		
+
 		//TEXTFIELDS VISIBLES
 		txtFieldTitJuego.setVisible(true); txtFieldCompaniaJuegoInd.setVisible(true); txtFieldHorJuego.setVisible(true); txtFieldFechaJuego.setVisible(true); txtAreaResumenJuego.setVisible(true);
 		txtFieldPlataformaJuego.setVisible(true);
-		
+
 		//VACIAR TEXTFIELDS PARA QUE EL USUARIO INTRODUZCA DATOS DE 0
 		txtFieldTitJuego.setText(""); 	txtAreaResumenJuego.setText(""); 	txtFieldCompaniaJuegoInd.setText(""); 
 		txtFieldHorJuego.setText(""); 	txtFieldFechaJuego.setText(""); 	txtFieldPlataformaJuego.setText(""); 
 		lblGeneroJuegoInd.setText(jueActual.getGenero());
 	}
-	
+
 	@FXML void clickGuardaJuegoEditado(MouseEvent event) { 
 		try {
 			String titulo = txtFieldTitJuego.getText();
@@ -832,7 +837,7 @@ public class MenuController {
 			String resumen = txtAreaResumenJuego.getText();
 			int lanzamiento = Integer.parseInt(txtFieldFechaJuego.getText());
 			int horas = Integer.parseInt(txtFieldHorJuego.getText());
-			
+
 
 			if(!titulo.equals("") && !plataforma.equals("") && lanzamiento >= 0 && horas >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN Y EMPRESA)
 
@@ -906,24 +911,27 @@ public class MenuController {
 
 
 	}
-	
-	
+
+
 	@FXML void clickBEliminaJuego(MouseEvent event){
-		try {
-			if(c1.eliminaJuego(jueActual)) {
-				System.out.println("Juego eliminado");
+		if(jueActual!=null) {
+			try {
+				if(c1.eliminaJuego(jueActual)) {
+					System.out.println("Juego eliminado");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		
 	}
 
 
 	@FXML void refreshTablaJue(MouseEvent event) { //CLICK ACTUALIZAR TABLA LIBROS
 		rellenaTablaJuegos(categJue);
 	}
-	
-	
+
+
 
 	@FXML void backSinglePane(MouseEvent event) {
 
@@ -1167,10 +1175,17 @@ public class MenuController {
 	private void rellenaTablaLibros(String categoria) {
 
 		try {
-			ObservableList<Libro> listaLibros = c1.fillListBooks(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
-
+			ObservableList<Libro> listaLibros;
+			if(categoria.equalsIgnoreCase("FAVORITOS")) {
+				listaLibros = c1.fillFavBooks(u1.getID_Usuario());
+			}
+			else {
+				listaLibros = c1.fillListBooks(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
+			}
+			
 			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
 			if(listaLibros.size()!=0) { 
+				bFavLib.setVisible(true);
 				libActual = listaLibros.get(0);
 				lblTituloListaLib.setText(libActual.getTitulo()); 
 
@@ -1187,11 +1202,22 @@ public class MenuController {
 						portadaListaLib.setImage(image);
 					}
 				}
+				
+				Image imgFav;
+				if(libActual.getFavorito().equalsIgnoreCase("NO")) {
+					imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+				}
+				else {
+					imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+				}
+
+				bFavLib.setImage(imgFav);
 
 			}
 			else { //SI NO HAY ELEMENTOS EN LA LISTA:
 				portadaListaLib.setImage(null);
 				lblTituloListaLib.setText("No hay libros");
+				bFavLib.setVisible(false);
 				libActual = null;
 			}
 
@@ -1203,21 +1229,27 @@ public class MenuController {
 			nPagsLib.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getnPaginas()).asObject());
 
 
-
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 
 	}
 
-	
+
 	private void rellenaTablaJuegos(String categoria) {
 
 		try {
-			ObservableList<Juego> listaJuegos = c1.fillListGames(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
+			ObservableList<Juego> listaJuegos; 
+			if(categoria.equalsIgnoreCase("FAVORITOS")) {
+				listaJuegos = c1.fillFavGames(u1.getID_Usuario());
+			}
+			else {
+				listaJuegos = c1.fillListGames(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
+			}
 
 			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
 			if(listaJuegos.size()!=0) { 
+				bFavJue.setVisible(true);
 				jueActual = listaJuegos.get(0);
 				lblTituloListaJue.setText(jueActual.getTitulo()); 
 
@@ -1234,11 +1266,22 @@ public class MenuController {
 						portadaListaJue.setImage(image);
 					}
 				}
+				
+				Image imgFav;
+				if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
+					imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+				}
+				else {
+					imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+				}
+
+				bFavJue.setImage(imgFav);
 
 			}
 			else { //SI NO HAY ELEMENTOS EN LA LISTA:
 				portadaListaJue.setImage(null);
-				lblTituloListaJue.setText("No hay libros");
+				bFavJue.setVisible(false);
+				lblTituloListaJue.setText("No hay Juegos");
 				jueActual = null;
 			}
 
@@ -1256,7 +1299,7 @@ public class MenuController {
 		}
 
 	}
-	
+
 	@FXML void clickEligeLibro(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
 		libActual = tablaLibros.getSelectionModel().getSelectedItem();
 
@@ -1270,18 +1313,28 @@ public class MenuController {
 					Image image = new Image(portada); //RUTA ABSOLUTA
 					portadaListaLib.setImage(image);
 
-
 				}
 			}
 			else {
 				portadaListaLib.setImage(null);
 			}
 
-
 			lblTituloListaLib.setText(libActual.getTitulo());
+			
+			
+			Image imgFav;
+			if(libActual.getFavorito().equalsIgnoreCase("NO")) {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+			}
+			else {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+			}
+
+			bFavLib.setImage(imgFav);
+			
 		}
 	}
-	
+
 	@FXML void clickEligeJuego(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
 		jueActual = tablaJuegos.getSelectionModel().getSelectedItem();
 
@@ -1302,12 +1355,21 @@ public class MenuController {
 				portadaListaJue.setImage(null);
 			}
 
-
 			lblTituloListaJue.setText(jueActual.getTitulo());
+			
+			Image imgFav;
+			if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+			}
+			else {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+			}
+
+			bFavJue.setImage(imgFav);
 		}
 	}
-	
-	
+
+
 	@FXML void cambiaPortadaLibro(MouseEvent event) { //SOLO DISPONIBLE CUANDO EDITAS O AGREGAS UN LIBRO
 
 		if(accLibro.equalsIgnoreCase("EDITAR") || accLibro.equalsIgnoreCase("AGREGAR") ) { 
@@ -1327,7 +1389,7 @@ public class MenuController {
 		}
 
 	}
-	
+
 	@FXML void cambiaPortadaJuego(MouseEvent event) { //SOLO DISPONIBLE CUANDO EDITAS O AGREGAS UN JUEGO
 
 		if(accJuego.equalsIgnoreCase("EDITAR") || accJuego.equalsIgnoreCase("AGREGAR") ) { 
@@ -1347,6 +1409,52 @@ public class MenuController {
 		}
 
 	}
-	
+
+	@FXML void clickBFavLib(MouseEvent event) { //CLICK PARA AGREGAR A FAVORITOS
+		try {
+			
+		Image imgFav;
+		if(libActual.getFavorito().equalsIgnoreCase("NO")) {
+			imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+			libActual.setFavorito("SI");
+			c1.updateTabla("LIBROS", "FAVORITO", "SI", "ID_LIBRO = "+libActual.getID_Libro());
+		}
+		else {
+			imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+			libActual.setFavorito("NO");
+			c1.updateTabla("LIBROS", "FAVORITO", "NO", "ID_LIBRO = "+libActual.getID_Libro());
+		}
+		
+		bFavLib.setImage(imgFav);
+		}
+		catch (Exception e) {
+			System.out.println("ERROR AL AÑADIR FAVORITO");
+			e.printStackTrace();
+		}
+	}
+
+	@FXML void clickBFavJue(MouseEvent event) { //CLICK PARA AGREGAR A FAVORITOS
+		try {
+			
+		Image imgFav;
+		if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
+			imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+			jueActual.setFavorito("SI");
+			c1.updateTabla("JUEGOS", "FAVORITO", "SI", "ID_JUEGO = "+jueActual.getID_Juego());
+		}
+		else {
+			imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+			jueActual.setFavorito("NO");
+			c1.updateTabla("JUEGOS", "FAVORITO", "NO", "ID_JUEGO = "+jueActual.getID_Juego());
+		}
+		
+		bFavJue.setImage(imgFav);
+		}
+		catch (Exception e) {
+			System.out.println("ERROR AL AÑADIR FAVORITO");
+			e.printStackTrace();
+		}
+	}
+
 
 }
