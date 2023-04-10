@@ -7,10 +7,10 @@ public class Cancion {
 	private String nombre;
 	private String genero;
 	private String ruta;
-	private double duracion;
+	private int duracion;
 	
 	
-	public Cancion(int iD_Cancion, int iD_Usuario, String nombre, String genero, String ruta, double duracion) {
+	public Cancion(int iD_Cancion, int iD_Usuario, String nombre, String genero, String ruta, int duracion) {
 		ID_Cancion = iD_Cancion;
 		ID_Usuario = iD_Usuario;
 		this.nombre = nombre;
@@ -70,12 +70,12 @@ public class Cancion {
 	}
 
 
-	public double getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
 
-	public void setDuracion(double duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 	

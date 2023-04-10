@@ -241,7 +241,61 @@ TextArea {
 }
 
 
+/*TABLA MUSICA*/
+.tablaMusica {
+	-fx-background-color: NONE; 
+	-fx-text-fill: WHITE;
+	
+}
 
+.tablaMusica .column-header-background {
+	-fx-background-color: NONE; 
+	-fx-background-radius: 27px; 
+	-fx-background-insets: 0 0 10 0;
+	
+}
+
+.tablaMusica .column-header, .tablaMusica .filler{
+	-fx-border-width: 0 0 10 0;
+	-fx-background-color: transparent;
+	
+	
+}
+
+
+.tablaMusica .cell {
+    -fx-font-size: 16px; /* Tamaño de fuente */
+    -fx-fill-text: WHITE;
+    -fx-font-family: Arial;
+    -fx-alignment: CENTER;
+}
+.tablaMusica .table-row-cell {
+    -fx-background-color: BLACK; 
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px; 
+    -fx-pref-height: 45px;
+  	-fx-border-color: BLUE;
+    -fx-border-width: 0 0 5px 0;    
+   
+}
+
+
+/*SCROLLBAR*/
+.tablaMusica .scroll-bar:horizontal, .tablaMusica .scroll-bar:vertical {
+    -fx-background-color: NONE; 
+  
+}
+
+.tablaMusica .scroll-bar:horizontal .thumb, .tablaMusica .scroll-bar:vertical .thumb {
+    -fx-background-color: NONE; 
+   
+}
+
+
+.tablaMusica .scroll-bar:horizontal .increment-button, .tablaMusica .scroll-bar:horizontal .decrement-button, 
+.tablaMusica .scroll-bar:vertical .increment-button, .tablaMusica .scroll-bar:vertical .decrement-button {
+    -fx-background-color: NONE; 
+}
 
 
 
