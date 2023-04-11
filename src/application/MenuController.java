@@ -31,6 +31,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import utilidades.Conexion;
 import utilidades.Correo;
+import utilidades.Ficheros;
 import utilidades.Usuario;
 import elementos.Juego;
 import elementos.Libro;
@@ -106,6 +107,7 @@ public class MenuController {
 	@FXML private ImageView bMusElectronica, bMusFlamenco, bMusPop, bMusReggaeton, bMusRock;
 	@FXML private TableView<Cancion> tablaMusica;
 	@FXML private TableColumn<Cancion, String> tituloCanc;
+	@FXML private TableColumn<Cancion, String> artistaCanc;
 	@FXML private TableColumn<Cancion, Integer> tiempoCanc;
 	String categMus = "";
 	
@@ -982,6 +984,7 @@ public class MenuController {
 		tablaMusica.setItems(listaMusica); //RELLENAR TABLA CON LOS LIBROS DE CADA CATEGORIA
 
 		tituloCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+		artistaCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGenero()));
 		tiempoCanc.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getDuracion()).asObject());
 
 		
@@ -1103,7 +1106,13 @@ public class MenuController {
 		File selectedFile = dChooser.showDialog(null);
 		if (selectedFile != null) {
 			carpCanciones = selectedFile.getAbsolutePath();
-			System.out.println(carpCanciones);
+			try {
+				Ficheros.creaCarpetasMus(carpCanciones);
+				System.out.println("Carpetas creadas en: "+carpCanciones);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	

@@ -790,17 +790,17 @@
                         <Image url="@../backgrounds/pMusVacio.png" />
                      </image>
                   </ImageView>
-                  <TableView fx:id="tablaMusica" layoutX="24.0" layoutY="268.0" onMouseClicked="#clickEligeJuego" prefHeight="153.0" prefWidth="592.0" styleClass="tablaMusica">
+                  <TableView fx:id="tablaMusica" layoutX="40.0" layoutY="270.0" onMouseClicked="#clickEligeJuego" prefHeight="210.0" prefWidth="560.0" styleClass="tablaMusica">
                      <columns>
-                        <TableColumn fx:id="tituloCanc" prefWidth="263.2000732421875" />
-                        <TableColumn fx:id="tiempoCanc" prefWidth="123.99993896484375" />
-                        <TableColumn prefWidth="114.4000244140625" />
+                        <TableColumn fx:id="tituloCanc" prefWidth="188.79998779296875" text="TITULO" />
+                        <TableColumn fx:id="artistaCanc" prefWidth="186.4000244140625" text="ARTISTA" />
+                        <TableColumn fx:id="tiempoCanc" prefWidth="100.0" text="DURACION" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Pane layoutX="50.0" layoutY="33.0" prefHeight="220.0" prefWidth="512.0" style="-fx-background-color: ORANGE; -fx-border-color: BLACK; -fx-border-width: 4px; -fx-border-radius: 20px; -fx-background-radius: 25px;">
+                  <Pane layoutX="64.0" layoutY="34.0" prefHeight="220.0" prefWidth="512.0" style="-fx-background-color: ORANGE; -fx-border-color: BLACK; -fx-border-width: 4px; -fx-border-radius: 20px; -fx-background-radius: 25px;">
                      <children>
                         <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="50.0" prefWidth="407.0" text="TITULO LISTA" underline="true">
                            <font>

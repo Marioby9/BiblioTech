@@ -214,12 +214,6 @@ TextArea {
     -fx-alignment: CENTER;
     
 }
-.tablaLibros .row-cell {
-    -fx-border-color: black; /* Color de borde */
-    -fx-border-width: 7px; /* Ancho de borde: bottom */
-}
-
-
 
 
 
@@ -244,7 +238,10 @@ TextArea {
 /*TABLA MUSICA*/
 .tablaMusica {
 	-fx-background-color: NONE; 
-	-fx-text-fill: WHITE;
+	-fx-text-fill: #F2F7F9;
+	-fx-cell-size: 50px; /* altura de cada fila */
+	
+    
 	
 }
 
@@ -258,26 +255,30 @@ TextArea {
 .tablaMusica .column-header, .tablaMusica .filler{
 	-fx-border-width: 0 0 10 0;
 	-fx-background-color: transparent;
-	
-	
 }
 
 
 .tablaMusica .cell {
     -fx-font-size: 16px; /* Tamaño de fuente */
-    -fx-text-fill: WHITE;
+    -fx-text-fill: #F2F7F9;
     -fx-font-family: Arial;
     -fx-alignment: CENTER;
+    
 }
 .tablaMusica .table-row-cell {
     -fx-background-color: BLACK; 
     -fx-border-radius: 20px;
     -fx-background-radius: 20px; 
-    -fx-pref-height: 45px;
-   
-   
+    -fx-pref-height: 30px;   
+    -fx-border-width: 1px;
+    -fx-border-color: WHITE;
+    -fx-border-spacing: 30px 0;
+     
 }
-
+.tablaMusica .table-row-cell:empty {
+    -fx-background-color: TRANSPARENT; 
+    -fx-border-color: NONE;
+}
 
 /*SCROLLBAR*/
 .tablaMusica .scroll-bar:horizontal, .tablaMusica .scroll-bar:vertical {
