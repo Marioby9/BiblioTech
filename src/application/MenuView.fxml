@@ -787,7 +787,7 @@
                <children>
                   <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../backgrounds/pListaJueIndiv.png" />
+                        <Image url="@../backgrounds/pMusVacio.png" />
                      </image>
                   </ImageView>
                   <TableView fx:id="tablaMusica" layoutX="24.0" layoutY="268.0" onMouseClicked="#clickEligeJuego" prefHeight="153.0" prefWidth="592.0" styleClass="tablaMusica">
