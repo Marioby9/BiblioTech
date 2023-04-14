@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -800,32 +801,47 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Pane layoutX="64.0" layoutY="34.0" prefHeight="220.0" prefWidth="512.0" style="-fx-background-color: ORANGE; -fx-border-color: BLACK; -fx-border-width: 4px; -fx-border-radius: 20px; -fx-background-radius: 25px;">
+                  <Pane fx:id="cabeceraMus" layoutX="64.0" layoutY="34.0" prefHeight="220.0" prefWidth="512.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="50.0" prefWidth="407.0" text="TITULO LISTA" underline="true">
+                        <Label fx:id="lblTitListaMus" alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="50.0" prefWidth="407.0" text="TITULO LISTA" underline="true">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="50.0" />
                            </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
                         </Label>
                         <Label layoutX="158.0" layoutY="78.0" prefHeight="32.0" prefWidth="197.0" text="LISTA DE REPRODUCCION:" underline="true">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="16.0" />
                            </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
                         </Label>
                         <Label layoutX="158.0" layoutY="103.0" prefHeight="32.0" prefWidth="186.0" text="15:34 MINUTOS DE MUSICA">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="12.0" />
                            </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
                         </Label>
                         <Label layoutX="158.0" layoutY="125.0" prefHeight="32.0" prefWidth="186.0" text="10 CANCIONES">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="12.0" />
                            </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
                         </Label>
                         <Label layoutX="158.0" layoutY="149.0" prefHeight="32.0" prefWidth="186.0" text="5 ARTISTAS">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="12.0" />
                            </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
                         </Label>
                         <Pane layoutX="45.0" layoutY="83.0" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: black; -fx-border-width: 1px; -fx-background-color: WHITE;">
                            <children>
@@ -852,9 +868,57 @@
                               <Image url="@../icons/playLista.png" />
                            </image>
                         </ImageView>
+                        <ImageView id="botones" fitHeight="40.0" fitWidth="40.0" layoutX="381.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/refresh.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
-                  <Pane layoutY="505.0" prefHeight="145.0" prefWidth="640.0" style="-fx-background-color: linear-gradient(to bottom, black, #333333);" />
+                  <Pane layoutY="505.0" prefHeight="145.0" prefWidth="640.0" style="-fx-background-color: linear-gradient(to bottom, black, #333333);">
+                     <children>
+                        <Pane prefHeight="145.0" prefWidth="640.0" style="-fx-background-color: linear-gradient(to bottom, black, #333333);">
+                           <children>
+                              <Line endX="-14.5999755859375" endY="60.39996337890625" layoutX="119.0" layoutY="35.0" startX="-14.5999755859375" startY="-20.20001220703125" stroke="WHITE" strokeWidth="2.0" />
+                              <ImageView fitHeight="78.0" fitWidth="84.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../OneDrive/Escritorio/BiblioTech/BIBLIOTECH%20Fotos/MUSICA/gifMus5.gif" />
+                                 </image>
+                              </ImageView>
+                              <ProgressBar fx:id="barraMusica" layoutX="20.0" layoutY="112.0" prefHeight="15.0" prefWidth="528.0" progress="0.42" styleClass="barraMusica" />
+                              <Label fx:id="lblTiempoCanc" alignment="CENTER" layoutX="556.0" layoutY="99.0" prefHeight="36.0" prefWidth="70.0" text="00:00" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Heavy" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="115.0" layoutY="11.0" prefHeight="49.0" prefWidth="512.0" text="ARTISTA   |     TITULO CANCION" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Heavy" size="28.0" />
+                                 </font>
+                              </Label>
+                              <ImageView id="botones" fitHeight="24.0" fitWidth="24.0" layoutX="420.0" layoutY="72.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/siguiente.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView id="botones" fitHeight="23.0" fitWidth="23.0" layoutX="462.0" layoutY="72.0" onMouseClicked="#clickBPlayMusica" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/playCancion.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView id="botones" fitHeight="24.0" fitWidth="24.0" layoutX="500.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/siguiente.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView id="botones" fitHeight="24.0" fitWidth="24.0" layoutX="579.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/repetir.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children></Pane>
                </children>
             </Pane>
          </children></Pane>

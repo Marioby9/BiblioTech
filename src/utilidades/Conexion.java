@@ -42,8 +42,8 @@ public class Conexion {
 	}
 
 	//CONSULTAS TABLA USUARIO
-
-	public String consultaStr(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS
+	//HACER QUE RECIBA LAS COLUMNAS QUE QUIERA EL USUARIO
+	public String consultaStr(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS 
 		String str = "";
 
 		st = connection.createStatement();

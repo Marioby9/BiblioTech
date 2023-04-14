@@ -255,6 +255,7 @@ TextArea {
 .tablaMusica .column-header, .tablaMusica .filler{
 	-fx-border-width: 0 0 10 0;
 	-fx-background-color: transparent;
+	-fx-font-weight: bold;
 }
 
 
@@ -298,4 +299,32 @@ TextArea {
 }
 
 
+/*PROGRESS BAR MUSICA*/
+.barraMusica {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-border-color: WHITE;
+}
 
+.barraMusica .track {
+    -fx-background-color: #535353;
+    -fx-background-radius: 10;
+}
+
+.barraMusica .bar {
+    -fx-background-color: #1DB954;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+  
+    -fx-accent: #1DB954;
+}
+
+.barraMusica .thumb {
+    -fx-background-color: #1DB954;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 10;
+    -fx-pref-height: 10px;
+	-fx-pref-width: 10px;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,3,3 );
+    -fx-padding: 20px;
+}
