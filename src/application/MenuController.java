@@ -131,7 +131,7 @@ public class MenuController {
 	String carpCanciones = "";
 	String estiloCabMus = "-fx-border-width: 4px; -fx-border-color: BLACK; -fx-border-radius: 20px; -fx-background-radius: 25px;";
 	double vol;
-	
+
 	int contPrueba = 1000;
 
 
@@ -998,6 +998,7 @@ public class MenuController {
 		}
 
 		lblTitListaMus.setText(categMus);
+		tablaMusica.setVisible(true);
 		rellenaTablaMus(categJue);
 		pListaMus.setVisible(true);
 
@@ -1017,21 +1018,18 @@ public class MenuController {
 	void clickBPlayMusica(MouseEvent event) {
 
 		if(!activo) {
+
 			activo = true;
 			bPlayMusica.setImage(imgPauseMus);
 			reproductor.play();
-			duracionTotal = reproductor.getTotalDuration();
 			actualizaBarraMusica(duracionTotal);
-			
+
 		}
 		else {
 			activo = false;
 			bPlayMusica.setImage(imgPlayMus);
 			reproductor.pause();
 		}
-
-		
-
 
 	} 
 
@@ -1365,16 +1363,24 @@ public class MenuController {
 				cancActual = listaMusica.get(0);
 				barraMusica.setProgress(0);
 				lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+				
 				String rutaArchivo = cancActual.getRuta();
 				File archivo = new File(rutaArchivo);
 				Media media = new Media(archivo.toURI().toString());
 				reproductor = new MediaPlayer(media);
+				reproductor.setOnReady(() -> {
+					duracionTotal = reproductor.getTotalDuration();
+				});
 
 			}
 			else if(listaMusica.size()==0 && !activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
+				tablaMusica.setVisible(false);
 				cancActual = null;
 				lblTitReproductor.setText("ARTISTA  |  TITULO CANCION  ");
 				barraMusica.setProgress(0);
+			}
+			else if(listaMusica.size()==0 && activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
+				tablaMusica.setVisible(false);
 			}
 
 
@@ -1427,32 +1433,46 @@ public class MenuController {
 
 	@FXML void clickEligeCancion(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
 		cancActual = tablaMusica.getSelectionModel().getSelectedItem();
-		lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
-		reproductor.stop();
-
-		String rutaArchivo = cancActual.getRuta();
-		File archivo = new File(rutaArchivo);
-		Media media = new Media(archivo.toURI().toString());
-		reproductor = new MediaPlayer(media);
-
-		bPlayMusica.setImage(imgPlayMus);
-		reproductor.setVolume(vol);
-
-		if(timeline!=null) {
-			timeline.stop();
+		if(cancActual != null) {
+			lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+			reproductor.stop();
+	
+			String rutaArchivo = cancActual.getRuta();
+			File archivo = new File(rutaArchivo);
+			Media media = new Media(archivo.toURI().toString());
+			reproductor = new MediaPlayer(media);
+	
+			bPlayMusica.setImage(imgPlayMus);
+			reproductor.setVolume(vol);
+	
+			if(timeline!=null) {
+				timeline.stop();
+			}
+			barraMusica.setProgress(0);
+	
+			reproductor.setOnReady(() -> {
+				duracionTotal = reproductor.getTotalDuration();
+				//MOSTRAR DURACION DE LA CANCION 
+				int minutos = (int) duracionTotal.toMinutes();
+				int segundos = (int) (duracionTotal.toSeconds() % 60);
+				String duracionString = String.format("%02d:%02d", minutos, segundos);
+				lblTiempoCanc.setText(duracionString);
+			});
 		}
-		barraMusica.setProgress(0);
-		
-
 
 	}
 
 	void actualizaBarraMusica(Duration duracion) { //MEJORAR!!!
+
+		
+		if (timeline != null) {
+	        timeline.stop();
+	    }
 		
 		timeline = new Timeline(
 				new KeyFrame(Duration.ZERO, e -> {
 					double progress = reproductor.getCurrentTime().toMillis() / duracion.toMillis();
-					
+
 					if(activo) {
 						duracionTotal = duracionTotal.subtract(Duration.seconds(1));
 					}
@@ -1462,10 +1482,10 @@ public class MenuController {
 					int segundos = (int) (duracionTotal.toSeconds() % 60);
 					String duracionString = String.format("%02d:%02d", minutos, segundos);
 					//MOSTRAR DURACION DE LA CANCION 
-					
+
 					lblTiempoCanc.setText(duracionString);				
 					barraMusica.setProgress(progress);
-					
+
 				}),
 				new KeyFrame(Duration.seconds(1))
 				);

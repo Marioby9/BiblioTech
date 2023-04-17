@@ -916,7 +916,7 @@
                                     <Image url="@../icons/repetir.png" />
                                  </image>
                               </ImageView>
-                              <Slider id="sldVolReproductor" layoutX="115.0" layoutY="77.0">
+                              <Slider id="sldVolReproductor" fx:id="barraVolReproductor" layoutX="115.0" layoutY="77.0">
                                  <styleClass>
                                     <String fx:value="thumb" />
                                     <String fx:value="track" />

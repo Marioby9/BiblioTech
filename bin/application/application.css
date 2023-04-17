@@ -283,6 +283,7 @@ TextArea {
 	-fx-border-width: 0 0 10 0;
 	-fx-background-color: transparent;
 	-fx-font-weight: bold;
+	-fx-font-size: 20px;
 }
 
 
@@ -303,9 +304,23 @@ TextArea {
     -fx-border-spacing: 30px 0;
      
 }
+.tablaMusica .table-row-cell:hover {
+    -fx-background-color: WHITE; 
+    -fx-border-color: BLACK;
+
+}
+.tablaMusica .table-row-cell:hover .cell {
+    -fx-text-fill: BLACK;
+
+}
+
 .tablaMusica .table-row-cell:empty {
     -fx-background-color: TRANSPARENT; 
     -fx-border-color: NONE;
+}
+
+.tablaMusica .table-row-cell:empty .table-cell {
+    -fx-border-width: 0;
 }
 
 /*SCROLLBAR*/
