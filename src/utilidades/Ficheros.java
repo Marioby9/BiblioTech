@@ -11,39 +11,41 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Stream;
-
+import elementos.Cancion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class Ficheros {
 
 	public static void main(String[] args) {
-		try {
-			ArrayList<String> canciones = leeCarpetaMus("C:\\Users\\mmart\\OneDrive\\Escritorio\\BiblioTech", "Canciones");
-			for(String can: canciones) {
-				System.out.println(can);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	//TEMAS CARPETAS MUSICA
 	
-	public static ArrayList<String> leeCarpetaMus(String carpeta, String lista) throws Exception {
-		ArrayList<String> listaCanciones = new ArrayList<String>();
+	public static ObservableList<Cancion> leeCarpetaMus(String carpeta, String lista) throws Exception {
+		ObservableList<Cancion> listaCanciones = FXCollections.observableArrayList();
+		String titulo, nomArch, artista, ruta, extension;
 		Path directory = Paths.get(carpeta+"\\"+lista);
 		Stream<Path> archivos = Files.list(directory);
 		Iterator it = archivos.iterator();
+		
 		while(it.hasNext()) {
 			File file = ((Path)it.next()).toFile();
-			String nombre = file.getName().toString().replace(".mp3", "");
-			listaCanciones.add(nombre);
+			nomArch = file.getName().toString();
+			extension = nomArch.substring(nomArch.length()-4, nomArch.length());
+
+			if(extension.equalsIgnoreCase(".mp3")) {
+				String [] separados = nomArch.replace(".mp3", "").split("-");
+				artista = separados[0].replace("_", " ");
+				titulo = separados[1].replace("_", " ");
+				ruta = carpeta+"\\"+lista+"\\"+nomArch;
+				listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta, 0));
+			}
+			
 		}
-		
 		return listaCanciones;
 	}
 	

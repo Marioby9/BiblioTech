@@ -7,15 +7,19 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -105,22 +109,30 @@ public class MenuController {
 
 
 	//MUSICA
-	@FXML private Pane pMusica, cabeceraMus;
-	@FXML private Label lblTitListaMus, lblTiempoCanc;
+	@FXML private Pane pMusica, cabeceraMus, pListaMus;
+	@FXML private Label lblTitListaMus, lblTiempoCanc, lblNumCanciones, lblTitReproductor ;
+	@FXML private ProgressBar barraMusica;
+	@FXML private ImageView bPlayMusica;
+	Image imgPlayMus, imgPauseMus;
+	Timeline timeline;
+	Duration duracionTotal;
 	//BOTONES PMUSICA
 	@FXML private ImageView bMusElectronica, bMusFlamenco, bMusPop, bMusReggaeton, bMusRock;
 	@FXML private TableView<Cancion> tablaMusica;
 	@FXML private TableColumn<Cancion, String> tituloCanc;
 	@FXML private TableColumn<Cancion, String> artistaCanc;
-	@FXML private TableColumn<Cancion, Integer> tiempoCanc;
+	@FXML private TableColumn<Cancion, String> generoCanc;
+	MediaPlayer reproductor;
+	Cancion cancActual = null;
 	String categMus = "";
 
 	//PANELES LISTAS MUSICA + CANCIONES
-	@FXML private Pane pListaMus;
 	boolean activo = false;
 	String carpCanciones = "";
 	String estiloCabMus = "-fx-border-width: 4px; -fx-border-color: BLACK; -fx-border-radius: 20px; -fx-background-radius: 25px;";
-
+	double vol;
+	
+	int contPrueba = 1000;
 
 
 	//CONTROLADOR
@@ -133,9 +145,9 @@ public class MenuController {
 	//PANEL AJUSTES:
 	@FXML private Pane pAjustes;
 	@FXML private Label lblColorTema;
-	@FXML private ImageView bEditarColor, bWeb, bGithub;
+	@FXML private ImageView bEditarColor, bWeb, bGithub, bTwitter, bInstagram, bYoutube;
 	@FXML private Pane pPanelColores;		boolean abierto;  int color;
-	@FXML private Slider barraVolAjustes;
+	@FXML private Slider barraVolAjustes, barraVolReproductor;
 	@FXML private Label lblVolAjustes;
 
 	@FXML private Label lblColorAzul, lblColorMorado, lblColorNaranja, lblColorRojo, lblColorVerde;
@@ -197,18 +209,22 @@ public class MenuController {
 
 
 		//MUSICA:
-		int vol = 0;
+
 		try {
-			vol = c1.consultaNum("AJUSTES", "VOLUMEN", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()) );
+			vol = c1.consultaNum("AJUSTES", "VOLUMEN", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			carpCanciones = c1.consultaStr("AJUSTES", "CARP_MUSICA", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		barraVolAjustes.setValue(vol);
+		barraMusica.setProgress(0);
 		lblVolAjustes.setText(Integer.toString((int)(Math.floor(barraVolAjustes.getValue()))));
 
+		vol /= 100; //DIVIDIMOS EL VOLUMEN ENTRE 100 PORQUE LA FUNCION .setVolume(vol) RECIBE UN DOUBLE
 
+		imgPlayMus = new Image(getClass().getResourceAsStream("/icons/playCancion.png"));
+		imgPauseMus = new Image(getClass().getResourceAsStream("/icons/pausa.png"));
 	}
 
 	public void closeWindows() {
@@ -234,9 +250,10 @@ public class MenuController {
 
 
 			Stage venMenu = (Stage) this.pFondoMenu.getScene().getWindow();
-
+			if(activo) {
+				reproductor.stop();
+			}
 			venMenu.close();
-
 
 		} catch(IOException ex) {
 			Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE,null,ex);
@@ -979,20 +996,10 @@ public class MenuController {
 			categMus = "ROCK";
 			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom,#fba981, #5c2c15);"+estiloCabMus);
 		}
+
 		lblTitListaMus.setText(categMus);
+		rellenaTablaMus(categJue);
 		pListaMus.setVisible(true);
-		
-
-		ObservableList<Cancion> listaMusica = FXCollections.observableArrayList();
-		Cancion c1 = new Cancion(1, 1, "Shakira-Bzrp", "Reggaeton", "", 20 );
-		Cancion c2 = new Cancion(1, 1, "Shakira-Bzrp", "Reggaeton", "", 20 );
-		Cancion c3 = new Cancion(1, 1, "Shakira-Bzrp", "Reggaeton", "", 20 );
-		listaMusica.add(c1); listaMusica.add(c2); listaMusica.add(c3);
-		tablaMusica.setItems(listaMusica); //RELLENAR TABLA CON LOS LIBROS DE CADA CATEGORIA
-
-		tituloCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-		artistaCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGenero()));
-		tiempoCanc.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getDuracion()).asObject());
 
 
 	}
@@ -1008,24 +1015,24 @@ public class MenuController {
 	//MEDIAPLAYER (PRUEBA)
 	@FXML
 	void clickBPlayMusica(MouseEvent event) {
-		String rutaArchivo = "C:\\Users\\mmart\\OneDrive\\Escritorio\\BiblioTech\\Canciones\\AC_DC-Highway_to_Hell.mp3";
-		File archivo = new File(rutaArchivo);
-	    Media media = new Media(archivo.toURI().toString());
-		MediaPlayer reproductor = new MediaPlayer(media);
-		
-		reproductor.setOnReady(() -> { //NECESARIO PARA QUE PILLE 
-			Duration duracionTotal = reproductor.getTotalDuration();
-			
+
+		if(!activo) {
+			activo = true;
+			bPlayMusica.setImage(imgPauseMus);
 			reproductor.play();
+			duracionTotal = reproductor.getTotalDuration();
+			actualizaBarraMusica(duracionTotal);
 			
-		    // Convertir la duración total a minutos y segundos
-		    int minutos = (int) duracionTotal.toMinutes();
-		    int segundos = (int) (duracionTotal.toSeconds() % 60);
-		    
-		    // Mostrar la duración en minutos y segundos
-		    System.out.println("Duración total: " + minutos+ " minutos y " + segundos + " segundos");
-		    lblTiempoCanc.setText(minutos+":"+segundos);
-		});
+		}
+		else {
+			activo = false;
+			bPlayMusica.setImage(imgPlayMus);
+			reproductor.pause();
+		}
+
+		
+
+
 	} 
 
 
@@ -1072,8 +1079,9 @@ public class MenuController {
 			cambiaColorFondo();
 			c1.updateTabla("AJUSTES", "CFONDO", color, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			c1.updateTabla("AJUSTES", "VOLUMEN", Math.floor(barraVolAjustes.getValue()), "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
-			
 
+			vol = Math.floor(barraVolAjustes.getValue());
+			reproductor.setVolume(vol);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -1107,6 +1115,15 @@ public class MenuController {
 		if(event.getSource() == bWeb) {
 			enlace = "https://byruby12.github.io/Bibliotech/";
 		}
+		else if (event.getSource() == bInstagram) {
+			enlace = "https://www.instagram.com/bibliotech2023/";
+		}
+		else if (event.getSource() == bTwitter ) {
+			enlace = "https://twitter.com/Bibliotech2023";
+		}
+		else if (event.getSource() == bYoutube) {
+			enlace = "https://www.youtube.com/@bibliotech2023";
+		}
 		else {
 			enlace = "https://github.com/Marioby9/BiblioTech";
 		}
@@ -1137,6 +1154,7 @@ public class MenuController {
 			}
 
 		}
+
 	}
 
 
@@ -1205,7 +1223,7 @@ public class MenuController {
 
 	}
 
-	//LIBROS Y JUEGOS FUNCIONES EQUIVALENTES
+	//LIBROS, JUEGOS, CANCIONES FUNCIONES EQUIVALENTES
 	private void rellenaTablaLibros(String categoria) {
 
 		try {
@@ -1334,6 +1352,44 @@ public class MenuController {
 
 	}
 
+	private void rellenaTablaMus(String categoria) {
+
+		try {
+			ObservableList<Cancion> listaMusica;
+			listaMusica = Ficheros.leeCarpetaMus(carpCanciones, categMus);
+			lblNumCanciones.setText(listaMusica.size()+" Canciones");
+
+			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
+			if(listaMusica.size()!=0 && !activo) { 
+				bFavLib.setVisible(true);
+				cancActual = listaMusica.get(0);
+				barraMusica.setProgress(0);
+				lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+				String rutaArchivo = cancActual.getRuta();
+				File archivo = new File(rutaArchivo);
+				Media media = new Media(archivo.toURI().toString());
+				reproductor = new MediaPlayer(media);
+
+			}
+			else if(listaMusica.size()==0 && !activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
+				cancActual = null;
+				lblTitReproductor.setText("ARTISTA  |  TITULO CANCION  ");
+				barraMusica.setProgress(0);
+			}
+
+
+			tablaMusica.setItems(listaMusica); //RELLENAR TABLA CON LOS LIBROS DE CADA CATEGORIA
+
+			tituloCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+			artistaCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getArtista()));
+			generoCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGenero()));
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
 	@FXML void clickEligeLibro(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
 		libActual = tablaLibros.getSelectionModel().getSelectedItem();
 
@@ -1367,6 +1423,61 @@ public class MenuController {
 			bFavLib.setImage(imgFav);
 
 		}
+	}
+
+	@FXML void clickEligeCancion(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
+		cancActual = tablaMusica.getSelectionModel().getSelectedItem();
+		lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+		reproductor.stop();
+
+		String rutaArchivo = cancActual.getRuta();
+		File archivo = new File(rutaArchivo);
+		Media media = new Media(archivo.toURI().toString());
+		reproductor = new MediaPlayer(media);
+
+		bPlayMusica.setImage(imgPlayMus);
+		reproductor.setVolume(vol);
+
+		if(timeline!=null) {
+			timeline.stop();
+		}
+		barraMusica.setProgress(0);
+		
+
+
+	}
+
+	void actualizaBarraMusica(Duration duracion) { //MEJORAR!!!
+		
+		timeline = new Timeline(
+				new KeyFrame(Duration.ZERO, e -> {
+					double progress = reproductor.getCurrentTime().toMillis() / duracion.toMillis();
+					
+					if(activo) {
+						duracionTotal = duracionTotal.subtract(Duration.seconds(1));
+					}
+
+					// PASAR DURACION A MINUTOS Y SEGUNDOS
+					int minutos = (int) duracionTotal.toMinutes();
+					int segundos = (int) (duracionTotal.toSeconds() % 60);
+					String duracionString = String.format("%02d:%02d", minutos, segundos);
+					//MOSTRAR DURACION DE LA CANCION 
+					
+					lblTiempoCanc.setText(duracionString);				
+					barraMusica.setProgress(progress);
+					
+				}),
+				new KeyFrame(Duration.seconds(1))
+				);
+		timeline.setCycleCount(Animation.INDEFINITE);
+		if(activo) {
+			timeline.play();
+		}
+		else {
+			timeline.stop();
+			barraMusica.setProgress(0);
+		}
+
 	}
 
 	@FXML void clickEligeJuego(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS

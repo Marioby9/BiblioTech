@@ -120,7 +120,7 @@ TextArea {
 	-fx-scale-y: 1.08;
 }
 
-/*SLIDER VOLUMEN*/
+/*SLIDER VOLUMEN POR DEFECTO */
 #sldVolumen {
 	-fx-pref-width: 275px;
 }
@@ -136,6 +136,33 @@ TextArea {
 	-fx-pref-width: 10px;
 	-fx-background-color: linear-gradient(to top, royalblue, aquamarine);
 	-fx-background-radius: 0;
+}
+
+/*SLIDER VOLUMEN REPRODUCTOR*/
+#sldVolReproductor .track {
+    -fx-background-color: WHITE;
+    -fx-background-insets: 0;
+}
+
+#sldVolReproductor .thumb {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 50%;
+    -fx-padding: 5px;
+}
+
+#sldVolReproductor .thumb:hover {
+    -fx-background-color: GREEN;
+}
+
+#sldVolReproductor .thumb:pressed {
+    -fx-background-color: GREEN;
+}
+
+.slider .thumb .thumb-area {
+    -fx-background-color: green;
+}
+.slider .thumb .thumb-overlay {
+    -fx-background-color: green;
 }
 
 
