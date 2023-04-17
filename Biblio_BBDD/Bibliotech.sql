@@ -140,6 +140,7 @@ ID_Usuario number(3) references Usuario on delete cascade,
 Fperfil number  default 0,
 Volumen number default 50, 
 Cfondo number default 0,
+Carp_Musica varchar2(99),
 
 constraint Pk_Ajustes Primary key(ID_Usuario),
 constraint ck_fPerfil check (Fperfil between 0 and 9),
@@ -221,5 +222,4 @@ UPDATE LIBROS  SET  RESUMEN =  '"Mortadelo y Filemón" de Francisco Ibáñez. El li
 COMMIT;
 
 
-
-SELECT * FROM JUEGOS;
+SELECT * FROM canciones;

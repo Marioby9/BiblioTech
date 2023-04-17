@@ -120,7 +120,7 @@ TextArea {
 	-fx-scale-y: 1.08;
 }
 
-/*SLIDER VOLUMEN*/
+/*SLIDER VOLUMEN POR DEFECTO */
 #sldVolumen {
 	-fx-pref-width: 275px;
 }
@@ -136,6 +136,33 @@ TextArea {
 	-fx-pref-width: 10px;
 	-fx-background-color: linear-gradient(to top, royalblue, aquamarine);
 	-fx-background-radius: 0;
+}
+
+/*SLIDER VOLUMEN REPRODUCTOR*/
+#sldVolReproductor .track {
+    -fx-background-color: WHITE;
+    -fx-background-insets: 0;
+}
+
+#sldVolReproductor .thumb {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 50%;
+    -fx-padding: 5px;
+}
+
+#sldVolReproductor .thumb:hover {
+    -fx-background-color: GREEN;
+}
+
+#sldVolReproductor .thumb:pressed {
+    -fx-background-color: GREEN;
+}
+
+.slider .thumb .thumb-area {
+    -fx-background-color: green;
+}
+.slider .thumb .thumb-overlay {
+    -fx-background-color: green;
 }
 
 
@@ -209,17 +236,11 @@ TextArea {
 
 .tablaLibros .cell {
     -fx-font-size: 16px; /* Tamaño de fuente */
-    -fx-fill-text: black;
+    -fx-text-fill: BLACK;
     -fx-font-family: Arial;
     -fx-alignment: CENTER;
     
 }
-.tablaLibros .row-cell {
-    -fx-border-color: black; /* Color de borde */
-    -fx-border-width: 7px; /* Ancho de borde: bottom */
-}
-
-
 
 
 
@@ -241,7 +262,111 @@ TextArea {
 }
 
 
+/*TABLA MUSICA*/
+.tablaMusica {
+	-fx-background-color: NONE; 
+	-fx-text-fill: #F2F7F9;
+	-fx-cell-size: 50px; /* altura de cada fila */
+	
+    
+	
+}
+
+.tablaMusica .column-header-background {
+	-fx-background-color: NONE; 
+	-fx-background-radius: 27px; 
+	-fx-background-insets: 0 0 10 0;
+	
+}
+
+.tablaMusica .column-header, .tablaMusica .filler{
+	-fx-border-width: 0 0 10 0;
+	-fx-background-color: transparent;
+	-fx-font-weight: bold;
+	-fx-font-size: 20px;
+}
 
 
+.tablaMusica .cell {
+    -fx-font-size: 16px; /* Tamaño de fuente */
+    -fx-text-fill: #F2F7F9;
+    -fx-font-family: Arial;
+    -fx-alignment: CENTER;
+    
+}
+.tablaMusica .table-row-cell {
+    -fx-background-color: BLACK; 
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px; 
+    -fx-pref-height: 30px;   
+    -fx-border-width: 1px;
+    -fx-border-color: WHITE;
+    -fx-border-spacing: 30px 0;
+     
+}
+.tablaMusica .table-row-cell:hover {
+    -fx-background-color: WHITE; 
+    -fx-border-color: BLACK;
+
+}
+.tablaMusica .table-row-cell:hover .cell {
+    -fx-text-fill: BLACK;
+
+}
+
+.tablaMusica .table-row-cell:empty {
+    -fx-background-color: TRANSPARENT; 
+    -fx-border-color: NONE;
+}
+
+.tablaMusica .table-row-cell:empty .table-cell {
+    -fx-border-width: 0;
+}
+
+/*SCROLLBAR*/
+.tablaMusica .scroll-bar:horizontal, .tablaMusica .scroll-bar:vertical {
+    -fx-background-color: NONE; 
+  
+}
+
+.tablaMusica .scroll-bar:horizontal .thumb, .tablaMusica .scroll-bar:vertical .thumb {
+    -fx-background-color: NONE; 
+   
+}
 
 
+.tablaMusica .scroll-bar:horizontal .increment-button, .tablaMusica .scroll-bar:horizontal .decrement-button, 
+.tablaMusica .scroll-bar:vertical .increment-button, .tablaMusica .scroll-bar:vertical .decrement-button {
+    -fx-background-color: NONE; 
+}
+
+
+/*PROGRESS BAR MUSICA*/
+.barraMusica {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10;
+    -fx-border-color: WHITE;
+}
+
+.barraMusica .track {
+    -fx-background-color: #535353;
+    -fx-background-radius: 10;
+}
+
+.barraMusica .bar {
+    -fx-background-color: #1DB954;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+  
+    -fx-accent: #1DB954;
+}
+
+.barraMusica .thumb {
+    -fx-background-color: #1DB954;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 10;
+    -fx-pref-height: 10px;
+	-fx-pref-width: 10px;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,3,3 );
+    -fx-padding: 20px;
+}

@@ -8,8 +8,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import elementos.Juego;
-import elementos.Libro;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -18,7 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,11 +32,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import utilidades.Conexion;
 import utilidades.Correo;
+import utilidades.Ficheros;
 import utilidades.Usuario;
+import elementos.Juego;
+import elementos.Libro;
+import elementos.Cancion;
 
 public class MenuController {
 	//PANELES
@@ -102,16 +109,30 @@ public class MenuController {
 
 
 	//MUSICA
-	@FXML private Pane pMusica;
+	@FXML private Pane pMusica, cabeceraMus, pListaMus;
+	@FXML private Label lblTitListaMus, lblTiempoCanc, lblNumCanciones, lblTitReproductor ;
+	@FXML private ProgressBar barraMusica;
+	@FXML private ImageView bPlayMusica;
+	Image imgPlayMus, imgPauseMus;
+	Timeline timeline;
+	Duration duracionTotal;
 	//BOTONES PMUSICA
 	@FXML private ImageView bMusElectronica, bMusFlamenco, bMusPop, bMusReggaeton, bMusRock;
-
-	//PANELES LISTAS MUSICA + SCROLLPANES CANCIONES
-	@FXML private Pane pReggaeton, pPop, pElectronica, pFlamenco, pRock;
-	@FXML private ScrollPane pListaReggaeton, pListaPop, pListaElectronica, pListaFlamenco, pListaRock;
+	@FXML private TableView<Cancion> tablaMusica;
+	@FXML private TableColumn<Cancion, String> tituloCanc;
+	@FXML private TableColumn<Cancion, String> artistaCanc;
+	@FXML private TableColumn<Cancion, String> generoCanc;
 	MediaPlayer reproductor;
-	boolean activo = false;
+	Cancion cancActual = null;
+	String categMus = "";
 
+	//PANELES LISTAS MUSICA + CANCIONES
+	boolean activo = false;
+	String carpCanciones = "";
+	String estiloCabMus = "-fx-border-width: 4px; -fx-border-color: BLACK; -fx-border-radius: 20px; -fx-background-radius: 25px;";
+	double vol;
+
+	int contPrueba = 1000;
 
 
 	//CONTROLADOR
@@ -124,9 +145,9 @@ public class MenuController {
 	//PANEL AJUSTES:
 	@FXML private Pane pAjustes;
 	@FXML private Label lblColorTema;
-	@FXML private ImageView bEditarColor, bWeb, bGithub;
+	@FXML private ImageView bEditarColor, bWeb, bGithub, bTwitter, bInstagram, bYoutube;
 	@FXML private Pane pPanelColores;		boolean abierto;  int color;
-	@FXML private Slider barraVolAjustes;
+	@FXML private Slider barraVolAjustes, barraVolReproductor;
 	@FXML private Label lblVolAjustes;
 
 	@FXML private Label lblColorAzul, lblColorMorado, lblColorNaranja, lblColorRojo, lblColorVerde;
@@ -184,25 +205,26 @@ public class MenuController {
 		initPanelesIndiv();
 
 		//QUITAR BARRA HORIZONTAL DE SCROLLPANES
-		pListaReggaeton.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-		pListaPop.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-		pListaElectronica.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-		pListaFlamenco.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-		pListaRock.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		pListaMus.setVisible(false);
 
 
-		//VOLUMEN:
-		int vol = 0;
+		//MUSICA:
+
 		try {
-			vol = c1.consultaNum("AJUSTES", "VOLUMEN", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()) );
+			vol = c1.consultaNum("AJUSTES", "VOLUMEN", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			carpCanciones = c1.consultaStr("AJUSTES", "CARP_MUSICA", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		barraVolAjustes.setValue(vol);
+		barraMusica.setProgress(0);
 		lblVolAjustes.setText(Integer.toString((int)(Math.floor(barraVolAjustes.getValue()))));
 
+		vol /= 100; //DIVIDIMOS EL VOLUMEN ENTRE 100 PORQUE LA FUNCION .setVolume(vol) RECIBE UN DOUBLE
 
+		imgPlayMus = new Image(getClass().getResourceAsStream("/icons/playCancion.png"));
+		imgPauseMus = new Image(getClass().getResourceAsStream("/icons/pausa.png"));
 	}
 
 	public void closeWindows() {
@@ -228,9 +250,10 @@ public class MenuController {
 
 
 			Stage venMenu = (Stage) this.pFondoMenu.getScene().getWindow();
-
+			if(activo) {
+				reproductor.stop();
+			}
 			venMenu.close();
-
 
 		} catch(IOException ex) {
 			Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE,null,ex);
@@ -296,11 +319,7 @@ public class MenuController {
 		pAjustes.setVisible(false);
 		pMusica.setVisible(true);
 
-		pReggaeton.setVisible(false);
-		pPop.setVisible(false);
-		pElectronica.setVisible(false);
-		pFlamenco.setVisible(false);
-		pRock.setVisible(false);
+		pListaMus.setVisible(false);
 
 	}
 
@@ -611,15 +630,18 @@ public class MenuController {
 
 			}
 			else {
+				lblErrorLib.setText("ERROR: Campos incompletos");
 				lblErrorLib.setVisible(true);
 
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorLib.setText("ERROR: No se pudo editar");
 			lblErrorLib.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorLib.setText("ERROR: No se pudo editar");
 			lblErrorLib.setVisible(true);
 
 
@@ -649,19 +671,19 @@ public class MenuController {
 				lblErrorLib.setVisible(false);
 			}
 			else {
+				lblErrorLib.setText("ERROR: Campos incompletos");
 				lblErrorLib.setVisible(true);
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorLib.setText("ERROR: No se pudo añadir");
 			lblErrorLib.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorLib.setText("ERROR: No se pudo añadir");
 			lblErrorLib.setVisible(true);
-			e.printStackTrace();
-
 		}
-
 
 	}
 
@@ -669,7 +691,6 @@ public class MenuController {
 		if(libActual != null) {
 			try {
 				if(c1.eliminaLibro(libActual)) {
-					System.out.println("Libro eliminado");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -690,7 +711,7 @@ public class MenuController {
 
 		pListaJuegos.setVisible(true);
 		addGame.setVisible(true);
-		
+
 		if(event.getSource()==bJueFavoritos) {
 			categJue = "FAVORITOS";
 			addGame.setVisible(false);
@@ -707,7 +728,7 @@ public class MenuController {
 		else if(event.getSource()==bJueShooter) {
 			categJue = "SHOOTER";
 		}
-		
+
 		rellenaTablaJuegos(categJue);
 	}
 
@@ -831,6 +852,7 @@ public class MenuController {
 
 	@FXML void clickGuardaJuegoEditado(MouseEvent event) { 
 		try {
+
 			String titulo = txtFieldTitJuego.getText();
 			String empresa = txtFieldCompaniaJuegoInd.getText();
 			String plataforma = txtFieldPlataformaJuego.getText();
@@ -857,15 +879,18 @@ public class MenuController {
 
 			}
 			else {
+				lblErrorJue.setText("ERROR: Campos incompletos");
 				lblErrorJue.setVisible(true);
 
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorJue.setText("ERROR: No se pudo editar");
 			lblErrorJue.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorJue.setText("ERROR: No se pudo editar");
 			lblErrorJue.setVisible(true);
 
 
@@ -874,6 +899,7 @@ public class MenuController {
 
 	@FXML void clickGuardaJuegoAgregado(MouseEvent event) {
 		try {
+
 			String titulo = txtFieldTitJuego.getText();
 			String empresa = txtFieldCompaniaJuegoInd.getText();
 			String plataforma = txtFieldPlataformaJuego.getText();
@@ -882,7 +908,7 @@ public class MenuController {
 			int horas = Integer.parseInt(txtFieldHorJuego.getText());
 			int id_juego = c1.consultaNum("JUEGOS", "MAX(ID_JUEGO)", null) +1;
 
-			if(!titulo.equals("") && !empresa.equals("") && lanzamiento >= 0 && horas >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN) Y NO SER NEGATIVOS
+			if(!titulo.equals("") && !plataforma.equals("") && lanzamiento >= 0 && horas >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN) Y NO SER NEGATIVOS
 				jueActual.setTitulo(titulo); jueActual.setPlataforma(plataforma); jueActual.setLanzamiento(lanzamiento); jueActual.sethJugadas(horas);;
 				jueActual.setResumen(resumen); jueActual.setEmpresa(empresa); jueActual.setID_Juego(id_juego); jueActual.setID_Usuario(u1.getID_Usuario());
 
@@ -896,14 +922,17 @@ public class MenuController {
 				lblErrorJue.setVisible(false);
 			}
 			else {
+				lblErrorJue.setText("ERROR: Campos incompletos");
 				lblErrorJue.setVisible(true);
 			}
 
 		}catch (NumberFormatException e) {
+			lblErrorJue.setText("ERROR: No se pudo añadir");
 			lblErrorJue.setVisible(true);
 
 
 		}catch (Exception e) {
+			lblErrorJue.setText("ERROR: No se pudo añadir");
 			lblErrorLib.setVisible(true);
 			e.printStackTrace();
 
@@ -917,13 +946,12 @@ public class MenuController {
 		if(jueActual!=null) {
 			try {
 				if(c1.eliminaJuego(jueActual)) {
-					System.out.println("Juego eliminado");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 
@@ -949,32 +977,38 @@ public class MenuController {
 	//MUSICA:
 	@FXML void clickListaMusica(MouseEvent event) {
 		if(event.getSource()==bMusReggaeton) {
-			pReggaeton.setVisible(true);
-
+			categMus = "REGGAETON";
+			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom, #ff748d, #ff7daf);"+estiloCabMus);
 		}
 		else if(event.getSource()==bMusPop) {
-			pPop.setVisible(true);
+			categMus = "POP";
+			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom, #00c0fa, #015eea);"+estiloCabMus);
 		}
 		else if(event.getSource()==bMusElectronica) {
-			pElectronica.setVisible(true);
+			categMus = "ELECTRONICA";
+			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom, #facc22, #f83600);"+estiloCabMus);
 		}
 		else if(event.getSource()==bMusFlamenco) {
-			pFlamenco.setVisible(true);
+			categMus = "FLAMENCO";
+			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom, #e1afcc, #7530e3);"+estiloCabMus);
 		}
 		else if(event.getSource()==bMusRock) {
-			pRock.setVisible(true);
+			categMus = "ROCK";
+			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom,#fba981, #5c2c15);"+estiloCabMus);
 		}
+
+		lblTitListaMus.setText(categMus);
+		tablaMusica.setVisible(true);
+		rellenaTablaMus(categJue);
+		pListaMus.setVisible(true);
+
+
 	}
 
 
 	@FXML void clickBackMusica(MouseEvent event) {
+		pListaMus.setVisible(false);
 		pMusica.setVisible(true);
-		pReggaeton.setVisible(false);
-		pPop.setVisible(false);
-		pElectronica.setVisible(false);
-		pFlamenco.setVisible(false);
-		pRock.setVisible(false);
-
 	}   
 
 
@@ -983,28 +1017,18 @@ public class MenuController {
 	@FXML
 	void clickBPlayMusica(MouseEvent event) {
 
+		if(!activo) {
 
-		//Media media = new Media(getClass().getResource("/canciones/cancion1.mp3").toExternalForm()); //FUNCIONA EN ECLIPSE Y NO EN EJECUTABLE
-
-		Media media = new Media(getClass().getResource("/canciones/shakira-bzrp.mp3").toString()); 	   //BUENO EN ECLIPSE (USAR)
-		reproductor = new MediaPlayer(media);
-
-		double volumen;
-		try {
-			volumen = c1.consultaNum("Ajustes", "Volumen", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
-		} catch (SQLException e) {
-			e.printStackTrace();
-			volumen=0;
-		}
-
-		reproductor.setVolume(volumen/100);
-		if(activo==false) {
+			activo = true;
+			bPlayMusica.setImage(imgPauseMus);
 			reproductor.play();
-			activo=true;
+			actualizaBarraMusica(duracionTotal);
+
 		}
 		else {
+			activo = false;
+			bPlayMusica.setImage(imgPlayMus);
 			reproductor.pause();
-			activo=false;
 		}
 
 	} 
@@ -1049,20 +1073,17 @@ public class MenuController {
 
 
 	@FXML void clickBGuardarAjustes(MouseEvent event) {
-		try {//FPERFIL
+		try {
 			cambiaColorFondo();
 			c1.updateTabla("AJUSTES", "CFONDO", color, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {//VOLUMEN
 			c1.updateTabla("AJUSTES", "VOLUMEN", Math.floor(barraVolAjustes.getValue()), "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+
+			vol = Math.floor(barraVolAjustes.getValue());
+			reproductor.setVolume(vol);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 
 	}
 
@@ -1092,6 +1113,15 @@ public class MenuController {
 		if(event.getSource() == bWeb) {
 			enlace = "https://byruby12.github.io/Bibliotech/";
 		}
+		else if (event.getSource() == bInstagram) {
+			enlace = "https://www.instagram.com/bibliotech2023/";
+		}
+		else if (event.getSource() == bTwitter ) {
+			enlace = "https://twitter.com/Bibliotech2023";
+		}
+		else if (event.getSource() == bYoutube) {
+			enlace = "https://www.youtube.com/@bibliotech2023";
+		}
 		else {
 			enlace = "https://github.com/Marioby9/BiblioTech";
 		}
@@ -1101,6 +1131,26 @@ public class MenuController {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+
+	@FXML void clickCarpetaCanciones(MouseEvent event) {
+		DirectoryChooser dChooser = new DirectoryChooser();
+		dChooser.setTitle("Selecciona una carpeta");
+
+		File selectedFile = dChooser.showDialog(null);
+		if (selectedFile != null) {
+			carpCanciones = selectedFile.getAbsolutePath();
+			try {
+				Ficheros.creaCarpetasMus(carpCanciones);
+				System.out.println("Carpetas creadas en: "+carpCanciones);
+				c1.updateTabla("AJUSTES", "CARP_MUSICA", carpCanciones, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 
 	}
@@ -1171,7 +1221,7 @@ public class MenuController {
 
 	}
 
-	//LIBROS Y JUEGOS FUNCIONES EQUIVALENTES
+	//LIBROS, JUEGOS, CANCIONES FUNCIONES EQUIVALENTES
 	private void rellenaTablaLibros(String categoria) {
 
 		try {
@@ -1182,7 +1232,7 @@ public class MenuController {
 			else {
 				listaLibros = c1.fillListBooks(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
 			}
-			
+
 			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
 			if(listaLibros.size()!=0) { 
 				bFavLib.setVisible(true);
@@ -1202,7 +1252,7 @@ public class MenuController {
 						portadaListaLib.setImage(image);
 					}
 				}
-				
+
 				Image imgFav;
 				if(libActual.getFavorito().equalsIgnoreCase("NO")) {
 					imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
@@ -1266,7 +1316,7 @@ public class MenuController {
 						portadaListaJue.setImage(image);
 					}
 				}
-				
+
 				Image imgFav;
 				if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
 					imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
@@ -1300,6 +1350,52 @@ public class MenuController {
 
 	}
 
+	private void rellenaTablaMus(String categoria) {
+
+		try {
+			ObservableList<Cancion> listaMusica;
+			listaMusica = Ficheros.leeCarpetaMus(carpCanciones, categMus);
+			lblNumCanciones.setText(listaMusica.size()+" Canciones");
+
+			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
+			if(listaMusica.size()!=0 && !activo) { 
+				bFavLib.setVisible(true);
+				cancActual = listaMusica.get(0);
+				barraMusica.setProgress(0);
+				lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+				
+				String rutaArchivo = cancActual.getRuta();
+				File archivo = new File(rutaArchivo);
+				Media media = new Media(archivo.toURI().toString());
+				reproductor = new MediaPlayer(media);
+				reproductor.setOnReady(() -> {
+					duracionTotal = reproductor.getTotalDuration();
+				});
+
+			}
+			else if(listaMusica.size()==0 && !activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
+				tablaMusica.setVisible(false);
+				cancActual = null;
+				lblTitReproductor.setText("ARTISTA  |  TITULO CANCION  ");
+				barraMusica.setProgress(0);
+			}
+			else if(listaMusica.size()==0 && activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
+				tablaMusica.setVisible(false);
+			}
+
+
+			tablaMusica.setItems(listaMusica); //RELLENAR TABLA CON LOS LIBROS DE CADA CATEGORIA
+
+			tituloCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+			artistaCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getArtista()));
+			generoCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGenero()));
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
 	@FXML void clickEligeLibro(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
 		libActual = tablaLibros.getSelectionModel().getSelectedItem();
 
@@ -1320,8 +1416,8 @@ public class MenuController {
 			}
 
 			lblTituloListaLib.setText(libActual.getTitulo());
-			
-			
+
+
 			Image imgFav;
 			if(libActual.getFavorito().equalsIgnoreCase("NO")) {
 				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
@@ -1331,8 +1427,77 @@ public class MenuController {
 			}
 
 			bFavLib.setImage(imgFav);
-			
+
 		}
+	}
+
+	@FXML void clickEligeCancion(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
+		cancActual = tablaMusica.getSelectionModel().getSelectedItem();
+		if(cancActual != null) {
+			lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+			reproductor.stop();
+	
+			String rutaArchivo = cancActual.getRuta();
+			File archivo = new File(rutaArchivo);
+			Media media = new Media(archivo.toURI().toString());
+			reproductor = new MediaPlayer(media);
+	
+			bPlayMusica.setImage(imgPlayMus);
+			reproductor.setVolume(vol);
+	
+			if(timeline!=null) {
+				timeline.stop();
+			}
+			barraMusica.setProgress(0);
+	
+			reproductor.setOnReady(() -> {
+				duracionTotal = reproductor.getTotalDuration();
+				//MOSTRAR DURACION DE LA CANCION 
+				int minutos = (int) duracionTotal.toMinutes();
+				int segundos = (int) (duracionTotal.toSeconds() % 60);
+				String duracionString = String.format("%02d:%02d", minutos, segundos);
+				lblTiempoCanc.setText(duracionString);
+			});
+		}
+
+	}
+
+	void actualizaBarraMusica(Duration duracion) { //MEJORAR!!!
+
+		
+		if (timeline != null) {
+	        timeline.stop();
+	    }
+		
+		timeline = new Timeline(
+				new KeyFrame(Duration.ZERO, e -> {
+					double progress = reproductor.getCurrentTime().toMillis() / duracion.toMillis();
+
+					if(activo) {
+						duracionTotal = duracionTotal.subtract(Duration.seconds(1));
+					}
+
+					// PASAR DURACION A MINUTOS Y SEGUNDOS
+					int minutos = (int) duracionTotal.toMinutes();
+					int segundos = (int) (duracionTotal.toSeconds() % 60);
+					String duracionString = String.format("%02d:%02d", minutos, segundos);
+					//MOSTRAR DURACION DE LA CANCION 
+
+					lblTiempoCanc.setText(duracionString);				
+					barraMusica.setProgress(progress);
+
+				}),
+				new KeyFrame(Duration.seconds(1))
+				);
+		timeline.setCycleCount(Animation.INDEFINITE);
+		if(activo) {
+			timeline.play();
+		}
+		else {
+			timeline.stop();
+			barraMusica.setProgress(0);
+		}
+
 	}
 
 	@FXML void clickEligeJuego(MouseEvent event){ //CUANDO PULSAMOS UN OBJETO DE LA TABLA, COGEMOS SUS DATOS
@@ -1356,7 +1521,7 @@ public class MenuController {
 			}
 
 			lblTituloListaJue.setText(jueActual.getTitulo());
-			
+
 			Image imgFav;
 			if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
 				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
@@ -1412,20 +1577,20 @@ public class MenuController {
 
 	@FXML void clickBFavLib(MouseEvent event) { //CLICK PARA AGREGAR A FAVORITOS
 		try {
-			
-		Image imgFav;
-		if(libActual.getFavorito().equalsIgnoreCase("NO")) {
-			imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
-			libActual.setFavorito("SI");
-			c1.updateTabla("LIBROS", "FAVORITO", "SI", "ID_LIBRO = "+libActual.getID_Libro());
-		}
-		else {
-			imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
-			libActual.setFavorito("NO");
-			c1.updateTabla("LIBROS", "FAVORITO", "NO", "ID_LIBRO = "+libActual.getID_Libro());
-		}
-		
-		bFavLib.setImage(imgFav);
+
+			Image imgFav;
+			if(libActual.getFavorito().equalsIgnoreCase("NO")) {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+				libActual.setFavorito("SI");
+				c1.updateTabla("LIBROS", "FAVORITO", "SI", "ID_LIBRO = "+libActual.getID_Libro());
+			}
+			else {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+				libActual.setFavorito("NO");
+				c1.updateTabla("LIBROS", "FAVORITO", "NO", "ID_LIBRO = "+libActual.getID_Libro());
+			}
+
+			bFavLib.setImage(imgFav);
 		}
 		catch (Exception e) {
 			System.out.println("ERROR AL AÑADIR FAVORITO");
@@ -1435,20 +1600,20 @@ public class MenuController {
 
 	@FXML void clickBFavJue(MouseEvent event) { //CLICK PARA AGREGAR A FAVORITOS
 		try {
-			
-		Image imgFav;
-		if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
-			imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
-			jueActual.setFavorito("SI");
-			c1.updateTabla("JUEGOS", "FAVORITO", "SI", "ID_JUEGO = "+jueActual.getID_Juego());
-		}
-		else {
-			imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
-			jueActual.setFavorito("NO");
-			c1.updateTabla("JUEGOS", "FAVORITO", "NO", "ID_JUEGO = "+jueActual.getID_Juego());
-		}
-		
-		bFavJue.setImage(imgFav);
+
+			Image imgFav;
+			if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
+				jueActual.setFavorito("SI");
+				c1.updateTabla("JUEGOS", "FAVORITO", "SI", "ID_JUEGO = "+jueActual.getID_Juego());
+			}
+			else {
+				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
+				jueActual.setFavorito("NO");
+				c1.updateTabla("JUEGOS", "FAVORITO", "NO", "ID_JUEGO = "+jueActual.getID_Juego());
+			}
+
+			bFavJue.setImage(imgFav);
 		}
 		catch (Exception e) {
 			System.out.println("ERROR AL AÑADIR FAVORITO");
