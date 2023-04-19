@@ -146,7 +146,7 @@ public class MenuController {
 	@FXML private Pane pAjustes;
 	@FXML private Label lblColorTema;
 	@FXML private ImageView bEditarColor, bWeb, bGithub, bTwitter, bInstagram, bYoutube;
-	@FXML private Pane pPanelColores;		boolean abierto;  int color;
+	@FXML private Pane pPanelColores, pAvisoMus, pFondoAviso, pAvisoCuenta;		boolean abierto;  int color;
 	@FXML private Slider barraVolAjustes, barraVolReproductor;
 	@FXML private Label lblVolAjustes;
 
@@ -154,11 +154,10 @@ public class MenuController {
 
 
 	//BBDD
-	Conexion c1;
+	
 	Usuario u1;
 
-	public void initialize() {
-		c1 = new Conexion(); //CONECTA BBDD	
+	public void initialize() {	
 		u1 = Usuario.getUsuario(); //RECIBE EL USUARIO QUE ACABA DE INICIAR SESION
 
 		initComponents(); //INICIA TODOS LOS COMPONENTES
@@ -182,7 +181,7 @@ public class MenuController {
 		pPanelColores.setVisible(false); abierto = false;  
 
 		try { //PONE EL COLOR DE PANEL QUE QUIERA EL USUARIO
-			color=c1.consultaNum("AJUSTES", "CFONDO", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			color=Conexion.consultaNum("AJUSTES", "CFONDO", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			cambiaColorFondo();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -192,7 +191,7 @@ public class MenuController {
 		fPerfil = new Image(fotoPerfil.getImage().getUrl());
 		fPerfil1 = new Image(fotoPerfil1.getImage().getUrl());
 		try {//PONE FPERFIL QUE TENGA EL USUARIO EN SU BBDD
-			numFPerfil = c1.consultaNum("AJUSTES", "FPERFIL", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			numFPerfil = Conexion.consultaNum("AJUSTES", "FPERFIL", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			cambiaFPerfil();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -211,8 +210,8 @@ public class MenuController {
 		//MUSICA:
 
 		try {
-			vol = c1.consultaNum("AJUSTES", "VOLUMEN", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
-			carpCanciones = c1.consultaStr("AJUSTES", "CARP_MUSICA", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			vol = Conexion.consultaNum("AJUSTES", "VOLUMEN", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			carpCanciones = Conexion.consultaStr("AJUSTES", "CARP_MUSICA", "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -331,6 +330,9 @@ public class MenuController {
 		pAjustes.setVisible(true);
 
 		pPanelColores.setVisible(false);
+		pFondoAviso.setVisible(false);
+		pAvisoMus.setVisible(false);
+		pAvisoCuenta.setVisible(false);
 	}
 
 
@@ -357,7 +359,7 @@ public class MenuController {
 		cambiaFPerfil();
 
 		try {
-			c1.updateTabla("AJUSTES", "FPERFIL", numFPerfil, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			Conexion.updateTabla("AJUSTES", "FPERFIL", numFPerfil, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			cambiaFPerfil();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -373,7 +375,7 @@ public class MenuController {
 		if(!txtCambioUsuario.getText().equals("")) { //CAMBIA NICKNAME
 			String nuevoNom = txtCambioUsuario.getText();
 			try {
-				c1.updateTabla("USUARIO", "NICKNAME", nuevoNom, "ID = "+Integer.toString(u1.getID_Usuario()));
+				Conexion.updateTabla("USUARIO", "NICKNAME", nuevoNom, "ID = "+Integer.toString(u1.getID_Usuario()));
 				u1.setNickname(nuevoNom);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -385,7 +387,7 @@ public class MenuController {
 		if(!txtCambioPassword.getText().equals("")) { //CAMBIA CONTRASEÑA
 			String nuevaCon = txtCambioPassword.getText();
 			try {
-				c1.updateTabla("USUARIO", "CONTRASEÑA", nuevaCon, "ID = "+Integer.toString(u1.getID_Usuario()));
+				Conexion.updateTabla("USUARIO", "CONTRASEÑA", nuevaCon, "ID = "+Integer.toString(u1.getID_Usuario()));
 				u1.setContrasena(nuevaCon);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -396,7 +398,7 @@ public class MenuController {
 		if(!txtCambioCorreo.getText().equals("")) { //CAMBIA CORREO
 			String nuevoCorreo = txtCambioCorreo.getText();
 			try {
-				c1.updateTabla("USUARIO", "CORREO", nuevoCorreo, "ID = "+Integer.toString(u1.getID_Usuario()));
+				Conexion.updateTabla("USUARIO", "CORREO", nuevoCorreo, "ID = "+Integer.toString(u1.getID_Usuario()));
 				u1.setCorreo(nuevoCorreo);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -406,7 +408,7 @@ public class MenuController {
 
 		//CAMBIA FPERFIL
 		try {
-			c1.updateTabla("AJUSTES", "FPERFIL", numFPerfil, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			Conexion.updateTabla("AJUSTES", "FPERFIL", numFPerfil, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			cambiaFPerfil();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -617,13 +619,13 @@ public class MenuController {
 				//UPDATE DATOS LIBRO
 				libActual.setTitulo(titulo); libActual.setAutor(autor); libActual.setLanzamiento(lanzamiento); libActual.setnPaginas(pags);
 				libActual.setResumen(resumen);
-				c1.updateLibro(libActual);
+				Conexion.updateLibro(libActual);
 				lblErrorLib.setVisible(false);
 
 				//UPDATE PORTADA
 				if(cambiaPortadaLib) { //SI HAS ABIERTO EL FILE CHOOSER PARA CAMBIAR O AGREGAR PORTADA:
 					libActual.setPortada(rutaPortadaLib);
-					c1.actualizaPortadaLib(libActual, true);
+					Conexion.actualizaPortadaLib(libActual, true);
 				}
 
 
@@ -655,7 +657,7 @@ public class MenuController {
 			int lanzamiento = Integer.parseInt(txtFieldFechaLibro.getText());
 			int pags = Integer.parseInt(txtFieldPagLibro.getText());
 			String resumen = txtAreaResumenLibro.getText();
-			int id_libro = c1.consultaNum("LIBROS", "MAX(ID_LIBRO)", null) +1;
+			int id_libro = Conexion.consultaNum("LIBROS", "MAX(ID_LIBRO)", null) +1;
 
 			if(!titulo.equals("") && !autor.equals("") && lanzamiento >= 0 && pags >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN) Y NO SER NEGATIVOS
 				libActual.setTitulo(titulo); libActual.setAutor(autor); libActual.setLanzamiento(lanzamiento); libActual.setnPaginas(pags); libActual.setID_Libro(id_libro);
@@ -667,7 +669,7 @@ public class MenuController {
 					libActual.setPortada(rutaPortadaLib);
 				}
 
-				c1.agregaLibro(libActual, cambiaPortadaLib);
+				Conexion.agregaLibro(libActual, cambiaPortadaLib);
 				lblErrorLib.setVisible(false);
 			}
 			else {
@@ -690,7 +692,7 @@ public class MenuController {
 	@FXML void clickBEliminaLibro(MouseEvent event){
 		if(libActual != null) {
 			try {
-				if(c1.eliminaLibro(libActual)) {
+				if(Conexion.eliminaLibro(libActual)) {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -866,13 +868,13 @@ public class MenuController {
 				//UPDATE DATOS LIBRO
 				jueActual.setTitulo(titulo); jueActual.setPlataforma(plataforma); jueActual.setLanzamiento(lanzamiento); jueActual.sethJugadas(horas);;
 				jueActual.setResumen(resumen); jueActual.setEmpresa(empresa);
-				c1.updateJuego(jueActual);
+				Conexion.updateJuego(jueActual);
 				lblErrorJue.setVisible(false);
 
 				//UPDATE PORTADA
 				if(cambiaPortadaJue) { //SI HAS ABIERTO EL FILE CHOOSER PARA CAMBIAR O AGREGAR PORTADA:
 					jueActual.setPortada(rutaPortadaJue);
-					c1.actualizaPortadaJue(jueActual, true);
+					Conexion.actualizaPortadaJue(jueActual, true);
 				}
 
 
@@ -906,7 +908,7 @@ public class MenuController {
 			String resumen = txtAreaResumenJuego.getText();
 			int lanzamiento = Integer.parseInt(txtFieldFechaJuego.getText());
 			int horas = Integer.parseInt(txtFieldHorJuego.getText());
-			int id_juego = c1.consultaNum("JUEGOS", "MAX(ID_JUEGO)", null) +1;
+			int id_juego = Conexion.consultaNum("JUEGOS", "MAX(ID_JUEGO)", null) +1;
 
 			if(!titulo.equals("") && !plataforma.equals("") && lanzamiento >= 0 && horas >= 0) { //TODOS LOS CAMPOS DEBEN ESTAR RELLENADOS (MENOS RESUMEN) Y NO SER NEGATIVOS
 				jueActual.setTitulo(titulo); jueActual.setPlataforma(plataforma); jueActual.setLanzamiento(lanzamiento); jueActual.sethJugadas(horas);;
@@ -918,7 +920,7 @@ public class MenuController {
 					jueActual.setPortada(rutaPortadaJue);
 				}
 
-				c1.agregaJuego(jueActual, cambiaPortadaJue);
+				Conexion.agregaJuego(jueActual, cambiaPortadaJue);
 				lblErrorJue.setVisible(false);
 			}
 			else {
@@ -945,7 +947,7 @@ public class MenuController {
 	@FXML void clickBEliminaJuego(MouseEvent event){
 		if(jueActual!=null) {
 			try {
-				if(c1.eliminaJuego(jueActual)) {
+				if(Conexion.eliminaJuego(jueActual)) {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1075,8 +1077,8 @@ public class MenuController {
 	@FXML void clickBGuardarAjustes(MouseEvent event) {
 		try {
 			cambiaColorFondo();
-			c1.updateTabla("AJUSTES", "CFONDO", color, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
-			c1.updateTabla("AJUSTES", "VOLUMEN", Math.floor(barraVolAjustes.getValue()), "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			Conexion.updateTabla("AJUSTES", "CFONDO", color, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+			Conexion.updateTabla("AJUSTES", "VOLUMEN", Math.floor(barraVolAjustes.getValue()), "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 
 			vol = Math.floor(barraVolAjustes.getValue());
 			reproductor.setVolume(vol);
@@ -1088,9 +1090,21 @@ public class MenuController {
 	}
 
 	@FXML void clickBEliminarCuenta(MouseEvent event) {
+		pFondoAviso.setVisible(true);
+		pAvisoCuenta.setVisible(true);
+
+	}
+
+	@FXML void clickRechazaAvisoCuenta(MouseEvent event) {
+		pFondoAviso.setVisible(false);
+		pAvisoCuenta.setVisible(false);
+
+	}
+
+	@FXML void clickAceptaAvisoCuenta(MouseEvent event) {
 
 		try {
-			if(c1.eliminarUsuario(Usuario.getUsuario())) {
+			if(Conexion.eliminarUsuario(Usuario.getUsuario())) {
 				try {
 					clickBVolver(event);
 				} catch (IOException e) {
@@ -1099,7 +1113,7 @@ public class MenuController {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	@FXML void arrastraVolAjustes(MouseEvent event) {
@@ -1137,6 +1151,19 @@ public class MenuController {
 
 
 	@FXML void clickCarpetaCanciones(MouseEvent event) {
+		pFondoAviso.setVisible(true);
+		pAvisoMus.setVisible(true);
+
+	}
+
+	@FXML void clickRechazaAvisoMus(MouseEvent event) {
+		pFondoAviso.setVisible(false);
+		pAvisoMus.setVisible(false);
+	}
+
+	@FXML void clickAceptaAvisoMus(MouseEvent event) {
+		pFondoAviso.setVisible(false);
+		pAvisoMus.setVisible(false);
 		DirectoryChooser dChooser = new DirectoryChooser();
 		dChooser.setTitle("Selecciona una carpeta");
 
@@ -1146,7 +1173,7 @@ public class MenuController {
 			try {
 				Ficheros.creaCarpetasMus(carpCanciones);
 				System.out.println("Carpetas creadas en: "+carpCanciones);
-				c1.updateTabla("AJUSTES", "CARP_MUSICA", carpCanciones, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
+				Conexion.updateTabla("AJUSTES", "CARP_MUSICA", carpCanciones, "ID_USUARIO = "+Integer.toString(u1.getID_Usuario()));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -1154,6 +1181,11 @@ public class MenuController {
 		}
 
 	}
+
+
+
+
+
 
 
 	//FUNCIONES VARIAS 
@@ -1227,10 +1259,10 @@ public class MenuController {
 		try {
 			ObservableList<Libro> listaLibros;
 			if(categoria.equalsIgnoreCase("FAVORITOS")) {
-				listaLibros = c1.fillFavBooks(u1.getID_Usuario());
+				listaLibros = Conexion.fillFavBooks(u1.getID_Usuario());
 			}
 			else {
-				listaLibros = c1.fillListBooks(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
+				listaLibros = Conexion.fillListBooks(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
 			}
 
 			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
@@ -1291,10 +1323,10 @@ public class MenuController {
 		try {
 			ObservableList<Juego> listaJuegos; 
 			if(categoria.equalsIgnoreCase("FAVORITOS")) {
-				listaJuegos = c1.fillFavGames(u1.getID_Usuario());
+				listaJuegos = Conexion.fillFavGames(u1.getID_Usuario());
 			}
 			else {
-				listaJuegos = c1.fillListGames(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
+				listaJuegos = Conexion.fillListGames(categoria, u1.getID_Usuario()); //NOS TRAEMOS LA LISTA DE LA CONSULTA
 			}
 
 			//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
@@ -1363,7 +1395,7 @@ public class MenuController {
 				cancActual = listaMusica.get(0);
 				barraMusica.setProgress(0);
 				lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
-				
+
 				String rutaArchivo = cancActual.getRuta();
 				File archivo = new File(rutaArchivo);
 				Media media = new Media(archivo.toURI().toString());
@@ -1436,20 +1468,20 @@ public class MenuController {
 		if(cancActual != null) {
 			lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
 			reproductor.stop();
-	
+
 			String rutaArchivo = cancActual.getRuta();
 			File archivo = new File(rutaArchivo);
 			Media media = new Media(archivo.toURI().toString());
 			reproductor = new MediaPlayer(media);
-	
+
 			bPlayMusica.setImage(imgPlayMus);
 			reproductor.setVolume(vol);
-	
+
 			if(timeline!=null) {
 				timeline.stop();
 			}
 			barraMusica.setProgress(0);
-	
+
 			reproductor.setOnReady(() -> {
 				duracionTotal = reproductor.getTotalDuration();
 				//MOSTRAR DURACION DE LA CANCION 
@@ -1458,17 +1490,18 @@ public class MenuController {
 				String duracionString = String.format("%02d:%02d", minutos, segundos);
 				lblTiempoCanc.setText(duracionString);
 			});
+			activo = false;
 		}
 
 	}
 
 	void actualizaBarraMusica(Duration duracion) { //MEJORAR!!!
 
-		
+
 		if (timeline != null) {
-	        timeline.stop();
-	    }
-		
+			timeline.stop();
+		}
+
 		timeline = new Timeline(
 				new KeyFrame(Duration.ZERO, e -> {
 					double progress = reproductor.getCurrentTime().toMillis() / duracion.toMillis();
@@ -1582,12 +1615,12 @@ public class MenuController {
 			if(libActual.getFavorito().equalsIgnoreCase("NO")) {
 				imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
 				libActual.setFavorito("SI");
-				c1.updateTabla("LIBROS", "FAVORITO", "SI", "ID_LIBRO = "+libActual.getID_Libro());
+				Conexion.updateTabla("LIBROS", "FAVORITO", "SI", "ID_LIBRO = "+libActual.getID_Libro());
 			}
 			else {
 				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
 				libActual.setFavorito("NO");
-				c1.updateTabla("LIBROS", "FAVORITO", "NO", "ID_LIBRO = "+libActual.getID_Libro());
+				Conexion.updateTabla("LIBROS", "FAVORITO", "NO", "ID_LIBRO = "+libActual.getID_Libro());
 			}
 
 			bFavLib.setImage(imgFav);
@@ -1605,12 +1638,12 @@ public class MenuController {
 			if(jueActual.getFavorito().equalsIgnoreCase("NO")) {
 				imgFav = new Image(getClass().getResourceAsStream("/icons/favRojo.png"));
 				jueActual.setFavorito("SI");
-				c1.updateTabla("JUEGOS", "FAVORITO", "SI", "ID_JUEGO = "+jueActual.getID_Juego());
+				Conexion.updateTabla("JUEGOS", "FAVORITO", "SI", "ID_JUEGO = "+jueActual.getID_Juego());
 			}
 			else {
 				imgFav = new Image(getClass().getResourceAsStream("/icons/favBlanco.png"));
 				jueActual.setFavorito("NO");
-				c1.updateTabla("JUEGOS", "FAVORITO", "NO", "ID_JUEGO = "+jueActual.getID_Juego());
+				Conexion.updateTabla("JUEGOS", "FAVORITO", "NO", "ID_JUEGO = "+jueActual.getID_Juego());
 			}
 
 			bFavJue.setImage(imgFav);

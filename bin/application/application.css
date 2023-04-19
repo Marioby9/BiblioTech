@@ -108,6 +108,32 @@ TextArea {
 	-fx-scale-y: 1.08;
 }
 
+/*-------------------------------------------------------------------*/
+
+#bAceptaMus {
+	/*	-fx-background-color: #62B71E;*/
+	-fx-background-color: GREEN;
+	-fx-text-fill: black;
+}
+
+#bAceptaMus:hover {
+	-fx-background-color: #80FA1F;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+}
+#bRechazaMus {
+	-fx-background-color: #E0BC1A;
+	-fx-text-fill: black;
+}
+
+#bRechazaMus:hover {
+	-fx-background-color: #C47F0E;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+}
+
+
+/*-----------------------------------------------------*/
 #bGuardarAjustes {
 	/*	-fx-background-color: #62B71E;*/
 	-fx-background-color: GREEN;
@@ -119,6 +145,7 @@ TextArea {
 	-fx-scale-x: 1.08;
 	-fx-scale-y: 1.08;
 }
+
 
 /*SLIDER VOLUMEN POR DEFECTO */
 #sldVolumen {

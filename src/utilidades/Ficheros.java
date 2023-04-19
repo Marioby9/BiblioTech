@@ -20,8 +20,6 @@ import javafx.collections.ObservableList;
 
 public class Ficheros {
 
-	public static void main(String[] args) {
-	}
 	
 	//TEMAS CARPETAS MUSICA
 	

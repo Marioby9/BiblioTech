@@ -23,10 +23,6 @@ public class Conexion {
 	private static String url = "jdbc:oracle:thin:@localhost:1521:"+bd;
 	static Connection connection = null;
 
-	static int Id;
-	static String contrasena;
-	static String nickname;
-	static String correo;
 
 	public static void conectar() {
 		try {
@@ -43,7 +39,7 @@ public class Conexion {
 
 	//CONSULTAS TABLA USUARIO
 	//HACER QUE RECIBA LAS COLUMNAS QUE QUIERA EL USUARIO
-	public String consultaStr(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS 
+	public static String consultaStr(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS 
 		String str = "";
 
 		st = connection.createStatement();
@@ -67,7 +63,7 @@ public class Conexion {
 	}
 
 
-	public int consultaNum(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS
+	public static int consultaNum(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS
 		int num = 0;
 
 		st = connection.createStatement();
@@ -92,7 +88,7 @@ public class Conexion {
 
 
 	//REGISTRAR Y ELIMINAR USUARIO 
-	public boolean registraUsuario (Usuario u) throws SQLException{ //MODIFICAR
+	public static boolean registraUsuario (Usuario u) throws SQLException{ //MODIFICAR
 		boolean insertado = false;
 
 		String sql= "insert into Usuario (ID, Nickname, contraseña, correo) values(?, ? , ? , ?)";
@@ -120,7 +116,7 @@ public class Conexion {
 		return insertado;
 	}
 
-	public boolean eliminarUsuario (Usuario u) throws SQLException{ //MODIFICAR
+	public static boolean eliminarUsuario (Usuario u) throws SQLException{ //MODIFICAR
 
 		boolean eliminado = false;
 
@@ -137,11 +133,12 @@ public class Conexion {
 
 
 	//QUERYS DEL LOGIN
-	public boolean compruebaLogIn(String nombre, String password) throws SQLException  {  //MODIFICAR
+	public static boolean compruebaLogIn(String nombre, String password) throws SQLException  {  //MODIFICAR
 
 		boolean accede = false;
-
-
+		String nickname;
+		String contrasena;
+		
 		st = connection.createStatement();
 		ResultSet rs = st.executeQuery("select nickname, contraseña from usuario");
 
@@ -161,7 +158,7 @@ public class Conexion {
 	}
 
 	//CAMBIAR VALORES PARA TABLAS
-	public boolean updateTabla(String tabla, String columna, Object valor, String condicion) throws SQLException{
+	public static boolean updateTabla(String tabla, String columna, Object valor, String condicion) throws SQLException{
 		boolean updated = false;
 
 
@@ -177,7 +174,7 @@ public class Conexion {
 
 	//LIBROS:
 
-	public boolean agregaLibro(Libro libro, boolean portada) throws SQLException {
+	public static boolean agregaLibro(Libro libro, boolean portada) throws SQLException {
 		boolean insertado = false;
 		String sql= "INSERT INTO LIBROS (ID_LIBRO, ID_USUARIO, TITULO, AUTOR, GENERO, N_PAGINAS, ANO_LANZ, RESUMEN, TERMINADO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		pst = connection.prepareStatement(sql);
@@ -206,7 +203,7 @@ public class Conexion {
 		return insertado;
 	}
 
-	public boolean updateLibro(Libro libro) throws SQLException{ 
+	public static boolean updateLibro(Libro libro) throws SQLException{ 
 		boolean updated = false;
 
 		String sql= "UPDATE LIBROS SET TITULO = ?, AUTOR = ?, ANO_LANZ = ?, N_PAGINAS = ?, RESUMEN = ?  WHERE ID_LIBRO = "+libro.getID_Libro();
@@ -223,7 +220,7 @@ public class Conexion {
 		return updated;
 	}
 
-	public boolean actualizaPortadaLib(Libro libro, boolean portada) throws SQLException {
+	public static boolean actualizaPortadaLib(Libro libro, boolean portada) throws SQLException {
 		boolean updated = false;
 		String sql;
 		if(portada) {
@@ -247,7 +244,7 @@ public class Conexion {
 	
 	
 	
-	public boolean eliminaLibro(Libro libro) throws SQLException {
+	public static boolean eliminaLibro(Libro libro) throws SQLException {
 		boolean eliminado = false;
 
 		//LOS LIBROS POR DEFECTO NO SE BORRAN
@@ -262,7 +259,7 @@ public class Conexion {
 	}
 
 
-	public ObservableList<Libro> fillListBooks(String genero, int id_user) throws SQLException{ 
+	public static ObservableList<Libro> fillListBooks(String genero, int id_user) throws SQLException{ 
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, terminado, favorito;
 		int id_libro, id_usuario, n_pags, ano_lanz;
@@ -297,7 +294,7 @@ public class Conexion {
 	}
 	
 	
-	public ObservableList<Libro> fillFavBooks(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
+	public static ObservableList<Libro> fillFavBooks(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, terminado, genero;
 		int id_libro, id_usuario, n_pags, ano_lanz;
@@ -333,7 +330,7 @@ public class Conexion {
 	
 	//JUEGOS
 	
-	public boolean agregaJuego(Juego juego, boolean portada) throws SQLException {
+	public static boolean agregaJuego(Juego juego, boolean portada) throws SQLException {
 		boolean insertado = false;
 		String sql= "INSERT INTO JUEGOS (ID_JUEGO, ID_USUARIO, TITULO, EMPRESA, PLATAFORMA, GENERO, H_JUGADAS, LANZAMIENTO, RESUMEN, TERMINADO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		pst = connection.prepareStatement(sql);
@@ -363,7 +360,7 @@ public class Conexion {
 		return insertado;
 	}
 
-	public boolean updateJuego(Juego juego) throws SQLException{ 
+	public static boolean updateJuego(Juego juego) throws SQLException{ 
 		boolean updated = false;
 
 		String sql= "UPDATE JUEGOS SET TITULO = ?, PLATAFORMA = ?, EMPRESA = ?, LANZAMIENTO = ?, H_JUGADAS = ?, RESUMEN = ?  WHERE ID_JUEGO = "+ juego.getID_Juego();
@@ -382,7 +379,7 @@ public class Conexion {
 		return updated;
 	}
 
-	public boolean actualizaPortadaJue(Juego juego, boolean portada) throws SQLException {
+	public static boolean actualizaPortadaJue(Juego juego, boolean portada) throws SQLException {
 		boolean updated = false;
 		String sql;
 		if(portada) {
@@ -404,7 +401,7 @@ public class Conexion {
 		return updated;
 	}
 	
-	public boolean eliminaJuego(Juego juego) throws SQLException {
+	public static boolean eliminaJuego(Juego juego) throws SQLException {
 		boolean eliminado = false;
 
 		//LOS LIBROS POR DEFECTO NO SE BORRAN
@@ -420,7 +417,7 @@ public class Conexion {
 	
 
 	
-	public ObservableList<Juego> fillListGames(String genero, int id_user) throws SQLException{ 
+	public static ObservableList<Juego> fillListGames(String genero, int id_user) throws SQLException{ 
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, terminado, empresa, favorito;
 		int id_Juego, id_usuario, ano_lanz;
@@ -458,7 +455,7 @@ public class Conexion {
 		return listaJuegos;
 	}
 	
-	public ObservableList<Juego> fillFavGames(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
+	public static ObservableList<Juego> fillFavGames(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, terminado, empresa, genero;
 		int id_Juego, id_usuario, ano_lanz;
