@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pRootMusica" prefHeight="650.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MusicaController">
+<AnchorPane fx:id="pRootMusica" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MusicaController">
    <children>
-      <Pane fx:id="pMusica" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+      <Pane fx:id="pMusica" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
          <children>
             <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -107,7 +107,7 @@
                               <ColorAdjust brightness="-1.0" />
                            </effect>
                         </Label>
-                        <ImageView id="botones" fitHeight="44.0" fitWidth="43.0" layoutX="438.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="botones" fitHeight="44.0" fitWidth="43.0" layoutX="438.0" layoutY="158.0" onMouseClicked="#clickPlayLista" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/playLista.png" />
                            </image>
@@ -165,7 +165,7 @@
                                     <Image url="@../icons/repetir.png" />
                                  </image>
                               </ImageView>
-                              <Slider id="sldVolReproductor" fx:id="barraVolReproductor" layoutX="115.0" layoutY="72.0">
+                              <Slider id="sldVolReproductor" fx:id="barraVolReproductor" layoutX="115.0" layoutY="72.0" onMouseDragged="#arrastraVolRepro">
                                  <styleClass>
                                     <String fx:value="thumb" />
                                     <String fx:value="track" />

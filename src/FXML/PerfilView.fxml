@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pRootPerfil" prefHeight="650.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PerfilController">
+<AnchorPane fx:id="pRootPerfil" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PerfilController">
    <children>
-      <Pane fx:id="pPerfil" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+      <Pane fx:id="pPerfil" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
          <children>
             <Label fx:id="lblBienvenidoPerfil" layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Bienvenido, NomUsuario" textFill="WHITE">
                <font>

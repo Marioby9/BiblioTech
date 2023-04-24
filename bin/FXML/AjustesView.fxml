@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pRootAjustes" prefHeight="650.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjustesController">
+<AnchorPane fx:id="pRootAjustes" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AjustesController">
    <children>
-      <Pane fx:id="pAjustes" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+      <Pane fx:id="pAjustes" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
          <children>
             <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
                <font>

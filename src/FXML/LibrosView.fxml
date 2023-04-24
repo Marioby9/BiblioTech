@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pRootLibros" prefHeight="650.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LibrosController">
+<AnchorPane fx:id="pRootLibros" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LibrosController">
    <children>
-      <Pane fx:id="pLibros" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+      <Pane fx:id="pLibros" prefHeight="650.0" prefWidth="640.0">
          <children>
             <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>

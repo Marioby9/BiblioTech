@@ -77,7 +77,7 @@ public class MusicaController {
 			categMus = "REGGAETON";
 			cabeceraMus.setStyle("-fx-background-color: linear-gradient(to bottom, #ff748d, #ff7daf);"+estiloCabMus);
 			iconoLista = new Image(getClass().getResourceAsStream("/icons/reggaeton.png"));
-			
+
 		}
 		else if(event.getSource()==bMusPop) {
 			categMus = "POP";
@@ -117,6 +117,58 @@ public class MusicaController {
 	}   
 
 
+	@FXML void arrastraVolRepro(MouseEvent event) {
+		if(activo) {
+			double vol = Math.floor(barraVolReproductor.getValue())/100;
+			reproductor.setVolume(vol);
+		}
+	}
+
+
+
+	@FXML void clickPlayLista(MouseEvent event) {
+		if(tablaMusica.getItems().size() != 0) {
+			tablaMusica.getSelectionModel().select(0);
+			cancActual = tablaMusica.getItems().get(0);
+			lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
+			reproductor.stop();
+
+			String rutaArchivo = cancActual.getRuta();
+			File archivo = new File(rutaArchivo);
+			Media media = new Media(archivo.toURI().toString());
+			reproductor = new MediaPlayer(media);
+
+			bPlayMusica.setImage(imgPlayMus);
+			reproductor.setVolume(menu.vol);
+
+			if(timeline!=null) {
+				timeline.stop();
+			}
+			barraMusica.setProgress(0);
+
+			reproductor.setOnReady(() -> {
+				duracionTotal = reproductor.getTotalDuration();
+				//MOSTRAR DURACION DE LA CANCION 
+				int minutos = (int) duracionTotal.toMinutes();
+				int segundos = (int) (duracionTotal.toSeconds() % 60);
+				String duracionString = String.format("%02d:%02d", minutos, segundos);
+				lblTiempoCanc.setText(duracionString);
+			});
+			activo = true;
+			inBucle = false;
+			btnBucle.setImage(imgBucleBlanco);
+
+
+			reproductor.setOnEndOfMedia(null);
+			bPlayMusica.setImage(imgPauseMus);
+			reproductor.play();
+			actualizaBarraMusica(duracionTotal);
+
+
+		}
+
+	}
+
 
 	//MEDIAPLAYER
 	@FXML void clickBPlayMusica(MouseEvent event) {
@@ -133,6 +185,7 @@ public class MusicaController {
 			activo = false;
 			bPlayMusica.setImage(imgPlayMus);
 			reproductor.pause();
+
 		}
 
 	} 
@@ -227,6 +280,7 @@ public class MusicaController {
 			inBucle = true;
 			reproductor.setOnEndOfMedia(() -> {
 				reproductor.seek(Duration.ZERO);
+
 				barraMusica.setProgress(0);
 				reproductor.play();
 

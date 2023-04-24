@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pRootJuegos" prefHeight="650.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.JuegosController">
+<AnchorPane fx:id="pRootJuegos" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.JuegosController">
    <children>
-      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+      <Pane fx:id="pJuegos" prefHeight="650.0" prefWidth="640.0">
          <children>
             <Pane prefHeight="650.0" prefWidth="640.0">
                <children>

@@ -136,9 +136,10 @@ public class MenuController {
 			pAjustes = ajustesController.getPane();
 			pContenido.getChildren().add(pAjustes);
 			pAjustes.setLayoutX(0); pAjustes.setLayoutY(0);
-
+			
 			ajustesController.cambiaColorFondo();
 			ajustesController.barraVolAjustes.setValue(vol);
+			ajustesController.setMusicaController(musicaController);
 			ajustesController.lblVolAjustes.setText(Integer.toString((int)(Math.floor(ajustesController.barraVolAjustes.getValue()))));
 			vol /= 100; //DIVIDIMOS EL VOLUMEN ENTRE 100 PORQUE LA FUNCION .setVolume(vol) RECIBE UN DOUBLE
 

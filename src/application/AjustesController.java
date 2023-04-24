@@ -99,7 +99,10 @@ public class AjustesController {
 
 			menu.vol = Math.floor(barraVolAjustes.getValue());
 
-			musicaController.reproductor.setVolume(menu.vol);
+			if(musicaController.reproductor != null) { //ESTA LINEA NO FUNCIONA
+				musicaController.reproductor.setVolume(menu.vol);
+			}
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -223,7 +226,9 @@ public class AjustesController {
 		this.menu = menu;
 	}
 
-
+	public void setMusicaController(MusicaController musicaController) {
+		this.musicaController = musicaController;
+	}
 
 
 
