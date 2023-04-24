@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pRootJuegos" prefHeight="650.0" prefWidth="1000.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.JuegosController">
+   <children>
+      <Pane fx:id="pJuegos" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+         <children>
+            <Pane prefHeight="650.0" prefWidth="640.0">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pListaJueIndiv.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pListaJuegos.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueFavoritos" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="26.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueAccion" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="152.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueDeportes" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="280.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueTerror" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="408.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bJueShooter" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="537.0" onMouseClicked="#clickListaJuegos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/controller.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pListaJuegos" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pListaJueIndiv.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="tablaJuegos" layoutX="25.0" layoutY="282.0" onMouseClicked="#clickEligeJuego" prefHeight="340.0" prefWidth="592.0">
+                     <columns>
+                        <TableColumn fx:id="tituloJue" prefWidth="188.79998779296875" text="TITULO" />
+                        <TableColumn fx:id="plataformaJue" prefWidth="186.4000244140625" text="PLATAFORMA" />
+                        <TableColumn fx:id="fechaJue" prefWidth="100.0" text="AÑO" />
+                        <TableColumn fx:id="horasJue" prefWidth="114.4000244140625" text="HORAS" />
+                     </columns>
+                     <styleClass>
+                        <String fx:value="table-cell" />
+                        <String fx:value="tablaLibros" />
+                        <String fx:value="column-header-background" />
+                        <String fx:value="column-header" />
+                        <String fx:value="row-cell" />
+                        <String fx:value="cell" />
+                        <String fx:value="filler" />
+                        <String fx:value="label" />
+                        <String fx:value="scroll-bar" />
+                     </styleClass>
+                  </TableView>
+                  <ImageView id="bPerfil" fitHeight="50.0" fitWidth="41.0" layoutX="504.0" layoutY="218.0" onMouseClicked="#refreshTablaJue" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/refresh.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="addGame" fitHeight="41.0" fitWidth="41.0" layoutX="560.0" layoutY="218.0" onMouseClicked="#agregaSinglePaneJue" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/addGame.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="31.0" layoutY="36.0" prefHeight="220.0" prefWidth="205.0" style="-fx-border-width: 5px; -fx-border-color: black;">
+                     <children>
+                        <ImageView fx:id="portadaListaJue" fitHeight="212.0" fitWidth="197.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView id="botones" fx:id="bFavJue" fitHeight="50.0" fitWidth="41.0" layoutX="170.0" layoutY="187.0" onMouseClicked="#clickBFavJue" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/favBlanco.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblTituloListaJue" alignment="CENTER" layoutX="257.0" layoutY="36.0" prefHeight="62.0" prefWidth="360.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-background-color: white; -fx-text-fill: black; -fx-border-radius: 15; -fx-background-radius: 15;" text="TITULO" underline="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="26.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </Label>
+                  <Pane id="verListView" layoutX="257.0" layoutY="105.0" onMouseClicked="#showSinglePaneJue" prefHeight="41.0" prefWidth="205.0" styleClass="verListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="30.0" prefWidth="137.0" style="-fx-text-fill: BLACK;" text="VER FICHA">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="19.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/eye.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="257.0" layoutY="160.0" onMouseClicked="#editSinglePaneJue" prefHeight="41.0" prefWidth="205.0" styleClass="editListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="30.0" prefWidth="137.0" style="-fx-text-fill: BLACK;" text="EDITAR">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/editBook.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="257.0" layoutY="215.0" onMouseClicked="#clickBEliminaJuego" prefHeight="41.0" prefWidth="205.0" styleClass="deleteListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="30.0" prefWidth="137.0" style="-fx-text-fill: BLACK;" text="ELIMINAR">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="21.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/deleteBook.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pFondoAvisoJue" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
+                  <Pane fx:id="pAvisoJue" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../backgrounds/avisoBorraJuego.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="bAceptaMus" alignment="CENTER" layoutX="366.0" layoutY="251.0" onMouseClicked="#clickAceptaAvisoJue" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="bRechazaMus" alignment="CENTER" layoutX="84.0" layoutY="251.0" onMouseClicked="#clickRechazaAvisoJue" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pJuegoIndiv" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/ficha-juego.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="botones" fx:id="btnBackPaneJuegos" fitHeight="50.0" fitWidth="58.0" layoutX="564.0" layoutY="586.0" onMouseClicked="#backSinglePane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/flechaBack.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblTituloJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="90.0" prefHeight="50.0" prefWidth="280.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldTitJuego" layoutX="291.0" layoutY="93.0" prefHeight="45.0" prefWidth="277.0" promptText="Nuevo Titulo" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblCompaniaJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="176.0" prefHeight="50.0" prefWidth="280.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldCompaniaJuegoInd" layoutX="291.0" layoutY="178.0" prefHeight="45.0" prefWidth="277.0" promptText="Nueva Compañía" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblNHorasJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="272.0" prefHeight="33.0" prefWidth="90.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldHorJuego" layoutX="177.0" layoutY="271.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="19.0" prefWidth="90.0" promptText="HH" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblYearJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="260.0" prefHeight="50.0" prefWidth="280.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldFechaJuego" layoutX="291.0" layoutY="263.0" prefHeight="43.0" prefWidth="277.0" promptText="Nueva Fecha" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblGeneroJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="484.0" prefHeight="41.0" prefWidth="240.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldGeneroJuego" layoutX="326.0" layoutY="487.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="242.0" promptText="Nuevo Genero" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fx:id="portadaJuego" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" onMouseClicked="#cambiaPortadaJuego" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea fx:id="txtAreaResumenJuego" layoutX="71.0" layoutY="369.0" prefHeight="113.0" prefWidth="496.0" promptText="Nuevo Resumen" visible="false" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="lblResumenJuegoInd" alignment="TOP_LEFT" layoutX="71.0" layoutY="369.0" prefHeight="113.0" prefWidth="496.0" text="Label" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="17.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <Label fx:id="lblPlataformaJuegoInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="521.0" prefHeight="41.0" prefWidth="240.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="txtFieldPlataformaJuego" layoutX="326.0" layoutY="523.0" prefHeight="35.0" prefWidth="242.0" promptText="Nueva Plataforma" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Pane id="verListView" fx:id="bGuardaEditaJuego" layoutX="207.0" layoutY="594.0" onMouseClicked="#clickGuardaJuegoEditado" prefHeight="41.0" prefWidth="224.0" styleClass="verListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="46.0" layoutY="5.0" prefHeight="30.0" prefWidth="171.0" style="-fx-text-fill: BLACK;" text="GUARDAR JUEGO">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/editBook.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane id="verListView" fx:id="bGuardaAgregaJuego" layoutX="211.0" layoutY="594.0" onMouseClicked="#clickGuardaJuegoAgregado" prefHeight="41.0" prefWidth="217.0" styleClass="verListview" visible="false">
+                     <children>
+                        <Label alignment="CENTER" layoutX="46.0" layoutY="5.0" prefHeight="30.0" prefWidth="158.0" style="-fx-text-fill: BLACK;" text="AÑADIR JUEGO">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/addNegro.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblErrorJue" alignment="CENTER" layoutX="14.0" layoutY="599.0" prefHeight="30.0" prefWidth="186.0" style="-fx-border-width: 3;" text="ERROR: No se pudo añadir" underline="true" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

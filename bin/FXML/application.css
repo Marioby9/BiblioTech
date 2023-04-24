@@ -44,7 +44,7 @@ TextArea {
 }
 
 #fperfil {
-	-fx-transition: transform 0.1s;
+	-fx-transition: transform 0.7s;
 }
 
 #fperfil:hover {
@@ -166,33 +166,27 @@ TextArea {
 }
 
 /*SLIDER VOLUMEN REPRODUCTOR*/
+#sldVolReproductor {
+	-fx-pref-width: 200px;
+	
+}
+
 #sldVolReproductor .track {
-    -fx-background-color: WHITE;
-    -fx-background-insets: 0;
+	-fx-background-color: linear-gradient(to left, green, #71FF00, white);
+	-fx-background-radius: 0;
+	-fx-pref-height: 12px;
+	
 }
 
 #sldVolReproductor .thumb {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 50%;
-    -fx-padding: 5px;
+	-fx-pref-height: 25px;
+	-fx-pref-width: 10px;
+	-fx-background-color: white;
+	-fx-border-color: black;
+	-fx-border-width: 1px;
+	-fx-background-radius: 0;
 }
-
-#sldVolReproductor .thumb:hover {
-    -fx-background-color: GREEN;
-}
-
-#sldVolReproductor .thumb:pressed {
-    -fx-background-color: GREEN;
-}
-
-.slider .thumb .thumb-area {
-    -fx-background-color: green;
-}
-.slider .thumb .thumb-overlay {
-    -fx-background-color: green;
-}
-
-
+/********************************************/
 .verListview{
 	-fx-background-color: white;
 	-fx-background-radius: 25px;
@@ -309,6 +303,7 @@ TextArea {
 .tablaMusica .column-header, .tablaMusica .filler{
 	-fx-border-width: 0 0 10 0;
 	-fx-background-color: transparent;
+	-fx-text-fill: BLACK;
 	-fx-font-weight: bold;
 	-fx-font-size: 20px;
 }

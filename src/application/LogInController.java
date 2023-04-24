@@ -149,7 +149,7 @@ public class LogInController{
 				Usuario.setUsuario(u1); 
 
 				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuView.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/MenuView.fxml"));
 					Parent root = loader.load();
 					MenuController controlador = loader.getController();
 

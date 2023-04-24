@@ -17,10 +17,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage ventana) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("LogInView.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
 			Scene scene = new Scene(root);
 
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/FXML/application.css").toExternalForm());
 			ventana.setResizable(false);
 			//ventana.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
 			ventana.setScene(scene);

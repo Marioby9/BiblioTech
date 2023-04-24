@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pFondoMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #002c43;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
+   <children>
+      <Pane prefHeight="650.0" prefWidth="360.0">
+         <children>
+            <ImageView fx:id="fotoPerfil1" fitHeight="180.0" fitWidth="180.0" layoutX="90.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/logAzulSF.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgFondoMenu" fitHeight="650.0" fitWidth="360.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/panelMenu.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblNomUsuario" alignment="CENTER" layoutX="105.0" layoutY="254.0" prefHeight="29.0" prefWidth="150.0" text="NomUsuario" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Pane id="panelP" layoutY="315.0" onMouseClicked="#clickBPerfil" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="30.0" prefWidth="65.0" text="Perfil" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/profile.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="375.0" onMouseClicked="#clickBLibros" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="7.0" prefHeight="30.0" prefWidth="65.0" text="Libros" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/libro.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="435.0" onMouseClicked="#clickBJuegos" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="35.0" prefWidth="76.0" text="Juegos" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/juegos.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="495.0" onMouseClicked="#clickBMusica" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="35.0" prefWidth="76.0" text="Música" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/musica.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="panelP" layoutY="555.0" onMouseClicked="#clickBAjustes" prefHeight="50.0" prefWidth="360.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="8.0" prefHeight="35.0" prefWidth="76.0" text="Ajustes" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="102.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/rueda.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView id="bPerfil" fx:id="bVolver" fitHeight="41.0" fitWidth="49.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#clickBVolver" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="pContenido" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" />
+   </children>
+</AnchorPane>
