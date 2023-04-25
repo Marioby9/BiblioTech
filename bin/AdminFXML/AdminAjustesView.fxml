@@ -98,25 +98,6 @@
                </font>
             </Label>
             <Pane fx:id="pFondoAviso" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
-            <Pane fx:id="pAvisoMus" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
-               <children>
-                  <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../backgrounds/avisoCarpMusica.png" />
-                     </image>
-                  </ImageView>
-                  <Label id="bAceptaMus" alignment="CENTER" layoutX="368.0" layoutY="271.0" onMouseClicked="#clickAceptaAvisoMus" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label id="bRechazaMus" alignment="CENTER" layoutX="86.0" layoutY="271.0" onMouseClicked="#clickRechazaAvisoMus" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
             <Pane fx:id="pAvisoCuenta" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
                <children>
                   <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">

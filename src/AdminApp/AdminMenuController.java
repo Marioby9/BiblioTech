@@ -81,17 +81,17 @@ public class AdminMenuController {
 			adminPerfilController.cambiaFPerfil();
 
 			
-//			//AJUSTES
-//			FXMLLoader loaderAjustes = new FXMLLoader(getClass().getResource("/FXML/AjustesView.fxml"));
-//			loaderAjustes.load();
-//			adminAjustesController = loaderAjustes.getController();
-//			adminAjustesController.setMenuController(this);
-//			pAjustes = adminAjustesController.getPane();
-//			pContenido.getChildren().add(pAjustes);
-//			pAjustes.setLayoutX(0); pAjustes.setLayoutY(0);
-//			
-//			adminAjustesController.cambiaColorFondo();
-//		
+			//AJUSTES
+			FXMLLoader loaderAjustes = new FXMLLoader(getClass().getResource("/AdminFXML/AdminAjustesView.fxml"));
+			loaderAjustes.load();
+			adminAjustesController = loaderAjustes.getController();
+			adminAjustesController.setMenuController(this);
+			pAjustes = adminAjustesController.getPane();
+			pContenidoMenu.getChildren().add(pAjustes);
+			pAjustes.setLayoutX(0); pAjustes.setLayoutY(0);
+			
+			adminAjustesController.cambiaColorFondo();
+		
 			
 
 
@@ -103,7 +103,7 @@ public class AdminMenuController {
 
 		pFondoMenu.setVisible(true);
 		pPerfil.setVisible(true);
-		//pAjustes.setVisible(false);
+		pAjustes.setVisible(false);
 		lblNomUsuario.setText(u1.getNickname());
 
 		
@@ -144,30 +144,31 @@ public class AdminMenuController {
 		pPerfil.setVisible(true);
 		pAjustes.setVisible(false);
 
-
 	}
 
 	@FXML void clickBContenido(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pAjustes.setVisible(false);
 
 	}
 
 	@FXML void clickBUsuarios(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pAjustes.setVisible(false);
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pAjustes.setVisible(false);
 
 	}
 
 	@FXML void clickBAjustes(MouseEvent event) {
 		pPerfil.setVisible(false);
-//		pAjustes.setVisible(true);
-//		ajustesController.pPanelColores.setVisible(false);
-//		ajustesController.pFondoAviso.setVisible(false);
-//		ajustesController.pAvisoMus.setVisible(false);
-//		ajustesController.pAvisoCuenta.setVisible(false);
+		pAjustes.setVisible(true);
+		adminAjustesController.pPanelColores.setVisible(false);
+		adminAjustesController.pFondoAviso.setVisible(false);
+		adminAjustesController.pAvisoCuenta.setVisible(false);
 	}
 
 	
