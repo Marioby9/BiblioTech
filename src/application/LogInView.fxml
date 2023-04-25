@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="pAncla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #00B4FF;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogInController">
+   <children>
+      <Pane id="pFondo" fx:id="pFondoDer" layoutX="588.0" prefHeight="650.0" prefWidth="419.0" style="-fx-background-color: #00B4FF;">
+         <children>
+            <ImageView id="logoPDer" fitHeight="392.0" fitWidth="425.0" layoutX="-24.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/principalSF.png" />
+               </image>
+            </ImageView>
+            <ImageView id="botones" fx:id="bVolverIni" fitHeight="49.0" fitWidth="49.0" layoutX="361.0" layoutY="596.0" onMouseClicked="#clickbVolverIni" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/flechaBack.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane id="pFondoder" fx:id="pFondoIzq" prefHeight="650.0" prefWidth="412.0" style="-fx-background-color: #00B4FF;">
+         <children>
+            <ImageView id="logoPIzq" fitHeight="392.0" fitWidth="425.0" layoutX="31.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/principalSF.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane id="pInicioSesion" fx:id="pIncioSesion" prefHeight="650.0" prefWidth="587.0" style="-fx-background-color: #00B4FF;">
+         <children>
+            <Pane layoutX="64.0" layoutY="55.0" prefHeight="540.0" prefWidth="460.0" style="-fx-border-width: 6px; -fx-border-color: BLACK; -fx-border-radius: 40px; -fx-background-color: WHITE; -fx-background-radius: 50px;">
+               <children>
+                  <Pane layoutX="94.0" layoutY="140.0" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+                     <children>
+                        <TextField fx:id="txtUsuISes" layoutX="33.0" layoutY="2.0" prefHeight="31.0" prefWidth="234.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20PX;" />
+                        <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/user-negro.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="94.0" layoutY="252.0" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+                     <children>
+                        <PasswordField fx:id="txtPassISes" layoutX="33.0" layoutY="2.0" prefHeight="31.0" prefWidth="234.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20PX;" />
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/bloqueado.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblshowPassLogin" layoutX="37.0" layoutY="5.0" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: WHITE;" />
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="imgShowPassLogin" fitHeight="25.0" fitWidth="26.0" layoutX="372.0" layoutY="258.0" onMousePressed="#showPassLogin" onMouseReleased="#stopShowPassLogin" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/eye.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblErrorInicio" alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="313.0" prefHeight="17.0" prefWidth="238.0" textFill="#d11d1d">
+                     <font>
+                        <Font name="Arial" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label id="nomUsu" alignment="CENTER" layoutX="224.0" layoutY="150.0" prefHeight="38.0" prefWidth="139.0" text="Nombre Usuario:">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="224.0" layoutY="248.0" prefHeight="38.0" prefWidth="139.0" text="Contraseña:">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+            </Label>
+            <Button id="boton" fx:id="bISesionDef" layoutX="168.0" layoutY="419.0" mnemonicParsing="false" onAction="#ClickbIniDef" prefHeight="49.0" prefWidth="251.0" style="-fx-border-color: black; -fx-background-radius: 25px; -fx-border-radius: 25px; -fx-border-width: 2px;" text="INICIAR SESIÓN">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button id="backToRegis" fx:id="backToRegis" alignment="CENTER" layoutX="355.0" layoutY="535.0" mnemonicParsing="false" onAction="#clickBackRegis" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: WHITE;" text="Debo registrarme primero" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane id="pInicioSesion" fx:id="pRegistro" layoutX="411.0" prefHeight="650.0" prefWidth="587.0" style="-fx-background-color: #00B4FF;">
+         <children>
+            <Pane layoutX="42.0" layoutY="29.0" prefHeight="592.0" prefWidth="503.0" style="-fx-border-width: 6px; -fx-border-color: BLACK; -fx-border-radius: 40px; -fx-background-color: WHITE; -fx-background-radius: 46px;">
+               <children>
+                  <Pane layoutX="116.0" layoutY="99.0" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/user-negro.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtUsuReg" layoutX="33.0" layoutY="2.0" prefHeight="31.0" prefWidth="234.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20px;" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="116.0" layoutY="186.0" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/correo-electronico.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtCorreoReg" layoutX="33.0" layoutY="2.0" prefHeight="31.0" prefWidth="234.0" promptText="user@example.com" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20PX;" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="116.0" layoutY="261.0" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+                     <children>
+                        <TextField fx:id="txtUsuReg1" layoutX="33.0" layoutY="2.0" prefHeight="31.0" prefWidth="234.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20px;" />
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/bloqueado.png" />
+                           </image>
+                        </ImageView>
+                        <PasswordField fx:id="txtPassRegis" layoutX="31.0" layoutY="2.0" prefHeight="31.0" prefWidth="238.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20px;" />
+                        <Label fx:id="lblshowPassReg" layoutX="37.0" layoutY="5.0" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: WHITE;" />
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="imgShowPassReg" fitHeight="25.0" fitWidth="26.0" layoutX="393.0" layoutY="266.0" onMousePressed="#showPassReg" onMouseReleased="#stopShowPassReg" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/eye.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="116.0" layoutY="347.0" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+                     <children>
+                        <TextField fx:id="txtUsuReg11" layoutX="33.0" layoutY="2.0" prefHeight="31.0" prefWidth="234.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20px;" />
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/bloqueado.png" />
+                           </image>
+                        </ImageView>
+                        <PasswordField fx:id="txtPassRegis1" layoutX="31.0" layoutY="2.0" prefHeight="31.0" prefWidth="238.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20px;" />
+                        <PasswordField id="confirmCont" fx:id="txtConfPassRegis" layoutX="31.0" layoutY="2.0" prefHeight="31.0" prefWidth="238.0" style="-fx-background-radius: 20px; -fx-border-color: WHITE; -fx-border-radius: 20px;" />
+                        <Label fx:id="lblShowConfPassReg" layoutX="37.0" layoutY="5.0" prefHeight="25.0" prefWidth="226.0" style="-fx-background-color: WHITE;" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Label id="nomUsu" alignment="CENTER" layoutX="224.0" layoutY="90.0" prefHeight="38.0" prefWidth="139.0" text="Nombre Usuario:">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="224.0" layoutY="256.0" prefHeight="38.0" prefWidth="139.0" text="Contraseña:">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+            </Label>
+            <Button id="boton" fx:id="bRegistrarDef" layoutX="169.0" layoutY="453.0" mnemonicParsing="false" onAction="#clickBRegisDef" prefHeight="49.0" prefWidth="251.0" style="-fx-border-color: BLACK; -fx-border-radius: 25px; -fx-background-radius: 25px; -fx-border-width: 2px;" text="REGISTRARSE">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label id="lblConf" alignment="CENTER" layoutX="199.0" layoutY="336.0" prefHeight="38.0" prefWidth="191.0" text="Confirmar contraseña:">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+            </Label>
+            <Button id="backToLogIn" fx:id="backToLogIn" alignment="CENTER" layoutX="82.0" layoutY="533.0" mnemonicParsing="false" onAction="#clickBackLogin" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: White;" text="Ya tengo una cuenta. Iniciar Sesión" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button id="backToLogIn" fx:id="btnCompRegis" alignment="CENTER" layoutX="161.0" layoutY="417.0" mnemonicParsing="false" onAction="#clickbRegExito" prefHeight="25.0" prefWidth="272.0" style="-fx-background-color: White;" textAlignment="CENTER" textFill="#ff4000" underline="true" />
+            <Label alignment="CENTER" layoutX="210.0" layoutY="169.0" prefHeight="38.0" prefWidth="168.0" text="Correo electrónico:">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+            </Label>
+            <ImageView id="botones" fx:id="bVolverIni1" fitHeight="49.0" fitWidth="49.0" layoutX="538.0" layoutY="596.0" onMouseClicked="#clickbVolverIni" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/flechaBack.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane id="pInicial" fx:id="pInicio" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #00B4FF;">
+         <children>
+            <ImageView fitHeight="494.0" fitWidth="562.0" layoutX="253.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/principal.png" />
+               </image>
+            </ImageView>
+            <ImageView id="bApagar" fx:id="bApagar" fitHeight="49.0" fitWidth="57.0" layoutX="476.0" layoutY="513.0" onMouseClicked="#clickbApagar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/apagar.png" />
+               </image>
+            </ImageView>
+            <Label id="botonBlanco" fx:id="bIsesion" alignment="CENTER" layoutX="253.0" layoutY="519.0" onMouseClicked="#ClickbIni" prefHeight="38.0" prefWidth="197.0" style="-fx-border-color: BLACK; -fx-background-radius: 15PX; -fx-border-radius: 10PX; -fx-border-width: 2px;" text="INICIAR SESIÓN">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label id="botonBlanco" fx:id="bRegistrar" alignment="CENTER" layoutX="556.0" layoutY="519.0" onMouseClicked="#ClickbReg" prefHeight="38.0" prefWidth="197.0" style="-fx-border-color: BLACK; -fx-background-radius: 15PX; -fx-border-radius: 10PX; -fx-border-width: 2px;" text="REGISTRARSE">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+     
+   </children>
+</AnchorPane>
