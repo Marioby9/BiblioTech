@@ -12,4 +12,5 @@ module Proyecto {
 
 	
 	opens application to javafx.graphics, javafx.fxml;
+	opens AdminApp to javafx.graphics, javafx.fxml;
 }

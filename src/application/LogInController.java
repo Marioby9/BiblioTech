@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import AdminApp.AdminMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +31,7 @@ import javafx.scene.input.MouseEvent;
 public class LogInController{
 
 	//PANELES
-	@FXML Pane pInicio, pFondoIzq, pFondoDer, pIncioSesion, pRegistro;
+	@FXML public Pane pInicio, pFondoIzq, pFondoDer, pIncioSesion, pRegistro;
 
 	//LABELS
 	@FXML private Label lblshowPassReg, lblShowConfPassReg, lblshowPassLogin, lblErrorInicio;
@@ -54,13 +56,13 @@ public class LogInController{
 
 	//VARIABLES
 	private boolean cambiarLado=false;
-	
 
-	
+
+
 	public void initialize() { //FUNCION INICIAL (SE EJECUTA ANTES QUE EL CONSTRUCTOR)
 		if(!Main.existeAdmin) {creaAdmin();}
 		initComponents();
-		
+
 
 	}
 
@@ -69,7 +71,7 @@ public class LogInController{
 		lblshowPassReg.setVisible(false);
 		lblShowConfPassReg.setVisible(false);
 		lblshowPassLogin.setVisible(false);
-		
+
 	}
 
 	@FXML void clickbApagar(MouseEvent event) {
@@ -87,10 +89,10 @@ public class LogInController{
 		pInicio.setVisible(false);
 		pFondoIzq.setVisible(false);
 		pRegistro.setVisible(false);
-		
+
 	}
 
-	
+
 
 	@FXML void ClickbReg(MouseEvent event) { //PASAR A REGISTRAR DESDE VENTANA INCIAL
 		pInicio.setVisible(false);
@@ -149,29 +151,61 @@ public class LogInController{
 				Usuario.setUsuario(u1); 
 
 				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/MenuView.fxml"));
-					Parent root = loader.load();
-					MenuController controlador = loader.getController();
+					if(nickname.equals("ADMIN") && password.equals("ADMIN")) {
 
-					Scene scene = new Scene(root);
-					Stage venMenu = new Stage();
-					venMenu.setScene(scene);
-					venMenu.setResizable(false);
-					venMenu.setTitle("BiblioTech");
-					//venMenu.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
 
-					venMenu.show();
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminFXML/AdminMenuView.fxml"));
+						Parent root = loader.load();
+						AdminMenuController controlador = loader.getController();
 
-					//    		File file = new File("src/icons/logoNegroCF.png");		//CAMBIAR ICONO DEL PROGRAMA. FORMA ANTIGUA
-					//			venMenu.getIcons().add(new Image(file.toURI().toString())); 
+						Scene scene = new Scene(root);
+						scene.getStylesheets().add(getClass().getResource("/FXML/application.css").toExternalForm());
+						Stage venMenu = new Stage();
+						venMenu.setScene(scene);
+						venMenu.setResizable(false);
+						venMenu.setTitle("BiblioTech");
 
-					Image icon = new Image(getClass().getResourceAsStream("/icons/logoNegroCF.png"));//CAMBIAR ICONO DEL PROGRAMA
-					venMenu.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
+						venMenu.show();
 
-					venMenu.setOnCloseRequest(e->controlador.closeWindows());
+						Image icon = new Image(getClass().getResourceAsStream("/icons/logoNegroCF.png"));//CAMBIAR ICONO DEL PROGRAMA
+						venMenu.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
 
-					Stage myStage = (Stage) this.bISesionDef.getScene().getWindow();
-					myStage.close();
+						venMenu.setOnCloseRequest(e->controlador.closeWindows());
+
+						Stage myStage = (Stage) this.bISesionDef.getScene().getWindow();
+						myStage.close();
+
+
+
+
+
+					}
+					else {
+
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/MenuView.fxml"));
+						Parent root = loader.load();
+						MenuController controlador = loader.getController();
+
+						Scene scene = new Scene(root);
+						Stage venMenu = new Stage();
+						venMenu.setScene(scene);
+						venMenu.setResizable(false);
+						venMenu.setTitle("BiblioTech");
+						//venMenu.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
+
+						venMenu.show();
+
+						//    		File file = new File("src/icons/logoNegroCF.png");		//CAMBIAR ICONO DEL PROGRAMA. FORMA ANTIGUA
+						//			venMenu.getIcons().add(new Image(file.toURI().toString())); 
+
+						Image icon = new Image(getClass().getResourceAsStream("/icons/logoNegroCF.png"));//CAMBIAR ICONO DEL PROGRAMA
+						venMenu.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
+
+						venMenu.setOnCloseRequest(e->controlador.closeWindows());
+
+						Stage myStage = (Stage) this.bISesionDef.getScene().getWindow();
+						myStage.close();
+					}
 
 				} catch(IOException ex) {
 					Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE,null,ex);
@@ -185,8 +219,8 @@ public class LogInController{
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	@FXML void clickBRegisDef(ActionEvent event) {  //COMPRUEBA QUE CORREO VALIDO // PASSWORD Y CONFIRMPASSWORD COINCIDAN
 		String pass1 = txtPassRegis.getText();
 		String pass2 = txtConfPassRegis.getText();
@@ -212,7 +246,7 @@ public class LogInController{
 				cambiarLado = false;
 			}
 			else {
-				
+
 				//DAR ALTA USUARIO EN BBDD (FUNCIONA PERFECTAMENTE)
 				String nom = txtUsuReg.getText();
 				Usuario u1 = new Usuario(nom, pass1, correo);
@@ -223,24 +257,24 @@ public class LogInController{
 						btnCompRegis.setVisible(true);
 						btnCompRegis.setUnderline(true);
 						btnCompRegis.setStyle("-fx-text-fill: GREEN; -fx-background-color: White "); //
-						
+
 
 						btnCompRegis.setText("¡Cuenta creada con éxito!. Ir a iniciar sesión");
 						cambiarLado = true;
 					}
-					
+
 				} catch (SQLException e) {
 					System.out.println("No se pudo registrar el usuario");
 					btnCompRegis.setVisible(true);
 					btnCompRegis.setUnderline(false);
 					btnCompRegis.setStyle("-fx-text-fill: RED; -fx-background-color: White "); //
-					
+
 					if(e instanceof SQLIntegrityConstraintViolationException) {
 						btnCompRegis.setText("El usuario ya existe");
 					}
-					
+
 					cambiarLado = false;
-					
+
 				}
 
 			}
@@ -301,7 +335,7 @@ public class LogInController{
 
 
 	//FUNCIONES VARIAS
-	
+
 	private void vaciarTxtField() {//VACIA TODOS LOS CAMPOS . 
 		txtUsuReg.setText("");
 		txtCorreoReg.setText("");
@@ -334,7 +368,7 @@ public class LogInController{
 		}
 
 	}
-	
+
 
 
 

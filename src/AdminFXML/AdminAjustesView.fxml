@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pRootAjustes" prefHeight="650.0" prefWidth="640.0" stylesheets="@../FXML/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminApp.AdminAjustesController">
+   <children>
+      <Pane fx:id="pAjustes" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+         <children>
+            <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label id="bEliminarCuenta" alignment="CENTER" layoutX="434.0" layoutY="573.0" onMouseClicked="#clickBEliminarCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Eliminar Cuenta" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="86.0" layoutY="574.0" onMouseClicked="#clickBGuardarAjustes" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Ajustes">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="117.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Admin:" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="268.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Aplicación:" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="86.0" layoutY="325.0" prefHeight="78.0" prefWidth="171.0" text="Cambiar Color:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblColorTema" layoutX="275.0" layoutY="344.0" prefHeight="41.0" prefWidth="76.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
+            <ImageView id="bPerfil" fx:id="bEditarColor" fitHeight="41.0" fitWidth="41.0" layoutX="365.0" layoutY="344.0" onMouseClicked="#clickBEditarColor" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/editarBlue.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pPanelColores" layoutX="414.0" layoutY="249.0" prefHeight="167.0" prefWidth="211.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 3px; -fx-background-radius: 20px; -fx-border-radius: 20px;" visible="false">
+               <children>
+                  <Label id="fperfil" fx:id="lblColorAzul" layoutX="14.0" layoutY="20.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorNaranja" layoutX="14.0" layoutY="98.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #fb7b14; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorVerde" layoutX="81.0" layoutY="59.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #9fb65a; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorRojo" layoutX="148.0" layoutY="20.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #c0060e; -fx-border-color: white; -fx-border-width: 3px;" />
+                  <Label id="fperfil" fx:id="lblColorMorado" layoutX="148.0" layoutY="98.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #954c7b; -fx-border-color: white; -fx-border-width: 3px;" />
+               </children>
+            </Pane>
+            <Label layoutX="40.0" layoutY="401.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Pane layoutX="40.0" layoutY="472.0" prefHeight="70.0" prefWidth="302.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 3PX;">
+               <children>
+                  <ImageView id="bPerfil" fx:id="bGithub" fitHeight="43.0" fitWidth="45.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/github.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="bWeb" fitHeight="45.0" fitWidth="49.0" layoutX="72.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/web.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="bTwitter" fitHeight="45.0" fitWidth="49.0" layoutX="129.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/twitter.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="bInstagram" fitHeight="45.0" fitWidth="45.0" layoutX="186.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/instagram.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="bYoutube" fitHeight="45.0" fitWidth="45.0" layoutX="243.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/youtube.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Line endX="-19.60003662109375" endY="64.99993896484375" layoutX="386.0" layoutY="497.0" startX="-19.60003662109375" startY="-64.60003662109375" stroke="WHITE" strokeWidth="3.0" />
+            <Label alignment="CENTER" layoutX="413.0" layoutY="401.0" prefHeight="78.0" prefWidth="186.0" text="Carpeta Musica" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Pane fx:id="pFondoAviso" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
+            <Pane fx:id="pAvisoMus" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
+               <children>
+                  <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/avisoCarpMusica.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="bAceptaMus" alignment="CENTER" layoutX="368.0" layoutY="271.0" onMouseClicked="#clickAceptaAvisoMus" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label id="bRechazaMus" alignment="CENTER" layoutX="86.0" layoutY="271.0" onMouseClicked="#clickRechazaAvisoMus" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pAvisoCuenta" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
+               <children>
+                  <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/avisoElimCuenta.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="bAceptaMus" alignment="CENTER" layoutX="368.0" layoutY="271.0" onMouseClicked="#clickAceptaAvisoCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label id="bRechazaMus" alignment="CENTER" layoutX="86.0" layoutY="271.0" onMouseClicked="#clickRechazaAvisoCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
