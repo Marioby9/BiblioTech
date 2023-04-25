@@ -304,22 +304,37 @@
                   </ImageView>
                   <Pane layoutX="54.0" layoutY="4.0" prefHeight="50.0" prefWidth="186.0">
                      <children>
-                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="23.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImgAdminUsuarioGU" fitHeight="30.0" fitWidth="36.0" layoutX="23.0" layoutY="13.0" onMouseClicked="#clickAdminUsuarioGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../Desktop/icons/user-negro.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="77.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImgAdminCorreoGU" fitHeight="30.0" fitWidth="36.0" layoutX="77.0" layoutY="13.0" onMouseClicked="#clickAdminCorreoGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/correo.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="126.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImgAdminContraseñaGU" fitHeight="36.0" fitWidth="40.0" layoutX="126.0" layoutY="10.0" onMouseClicked="#clickAdminContraseñaGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/bloqueado.png" />
                            </image>
                         </ImageView>
                         <Line endX="186.0" layoutX="-7.0" layoutY="-1.0" startX="186.0" startY="51.0" />
+                        <ImageView fx:id="ImgAdminUsuarioVerdeGU" fitHeight="30.0" fitWidth="36.0" layoutX="23.0" layoutY="13.0" onMouseClicked="#clickAdminUsuarioGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../icons/user-negro-verde.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="ImgAdminCorreoVerdeGU" fitHeight="30.0" fitWidth="36.0" layoutX="77.0" layoutY="13.0" onMouseClicked="#clickAdminCorreoGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../icons/correo-verde.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="ImgAdminContraseñaVerdeGU" fitHeight="36.0" fitWidth="40.0" layoutX="126.0" layoutY="10.0" onMouseClicked="#clickAdminContraseñaGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../icons/bloqueado-verde.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <Line endX="186.0" layoutX="297.0" layoutY="3.0" startX="186.0" startY="51.0" />
@@ -353,11 +368,21 @@
             <TextField layoutX="298.0" layoutY="489.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
          </children>
       </Pane>
-      <Pane fx:id="pContenido" layoutX="360.0" prefHeight="650.0" prefWidth="640.0">
+      <Pane fx:id="pContenido" layoutX="360.0" prefHeight="650.0" prefWidth="640.0" visible="false">
          <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/Gestion_Musica.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../backgrounds/PGESTIONCONTENIDO.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="65.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/menu.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="550.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
@@ -367,19 +392,34 @@
             </ImageView>
             <Pane layoutX="104.0" layoutY="71.0" prefHeight="57.0" prefWidth="186.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="19.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgAdminUsuario" fitHeight="30.0" fitWidth="30.0" layoutX="19.0" layoutY="15.0" onMouseClicked="#clickAdminUsuarioGestionContenido" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/user-negro.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="73.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgAdminCorreo" fitHeight="35.0" fitWidth="30.0" layoutX="73.0" layoutY="15.0" onMouseClicked="#clickAdminCorreoGestionContenido" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/correo.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="126.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ImgAdminContraseña" fitHeight="32.0" fitWidth="36.0" layoutX="126.0" layoutY="14.0" onMouseClicked="#clickAdminContraseñaGestionContenido" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/bloqueado.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="ImgAdminUsuarioVerde" fitHeight="30.0" fitWidth="30.0" layoutX="19.0" layoutY="15.0" onMouseClicked="#clickAdminUsuarioGestionContenidoVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../icons/user-negro-verde.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="ImgAdminCorreoVerde" fitHeight="35.0" fitWidth="30.0" layoutX="73.0" layoutY="15.0" onMouseClicked="#clickAdminCorreoGestionContenidoVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../icons/correo-verde.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="ImgAdminContraseñaVerde" fitHeight="32.0" fitWidth="36.0" layoutX="126.0" layoutY="14.0" onMouseClicked="#clickAdminContraseñaGestionContenidoVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../icons/bloqueado-verde.png" />
                      </image>
                   </ImageView>
                </children>
@@ -415,11 +455,6 @@
                   <TableColumn prefWidth="120.0" text="MUSICA" />
                </columns>
             </TableView>
-            <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="65.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/menu.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
    </children>

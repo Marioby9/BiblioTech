@@ -67,7 +67,44 @@ public class AdminController {
 
     @FXML
     private ImageView imgFondoMenu;
+    
+    @FXML
+    private ImageView ImgAdminUsuario;
 
+    @FXML
+    private ImageView ImgAdminUsuarioVerde;
+
+    @FXML
+    private ImageView ImgAdminCorreo;
+    
+    @FXML
+    private ImageView ImgAdminCorreoVerde;
+
+    @FXML
+    private ImageView ImgAdminContraseña;
+
+    @FXML
+    private ImageView ImgAdminContraseñaVerde;
+
+    @FXML
+    private ImageView ImgAdminContraseñaGU;
+    
+    @FXML
+    private ImageView ImgAdminContraseñaVerdeGU;
+
+    @FXML
+    private ImageView ImgAdminCorreoGU;
+
+    @FXML
+    private ImageView ImgAdminCorreoVerdeGU;
+    
+    @FXML
+    private ImageView ImgAdminUsuarioGU;
+    
+    @FXML
+    private ImageView ImgAdminUsuarioVerdeGU;
+    
+    
     @FXML
     private Label lblBienvenidoPerfil;
 
@@ -409,12 +446,131 @@ public class AdminController {
 	    	
 	    	
 	    }
+	    
+	    //GESTION USUARIO ADMIN
+	    @FXML
+	    void clickAdminUsuarioGestionUsuarioVolver(MouseEvent event) {
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    	ImgAdminContraseñaGU.setVisible(true);
+	    	ImgAdminContraseñaVerdeGU.setVisible(false);
+	    }
+	    
+
+	    @FXML
+	    void clickAdminUsuarioGestionUsuario(MouseEvent event) {
+	    	ImgAdminUsuario.setVisible(false);
+	    	ImgAdminUsuarioVerde.setVisible(true);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    	ImgAdminContraseñaGU.setVisible(true);
+	    	ImgAdminContraseñaVerdeGU.setVisible(false);
+	    }
+
+	    @FXML
+	    void clickAdminCorreoGestionUsuarioVolver(MouseEvent event) {
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminContraseñaGU.setVisible(true);
+	    	ImgAdminContraseñaVerdeGU.setVisible(false);
+	    }
+
+	    @FXML
+	    void clickAdminCorreoGestionUsuario(MouseEvent event) {
+	    	ImgAdminCorreo.setVisible(false);
+	    	ImgAdminCorreoVerde.setVisible(true);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminContraseñaGU.setVisible(true);
+	    	ImgAdminContraseñaVerdeGU.setVisible(false);
+	    }
+
+	    @FXML
+	    void clickAdminContraseñaGestionUsuarioVolver(MouseEvent event) {
+	    	ImgAdminContraseñaGU.setVisible(true);
+	    	ImgAdminContraseñaVerde.setVisible(false);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminContraseñaVerdeGU.setVisible(false);
+	    }
+	    
+	    @FXML
+	    void clickAdminContraseñaGestionUsuario(MouseEvent event) {
+	    	ImgAdminContraseñaVerdeGU.setVisible(true);
+	    	ImgAdminContraseñaGU.setVisible(false);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    }
+	    
+	//GESTION CONTENIDO ADMIN
+	    @FXML
+	    void clickAdminUsuarioGestionContenido(MouseEvent event) {
+	    	
+	    	ImgAdminUsuario.setVisible(false);
+	    	ImgAdminUsuarioVerde.setVisible(true);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    	ImgAdminContraseña.setVisible(true);
+	    	ImgAdminContraseñaVerde.setVisible(false);
+	    }
+	    
+	    @FXML
+	    void clickAdminUsuarioGestionContenidoVolver(MouseEvent event) {
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    	ImgAdminContraseña.setVisible(true);
+	    	ImgAdminContraseñaVerde.setVisible(false);
+	    }
 	
+	    @FXML
+	    void clickAdminCorreoGestionContenido(MouseEvent event) {
+	    	ImgAdminCorreo.setVisible(false);
+	    	ImgAdminCorreoVerde.setVisible(true);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminContraseña.setVisible(true);
+	    	ImgAdminContraseñaVerde.setVisible(false);
+	    }
 	
-	
-	
-	
-	
-	
+	    @FXML
+	    void clickAdminCorreoGestionContenidoVolver(MouseEvent event) {
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminContraseña.setVisible(true);
+	    	ImgAdminContraseñaVerde.setVisible(false);
+	    }
+	    
+	    @FXML
+	    void clickAdminContraseñaGestionContenido(MouseEvent event) {
+	    	ImgAdminContraseñaVerde.setVisible(true);
+	    	ImgAdminContraseña.setVisible(false);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    }
+
+	    @FXML
+	    void clickAdminContraseñaGestionContenidoVolver(MouseEvent event) {
+	    	ImgAdminContraseña.setVisible(true);
+	    	ImgAdminContraseñaVerde.setVisible(false);
+	    	ImgAdminCorreo.setVisible(true);
+	    	ImgAdminUsuario.setVisible(true);
+	    	ImgAdminUsuarioVerde.setVisible(false);
+	    	ImgAdminCorreoVerde.setVisible(false);
+	    }
+	    
+	  
     
 }

@@ -283,7 +283,7 @@ public class Conexion {
 			favorito = rs.getString("FAVORITO");
 
 			Libro lib = new Libro(id_libro, id_usuario, titulo, genero, autor, n_pags, ano_lanz, terminado, portada, resumen);
-			lib.setFavorito(favorito);
+			//lib.setFavorito(favorito);
 			listaLibros.add(lib);
 		}
 		st.close();
@@ -317,7 +317,7 @@ public class Conexion {
 			genero = rs.getString("GENERO");
 
 			Libro lib = new Libro(id_libro, id_usuario, titulo, genero, autor, n_pags, ano_lanz, terminado, portada, resumen);
-			lib.setFavorito("SI");
+			//lib.setFavorito("SI");
 			listaLibros.add(lib);
 		}
 		st.close();
@@ -445,7 +445,7 @@ public class Conexion {
 			
 			
 			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
-			juego.setFavorito(favorito);
+			//juego.setFavorito(favorito);
 			listaJuegos.add(juego);
 		}
 		st.close();
@@ -481,7 +481,7 @@ public class Conexion {
 			
 			
 			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
-			juego.setFavorito("SI");
+			//juego.setFavorito("SI");
 			listaJuegos.add(juego);
 		}
 		st.close();

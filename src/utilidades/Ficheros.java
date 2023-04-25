@@ -40,7 +40,7 @@ public class Ficheros {
 				artista = separados[0].replace("_", " ");
 				titulo = separados[1].replace("_", " ");
 				ruta = carpeta+"\\"+lista+"\\"+nomArch;
-				listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta, 0));
+			//	listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta, 0));
 			}
 
 		}
