@@ -44,11 +44,11 @@ public class AdminMenuController {
 
 	//USUARIOS
 	private AdminUsuariosController adminUsuariosController;
-	Pane pJuegos;
+	Pane pUsuarios;
 
 	//ESTADISTICAS
 	private AdminEstadisticasController adminEstadisticasController;
-	Pane pMusica;
+	Pane pEstadisticas;
 
 	//AJUSTES
 	private AdminAjustesController adminAjustesController;
@@ -80,6 +80,18 @@ public class AdminMenuController {
 			pPerfil.setVisible(true);
 			adminPerfilController.cambiaFPerfil();
 
+
+			//USUARIOS
+			FXMLLoader loaderUsuarios = new FXMLLoader(getClass().getResource("/AdminFXML/AdminUsuariosView.fxml"));
+			loaderUsuarios.load();
+			adminUsuariosController = loaderUsuarios.getController();
+			adminUsuariosController.setMenuController(this);
+			pUsuarios = adminUsuariosController.getPane();
+			pContenidoMenu.getChildren().add(pUsuarios);
+			pUsuarios.setLayoutX(0); pUsuarios.setLayoutY(0);
+			
+			
+			
 			
 			//AJUSTES
 			FXMLLoader loaderAjustes = new FXMLLoader(getClass().getResource("/AdminFXML/AdminAjustesView.fxml"));
@@ -103,6 +115,7 @@ public class AdminMenuController {
 
 		pFondoMenu.setVisible(true);
 		pPerfil.setVisible(true);
+		pUsuarios.setVisible(false);
 		pAjustes.setVisible(false);
 		lblNomUsuario.setText(u1.getNickname());
 
@@ -142,29 +155,34 @@ public class AdminMenuController {
 	
 	@FXML void clickBPerfil(MouseEvent event) {
 		pPerfil.setVisible(true);
+		pUsuarios.setVisible(false);
 		pAjustes.setVisible(false);
 
 	}
 
 	@FXML void clickBContenido(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pUsuarios.setVisible(false);
 		pAjustes.setVisible(false);
 
 	}
 
 	@FXML void clickBUsuarios(MouseEvent event) {
+		pUsuarios.setVisible(true);
 		pPerfil.setVisible(false);
 		pAjustes.setVisible(false);
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pUsuarios.setVisible(false);
 		pAjustes.setVisible(false);
 
 	}
 
 	@FXML void clickBAjustes(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pUsuarios.setVisible(false);
 		pAjustes.setVisible(true);
 		adminAjustesController.pPanelColores.setVisible(false);
 		adminAjustesController.pFondoAviso.setVisible(false);
