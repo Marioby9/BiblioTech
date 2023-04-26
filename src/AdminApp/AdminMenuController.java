@@ -81,6 +81,16 @@ public class AdminMenuController {
 			adminPerfilController.cambiaFPerfil();
 
 
+			//CONTENIDO
+			FXMLLoader loaderContenido = new FXMLLoader(getClass().getResource("/AdminFXML/AdminContenidoView.fxml"));
+			loaderContenido.load();
+			adminContenidoController = loaderContenido.getController();
+			adminContenidoController.setMenuController(this);
+			pContenido = adminContenidoController.getPane();
+			pContenidoMenu.getChildren().add(pContenido);
+			pContenido.setLayoutX(0); pContenido.setLayoutY(0);
+			
+			
 			//USUARIOS
 			FXMLLoader loaderUsuarios = new FXMLLoader(getClass().getResource("/AdminFXML/AdminUsuariosView.fxml"));
 			loaderUsuarios.load();
@@ -90,8 +100,15 @@ public class AdminMenuController {
 			pContenidoMenu.getChildren().add(pUsuarios);
 			pUsuarios.setLayoutX(0); pUsuarios.setLayoutY(0);
 			
-			
-			
+			//ESTADISTICAS
+			FXMLLoader loaderEstadisticas = new FXMLLoader(getClass().getResource("/AdminFXML/AdminEstadisticasView.fxml"));
+			loaderEstadisticas.load();
+			adminEstadisticasController = loaderEstadisticas.getController();
+			adminEstadisticasController.setMenuController(this);
+			pEstadisticas = adminEstadisticasController.getPane();
+			pContenidoMenu.getChildren().add(pEstadisticas);
+			pEstadisticas.setLayoutX(0); pEstadisticas.setLayoutY(0);
+	
 			
 			//AJUSTES
 			FXMLLoader loaderAjustes = new FXMLLoader(getClass().getResource("/AdminFXML/AdminAjustesView.fxml"));
@@ -115,7 +132,9 @@ public class AdminMenuController {
 
 		pFondoMenu.setVisible(true);
 		pPerfil.setVisible(true);
+		pContenido.setVisible(false);
 		pUsuarios.setVisible(false);
+		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
 		lblNomUsuario.setText(u1.getNickname());
 
@@ -155,14 +174,17 @@ public class AdminMenuController {
 	
 	@FXML void clickBPerfil(MouseEvent event) {
 		pPerfil.setVisible(true);
+		pContenido.setVisible(false);
 		pUsuarios.setVisible(false);
+		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
-
 	}
 
 	@FXML void clickBContenido(MouseEvent event) {
+		pContenido.setVisible(true);
 		pPerfil.setVisible(false);
 		pUsuarios.setVisible(false);
+		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
 
 	}
@@ -170,19 +192,24 @@ public class AdminMenuController {
 	@FXML void clickBUsuarios(MouseEvent event) {
 		pUsuarios.setVisible(true);
 		pPerfil.setVisible(false);
+		pContenido.setVisible(false);
+		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {
+		pEstadisticas.setVisible(true);
 		pPerfil.setVisible(false);
+		pContenido.setVisible(false);
 		pUsuarios.setVisible(false);
 		pAjustes.setVisible(false);
-
 	}
 
 	@FXML void clickBAjustes(MouseEvent event) {
 		pPerfil.setVisible(false);
+		pContenido.setVisible(false);
 		pUsuarios.setVisible(false);
+		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(true);
 		adminAjustesController.pPanelColores.setVisible(false);
 		adminAjustesController.pFondoAviso.setVisible(false);
@@ -194,8 +221,6 @@ public class AdminMenuController {
 		closeWindows();
 		controlador.pInicio.setVisible(false);
 		controlador.pRegistro.setVisible(false);
-
-
 	}
 	
 
