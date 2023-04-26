@@ -11,63 +11,58 @@
    <children>
       <Pane fx:id="pContenido" prefHeight="650.0" prefWidth="640.0">
          <children>
-            <ImageView fitHeight="650.0" fitWidth="640.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../ProyectoRaul/src/backgrounds/Gestion_Musica.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../ProyectoRaul/src/backgrounds/PGESTIONCONTENIDO.png" />
+                  <Image url="@../backgrounds/pContenido.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="41.0" layoutX="65.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../ProyectoRaul/src/icons/menu.png" />
+                  <Image url="@../icons/menuAdmin.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="550.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../ProyectoRaul/src/icons/refresh-page-option.png" />
+                  <Image url="@../icons/refreshAdmin.png" />
                </image>
             </ImageView>
             <Pane layoutX="104.0" layoutY="71.0" prefHeight="57.0" prefWidth="186.0">
                <children>
                   <ImageView fx:id="ImgAdminUsuario" fitHeight="30.0" fitWidth="30.0" layoutX="19.0" layoutY="15.0" onMouseClicked="#clickAdminUsuarioGestionContenido" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../ProyectoRaul/src/icons/user-negro.png" />
+                        <Image url="@../icons/user-negro.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="ImgAdminCorreo" fitHeight="35.0" fitWidth="30.0" layoutX="73.0" layoutY="15.0" onMouseClicked="#clickAdminCorreoGestionContenido" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../ProyectoRaul/src/icons/correo.png" />
+                        <Image url="@../icons/correo-electronico.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="ImgAdminContraseña" fitHeight="32.0" fitWidth="36.0" layoutX="126.0" layoutY="14.0" onMouseClicked="#clickAdminContraseñaGestionContenido" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../ProyectoRaul/src/icons/bloqueado.png" />
+                        <Image url="@../icons/bloqueado.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="ImgAdminUsuarioVerde" fitHeight="30.0" fitWidth="30.0" layoutX="19.0" layoutY="15.0" onMouseClicked="#clickAdminUsuarioGestionContenidoVolver" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../../../ProyectoRaul/src/icons/user-negro-verde.png" />
+                        <Image url="@../icons/user-negro-verde.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="ImgAdminCorreoVerde" fitHeight="35.0" fitWidth="30.0" layoutX="73.0" layoutY="15.0" onMouseClicked="#clickAdminCorreoGestionContenidoVolver" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../../../ProyectoRaul/src/icons/correo-verde.png" />
+                        <Image url="@../icons/correo-verde.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="ImgAdminContraseñaVerde" fitHeight="32.0" fitWidth="36.0" layoutX="126.0" layoutY="14.0" onMouseClicked="#clickAdminContraseñaGestionContenidoVolver" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../../../ProyectoRaul/src/icons/bloqueado-verde.png" />
+                        <Image url="@../icons/bloqueado-verde.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
             <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="547.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../ProyectoRaul/src/icons/buscar.png" />
+                  <Image url="@../icons/buscar.png" />
                </image>
             </ImageView>
             <TableView layoutX="47.0" layoutY="142.0" prefHeight="186.0" prefWidth="548.0" style="-fx-border-color: black; -fx-border-width: 3px;">
