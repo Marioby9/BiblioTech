@@ -37,7 +37,7 @@
                         <Image url="@../../../ProyectoRaul/src/icons/buscar.png" />
                      </image>
                   </ImageView>
-                  <Pane layoutX="54.0" layoutY="4.0" prefHeight="50.0" prefWidth="186.0">
+                  <Pane fx:id="pFiltros" layoutX="54.0" layoutY="4.0" prefHeight="50.0" prefWidth="186.0">
                      <children>
                         <ImageView fx:id="ImgAdminUsuarioGU" fitHeight="30.0" fitWidth="36.0" layoutX="23.0" layoutY="13.0" onMouseClicked="#clickAdminUsuarioGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>

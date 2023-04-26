@@ -1,15 +1,18 @@
 package AdminApp;
 
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class AdminUsuariosController {
 	
 	@FXML private AnchorPane pRootUsuarios;
-	@FXML private Pane pUsuarios;
+	@FXML private Pane pUsuarios, pFiltros;
 
 	@FXML private ImageView ImgAdminUsuario;
 

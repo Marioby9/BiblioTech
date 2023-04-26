@@ -394,8 +394,6 @@ TextArea {
 }
 
 
-
-
 /*Botones del panel administrativo*/
 #bAdminBotonUsuAceptar {
 	/*	-fx-background-color: #62B71E;*/
@@ -444,6 +442,8 @@ TextArea {
 	-fx-scale-y: 1.08;
 }
 /*-----------------------------------------------*/ 
+
+
 
 
 
