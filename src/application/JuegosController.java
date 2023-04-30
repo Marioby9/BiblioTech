@@ -229,8 +229,11 @@ public class JuegosController {
 				//UPDATE DATOS LIBRO
 				jueActual.setTitulo(titulo); jueActual.setPlataforma(plataforma); jueActual.setLanzamiento(lanzamiento); jueActual.sethJugadas(horas);;
 				jueActual.setResumen(resumen); jueActual.setEmpresa(empresa);
-				Conexion.updateJuego(jueActual);
-				lblErrorJue.setVisible(false);
+				if(Conexion.updateJuego(jueActual)){
+					lblErrorJue.setText("Juego editado correctamente");
+					lblErrorJue.setVisible(true);
+				}
+				
 
 				//UPDATE PORTADA
 				if(cambiaPortadaJue) { //SI HAS ABIERTO EL FILE CHOOSER PARA CAMBIAR O AGREGAR PORTADA:
@@ -281,8 +284,11 @@ public class JuegosController {
 					jueActual.setPortada(rutaPortadaJue);
 				}
 
-				Conexion.agregaJuego(jueActual, cambiaPortadaJue);
-				lblErrorJue.setVisible(false);
+				if(Conexion.agregaJuego(jueActual, cambiaPortadaJue)) {
+					lblErrorJue.setText("Juego añadido correctamente");
+					lblErrorJue.setVisible(true);
+				}
+				
 			}
 			else {
 				lblErrorJue.setText("ERROR: Campos incompletos");

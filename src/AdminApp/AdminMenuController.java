@@ -1,16 +1,9 @@
 package AdminApp;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import application.AjustesController;
-import application.JuegosController;
-import application.LibrosController;
 import application.LogInController;
-import application.MusicaController;
-import application.PerfilController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import utilidades.Conexion;
 import utilidades.Usuario;
 
 public class AdminMenuController {
@@ -195,6 +187,7 @@ public class AdminMenuController {
 		pContenido.setVisible(false);
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
+		adminUsuariosController.rellenaTablaUsu();
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {

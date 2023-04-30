@@ -87,7 +87,7 @@ public class Conexion {
 	}
 
 
-	//REGISTRAR Y ELIMINAR USUARIO 
+	//REGISTRAR, ELIMINAR Y ACTUALIZAR USUARIO 
 	public static boolean registraUsuario (Usuario u) throws SQLException{ //MODIFICAR
 		boolean insertado = false;
 
@@ -129,6 +129,22 @@ public class Conexion {
 		pst.close();
 
 		return eliminado;
+	}
+	
+	public static boolean updateUsuario(Usuario u) throws SQLException{ 
+		boolean updated = false;
+
+		String sql= "UPDATE USUARIO SET NICKNAME = ?, CONTRASEÑA = ?, CORREO = ? WHERE ID = "+u.getID_Usuario();
+		pst = connection.prepareStatement(sql);
+		pst.setObject(1, u.getNickname());
+		pst.setObject(2, u.getContrasena());
+		pst.setObject(3, u.getCorreo());
+		
+		updated = pst.executeUpdate()>0;
+		pst.close();
+		
+		
+		return updated;
 	}
 
 
@@ -490,6 +506,46 @@ public class Conexion {
 
 		return listaJuegos;
 	}
+	
+	
+	
+	/* ----------------------------------FUNCIONES PARA EL ADMINISTRADOR------------------------------------- */
+	public static ObservableList<Usuario> rellenaTablaUsu(String filtro, String paramFil) throws SQLException{
+		int id;
+		String nickname, password, correo, sql;
+		ObservableList<Usuario> listaUsu = FXCollections.observableArrayList();
+		
+		st = connection.createStatement();
+		if(filtro == null) {
+			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO ORDER BY ID";
+		}
+		else {
+			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO WHERE UPPER("+ filtro + ") LIKE UPPER('%" + paramFil +"%') ORDER BY ID";
+		}
+		
+		ResultSet rs = st.executeQuery(sql);
+		
+		while(rs.next()) {
+			id = rs.getInt("ID");
+			nickname = rs.getString("NICKNAME");
+			password = rs.getString("CONTRASEÑA");
+			correo = rs.getString("CORREO");
+			
+			Usuario usu = new Usuario(nickname, password, correo);
+			usu.setID_Usuario(id);
+			listaUsu.add(usu);
+			
+		}
+		
+		return listaUsu;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//CIERRE CONEXION

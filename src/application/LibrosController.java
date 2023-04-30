@@ -235,8 +235,11 @@ public class LibrosController {
 				//UPDATE DATOS LIBRO
 				libActual.setTitulo(titulo); libActual.setAutor(autor); libActual.setLanzamiento(lanzamiento); libActual.setnPaginas(pags);
 				libActual.setResumen(resumen);
-				Conexion.updateLibro(libActual);
-				lblErrorLib.setVisible(false);
+				if(Conexion.updateLibro(libActual)) {
+					lblErrorLib.setText("Libro editado correctamente");
+					lblErrorLib.setVisible(true);
+				}
+				
 
 				//UPDATE PORTADA
 				if(cambiaPortadaLib) { //SI HAS ABIERTO EL FILE CHOOSER PARA CAMBIAR O AGREGAR PORTADA:
@@ -285,8 +288,11 @@ public class LibrosController {
 					libActual.setPortada(rutaPortadaLib);
 				}
 
-				Conexion.agregaLibro(libActual, cambiaPortadaLib);
-				lblErrorLib.setVisible(false);
+				if(Conexion.agregaLibro(libActual, cambiaPortadaLib)) {
+					lblErrorLib.setText("Libro agregado correctamente");
+					lblErrorLib.setVisible(true);
+				}
+				
 			}
 			else {
 				lblErrorLib.setText("ERROR: Campos incompletos");
