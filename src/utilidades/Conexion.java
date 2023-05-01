@@ -506,7 +506,7 @@ public class Conexion {
 
 		return listaJuegos;
 	}
-	
+		
 	
 	
 	/* ----------------------------------FUNCIONES PARA EL ADMINISTRADOR------------------------------------- */
@@ -541,7 +541,73 @@ public class Conexion {
 	}
 	
 	
+	public static ObservableList<Juego> adminListGames(int id_user) throws SQLException{ 
+		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
+		String titulo, plataforma, portada, resumen, genero, terminado, empresa, favorito;
+		int id_Juego, id_usuario, ano_lanz;
+		int hJugadas;
+
+		st = connection.createStatement();
+		String sql =  "SELECT ID_JUEGO, ID_USUARIO, TITULO, GENERO, PLATAFORMA, TERMINADO, FAVORITO, LANZAMIENTO, H_JUGADAS, PORTADA, RESUMEN, EMPRESA FROM JUEGOS WHERE ID_USUARIO = "+id_user;
+
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			id_Juego = rs.getInt("ID_JUEGO");
+			id_usuario = rs.getInt("ID_USUARIO");
+			titulo = rs.getString("TITULO");
+			genero = rs.getString("GENERO");
+			plataforma = rs.getString("PLATAFORMA");
+			terminado = rs.getString("TERMINADO");
+			ano_lanz = rs.getInt("LANZAMIENTO");
+			hJugadas = rs.getInt("H_JUGADAS");
+			portada = rs.getString("PORTADA");
+			resumen = rs.getString("RESUMEN");
+			empresa = rs.getString("EMPRESA");
+			favorito = rs.getString("FAVORITO");
+			
+			
+			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
+			juego.setFavorito(favorito);
+			listaJuegos.add(juego);
+		}
+		st.close();
+
+		return listaJuegos;
+	}
 	
+	
+	public static ObservableList<Libro> adminListBooks(int id_user) throws SQLException{ 
+		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
+		String titulo, autor, portada, resumen, genero, terminado, favorito;
+		int id_libro, id_usuario, n_pags, ano_lanz;
+
+		st = connection.createStatement();
+		String sql =  "SELECT ID_LIBRO, ID_USUARIO, TITULO, AUTOR, GENERO, N_PAGINAS, ANO_LANZ, TERMINADO, FAVORITO, PORTADA, RESUMEN FROM LIBROS WHERE ID_USUARIO = "+id_user;
+
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			titulo = rs.getString("TITULO");
+			autor = rs.getString("AUTOR");
+			portada = rs.getString("PORTADA");
+			genero = rs.getString("GENERO");
+			resumen = rs.getString("RESUMEN");
+			terminado = rs.getString("TERMINADO");
+			n_pags = rs.getInt("N_PAGINAS");
+			ano_lanz = rs.getInt("ANO_LANZ");
+			id_libro = rs.getInt("ID_LIBRO");
+			id_usuario = rs.getInt("ID_USUARIO");
+			favorito = rs.getString("FAVORITO");
+
+			Libro lib = new Libro(id_libro, id_usuario, titulo, genero, autor, n_pags, ano_lanz, terminado, portada, resumen);
+			lib.setFavorito(favorito);
+			listaLibros.add(lib);
+		}
+		st.close();
+
+		return listaLibros;
+	}
 	
 	
 	

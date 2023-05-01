@@ -20,8 +20,7 @@ import javafx.collections.ObservableList;
 
 public class Ficheros {
 
-
-
+	
 	public static ObservableList<Cancion> leeCarpetaMus(String carpeta, String lista) throws Exception {
 		ObservableList<Cancion> listaCanciones = FXCollections.observableArrayList();
 		String titulo, nomArch, artista, ruta, extension;

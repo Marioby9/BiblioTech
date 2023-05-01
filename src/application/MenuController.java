@@ -246,6 +246,8 @@ public class MenuController {
 		pAjustes.setVisible(false);
 		pMusica.setVisible(true);
 		musicaController.pListaMus.setVisible(false);
+		musicaController.pFondoAvisoMus.setVisible(false);
+		musicaController.pAvisoMus.setVisible(false);
 
 	}
 

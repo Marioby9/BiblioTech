@@ -288,9 +288,6 @@ TextArea {
 	-fx-background-color: NONE; 
 	-fx-text-fill: #F2F7F9;
 	-fx-cell-size: 50px; /* altura de cada fila */
-	
-    
-	
 }
 
 .tablaMusica .column-header-background {
@@ -444,6 +441,79 @@ TextArea {
 /*-----------------------------------------------*/ 
 
 
+.tablaAdmin .column-header{
+	-fx-border-color: black;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: solid;
+}
+
+.tablaAdmin .column-header-background {
+	-fx-background-color: NONE; 
+	-fx-background-radius: 27px; 
+	-fx-background-insets: 0 0 10 0;
+	
+}
+
+.tablaAdmin .column-header, .tablaAdmin .filler{
+	-fx-background-color: #BAC5C8;
+	-fx-text-fill: BLACK;
+	-fx-font-weight: bold;
+	-fx-font-size: 16px;
+}
+
+
+.tablaAdmin .cell {
+    -fx-font-size: 14px; 
+    -fx-text-fill: BLACK;
+    -fx-font-family: Arial;
+    -fx-alignment: CENTER;
+    
+}
+
+
+.tablaAdmin .table-row-cell {
+    -fx-background-color: WHITE; 
+    -fx-pref-height: 30px;   
+    -fx-border-width: 1px;
+    -fx-border-spacing: 30px 0;
+    
+     
+}
+.tablaAdmin .table-row-cell:hover {
+    -fx-background-color: BLACK; 
+    
+
+}
+.tablaAdmin .table-row-cell:hover .cell {
+    -fx-text-fill: WHITE;
+
+}
+
+.tablaAdmin .table-row-cell:empty {
+    -fx-background-color: TRANSPARENT; 
+    -fx-border-color: NONE;
+}
+
+.tablaAdmin .table-row-cell:empty .table-cell {
+    -fx-border-width: 0;
+}
+
+/*SCROLLBAR*/
+.tablaAdmin .scroll-bar:horizontal, .tablaAdmin .scroll-bar:vertical {
+    -fx-background-color: NONE; 
+  
+}
+
+.tablaAdmin .scroll-bar:horizontal .thumb, .tablaAdmin .scroll-bar:vertical .thumb {
+    -fx-background-color: NONE; 
+   
+}
+
+
+.tablaAdmin .scroll-bar:horizontal .increment-button, .tablaAdmin .scroll-bar:horizontal .decrement-button, 
+.tablaAdmin .scroll-bar:vertical .increment-button, .tablaAdmin .scroll-bar:vertical .decrement-button {
+    -fx-background-color: NONE; 
+}
 
 
 

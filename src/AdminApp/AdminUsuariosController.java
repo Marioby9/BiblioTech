@@ -120,8 +120,6 @@ public class AdminUsuariosController {
 		vaciaTextos();
 		quitarFiltros();
 		rellenaTablaUsu();
-		txtFiltro.setText("");
-		
 	}
 
 	@FXML void clickEligeUsu(MouseEvent event){ //CUANDO PULSAMOS UN USUARIO DE LA TABLA, COGEMOS SUS DATOS
@@ -231,7 +229,8 @@ public class AdminUsuariosController {
 		txtUserCorreo.setText("");
 	}
 
-	private void quitarFiltros() {
+	protected void quitarFiltros() {
+		txtFiltro.setText("");
 		imgNicknameVerde.setVisible(false);
 		imgCorreoVerde.setVisible(false);
 		imgPasswordVerde.setVisible(false);

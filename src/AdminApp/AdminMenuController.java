@@ -178,7 +178,8 @@ public class AdminMenuController {
 		pUsuarios.setVisible(false);
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
-
+		adminContenidoController.refreshTablas(null);
+		
 	}
 
 	@FXML void clickBUsuarios(MouseEvent event) {
@@ -188,6 +189,7 @@ public class AdminMenuController {
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
 		adminUsuariosController.rellenaTablaUsu();
+		adminUsuariosController.quitarFiltros();
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {
