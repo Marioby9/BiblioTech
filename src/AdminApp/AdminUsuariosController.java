@@ -21,13 +21,14 @@ public class AdminUsuariosController {
 
 	@FXML private AnchorPane pRootUsuarios;
 	@FXML private Pane pUsuarios, pFiltros;
+	@FXML protected Pane pFondoAvisoUsu, pAvisoUsu;
 
 	@FXML private ImageView imgNickname;
 	@FXML private ImageView imgNicknameVerde;
 
 	@FXML private ImageView imgCorreo;
 	@FXML private ImageView imgCorreoVerde;
-	
+
 	@FXML private ImageView imgPassword;
 	@FXML private ImageView imgPasswordVerde;
 
@@ -113,7 +114,7 @@ public class AdminUsuariosController {
 		imgPassword.setVisible(false);
 		imgCorreo.setVisible(true);
 		imgNickname.setVisible(true);
-		
+
 	}
 
 	@FXML void refreshTablaUsu (MouseEvent event){
@@ -129,32 +130,46 @@ public class AdminUsuariosController {
 		txtUserPassword.setText(usuSelec.getContrasena());
 
 	}
-	
+
 	@FXML void clickBuscar (MouseEvent event){
 		vaciaTextos();
 		usuSelec = null;
-		
+
 		filtrar();
 		rellenaTablaUsu();
-		
+
 	}
 
 	@FXML void clickEliminaUsu(MouseEvent event){ //CUANDO PULSAMOS UN USUARIO DE LA TABLA, COGEMOS SUS DATOS
 		if(usuSelec != null) {
-			try {
-				Conexion.eliminarUsuario(usuSelec); //BORRAMOS
-				rellenaTablaUsu(); //ACTUALIZAMOS TABLA
-
-				vaciaTextos();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			pFondoAvisoUsu.setVisible(true);
+			pAvisoUsu.setVisible(true);
 		}
 		else {
 			System.out.println("No se puede eliminar el usuario");
 		}
 
 	}
+
+	@FXML void clickAceptaAvisoUsu(MouseEvent event) {
+		try {
+			Conexion.eliminarUsuario(usuSelec); //BORRAMOS
+			rellenaTablaUsu(); //ACTUALIZAMOS TABLA
+			pFondoAvisoUsu.setVisible(false);
+			pAvisoUsu.setVisible(false);
+
+			vaciaTextos();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+	}
+	@FXML void clickRechazaAvisoUsu(MouseEvent event) {
+		pFondoAvisoUsu.setVisible(false);
+		pAvisoUsu.setVisible(false);
+	}
+
 
 	@FXML void clickCancelaUsu (MouseEvent event){
 		vaciaTextos();
@@ -178,7 +193,7 @@ public class AdminUsuariosController {
 
 			vaciaTextos();
 			usuSelec = null;
-			
+
 		}else {
 			System.out.println("No se puede actualizar el usuario");
 		}
@@ -203,10 +218,10 @@ public class AdminUsuariosController {
 
 
 	}
-	
+
 	private void filtrar() {
 		paramFil = txtFiltro.getText();
-		
+
 		if(imgNicknameVerde.isVisible()) {
 			filtro = "NICKNAME";
 		}
@@ -223,7 +238,7 @@ public class AdminUsuariosController {
 
 
 	private void vaciaTextos() {
-		
+
 		txtUserNickname.setText("");
 		txtUserPassword.setText("");
 		txtUserCorreo.setText("");
@@ -234,7 +249,7 @@ public class AdminUsuariosController {
 		imgNicknameVerde.setVisible(false);
 		imgCorreoVerde.setVisible(false);
 		imgPasswordVerde.setVisible(false);
-		
+
 		imgNickname.setVisible(true);
 		imgCorreo.setVisible(true);
 		imgPassword.setVisible(true);

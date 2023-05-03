@@ -609,8 +609,39 @@ public class Conexion {
 		return listaLibros;
 	}
 	
+	public static int usuTotales() throws SQLException {
+		int total = 0;
+		st = connection.createStatement();
+		String sql =  "SELECT COUNT(*) FROM USUARIO";
+		ResultSet rs = st.executeQuery(sql);
+		
+		while(rs.next()) {
+			total = rs.getInt("COUNT(*)");
+
+			
+		}
+		st.close();
+		
+		return total;
+		
+	}
 	
-	
+	public static int autoresTotales() throws SQLException {
+		int total = 0;
+		st = connection.createStatement();
+		String sql =  "SELECT DISTINCT COUNT(AUTOR) FROM LIBROS";
+		ResultSet rs = st.executeQuery(sql);
+		
+		while(rs.next()) {
+			total = rs.getInt("COUNT(AUTOR)");
+
+			
+		}
+		st.close();
+		
+		return total;
+		
+	}
 	
 	
 	

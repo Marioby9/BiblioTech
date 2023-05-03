@@ -190,9 +190,12 @@ public class AdminMenuController {
 		pAjustes.setVisible(false);
 		adminUsuariosController.rellenaTablaUsu();
 		adminUsuariosController.quitarFiltros();
+		adminUsuariosController.pFondoAvisoUsu.setVisible(false);
+		adminUsuariosController.pAvisoUsu.setVisible(false);
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {
+		adminEstadisticasController.actualizaEstadisticas();
 		pEstadisticas.setVisible(true);
 		pPerfil.setVisible(false);
 		pContenido.setVisible(false);

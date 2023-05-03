@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -24,7 +23,7 @@ public class AdminPerfilController {
 	protected Image fPerfil, fPerfil1;
 	protected int numFPerfil;
 	@FXML private ImageView foto1, foto2, foto3, foto4, foto5, foto6, foto7,foto8, foto9;
-	@FXML private TextField txtCambioCorreo, txtCambioPassword, txtCambioUsuario;
+	
 
 	private Usuario u1;
 	
@@ -51,9 +50,6 @@ public class AdminPerfilController {
 
 		//INICIAR COMPONENTES PARA CADA USUARIO
 		lblBienvenidoPerfil.setText("Bienvenido, "+ u1.getNickname());
-		txtCambioUsuario.setText("");
-		txtCambioCorreo.setText("");
-		txtCambioPassword.setText("");
 		pProfilePics.setVisible(false);
 		
 	}
@@ -93,40 +89,6 @@ public class AdminPerfilController {
 	@FXML void clickBGuardarCambios(MouseEvent event) { //CAMBIA FOTO PERFIL, NOMBRE, CORREO, CONTRASEÑA
 
 		menu.fotoPerfil1.setImage(fotoPerfil.getImage());
-
-		if(!txtCambioUsuario.getText().equals("")) { //CAMBIA NICKNAME
-			String nuevoNom = txtCambioUsuario.getText();
-			try {
-				Conexion.updateTabla("USUARIO", "NICKNAME", nuevoNom, "ID = "+Integer.toString(u1.getID_Usuario()));
-				u1.setNickname(nuevoNom);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			menu.lblNomUsuario.setText(nuevoNom);
-			lblBienvenidoPerfil.setText("Bienvenido, "+nuevoNom);
-		}
-
-		if(!txtCambioPassword.getText().equals("")) { //CAMBIA CONTRASEÑA
-			String nuevaCon = txtCambioPassword.getText();
-			try {
-				Conexion.updateTabla("USUARIO", "CONTRASEÑA", nuevaCon, "ID = "+Integer.toString(u1.getID_Usuario()));
-				u1.setContrasena(nuevaCon);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
-
-		if(!txtCambioCorreo.getText().equals("")) { //CAMBIA CORREO
-			String nuevoCorreo = txtCambioCorreo.getText();
-			try {
-				Conexion.updateTabla("USUARIO", "CORREO", nuevoCorreo, "ID = "+Integer.toString(u1.getID_Usuario()));
-				u1.setCorreo(nuevoCorreo);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
 
 		//CAMBIA FPERFIL
 		try {

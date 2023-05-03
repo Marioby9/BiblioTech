@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,37 +16,17 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="365.0" prefHeight="30.0" prefWidth="217.0" text="Ajustes de Perfil:" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="438.0" prefHeight="30.0" prefWidth="171.0" text="Nombre Usuario:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="488.0" prefHeight="30.0" prefWidth="186.0" text="Correo electrónico:" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="543.0" prefHeight="30.0" prefWidth="186.0" text="Contraseña: " textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="fotoPerfil" fitHeight="180.0" fitWidth="180.0" layoutX="230.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fotoPerfil" fitHeight="180.0" fitWidth="180.0" layoutX="230.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/logAzulSF.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="271.0" fitWidth="330.0" layoutX="155.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="271.0" fitWidth="330.0" layoutX="155.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../backgrounds/panelCambiarFoto.png" />
                </image>
             </ImageView>
-            <ImageView id="bPerfil" fx:id="bEditarFoto" fitHeight="50.0" fitWidth="36.0" layoutX="367.0" layoutY="274.0" onMouseClicked="#clickBEditarFoto" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="bPerfil" fx:id="bEditarFoto" fitHeight="50.0" fitWidth="36.0" layoutX="367.0" layoutY="256.0" onMouseClicked="#clickBEditarFoto" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/editarBlue.png" />
                </image>
@@ -101,31 +80,21 @@
                   </ImageView>
                </children>
             </Pane>
-            <ImageView id="bPerfil" fx:id="bEliminarFoto" fitHeight="50.0" fitWidth="36.0" layoutX="239.0" layoutY="274.0" onMouseClicked="#clickBEliminarFoto" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="bPerfil" fx:id="bEliminarFoto" fitHeight="50.0" fitWidth="36.0" layoutX="239.0" layoutY="256.0" onMouseClicked="#clickBEliminarFoto" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/delete.png" />
                </image>
             </ImageView>
-            <TextField id="txtCambioPerfil" fx:id="txtCambioUsuario" layoutX="244.0" layoutY="432.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: NONE; -fx-border-color: white; -fx-border-width: 0 0 1 0;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <TextField id="txtCambioPerfil" fx:id="txtCambioCorreo" layoutX="244.0" layoutY="483.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: NONE; -fx-border-color: white; -fx-border-width: 0 0 1 0;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <TextField id="txtCambioPerfil" fx:id="txtCambioPassword" layoutX="244.0" layoutY="537.0" prefHeight="25.0" prefWidth="246.0" style="-fx-background-color: NONE; -fx-border-color: white; -fx-border-width: 0 0 1 0;">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="443.0" layoutY="595.0" onMouseClicked="#clickBGuardarCambios" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Cambios">
+            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="235.0" layoutY="305.0" onMouseClicked="#clickBGuardarCambios" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Foto">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <ImageView fitHeight="281.0" fitWidth="577.0" layoutX="33.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/adminResumen.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

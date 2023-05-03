@@ -106,8 +106,6 @@ public class MusicaController {
 		pListaMus.setVisible(true);
 
 
-
-
 	}
 
 
@@ -228,9 +226,9 @@ public class MusicaController {
 			reproductor.setOnEndOfMedia(null);
 		}
 
-
-
 	} 
+	
+	
 	@FXML void clickNextSong(MouseEvent event) {
 		int numCanAct = tablaMusica.getSelectionModel().getSelectedIndex();
 		int canTotales = tablaMusica.getItems().size();
@@ -309,6 +307,10 @@ public class MusicaController {
 
 		if(cancActual!=null) {
 			try {
+			
+				reproductor.stop();
+				reproductor.dispose();
+				reproductor = null;
 				
 				
 			
@@ -335,10 +337,6 @@ public class MusicaController {
 	}
 	
 	
-	
-
-
-
 
 	private void rellenaTablaMus(String categoria) {
 
