@@ -1,4 +1,5 @@
 /*SCRIPT BIBLIOTECH TOMAS, MARIO, RAUL 2023*/
+SELECT * FROM AJUSTES;
 
 /*
 drop table Usuario;
