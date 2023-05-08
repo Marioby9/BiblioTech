@@ -108,6 +108,23 @@ TextArea {
 	-fx-scale-y: 1.08;
 }
 
+#bAdminStats{
+	-fx-background-color: WHITE;
+	-fx-text-fill: black;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	
+}
+
+#bAdminStats:hover{
+	-fx-background-color: BLACK;
+	-fx-text-fill: WHITE;
+	-fx-border-color: WHITE;
+	-fx-border-width: 3px;
+	
+}
+
+
 /*-------------------------------------------------------------------*/
 
 #bAceptaMus {

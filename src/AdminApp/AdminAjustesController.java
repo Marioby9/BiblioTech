@@ -21,7 +21,7 @@ public class AdminAjustesController {
 	@FXML private Pane pAjustes;
 	@FXML private Label lblColorTema;
 	@FXML private ImageView bEditarColor, bWeb, bGithub, bTwitter, bInstagram, bYoutube;
-	@FXML protected Pane pPanelColores, pFondoAviso, pAvisoCuenta;		
+	@FXML protected Pane pPanelColores;		
 	@FXML private Label lblColorAzul, lblColorMorado, lblColorNaranja, lblColorRojo, lblColorVerde;
 	protected boolean abierto;  
 	protected int color;
@@ -96,34 +96,6 @@ public class AdminAjustesController {
 		}
 
 	}
-
-	@FXML void clickBEliminarCuenta(MouseEvent event) {
-		pFondoAviso.setVisible(true);
-		pAvisoCuenta.setVisible(true);
-
-	}
-
-	@FXML void clickRechazaAvisoCuenta(MouseEvent event) {
-		pFondoAviso.setVisible(false);
-		pAvisoCuenta.setVisible(false);
-
-	}
-
-	@FXML void clickAceptaAvisoCuenta(MouseEvent event) {
-
-		try {
-			if(Conexion.eliminarUsuario(Usuario.getUsuario())) {
-				try {
-					menu.clickBVolver(event);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
 
 
 	@FXML void clickBInformacion(MouseEvent event) { //PULSA ENLACE WEB O REPOSITORIO

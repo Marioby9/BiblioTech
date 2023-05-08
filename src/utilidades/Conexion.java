@@ -11,6 +11,7 @@ import elementos.Juego;
 import elementos.Libro;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.BarChart;
 
 public class Conexion {
 
@@ -517,10 +518,10 @@ public class Conexion {
 		
 		st = connection.createStatement();
 		if(filtro == null) {
-			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO ORDER BY ID";
+			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO WHERE ID != 1 ORDER BY ID";
 		}
 		else {
-			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO WHERE UPPER("+ filtro + ") LIKE UPPER('%" + paramFil +"%') ORDER BY ID";
+			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO WHERE UPPER("+ filtro + ") LIKE UPPER('%" + paramFil +"%') AND ID != 1 ORDER BY ID";
 		}
 		
 		ResultSet rs = st.executeQuery(sql);
@@ -642,6 +643,47 @@ public class Conexion {
 		return total;
 		
 	}
+	
+	public static ObservableList<BarChart.Data> graficaLibros() throws SQLException {
+		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
+		String nickname, sql;
+		int num;
+		
+		st = connection.createStatement();
+		sql =  "SELECT USUARIO.NICKNAME, COUNT(ID_LIBRO) FROM LIBROS JOIN USUARIO ON LIBROS.ID_USUARIO = USUARIO.ID GROUP BY USUARIO.NICKNAME ";
+		ResultSet rs = st.executeQuery(sql);
+		
+		while(rs.next()) {
+			nickname = rs.getString("NICKNAME");
+			num = rs.getInt("COUNT(ID_LIBRO)");
+			datos.add(new BarChart.Data(nickname, num));
+
+		}
+		st.close();
+		return datos;
+	}
+	
+	public static ObservableList<BarChart.Data> graficaJuegos() throws SQLException {
+		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
+		String nickname, sql;
+		int num;
+		
+		st = connection.createStatement();
+		sql =  "SELECT USUARIO.NICKNAME, COUNT(ID_JUEGO) FROM JUEGOS JOIN USUARIO ON JUEGOS.ID_USUARIO = USUARIO.ID GROUP BY USUARIO.NICKNAME ";
+		ResultSet rs = st.executeQuery(sql);
+		
+		while(rs.next()) {
+			nickname = rs.getString("NICKNAME");
+			num = rs.getInt("COUNT(ID_JUEGO)");
+			datos.add(new BarChart.Data(nickname, num));
+
+		}
+		st.close();
+		return datos;
+	}
+	
+	
+	
 	
 	
 	

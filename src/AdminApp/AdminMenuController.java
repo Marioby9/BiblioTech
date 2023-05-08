@@ -179,7 +179,8 @@ public class AdminMenuController {
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
 		adminContenidoController.refreshTablas(null);
-		
+		adminContenidoController.ocultaPaneles();
+		adminContenidoController.vaciaTextos();
 	}
 
 	@FXML void clickBUsuarios(MouseEvent event) {
@@ -210,8 +211,6 @@ public class AdminMenuController {
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(true);
 		adminAjustesController.pPanelColores.setVisible(false);
-		adminAjustesController.pFondoAviso.setVisible(false);
-		adminAjustesController.pAvisoCuenta.setVisible(false);
 	}
 
 	

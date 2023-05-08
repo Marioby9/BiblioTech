@@ -17,12 +17,7 @@
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <Label id="bEliminarCuenta" alignment="CENTER" layoutX="434.0" layoutY="573.0" onMouseClicked="#clickBEliminarCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Eliminar Cuenta" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="86.0" layoutY="574.0" onMouseClicked="#clickBGuardarAjustes" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Ajustes">
+            <Label id="bGuardarAjustes" alignment="CENTER" layoutX="235.0" layoutY="586.0" onMouseClicked="#clickBGuardarAjustes" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="Guardar Ajustes">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -97,26 +92,6 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Pane fx:id="pFondoAviso" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
-            <Pane fx:id="pAvisoCuenta" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
-               <children>
-                  <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../backgrounds/avisoElimCuenta.png" />
-                     </image>
-                  </ImageView>
-                  <Label id="bAceptaMus" alignment="CENTER" layoutX="368.0" layoutY="271.0" onMouseClicked="#clickAceptaAvisoCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label id="bRechazaMus" alignment="CENTER" layoutX="86.0" layoutY="271.0" onMouseClicked="#clickRechazaAvisoCuenta" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
          </children>
       </Pane>
    </children>
