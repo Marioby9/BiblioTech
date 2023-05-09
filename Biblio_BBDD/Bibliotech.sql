@@ -1,6 +1,4 @@
 /*SCRIPT BIBLIOTECH TOMAS, MARIO, RAUL 2023*/
-SELECT * FROM AJUSTES;
-
 /*
 drop table Usuario;
 drop table Bibliotecas;
@@ -14,13 +12,13 @@ DELETE FROM USUARIO;
 COMMIT; 
 */
 
-
 create table Usuario 
 (
 ID          number(3),
 Nickname    varchar2(30) UNIQUE Not Null,
 Contraseña  varchar2(30) Not Null,
 Correo varchar(40) Not Null,
+Fecha date default sysdate,
 constraint Pk_Usuarioid Primary key(ID)
 );
 
@@ -117,7 +115,6 @@ INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Termi
 INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (016,  'MORTADELO Y FILEMON',  'COMEDIA', 82, 'FRANCISCO IBAÑEZ', 1958, 'NO', '/caratulas/mortadelo-y-filemon.png');  
 
 
-
 create table Canciones
 (
 ID_Cancion number(3),
@@ -148,6 +145,25 @@ constraint ck_fPerfil check (Fperfil between 0 and 9),
 constraint ck_Volumen check (Volumen between 0 and 100),
 constraint ck_Cfondo check (Cfondo between 0 and 4)
 );
+
+create table GESTION_ADMIN(  /*EN ESTA TABLA SE ALMACENAN LOS USUARIOS ELIMINADOS*/
+    ID number,
+    Nickname    varchar2(30) UNIQUE Not Null,
+    Contraseña  varchar2(30) Not Null,
+    Correo varchar(40) Not Null,
+    Fecha date default sysdate,
+    constraint Pk_GestionAdmin Primary key(ID)
+);
+
+
+CREATE OR REPLACE TRIGGER USER_ELIMINADO
+AFTER DELETE
+ON USUARIO
+FOR EACH ROW
+
+BEGIN 
+    INSERT INTO GESTION_ADMIN VALUES (:OLD.ID, :OLD.NICKNAME, :OLD.CONTRASEÑA, :OLD.CORREO, SYSDATE);
+END;
 
 
 --AÑADIMOS RESUMENES JUEGOS: 
