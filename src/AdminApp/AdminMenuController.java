@@ -71,6 +71,7 @@ public class AdminMenuController {
 			pPerfil.setLayoutX(0); pPerfil.setLayoutY(0);
 			pPerfil.setVisible(true);
 			adminPerfilController.cambiaFPerfil();
+			
 
 
 			//CONTENIDO
@@ -165,11 +166,12 @@ public class AdminMenuController {
 
 	
 	@FXML void clickBPerfil(MouseEvent event) {
-		pPerfil.setVisible(true);
 		pContenido.setVisible(false);
 		pUsuarios.setVisible(false);
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
+		pPerfil.setVisible(true);
+		adminPerfilController.pProfilePics.setVisible(false);
 	}
 
 	@FXML void clickBContenido(MouseEvent event) {

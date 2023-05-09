@@ -123,12 +123,15 @@ public class AdminUsuariosController {
 		rellenaTablaUsu();
 	}
 
+
 	@FXML void clickEligeUsu(MouseEvent event){ //CUANDO PULSAMOS UN USUARIO DE LA TABLA, COGEMOS SUS DATOS
 		usuSelec = tablaUsuarios.getSelectionModel().getSelectedItem();
-		txtUserNickname.setText(usuSelec.getNickname());
-		txtUserCorreo.setText(usuSelec.getCorreo());
-		txtUserPassword.setText(usuSelec.getContrasena());
-
+		if(usuSelec != null) {
+			txtUserNickname.setText(usuSelec.getNickname());
+			txtUserCorreo.setText(usuSelec.getCorreo());
+			txtUserPassword.setText(usuSelec.getContrasena());
+		}
+	
 	}
 
 	@FXML void clickBuscar (MouseEvent event){
@@ -215,8 +218,12 @@ public class AdminUsuariosController {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
 
+	@FXML void muestraEliminados(MouseEvent event) {
+		filtro = "eliminados";
+		rellenaTablaUsu();
 	}
 
 	private void filtrar() {

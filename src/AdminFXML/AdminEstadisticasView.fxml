@@ -52,7 +52,7 @@
                   <ColorAdjust brightness="-1.0" />
                </effect>
             </Label>
-            <Label fx:id="mediaUsoApp" alignment="CENTER" layoutX="534.0" layoutY="187.0" prefHeight="38.0" prefWidth="77.0" text="0">
+            <Label fx:id="totalElementos" alignment="CENTER" layoutX="534.0" layoutY="187.0" prefHeight="38.0" prefWidth="77.0" text="0">
                <font>
                   <Font name="Franklin Gothic Heavy" size="17.0" />
                </font>

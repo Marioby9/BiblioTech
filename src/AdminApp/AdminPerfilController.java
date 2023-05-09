@@ -18,7 +18,7 @@ public class AdminPerfilController {
 	@FXML private Pane pPerfil;
 	@FXML private ImageView bEditarFoto, bEliminarFoto;		
 	@FXML private Label  lblBienvenidoPerfil;
-	@FXML private Pane pProfilePics;
+	@FXML protected Pane pProfilePics;
 	@FXML private ImageView fotoPerfil;
 	protected Image fPerfil, fPerfil1;
 	protected int numFPerfil;

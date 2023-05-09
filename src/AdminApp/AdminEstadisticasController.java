@@ -15,13 +15,15 @@ public class AdminEstadisticasController {
 	@FXML private AnchorPane pRootEstadisticas;
 	@FXML private Pane pEstadisticas, pCarga;
 	protected AdminMenuController menu;
-	@FXML private Label totalUsu,  totalAutores, totalArtistas, ultRegistros,cuentasBorradas, mediaUsoApp;
+	@FXML private Label totalUsu,  totalAutores, totalArtistas, ultRegistros,cuentasBorradas, totalElementos;
 	@FXML private BarChart<String, Integer> grafico;
 
 	protected void actualizaEstadisticas() {
 		try {
 			totalUsu.setText(Integer.toString(Conexion.usuTotales()));
 			totalAutores.setText(Integer.toString(Conexion.autoresTotales()));
+			totalElementos.setText(Integer.toString(Conexion.totalElementos()));
+			cuentasBorradas.setText(Integer.toString(Conexion.usuBorrados()));
 			pCarga.setVisible(true);
 
 

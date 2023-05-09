@@ -90,7 +90,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="281.0" fitWidth="577.0" layoutX="33.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="281.0" fitWidth="577.0" layoutX="50.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../backgrounds/adminResumen.png" />
                </image>

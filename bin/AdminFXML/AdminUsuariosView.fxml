@@ -28,9 +28,9 @@
             </ImageView>
             <Pane layoutX="46.0" layoutY="73.0" prefHeight="57.0" prefWidth="548.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3px;">
                <children>
-                  <ImageView id="botones" fitHeight="36.0" fitWidth="36.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="botones" fitHeight="42.0" fitWidth="36.0" layoutX="12.0" layoutY="11.0" onMouseClicked="#muestraEliminados" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/menuAdmin.png" />
+                        <Image url="@../icons/angel.png" />
                      </image>
                   </ImageView>
                   <ImageView id="botones" fitHeight="32.0" fitWidth="30.0" layoutX="500.0" layoutY="14.0" onMouseClicked="#clickBuscar" pickOnBounds="true" preserveRatio="true">
@@ -43,35 +43,34 @@
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <Pane fx:id="pFiltros" layoutX="54.0" layoutY="4.0" prefHeight="50.0" prefWidth="180.0">
+                  <Pane fx:id="pFiltros" layoutX="72.0" layoutY="4.0" prefHeight="50.0" prefWidth="151.0">
                      <children>
-                        <ImageView id="botones" fx:id="imgNickname" fitHeight="30.0" fitWidth="36.0" layoutX="23.0" layoutY="11.0" onMouseClicked="#clickAdminUsuarioGestionUsuario" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="botones" fx:id="imgNickname" fitHeight="30.0" fitWidth="36.0" layoutX="3.0" layoutY="11.0" onMouseClicked="#clickAdminUsuarioGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/user-negro.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="botones" fx:id="imgCorreo" fitHeight="30.0" fitWidth="36.0" layoutX="77.0" layoutY="11.0" onMouseClicked="#clickAdminCorreoGestionUsuario" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="botones" fx:id="imgCorreo" fitHeight="30.0" fitWidth="36.0" layoutX="57.0" layoutY="11.0" onMouseClicked="#clickAdminCorreoGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/correo-electronico.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="botones" fx:id="imgPassword" fitHeight="36.0" fitWidth="40.0" layoutX="129.0" layoutY="8.0" onMouseClicked="#clickAdminContraseñaGestionUsuario" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="botones" fx:id="imgPassword" fitHeight="36.0" fitWidth="40.0" layoutX="109.0" layoutY="8.0" onMouseClicked="#clickAdminContraseñaGestionUsuario" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/bloqueado.png" />
                            </image>
                         </ImageView>
-                        <Line endX="186.0" layoutX="-7.0" layoutY="-1.0" startX="186.0" startY="51.0" />
-                        <ImageView id="botones" fx:id="imgNicknameVerde" fitHeight="30.0" fitWidth="36.0" layoutX="23.0" layoutY="11.0" onMouseClicked="#clickAdminUsuarioGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView id="botones" fx:id="imgNicknameVerde" fitHeight="30.0" fitWidth="36.0" layoutX="3.0" layoutY="11.0" onMouseClicked="#clickAdminUsuarioGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../icons/user-negro-verde.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="botones" fx:id="imgCorreoVerde" fitHeight="30.0" fitWidth="36.0" layoutX="77.0" layoutY="11.0" onMouseClicked="#clickAdminCorreoGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView id="botones" fx:id="imgCorreoVerde" fitHeight="30.0" fitWidth="36.0" layoutX="57.0" layoutY="11.0" onMouseClicked="#clickAdminCorreoGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../icons/correo-verde.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="botones" fx:id="imgPasswordVerde" fitHeight="36.0" fitWidth="40.0" layoutX="129.0" layoutY="8.0" onMouseClicked="#clickAdminContraseñaGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView id="botones" fx:id="imgPasswordVerde" fitHeight="36.0" fitWidth="40.0" layoutX="109.0" layoutY="8.0" onMouseClicked="#clickAdminContraseñaGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../icons/bloqueado-verde.png" />
                            </image>
@@ -79,6 +78,8 @@
                      </children>
                   </Pane>
                   <Line endX="186.0" layoutX="297.0" layoutY="3.0" startX="186.0" startY="51.0" />
+                  <Line endX="186.0" layoutX="-129.0" layoutY="3.0" startX="186.0" startY="51.0" />
+                  <Line endX="186.0" layoutX="46.0" layoutY="3.0" startX="186.0" startY="51.0" />
                </children>
             </Pane>
             <TableView fx:id="tablaUsuarios" layoutX="50.0" layoutY="145.0" onMouseClicked="#clickEligeUsu" prefHeight="179.0" prefWidth="540.0" styleClass="tablaAdmin">

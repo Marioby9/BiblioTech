@@ -206,6 +206,7 @@ public class MenuController {
 
 
 		pPerfil.setVisible(true);
+		perfilController.pProfilePics.setVisible(false);
 		pLibros.setVisible(false);
 		pJuegos.setVisible(false);
 		pMusica.setVisible(false);

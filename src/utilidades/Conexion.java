@@ -122,7 +122,7 @@ public class Conexion {
 		boolean eliminado = false;
 
 
-		String sql= "DELETE FROM USUARIO WHERE ID = "+u.getID_Usuario() + " AND "+u.getID_Usuario()+" != 1";
+		String sql= "DELETE FROM USUARIO WHERE ID = "+u.getID_Usuario() + " AND ID != 1";
 
 		pst = connection.prepareStatement(sql);
 
@@ -131,7 +131,7 @@ public class Conexion {
 
 		return eliminado;
 	}
-	
+
 	public static boolean updateUsuario(Usuario u) throws SQLException{ 
 		boolean updated = false;
 
@@ -140,11 +140,11 @@ public class Conexion {
 		pst.setObject(1, u.getNickname());
 		pst.setObject(2, u.getContrasena());
 		pst.setObject(3, u.getCorreo());
-		
+
 		updated = pst.executeUpdate()>0;
 		pst.close();
-		
-		
+
+
 		return updated;
 	}
 
@@ -155,7 +155,7 @@ public class Conexion {
 		boolean accede = false;
 		String nickname;
 		String contrasena;
-		
+
 		st = connection.createStatement();
 		ResultSet rs = st.executeQuery("select nickname, contraseña from usuario");
 
@@ -215,7 +215,7 @@ public class Conexion {
 			insertado = pst.executeUpdate()>0;
 			pst.close();
 		}
-		
+
 
 		return insertado;
 	}
@@ -232,8 +232,8 @@ public class Conexion {
 		pst.setObject(5, libro.getResumen());
 		updated = pst.executeUpdate()>0;
 		pst.close();
-		
-		
+
+
 		return updated;
 	}
 
@@ -255,12 +255,12 @@ public class Conexion {
 			updated = pst.executeUpdate()>0;
 			pst.close();
 		}
-		
+
 		return updated;
 	}
-	
-	
-	
+
+
+
 	public static boolean eliminaLibro(Libro libro) throws SQLException {
 		boolean eliminado = false;
 
@@ -309,8 +309,8 @@ public class Conexion {
 
 		return listaLibros;
 	}
-	
-	
+
+
 	public static ObservableList<Libro> fillFavBooks(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, terminado, genero;
@@ -344,9 +344,9 @@ public class Conexion {
 		return listaLibros;
 	}
 
-	
+
 	//JUEGOS
-	
+
 	public static boolean agregaJuego(Juego juego, boolean portada) throws SQLException {
 		boolean insertado = false;
 		String sql= "INSERT INTO JUEGOS (ID_JUEGO, ID_USUARIO, TITULO, EMPRESA, PLATAFORMA, GENERO, H_JUGADAS, LANZAMIENTO, RESUMEN, TERMINADO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -372,7 +372,7 @@ public class Conexion {
 			insertado = pst.executeUpdate()>0;
 			pst.close();
 		}
-		
+
 
 		return insertado;
 	}
@@ -388,11 +388,11 @@ public class Conexion {
 		pst.setObject(4, juego.getLanzamiento());
 		pst.setObject(5, juego.gethJugadas());
 		pst.setObject(6, juego.getResumen());
-		
+
 		updated = pst.executeUpdate()>0;
 		pst.close();
-		
-		
+
+
 		return updated;
 	}
 
@@ -414,10 +414,10 @@ public class Conexion {
 			updated = pst.executeUpdate()>0;
 			pst.close();
 		}
-		
+
 		return updated;
 	}
-	
+
 	public static boolean eliminaJuego(Juego juego) throws SQLException {
 		boolean eliminado = false;
 
@@ -431,9 +431,9 @@ public class Conexion {
 
 		return eliminado;
 	}
-	
 
-	
+
+
 	public static ObservableList<Juego> fillListGames(String genero, int id_user) throws SQLException{ 
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, terminado, empresa, favorito;
@@ -459,8 +459,8 @@ public class Conexion {
 			resumen = rs.getString("RESUMEN");
 			empresa = rs.getString("EMPRESA");
 			favorito = rs.getString("FAVORITO");
-			
-			
+
+
 			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
 			juego.setFavorito(favorito);
 			listaJuegos.add(juego);
@@ -471,7 +471,7 @@ public class Conexion {
 
 		return listaJuegos;
 	}
-	
+
 	public static ObservableList<Juego> fillFavGames(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, terminado, empresa, genero;
@@ -495,8 +495,8 @@ public class Conexion {
 			resumen = rs.getString("RESUMEN");
 			empresa = rs.getString("EMPRESA");
 			genero = rs.getString("GENERO");
-			
-			
+
+
 			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
 			juego.setFavorito("SI");
 			listaJuegos.add(juego);
@@ -507,41 +507,44 @@ public class Conexion {
 
 		return listaJuegos;
 	}
-		
-	
-	
+
+
+
 	/* ----------------------------------FUNCIONES PARA EL ADMINISTRADOR------------------------------------- */
 	public static ObservableList<Usuario> rellenaTablaUsu(String filtro, String paramFil) throws SQLException{
 		int id;
 		String nickname, password, correo, sql;
 		ObservableList<Usuario> listaUsu = FXCollections.observableArrayList();
-		
+
 		st = connection.createStatement();
 		if(filtro == null) {
 			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO WHERE ID != 1 ORDER BY ID";
 		}
+		else if (filtro.equalsIgnoreCase("eliminados")){
+			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM GESTION_ADMIN ORDER BY ID";
+		}
 		else {
 			sql =  "SELECT ID, NICKNAME, CONTRASEÑA, CORREO FROM USUARIO WHERE UPPER("+ filtro + ") LIKE UPPER('%" + paramFil +"%') AND ID != 1 ORDER BY ID";
 		}
-		
+
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		while(rs.next()) {
 			id = rs.getInt("ID");
 			nickname = rs.getString("NICKNAME");
 			password = rs.getString("CONTRASEÑA");
 			correo = rs.getString("CORREO");
-			
+
 			Usuario usu = new Usuario(nickname, password, correo);
 			usu.setID_Usuario(id);
 			listaUsu.add(usu);
-			
+
 		}
-		
+
 		return listaUsu;
 	}
-	
-	
+
+
 	public static ObservableList<Juego> adminListGames(int id_user) throws SQLException{ 
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, genero, terminado, empresa, favorito;
@@ -566,8 +569,8 @@ public class Conexion {
 			resumen = rs.getString("RESUMEN");
 			empresa = rs.getString("EMPRESA");
 			favorito = rs.getString("FAVORITO");
-			
-			
+
+
 			Juego juego = new Juego(id_Juego, id_usuario, titulo, genero, plataforma, hJugadas, ano_lanz, terminado, portada, resumen, empresa);
 			juego.setFavorito(favorito);
 			listaJuegos.add(juego);
@@ -576,8 +579,8 @@ public class Conexion {
 
 		return listaJuegos;
 	}
-	
-	
+
+
 	public static ObservableList<Libro> adminListBooks(int id_user) throws SQLException{ 
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, genero, terminado, favorito;
@@ -609,50 +612,110 @@ public class Conexion {
 
 		return listaLibros;
 	}
-	
+
 	public static int usuTotales() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
 		String sql =  "SELECT COUNT(*) FROM USUARIO";
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		while(rs.next()) {
 			total = rs.getInt("COUNT(*)");
 
-			
+
 		}
 		st.close();
-		
+
 		return total;
-		
+
 	}
-	
+
 	public static int autoresTotales() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
 		String sql =  "SELECT DISTINCT COUNT(AUTOR) FROM LIBROS";
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		while(rs.next()) {
 			total = rs.getInt("COUNT(AUTOR)");
 
-			
+
 		}
 		st.close();
-		
+
 		return total;
-		
+
 	}
-	
+
+
+	public static int usuBorrados() throws SQLException {
+		int total = 0;
+		st = connection.createStatement();
+		String sql =  "SELECT COUNT(ID) FROM GESTION_ADMIN";
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			total = rs.getInt("COUNT(ID)");
+		}
+		st.close();
+
+		return total;
+	}
+
+	public static int totalElementos() throws SQLException {
+		int total = 0;
+		st = connection.createStatement();
+		String sql =  "SELECT COUNT(*) FROM LIBROS WHERE ID_USUARIO IS NOT null";
+		ResultSet rs = st.executeQuery(sql);
+		while(rs.next()) {
+			total += rs.getInt("COUNT(*)");
+		}
+		
+		st = connection.createStatement();
+		sql =  "SELECT COUNT(*) FROM JUEGOS WHERE ID_USUARIO IS NOT null";
+		rs = st.executeQuery(sql);
+		while(rs.next()) {
+			total += rs.getInt("COUNT(*)");
+		}
+
+		st = connection.createStatement();
+		sql =  "SELECT COUNT(*) FROM CANCIONES WHERE ID_USUARIO IS NOT null";
+		rs = st.executeQuery(sql);
+		while(rs.next()) {
+			total += rs.getInt("COUNT(*)");
+		}
+
+		st.close();
+
+		return total;
+	}
+
+
+	public static int ultimosUsu() throws SQLException{ /*DEVUELVE EL NUMERO DE USUARIOS REGISTRADOS EN LA ULTIMA SEMANA*/
+		int total = 0;
+		st = connection.createStatement();
+		String sql =  "SELECT COUNT(ID) FROM USUARIO WHERE SYSDATE - FECHA <= 7";
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			total = rs.getInt("COUNT(ID)");
+		}
+		st.close();
+
+		return total;
+	}
+
+	/*ADMIN GRAFICOS*/
+
 	public static ObservableList<BarChart.Data> graficaLibros() throws SQLException {
 		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
 		String nickname, sql;
 		int num;
-		
+
 		st = connection.createStatement();
 		sql =  "SELECT USUARIO.NICKNAME, COUNT(ID_LIBRO) FROM LIBROS JOIN USUARIO ON LIBROS.ID_USUARIO = USUARIO.ID GROUP BY USUARIO.NICKNAME ";
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		while(rs.next()) {
 			nickname = rs.getString("NICKNAME");
 			num = rs.getInt("COUNT(ID_LIBRO)");
@@ -662,16 +725,16 @@ public class Conexion {
 		st.close();
 		return datos;
 	}
-	
+
 	public static ObservableList<BarChart.Data> graficaJuegos() throws SQLException {
 		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
 		String nickname, sql;
 		int num;
-		
+
 		st = connection.createStatement();
 		sql =  "SELECT USUARIO.NICKNAME, COUNT(ID_JUEGO) FROM JUEGOS JOIN USUARIO ON JUEGOS.ID_USUARIO = USUARIO.ID GROUP BY USUARIO.NICKNAME ";
 		ResultSet rs = st.executeQuery(sql);
-		
+
 		while(rs.next()) {
 			nickname = rs.getString("NICKNAME");
 			num = rs.getInt("COUNT(ID_JUEGO)");
@@ -681,12 +744,12 @@ public class Conexion {
 		st.close();
 		return datos;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	//CIERRE CONEXION
 	public static void cerrar() throws SQLException {
 
