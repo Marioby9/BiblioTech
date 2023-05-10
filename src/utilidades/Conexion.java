@@ -25,17 +25,20 @@ public class Conexion {
 	static Connection connection = null;
 
 
-	public static void conectar() {
+	public static boolean conectar() {
+		boolean conectado = false;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			connection = DriverManager.getConnection(url,login,password);
 			if(connection != null) {
+				conectado = true;
 				System.out.println("Conexion realizada correctamente.");
 			}
 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		return conectado;
 	}
 
 	//CONSULTAS TABLA USUARIO
@@ -704,6 +707,17 @@ public class Conexion {
 
 		return total;
 	}
+	
+	public static boolean restauraUsu(Usuario u) throws SQLException{ //ELIMINA EL USUARIO DE GESTION_ADMIN Y CON EL TRIGGER LO INSERTA EN USUARIO
+		boolean restaurado = false;
+
+		String sql= "DELETE FROM GESTION_ADMIN WHERE ID = "+u.getID_Usuario();
+		pst = connection.prepareStatement(sql);
+		restaurado = pst.executeUpdate()>0;
+		pst.close();
+
+		return restaurado;
+	}
 
 	/*ADMIN GRAFICOS*/
 
@@ -751,8 +765,8 @@ public class Conexion {
 
 
 	//CIERRE CONEXION
-	public static void cerrar() throws SQLException {
-
+	public static boolean cerrar() throws SQLException {
+		boolean cerrado = false;
 		if(rs!=null) {
 			rs.close();
 		}
@@ -762,9 +776,11 @@ public class Conexion {
 		if(connection!=null) {
 			connection.close();
 			if(connection.isClosed()) {
+				cerrado = true;
 				System.out.println("Conexion Cerrada correctamente");
 			}
 		}
+		return cerrado;
 	}
 
 

@@ -108,6 +108,20 @@
             <TextField fx:id="txtUserNickname" layoutX="298.0" layoutY="371.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
             <TextField fx:id="txtUserCorreo" layoutX="298.0" layoutY="430.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
             <TextField fx:id="txtUserPassword" layoutX="298.0" layoutY="489.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
+            <Pane fx:id="pRestauraUsu" layoutY="336.0" prefHeight="300.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="301.0" fitWidth="561.0" layoutX="40.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pRestauraUsu.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="bAdminBotonUsuAceptar" alignment="CENTER" layoutX="204.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#clickRestauraUsu" prefHeight="54.0" prefWidth="231.0" text="RESTAURAR">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
             <Pane fx:id="pFondoAvisoUsu" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
             <Pane fx:id="pAvisoUsu" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
                <children>

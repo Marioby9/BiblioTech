@@ -21,7 +21,7 @@ public class AdminUsuariosController {
 
 	@FXML private AnchorPane pRootUsuarios;
 	@FXML private Pane pUsuarios, pFiltros;
-	@FXML protected Pane pFondoAvisoUsu, pAvisoUsu;
+	@FXML protected Pane pFondoAvisoUsu, pAvisoUsu, pRestauraUsu;
 
 	@FXML private ImageView imgNickname;
 	@FXML private ImageView imgNicknameVerde;
@@ -53,6 +53,7 @@ public class AdminUsuariosController {
 	private String filtro, paramFil;
 	private Usuario usuSelec;
 	protected AdminMenuController menu;
+	
 
 	//GESTION USUARIO ADMIN
 	@FXML
@@ -126,12 +127,18 @@ public class AdminUsuariosController {
 
 	@FXML void clickEligeUsu(MouseEvent event){ //CUANDO PULSAMOS UN USUARIO DE LA TABLA, COGEMOS SUS DATOS
 		usuSelec = tablaUsuarios.getSelectionModel().getSelectedItem();
-		if(usuSelec != null) {
-			txtUserNickname.setText(usuSelec.getNickname());
-			txtUserCorreo.setText(usuSelec.getCorreo());
-			txtUserPassword.setText(usuSelec.getContrasena());
+		if(usuSelec!=null) {
+			if(filtro != null && filtro.equalsIgnoreCase("eliminados")) {
+				pRestauraUsu.setVisible(true);
+			}
+			else {
+				pRestauraUsu.setVisible(false);
+				txtUserNickname.setText(usuSelec.getNickname());
+				txtUserCorreo.setText(usuSelec.getCorreo());
+				txtUserPassword.setText(usuSelec.getContrasena());
+			}
 		}
-	
+			
 	}
 
 	@FXML void clickBuscar (MouseEvent event){
@@ -202,6 +209,18 @@ public class AdminUsuariosController {
 		}
 
 	}
+	
+	
+	@FXML void clickRestauraUsu(MouseEvent event) {
+		try {
+			Conexion.restauraUsu(usuSelec);
+			vaciaTextos();
+			quitarFiltros();
+			rellenaTablaUsu();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	/* ------------------- FUNCIONES VARIAS ---------------*/
 
@@ -218,6 +237,7 @@ public class AdminUsuariosController {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		pRestauraUsu.setVisible(false);
 	}
 
 
@@ -252,6 +272,7 @@ public class AdminUsuariosController {
 	}
 
 	protected void quitarFiltros() {
+		pRestauraUsu.setVisible(false);
 		txtFiltro.setText("");
 		imgNicknameVerde.setVisible(false);
 		imgCorreoVerde.setVisible(false);
