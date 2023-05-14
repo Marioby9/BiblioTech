@@ -71,6 +71,12 @@ public class AdminContenidoController {
 	//private Cancion canSelec;
 
 	protected AdminMenuController menu;
+	
+	protected void initComponents() {
+		refreshTablas(null);
+		ocultaPaneles();
+		vaciaTextos();
+	}
 
 	//GESTION CONTENIDO ADMIN
 	@FXML void clickAdminUsuarioGestionContenido(MouseEvent event) {

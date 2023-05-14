@@ -188,7 +188,9 @@ public class MenuController {
 			}
 			venMenu.close();
 
-		} catch(IOException ex) {
+			Conexion.terminaTiempo(u1);
+			
+		} catch(Exception ex) {
 			Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE,null,ex);
 		}
 	}

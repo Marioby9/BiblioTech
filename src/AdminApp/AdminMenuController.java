@@ -180,9 +180,7 @@ public class AdminMenuController {
 		pUsuarios.setVisible(false);
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
-		adminContenidoController.refreshTablas(null);
-		adminContenidoController.ocultaPaneles();
-		adminContenidoController.vaciaTextos();
+		adminContenidoController.initComponents();
 	}
 
 	@FXML void clickBUsuarios(MouseEvent event) {
@@ -191,10 +189,7 @@ public class AdminMenuController {
 		pContenido.setVisible(false);
 		pEstadisticas.setVisible(false);
 		pAjustes.setVisible(false);
-		adminUsuariosController.rellenaTablaUsu();
-		adminUsuariosController.quitarFiltros();
-		adminUsuariosController.pFondoAvisoUsu.setVisible(false);
-		adminUsuariosController.pAvisoUsu.setVisible(false);
+		adminUsuariosController.initComponents();
 	}
 
 	@FXML void clickBEstadisticas(MouseEvent event) {

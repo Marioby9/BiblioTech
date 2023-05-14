@@ -220,7 +220,7 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <TextField fx:id="txtFieldHorJuego" layoutX="177.0" layoutY="271.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="19.0" prefWidth="90.0" promptText="HH" visible="false">
+                  <TextField fx:id="txtFieldHorJuego" layoutX="177.0" layoutY="271.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="19.0" prefWidth="90.0" promptText="Horas" visible="false">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>

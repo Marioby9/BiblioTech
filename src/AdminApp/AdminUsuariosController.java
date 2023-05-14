@@ -56,6 +56,15 @@ public class AdminUsuariosController {
 	
 
 	//GESTION USUARIO ADMIN
+	
+	protected void initComponents() {
+		quitarFiltros();
+		rellenaTablaUsu();
+		pFondoAvisoUsu.setVisible(false);
+		pAvisoUsu.setVisible(false);
+	}
+	
+	
 	@FXML
 	void clickAdminUsuarioGestionUsuarioVolver(MouseEvent event) {
 		imgNickname.setVisible(true);

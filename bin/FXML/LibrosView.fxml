@@ -211,7 +211,7 @@
                         <ColorAdjust brightness="-1.0" />
                      </effect>
                   </Label>
-                  <TextField id="txtEditaElementos" fx:id="txtFieldPagLibro" layoutX="202.0" layoutY="271.0" prefHeight="30.0" prefWidth="65.0" promptText="HH" visible="false">
+                  <TextField id="txtEditaElementos" fx:id="txtFieldPagLibro" layoutX="202.0" layoutY="271.0" prefHeight="30.0" prefWidth="65.0" promptText="Pags" visible="false">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>

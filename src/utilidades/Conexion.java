@@ -115,6 +115,15 @@ public class Conexion {
 			pst.setInt(1, u.getID_Usuario());
 			insertado = pst.executeUpdate()>0; 
 		}
+		
+		if(insertado) { //SI LO HA HECHO BIEN, LO INSERTAMOS TAMBIEN EN LAS DEMAS TABLAS 
+
+			sql= "insert into TIEMPO_USUARIO (ID_usuario) values(?)";
+			pst = connection.prepareStatement(sql);
+
+			pst.setInt(1, u.getID_Usuario());
+			insertado = pst.executeUpdate()>0; 
+		}
 
 		pst.close();
 		return insertado;
@@ -176,6 +185,38 @@ public class Conexion {
 
 		return accede;
 	}
+	
+	
+	public static boolean iniciaTiempo(Usuario u) throws SQLException{ 
+		boolean updated = false;
+
+		String sql= "UPDATE TIEMPO_USUARIO SET ult_inicio = TO_CHAR(SYSDATE,'HH24:MI') WHERE ID_USUARIO = "+u.getID_Usuario();
+		pst = connection.prepareStatement(sql);
+
+		updated = pst.executeUpdate()>0;
+		pst.close();
+
+
+		return updated;
+	}
+	
+	public static boolean terminaTiempo(Usuario u) throws SQLException{ 
+		boolean updated = false;
+		
+		/*A ULT_CIERRE LE ASIGNA EL VALOR DE LA HORA Y MINUTO EN EL QUE SE CIERRA LA APLICACION
+		  Y A USO_TOTAL LE SUMA EL VALOR QUE TIENE USO_TOTAL + LA RESTA DE (ULT_CIERR - ULT_INICIO), LO PASA A MINUTOS Y REDONDEA CON ROUND
+		 */
+		String sql= "UPDATE TIEMPO_USUARIO SET ult_cierre = TO_CHAR(SYSDATE,'HH24:MI'), uso_Total = uso_Total + (ROUND((TO_DATE(TO_CHAR(SYSDATE, 'HH24:MI'), 'HH24:MI') - TO_DATE(ult_Inicio, 'HH24:MI')) * 24 * 60))  WHERE ID_USUARIO = "+u.getID_Usuario();
+		pst = connection.prepareStatement(sql);
+
+		updated = pst.executeUpdate()>0;
+		pst.close();
+
+
+		return updated;
+	}
+	
+	
 
 	//CAMBIAR VALORES PARA TABLAS
 	public static boolean updateTabla(String tabla, String columna, Object valor, String condicion) throws SQLException{

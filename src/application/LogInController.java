@@ -181,6 +181,7 @@ public class LogInController{
 
 					}
 					else {
+						Conexion.iniciaTiempo(u1); //INSERTAMOS HORA Y MINUTOS DESDE QUE EMPIEZA A USAR LA APP
 
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/MenuView.fxml"));
 						Parent root = loader.load();

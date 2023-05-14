@@ -24,6 +24,7 @@ public class AdminEstadisticasController {
 			totalAutores.setText(Integer.toString(Conexion.autoresTotales()));
 			totalElementos.setText(Integer.toString(Conexion.totalElementos()));
 			cuentasBorradas.setText(Integer.toString(Conexion.usuBorrados()));
+			ultRegistros.setText(Integer.toString(Conexion.ultimosUsu()));
 			pCarga.setVisible(true);
 
 
