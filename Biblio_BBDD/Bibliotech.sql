@@ -6,6 +6,8 @@ drop table Juegos;
 drop table Libros;
 drop table Canciones;
 drop table Ajustes;
+drop table Tiempo_usuario;
+drop table Gestion_admin;
 
 SELECT * FROM USUARIO ORDER BY ID;
 DELETE FROM USUARIO;
@@ -53,27 +55,6 @@ constraint Pk_Juegos Primary key(ID_Juego),
 constraint CK_terminado Check(Terminado in ('SI','NO'))
 );
 
-INSERT INTO JUEGOS (id_juego,  Titulo, Genero, Plataforma, H_jugadas,Lanzamiento, Terminado, Portada) VALUES(001,  'GOD OF WAR','ACCION', 'PS3', 40, 2018, 'NO', '/caratulas/god-of-war.png'); 
-INSERT INTO JUEGOS (id_juego,  Titulo,  Genero,  Plataforma, H_jugadas, Lanzamiento, Terminado, Portada)  VALUES(002,  'ASSASINS CREED UNITY','ACCION', 'PS2', 40, 2005, 'NO', '/caratulas/assasins-creed.png');  
-INSERT INTO JUEGOS (id_juego,  Titulo, Genero, Plataforma, H_jugadas, Lanzamiento, Terminado, Portada)  VALUES(003, 'UNCHARTED','ACCION', 'PS3', 40, 2007, 'NO', '/caratulas/uncharted.png');  
-INSERT INTO JUEGOS (id_juego,  Titulo, Genero, Plataforma, H_jugadas, Lanzamiento, Terminado, Portada)  VALUES(004,  'THE LAST OF US','ACCION', 'PS3', 20, 2013, 'NO', '/caratulas/the-last-of-us.png');  
-
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, H_jugadas,Lanzamiento, Terminado, Portada)  VALUES(005,  'CALL OF DUTY BO2','SHOOTER', 'XBOX', 10, 2012, 'NO', '/caratulas/black-ops-2.png'); 
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(006,  'FORTNITE','SHOOTER', 'PS4', 2017, 'NO', '/caratulas/fortnite.png');  
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(007,  'CSGO','SHOOTER', 'PC', 2007, 'NO', '/caratulas/csgo.png');  
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, H_jugadas,Lanzamiento, Terminado, Portada)  VALUES(008,  'BATTLEFIELD','SHOOTER', 'PS4', 30, 2016, 'NO', '/caratulas/battlefield.png');  
-
-INSERT INTO JUEGOS  (id_juego, Titulo, Genero, Plataforma,Lanzamiento, Terminado, Portada) VALUES(009,  'FIFA 23','DEPORTES', 'PC', 2022, 'NO', '/caratulas/fifa.png'); 
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma,Lanzamiento, Terminado, Portada)  VALUES(010,  'WII SPORTS','DEPORTES', 'WII', 2006, 'NO', '/caratulas/wii-sports.png');  
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada)  VALUES(011,  'F1 2023','DEPORTES', 'PC', 2022, 'NO', '/caratulas/formula1.png');  
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada)  VALUES(012,  'NBA 2K23','DEPORTES', 'PS5', 2022, 'NO', '/caratulas/nba-2k23.png');  
-
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada)  VALUES(0013,  'SILENT HILL 2 ','TERROR', 'PS2', 2003, 'NO', '/caratulas/silent-hill-2.png'); 
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(014,  'RESIDENT EVIL 5','TERROR', 'PC', 2009, 'NO', '/caratulas/resident-evil-5.png');  
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(015,  'OUTLAST','TERROR', 'PC', 2013, 'NO', '/caratulas/outlast.png');  
-INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma,Lanzamiento, Terminado, Portada)  VALUES(016,  'VISAGE','TERROR', 'PC', 2020, 'NO', '/caratulas/visage.png');  
-
-
 create table Libros
 (
 ID_Libro number(3) ,
@@ -93,28 +74,6 @@ constraint CK_terminado3 Check(Terminado in ('SI','NO'))
 );
 
 
-
-INSERT INTO LIBROS  (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (001, 'IT','TERROR', 1504, 'STEPHEN KING',1986, 'NO', '/caratulas/it.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (002,  'EL EXORCISTA','TERROR', 376, 'WILLIAM PETER BLATTY', 1971,  'NO', '/caratulas/exorcista.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (003,  'DRACULA','TERROR', 418, 'BRAM STOKER', 1897, 'NO', '/caratulas/dracula.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (004,  'FRANKENSTEIN','TERROR', 136, 'MARY SHELLEY',1818, 'NO', '/caratulas/frankenstein.png');  
-
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (005,  'LA ISLA DEL TESORO','AVENTURAS', 283, 'ROBERT LOUIS STEVENSON',1883, 'NO', '/caratulas/isla-del-tesoro.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (006,   'ROBINSON CRUSOE','AVENTURAS', 304, 'DANIEL DEFOE', 1719,  'NO', '/caratulas/robinson-crusoe.png');  
-INSERT INTO LIBROS (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (007,  'EL CORREDOR DEL LABERINTO', 'AVENTURAS', 376, 'JAMES DASHNER',2009, 'NO', '/caratulas/corredor-del-laberinto.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (0008,  'VIAJE AL CENTRO DE LA TIERRA','AVENTURAS', 330, 'JULIO VERNE', 1862, 'NO', '/caratulas/viaje-al-centro-de-la-tierra.png');  
-
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (009,  'ORGULLO Y PREJUICIO','AMOR', 424, 'JANE AUSTEN',1813, 'NO', '/caratulas/orgullo-y-prejuicio.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (010,   'BAJO LA MISMA ESTRELLA','AMOR', 301, 'JOHN GREEN', 2012,  'NO', '/caratulas/bajo-la-misma-estrella.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (011,  'TRES METROS SOBRE EL CIELO','AMOR', 390, 'FEDERICO MOCCIA Y KONY', 1992, 'NO', '/caratulas/a-tres-metros-sobre-el-cielo.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (012,  'CIUDADES DE PAPEL', 'AMOR', 368, 'JOHN GREEN', 2008, 'NO', '/caratulas/ciudades-de-papel.png');  
-
-INSERT INTO LIBROS (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (013,  'SIN NOTICIAS DE GURB', 'COMEDIA', 144, 'EDUARDO MENDOZA', 2018, 'NO', '/caratulas/sin-noticias-de-gurb.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (014,   'BARTLEBY EL ESCRIBIENTE', 'COMEDIA', 112, 'HERMAN MELVILLE', 1853,  'NO', '/caratulas/bartleby-el-escribiente.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (015,  'DIARIO DE GREG', 'COMEDIA', 240, 'JEFF KINNEY', 2007, 'NO', '/caratulas/diario-de-greg.png');  
-INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (016,  'MORTADELO Y FILEMON',  'COMEDIA', 82, 'FRANCISCO IBAÑEZ', 1958, 'NO', '/caratulas/mortadelo-y-filemon.png');  
-
-
 create table Canciones
 (
 ID_Cancion number(3),
@@ -129,8 +88,6 @@ Ruta    varchar2(50) Not Null,
 constraint Pk_Cancion Primary key(ID_Cancion)
 );
 
-INSERT INTO CANCIONES (ID_CANCION, TITULO, ARTISTA, GENERO, RUTA)  VALUES (1,'Shakira-Bzrp',  'Shakira',  'Reggaeton',  '/canciones/shakira-bzrp.mp3');  
-INSERT INTO CANCIONES (ID_CANCION, TITULO, ARTISTA, GENERO, RUTA)  VALUES (2,'Traductor',  'Myke Towers',  'Reggaeton',  '/canciones/mykeTowers-Traductor.mp3');  
 
 create table Ajustes
 (
@@ -146,6 +103,15 @@ constraint ck_Volumen check (Volumen between 0 and 100),
 constraint ck_Cfondo check (Cfondo between 0 and 4)
 );
 
+create table TIEMPO_USUARIO /*RECOGE EN MINUTOS EL TIEMPO QUE PASA EL USUARIO USANDO LA APLICACION*/
+(
+ID_Usuario number(3) references Usuario on delete cascade,
+ult_Inicio varchar2(20),
+ult_Cierre varchar2(20),
+uso_Total number default 0,
+constraint Pk_Tiempo Primary key(ID_Usuario)
+);
+
 create table GESTION_ADMIN(  /*EN ESTA TABLA SE ALMACENAN LOS USUARIOS ELIMINADOS*/
     ID number,
     Nickname    varchar2(30) UNIQUE Not Null,
@@ -155,6 +121,8 @@ create table GESTION_ADMIN(  /*EN ESTA TABLA SE ALMACENAN LOS USUARIOS ELIMINADO
     constraint Pk_GestionAdmin Primary key(ID)
 );
 
+
+/*------------------------------------ TRIGGERS ELIMINAR Y RESTAURAR USUARIO -----------------------------------*/
 
 CREATE OR REPLACE TRIGGER USER_ELIMINADO
 AFTER DELETE
@@ -176,7 +144,65 @@ DECLARE
 BEGIN 
     SELECT MAX(ID) + 1 INTO V_ID FROM USUARIO;
     INSERT INTO USUARIO VALUES (V_ID, :OLD.NICKNAME, :OLD.CONTRASEÑA, :OLD.CORREO, :OLD.FECHA);
+    INSERT INTO AJUSTES (ID_USUARIO) VALUES (V_ID);
+    INSERT INTO TIEMPO_USUARIO (ID_USUARIO) VALUES (V_ID);
 END;
+
+commit;
+SELECT * FROM AJUSTES;
+SELECT * FROM TIEMPO_USUARIO;
+
+/*----------------------- INSERTS JUEGOS --------------------------*/
+
+INSERT INTO JUEGOS (id_juego,  Titulo, Genero, Plataforma, H_jugadas,Lanzamiento, Terminado, Portada) VALUES(001,  'GOD OF WAR','ACCION', 'PS3', 40, 2018, 'NO', '/caratulas/god-of-war.png'); 
+INSERT INTO JUEGOS (id_juego,  Titulo,  Genero,  Plataforma, H_jugadas, Lanzamiento, Terminado, Portada)  VALUES(002,  'ASSASINS CREED UNITY','ACCION', 'PS2', 40, 2005, 'NO', '/caratulas/assasins-creed.png');  
+INSERT INTO JUEGOS (id_juego,  Titulo, Genero, Plataforma, H_jugadas, Lanzamiento, Terminado, Portada)  VALUES(003, 'UNCHARTED','ACCION', 'PS3', 40, 2007, 'NO', '/caratulas/uncharted.png');  
+INSERT INTO JUEGOS (id_juego,  Titulo, Genero, Plataforma, H_jugadas, Lanzamiento, Terminado, Portada)  VALUES(004,  'THE LAST OF US','ACCION', 'PS3', 20, 2013, 'NO', '/caratulas/the-last-of-us.png');  
+
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, H_jugadas,Lanzamiento, Terminado, Portada)  VALUES(005,  'CALL OF DUTY BO2','SHOOTER', 'XBOX', 10, 2012, 'NO', '/caratulas/black-ops-2.png'); 
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(006,  'FORTNITE','SHOOTER', 'PS4', 2017, 'NO', '/caratulas/fortnite.png');  
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(007,  'CSGO','SHOOTER', 'PC', 2007, 'NO', '/caratulas/csgo.png');  
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, H_jugadas,Lanzamiento, Terminado, Portada)  VALUES(008,  'BATTLEFIELD','SHOOTER', 'PS4', 30, 2016, 'NO', '/caratulas/battlefield.png');  
+
+INSERT INTO JUEGOS  (id_juego, Titulo, Genero, Plataforma,Lanzamiento, Terminado, Portada) VALUES(009,  'FIFA 23','DEPORTES', 'PC', 2022, 'NO', '/caratulas/fifa.png'); 
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma,Lanzamiento, Terminado, Portada)  VALUES(010,  'WII SPORTS','DEPORTES', 'WII', 2006, 'NO', '/caratulas/wii-sports.png');  
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada)  VALUES(011,  'F1 2023','DEPORTES', 'PC', 2022, 'NO', '/caratulas/formula1.png');  
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada)  VALUES(012,  'NBA 2K23','DEPORTES', 'PS5', 2022, 'NO', '/caratulas/nba-2k23.png');  
+
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada)  VALUES(0013,  'SILENT HILL 2 ','TERROR', 'PS2', 2003, 'NO', '/caratulas/silent-hill-2.png'); 
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(014,  'RESIDENT EVIL 5','TERROR', 'PC', 2009, 'NO', '/caratulas/resident-evil-5.png');  
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma, Lanzamiento, Terminado, Portada) VALUES(015,  'OUTLAST','TERROR', 'PC', 2013, 'NO', '/caratulas/outlast.png');  
+INSERT INTO JUEGOS  (id_juego,  Titulo, Genero, Plataforma,Lanzamiento, Terminado, Portada)  VALUES(016,  'VISAGE','TERROR', 'PC', 2020, 'NO', '/caratulas/visage.png');  
+
+
+/*----------------------- INSERTS LIBROS --------------------------*/
+
+INSERT INTO LIBROS  (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (001, 'IT','TERROR', 1504, 'STEPHEN KING',1986, 'NO', '/caratulas/it.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (002,  'EL EXORCISTA','TERROR', 376, 'WILLIAM PETER BLATTY', 1971,  'NO', '/caratulas/exorcista.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (003,  'DRACULA','TERROR', 418, 'BRAM STOKER', 1897, 'NO', '/caratulas/dracula.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (004,  'FRANKENSTEIN','TERROR', 136, 'MARY SHELLEY',1818, 'NO', '/caratulas/frankenstein.png');  
+
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (005,  'LA ISLA DEL TESORO','AVENTURAS', 283, 'ROBERT LOUIS STEVENSON',1883, 'NO', '/caratulas/isla-del-tesoro.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (006,   'ROBINSON CRUSOE','AVENTURAS', 304, 'DANIEL DEFOE', 1719,  'NO', '/caratulas/robinson-crusoe.png');  
+INSERT INTO LIBROS (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (007,  'EL CORREDOR DEL LABERINTO', 'AVENTURAS', 376, 'JAMES DASHNER',2009, 'NO', '/caratulas/corredor-del-laberinto.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (0008,  'VIAJE AL CENTRO DE LA TIERRA','AVENTURAS', 330, 'JULIO VERNE', 1862, 'NO', '/caratulas/viaje-al-centro-de-la-tierra.png');  
+
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (009,  'ORGULLO Y PREJUICIO','AMOR', 424, 'JANE AUSTEN',1813, 'NO', '/caratulas/orgullo-y-prejuicio.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (010,   'BAJO LA MISMA ESTRELLA','AMOR', 301, 'JOHN GREEN', 2012,  'NO', '/caratulas/bajo-la-misma-estrella.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (011,  'TRES METROS SOBRE EL CIELO','AMOR', 390, 'FEDERICO MOCCIA Y KONY', 1992, 'NO', '/caratulas/a-tres-metros-sobre-el-cielo.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (012,  'CIUDADES DE PAPEL', 'AMOR', 368, 'JOHN GREEN', 2008, 'NO', '/caratulas/ciudades-de-papel.png');  
+
+INSERT INTO LIBROS (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (013,  'SIN NOTICIAS DE GURB', 'COMEDIA', 144, 'EDUARDO MENDOZA', 2018, 'NO', '/caratulas/sin-noticias-de-gurb.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (014,   'BARTLEBY EL ESCRIBIENTE', 'COMEDIA', 112, 'HERMAN MELVILLE', 1853,  'NO', '/caratulas/bartleby-el-escribiente.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (015,  'DIARIO DE GREG', 'COMEDIA', 240, 'JEFF KINNEY', 2007, 'NO', '/caratulas/diario-de-greg.png');  
+INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (016,  'MORTADELO Y FILEMON',  'COMEDIA', 82, 'FRANCISCO IBAÑEZ', 1958, 'NO', '/caratulas/mortadelo-y-filemon.png');  
+
+/*----------------------- INSERTS MUSICA --------------------------*/
+
+INSERT INTO CANCIONES (ID_CANCION, TITULO, ARTISTA, GENERO, RUTA)  VALUES (1,'Shakira-Bzrp',  'Shakira',  'Reggaeton',  '/canciones/shakira-bzrp.mp3');  
+INSERT INTO CANCIONES (ID_CANCION, TITULO, ARTISTA, GENERO, RUTA)  VALUES (2,'Traductor',  'Myke Towers',  'Reggaeton',  '/canciones/mykeTowers-Traductor.mp3');  
+
+
 
 --AÑADIMOS RESUMENES JUEGOS: 
 
@@ -247,7 +273,3 @@ UPDATE LIBROS  SET  RESUMEN =  '"Diario de Greg" de Jeff Kinney. El libro es una
 
 UPDATE LIBROS  SET  RESUMEN =  '"Mortadelo y Filemón" de Francisco Ibáñez. El libro es una serie de historietas cómicas protagonizadas por dos agentes secretos llamados Mortadelo y Filemón. Cada historia sigue a los personajes mientras intentan resolver un caso, pero a menudo se encuentran en situaciones ridículas y divertidas.' WHERE ID_LIBRO = 016;
 
-
-COMMIT;
-
-SELECT * FROM canciones;
