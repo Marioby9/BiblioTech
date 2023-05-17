@@ -679,18 +679,54 @@ public class Conexion {
 		st = connection.createStatement();
 		String sql =  "SELECT DISTINCT COUNT(AUTOR) FROM LIBROS";
 		ResultSet rs = st.executeQuery(sql);
-
 		while(rs.next()) {
-			total = rs.getInt("COUNT(AUTOR)");
-
-
+			total += rs.getInt("COUNT(AUTOR)");
 		}
+		
+		st = connection.createStatement();
+		sql =  "SELECT DISTINCT COUNT(ARTISTA) FROM CANCIONES";
+		rs = st.executeQuery(sql);
+		while(rs.next()) {
+			total += rs.getInt("COUNT(ARTISTA)");
+		}
+		
 		st.close();
 
 		return total;
 
 	}
 
+	public static String usoMedio() throws SQLException { //DEVUELVE EL TIEMPO MEDIO QUE SE HA USADO LA APLICACION
+		String tiempo = "";
+		int minutos = 0;
+		int horas = 0;
+		int dias = 0;
+		
+		st = connection.createStatement();
+		String sql =  "SELECT ROUND(AVG(USO_TOTAL)) FROM TIEMPO_USUARIO WHERE USO_TOTAL != 0";
+		ResultSet rs = st.executeQuery(sql);
+		while(rs.next()) {
+			minutos = rs.getInt("ROUND(AVG(USO_TOTAL))");
+		}
+		
+		if (minutos >= 60) {
+	        horas = minutos / 60;
+	        minutos %= 60;
+	        if (horas >= 24) {
+	            dias = horas / 24;
+	            horas %= 24;
+	            tiempo = dias+" d "+ horas+ " h "+ minutos+ " m";
+	        } else {
+	            tiempo = horas+ " h "+ minutos+" m";
+	        }
+	    } else {
+	        tiempo = minutos+" m";
+	    }
+		
+		
+		
+		return tiempo;
+	}
 
 	public static int usuBorrados() throws SQLException {
 		int total = 0;

@@ -15,7 +15,7 @@ public class AdminEstadisticasController {
 	@FXML private AnchorPane pRootEstadisticas;
 	@FXML private Pane pEstadisticas, pCarga;
 	protected AdminMenuController menu;
-	@FXML private Label totalUsu,  totalAutores, totalArtistas, ultRegistros,cuentasBorradas, totalElementos;
+	@FXML private Label totalUsu,  totalAutores, usoMedio, ultRegistros,cuentasBorradas, totalElementos;
 	@FXML private BarChart<String, Integer> grafico;
 
 	protected void actualizaEstadisticas() {
@@ -25,6 +25,7 @@ public class AdminEstadisticasController {
 			totalElementos.setText(Integer.toString(Conexion.totalElementos()));
 			cuentasBorradas.setText(Integer.toString(Conexion.usuBorrados()));
 			ultRegistros.setText(Integer.toString(Conexion.ultimosUsu()));
+			usoMedio.setText(Conexion.usoMedio());
 			pCarga.setVisible(true);
 
 
