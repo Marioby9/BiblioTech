@@ -169,7 +169,7 @@ public class Conexion {
 		String contrasena;
 
 		st = connection.createStatement();
-		ResultSet rs = st.executeQuery("select nickname, contraseña from usuario");
+		ResultSet rs = st.executeQuery("select nickname, contraseña from usuario WHERE nickname = '"+nombre+"'");
 
 		while(rs.next()) {
 			nickname = rs.getString("nickname");
@@ -660,11 +660,11 @@ public class Conexion {
 	public static int usuTotales() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
-		String sql =  "SELECT COUNT(*) FROM USUARIO";
+		String sql =  "SELECT COUNT(*) total FROM USUARIO";
 		ResultSet rs = st.executeQuery(sql);
 
 		while(rs.next()) {
-			total = rs.getInt("COUNT(*)");
+			total = rs.getInt("total");
 
 
 		}

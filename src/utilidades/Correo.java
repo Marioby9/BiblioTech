@@ -25,6 +25,13 @@ public class Correo {
 	 * DEVUELVE UN MENSAJE DE CONFIRMACIÓN DE QUE SE HA CUMPLIDO LA FUNCIÓN (SE HA REGISTRADO, HA ENVIADO Y HA CERRADO CORRECTAMENTE LA SESIÓN)
 	 */
 	
+	/**
+	 * 
+	 * @param destinatario
+	 * @param nickname
+	 * @param password
+	 * @return
+	 */
 	public static String enviarMailConf(String destinatario, String nickname, String password) { //DEVUELVE UN MENSAJE EN FUNCIÓN DE SI SE HA ENVIADO O NO
 		String remitente = "probibliotech"; //lo que va antes de @gmail.com
 		String clave = "imxjsectmdojtian"; //GOOGLE desactivó en Mayo de 2022 el acceso a cuentas desde aplicaciones poco seguras. Hemos tenido que activar la verif. 2 pasos y añadir contraseña del correo para aplicación externa (Copiar desde generar contraseña para dispositivos (conf GMAIL))

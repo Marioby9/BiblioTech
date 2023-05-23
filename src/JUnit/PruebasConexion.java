@@ -38,7 +38,7 @@ public class PruebasConexion {
 	public void testRegistraUsuario() {
 		try {
 			Conexion.conectar();
-			Usuario u = new Usuario("JUNIT", "JUNIT", "junit@mail.com");
+			Usuario u = new Usuario("JUNIT2", "JUNIT2", "junit@mail.com");
 			boolean registrado = Conexion.registraUsuario(u);
 			assertEquals(true, registrado);
 			
@@ -126,7 +126,7 @@ public class PruebasConexion {
 		try {
 			Conexion.conectar();
 			
-			String password = Conexion.consultaStr("USUARIO","PASSWORD", "NICKNAME = ADMIN");
+			String password = Conexion.consultaStr("USUARIO","CONTRASEÑA", "NICKNAME = 'ADMIN'");
 			assertEquals("ADMIN", password);
 			
 			Conexion.cerrar();
@@ -137,7 +137,17 @@ public class PruebasConexion {
 	}
 	
 	
+	@Test
+	public void testTiempoMedia() {
+		try {
+			String tiempo = Conexion.usoMedio();
+			assertEquals("1 d 15 h 20 m", tiempo);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+/************************************************ CERRAR **********************************************/	
 	
 
 	@Test
@@ -149,4 +159,6 @@ public class PruebasConexion {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

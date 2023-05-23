@@ -5,14 +5,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pRootAjustes" prefHeight="650.0" prefWidth="640.0" stylesheets="@../FXML/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminApp.AdminAjustesController">
    <children>
       <Pane fx:id="pAjustes" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
          <children>
-            <Label layoutX="40.0" layoutY="18.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="6.0" prefHeight="78.0" prefWidth="394.0" text="Ajustes Generales" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -22,28 +21,28 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="117.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Admin:" textFill="WHITE" underline="true">
+            <Label layoutX="40.0" layoutY="73.0" prefHeight="78.0" prefWidth="338.0" text="Desarrolladores de BiblioTech:" textFill="WHITE" underline="true">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="268.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Aplicación:" textFill="WHITE" underline="true">
+            <Label layoutX="41.0" layoutY="254.0" prefHeight="78.0" prefWidth="302.0" text="Configuración de Aplicación:" textFill="WHITE" underline="true">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="86.0" layoutY="325.0" prefHeight="78.0" prefWidth="171.0" text="Cambiar Color:" textFill="WHITE">
+            <Label layoutX="87.0" layoutY="311.0" prefHeight="78.0" prefWidth="171.0" text="Cambiar Color:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="lblColorTema" layoutX="275.0" layoutY="344.0" prefHeight="41.0" prefWidth="76.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
-            <ImageView id="bPerfil" fx:id="bEditarColor" fitHeight="41.0" fitWidth="41.0" layoutX="365.0" layoutY="344.0" onMouseClicked="#clickBEditarColor" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="lblColorTema" layoutX="276.0" layoutY="330.0" prefHeight="41.0" prefWidth="76.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
+            <ImageView id="bPerfil" fx:id="bEditarColor" fitHeight="41.0" fitWidth="41.0" layoutX="366.0" layoutY="330.0" onMouseClicked="#clickBEditarColor" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/editarBlue.png" />
                </image>
             </ImageView>
-            <Pane fx:id="pPanelColores" layoutX="414.0" layoutY="249.0" prefHeight="167.0" prefWidth="211.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 3px; -fx-background-radius: 20px; -fx-border-radius: 20px;" visible="false">
+            <Pane fx:id="pPanelColores" layoutX="415.0" layoutY="264.0" prefHeight="167.0" prefWidth="211.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 3px; -fx-background-radius: 20px; -fx-border-radius: 20px;" visible="false">
                <children>
                   <Label id="fperfil" fx:id="lblColorAzul" layoutX="14.0" layoutY="20.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #08426c; -fx-border-color: white; -fx-border-width: 3px;" />
                   <Label id="fperfil" fx:id="lblColorNaranja" layoutX="14.0" layoutY="98.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #fb7b14; -fx-border-color: white; -fx-border-width: 3px;" />
@@ -52,46 +51,59 @@
                   <Label id="fperfil" fx:id="lblColorMorado" layoutX="148.0" layoutY="98.0" onMouseClicked="#clickColorFondo" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #954c7b; -fx-border-color: white; -fx-border-width: 3px;" />
                </children>
             </Pane>
-            <Label layoutX="40.0" layoutY="401.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE" underline="true">
+            <Label layoutX="40.0" layoutY="372.0" prefHeight="78.0" prefWidth="275.0" text="Información BiblioTech:" textFill="WHITE" underline="true">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Pane layoutX="40.0" layoutY="472.0" prefHeight="70.0" prefWidth="302.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 3PX;">
+            <Pane layoutX="40.0" layoutY="444.0" prefHeight="128.0" prefWidth="550.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 3PX;">
                <children>
-                  <ImageView id="bPerfil" fx:id="bGithub" fitHeight="43.0" fitWidth="45.0" layoutX="15.0" layoutY="14.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bGithub" fitHeight="84.0" fitWidth="99.0" layoutX="24.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/github.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fx:id="bWeb" fitHeight="45.0" fitWidth="49.0" layoutX="72.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/web.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView id="bPerfil" fx:id="bTwitter" fitHeight="45.0" fitWidth="49.0" layoutX="129.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bWeb" fitHeight="84.0" fitWidth="99.0" layoutX="233.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/twitter.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fx:id="bInstagram" fitHeight="45.0" fitWidth="45.0" layoutX="186.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bTwitter" fitHeight="84.0" fitWidth="99.0" layoutX="337.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/instagram.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fx:id="bYoutube" fitHeight="45.0" fitWidth="45.0" layoutX="243.0" layoutY="13.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bInstagram" fitHeight="84.0" fitWidth="99.0" layoutX="125.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/web.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="bYoutube" fitHeight="84.0" fitWidth="99.0" layoutX="441.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/youtube.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Line endX="-19.60003662109375" endY="64.99993896484375" layoutX="386.0" layoutY="497.0" startX="-19.60003662109375" startY="-64.60003662109375" stroke="WHITE" strokeWidth="3.0" />
-            <Label alignment="CENTER" layoutX="413.0" layoutY="401.0" prefHeight="78.0" prefWidth="186.0" text="Carpeta Musica" textFill="WHITE" underline="true">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
+            <Pane layoutX="17.0" layoutY="128.0" prefHeight="147.0" prefWidth="615.0">
+               <children>
+                  <ImageView fitHeight="128.0" fitWidth="135.0" layoutX="41.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/team_1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="128.0" fitWidth="135.0" layoutX="239.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/team_3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="128.0" fitWidth="135.0" layoutX="432.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/team_2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
