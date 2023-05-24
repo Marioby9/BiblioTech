@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pRootMusica" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MusicaController">
+   <children>
+      <Pane fx:id="pMusica" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: #001a29;">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pMusicaVacio.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusReggaeton" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="23.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusPop" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="149.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusElectronica" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="278.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusFlamenco" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="405.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bMusRock" fitHeight="91.0" fitWidth="90.0" layoutX="66.0" layoutY="533.0" onMouseClicked="#clickListaMusica" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icoMusica.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pListaMus" prefHeight="650.0" prefWidth="640.0">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pMusVacio.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="tablaMusica" layoutX="40.0" layoutY="270.0" onMouseClicked="#clickEligeCancion" prefHeight="210.0" prefWidth="560.0" styleClass="tablaMusica">
+                     <columns>
+                        <TableColumn fx:id="tituloCanc" prefWidth="188.79998779296875" text="TITULO" />
+                        <TableColumn fx:id="artistaCanc" prefWidth="186.4000244140625" text="ARTISTA" />
+                        <TableColumn fx:id="generoCanc" prefWidth="100.0" text="GENERO" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Pane fx:id="cabeceraMus" layoutX="64.0" layoutY="34.0" prefHeight="220.0" prefWidth="512.0">
+                     <children>
+                        <Label fx:id="lblTitListaMus" alignment="CENTER" layoutX="53.0" layoutY="14.0" prefHeight="50.0" prefWidth="407.0" text="TITULO LISTA" underline="true">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="50.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="165.0" layoutY="89.0" prefHeight="32.0" prefWidth="246.0" text="LISTA DE REPRODUCCION:" underline="true">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="19.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="165.0" layoutY="114.0" prefHeight="32.0" prefWidth="229.0" text="15:34 MINUTOS DE MUSICA">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="14.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
+                        </Label>
+                        <Label fx:id="lblNumCanciones" layoutX="165.0" layoutY="137.0" prefHeight="32.0" prefWidth="186.0" text="10 CANCIONES">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="14.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="166.0" layoutY="158.0" prefHeight="32.0" prefWidth="186.0" text="5 ARTISTAS">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="14.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="-1.0" />
+                           </effect>
+                        </Label>
+                        <ImageView id="botones" fitHeight="44.0" fitWidth="43.0" layoutX="438.0" layoutY="158.0" onMouseClicked="#clickPlayLista" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/playLista.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="botones" fitHeight="40.0" fitWidth="40.0" layoutX="381.0" layoutY="158.0" onMouseClicked="#refreshTablaMus" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/refresh.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgIconoLista" fitHeight="117.0" fitWidth="122.0" layoutX="14.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/pop.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="505.0" prefHeight="145.0" prefWidth="640.0" style="-fx-background-color: linear-gradient(to bottom, black, #333333);">
+                     <children>
+                        <Pane prefHeight="145.0" prefWidth="640.0" style="-fx-background-color: linear-gradient(to bottom, black, #333333);">
+                           <children>
+                              <Line endX="-14.5999755859375" endY="60.39996337890625" layoutX="119.0" layoutY="35.0" startX="-14.5999755859375" startY="-20.20001220703125" stroke="WHITE" strokeWidth="2.0" />
+                              <ImageView fitHeight="78.0" fitWidth="84.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../OneDrive/Escritorio/BiblioTech/BIBLIOTECH%20Fotos/MUSICA/gifMus5.gif" />
+                                 </image>
+                              </ImageView>
+                              <ProgressBar fx:id="barraMusica" layoutX="20.0" layoutY="112.0" prefHeight="15.0" prefWidth="528.0" progress="0.0" styleClass="barraMusica" />
+                              <Label fx:id="lblTiempoCanc" alignment="CENTER" layoutX="556.0" layoutY="99.0" prefHeight="36.0" prefWidth="70.0" text="00:00" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Heavy" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblTitReproductor" layoutX="115.0" layoutY="11.0" prefHeight="49.0" prefWidth="512.0" text="ARTISTA   |     TITULO CANCION" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Heavy" size="28.0" />
+                                 </font>
+                              </Label>
+                              <ImageView id="botones" fitHeight="24.0" fitWidth="24.0" layoutX="420.0" layoutY="72.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#clickPreviousSong" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/siguiente.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView id="botones" fx:id="bPlayMusica" fitHeight="23.0" fitWidth="23.0" layoutX="462.0" layoutY="72.0" onMouseClicked="#clickBPlayMusica" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/playCancion.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView id="botones" fitHeight="24.0" fitWidth="24.0" layoutX="500.0" layoutY="72.0" onMouseClicked="#clickNextSong" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/siguiente.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView id="botones" fx:id="btnBucle" fitHeight="24.0" fitWidth="24.0" layoutX="579.0" layoutY="72.0" onMouseClicked="#clickBucleSong" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/repetir.png" />
+                                 </image>
+                              </ImageView>
+                              <Slider id="sldVolReproductor" fx:id="barraVolReproductor" layoutX="115.0" layoutY="72.0" onMouseDragged="#arrastraVolRepro">
+                                 <styleClass>
+                                    <String fx:value="thumb" />
+                                    <String fx:value="track" />
+                                    <String fx:value="thumb-area" />
+                                    <String fx:value="thumb-overlay" />
+                                 </styleClass>
+                              </Slider>
+                              <ImageView id="botones" fx:id="btnBorraMusica" fitHeight="25.0" fitWidth="24.0" layoutX="355.0" layoutY="70.0" onMouseClicked="#clickBorraMusica" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/deleteSong.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pFondoAvisoMus" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
+            <Pane fx:id="pAvisoMus" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
+               <children>
+                  <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/avisoBorraCancion.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="bAceptaMus" alignment="CENTER" layoutX="366.0" layoutY="251.0" onMouseClicked="#aceptaBorraMusica" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label id="bRechazaMus" alignment="CENTER" layoutX="84.0" layoutY="251.0" onMouseClicked="#rechazaBorraMusica" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

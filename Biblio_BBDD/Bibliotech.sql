@@ -24,7 +24,6 @@ Fecha date default sysdate,
 constraint Pk_Usuarioid Primary key(ID)
 );
 
-
 create table Bibliotecas
 (
 Cod_Biblioteca number(3),
@@ -112,6 +111,7 @@ uso_Total number default 0,
 constraint Pk_Tiempo Primary key(ID_Usuario)
 );
 
+
 create table GESTION_ADMIN(  /*EN ESTA TABLA SE ALMACENAN LOS USUARIOS ELIMINADOS*/
     ID number,
     Nickname    varchar2(30) UNIQUE Not Null,
@@ -120,7 +120,6 @@ create table GESTION_ADMIN(  /*EN ESTA TABLA SE ALMACENAN LOS USUARIOS ELIMINADO
     Fecha date default sysdate,
     constraint Pk_GestionAdmin Primary key(ID)
 );
-
 
 /*------------------------------------ TRIGGERS ELIMINAR Y RESTAURAR USUARIO -----------------------------------*/
 

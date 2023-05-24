@@ -13,7 +13,7 @@ public class Usuario {
 	public Usuario(String nickname, String constrasena, String correo) {
 		
 			try {
-				ID_Usuario = c1.consultaNum("USUARIO", "MAX(ID)", null) +1; //COGE EL ID MAS ALTO QUE HAYA EN LA TABLA Y LE SUMA 1.
+				ID_Usuario = Conexion.consultaNum("USUARIO", "MAX(ID)", null) +1; //COGE EL ID MAS ALTO QUE HAYA EN LA TABLA Y LE SUMA 1.
 
 			} catch (SQLException e) {
 				e.printStackTrace();

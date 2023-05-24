@@ -44,7 +44,7 @@ TextArea {
 }
 
 #fperfil {
-	-fx-transition: transform 0.1s;
+	-fx-transition: transform 0.7s;
 }
 
 #fperfil:hover {
@@ -108,6 +108,49 @@ TextArea {
 	-fx-scale-y: 1.08;
 }
 
+#bAdminStats{
+	-fx-background-color: WHITE;
+	-fx-text-fill: black;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	
+}
+
+#bAdminStats:hover{
+	-fx-background-color: BLACK;
+	-fx-text-fill: WHITE;
+	-fx-border-color: WHITE;
+	-fx-border-width: 3px;
+	
+}
+
+
+/*-------------------------------------------------------------------*/
+
+#bAceptaMus {
+	/*	-fx-background-color: #62B71E;*/
+	-fx-background-color: GREEN;
+	-fx-text-fill: black;
+}
+
+#bAceptaMus:hover {
+	-fx-background-color: #80FA1F;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+}
+#bRechazaMus {
+	-fx-background-color: #E0BC1A;
+	-fx-text-fill: black;
+}
+
+#bRechazaMus:hover {
+	-fx-background-color: #C47F0E;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+}
+
+
+/*-----------------------------------------------------*/
 #bGuardarAjustes {
 	/*	-fx-background-color: #62B71E;*/
 	-fx-background-color: GREEN;
@@ -119,6 +162,7 @@ TextArea {
 	-fx-scale-x: 1.08;
 	-fx-scale-y: 1.08;
 }
+
 
 /*SLIDER VOLUMEN POR DEFECTO */
 #sldVolumen {
@@ -139,33 +183,27 @@ TextArea {
 }
 
 /*SLIDER VOLUMEN REPRODUCTOR*/
+#sldVolReproductor {
+	-fx-pref-width: 200px;
+	
+}
+
 #sldVolReproductor .track {
-    -fx-background-color: WHITE;
-    -fx-background-insets: 0;
+	-fx-background-color: linear-gradient(to left, green, #71FF00, white);
+	-fx-background-radius: 0;
+	-fx-pref-height: 12px;
+	
 }
 
 #sldVolReproductor .thumb {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 50%;
-    -fx-padding: 5px;
+	-fx-pref-height: 25px;
+	-fx-pref-width: 10px;
+	-fx-background-color: white;
+	-fx-border-color: black;
+	-fx-border-width: 1px;
+	-fx-background-radius: 0;
 }
-
-#sldVolReproductor .thumb:hover {
-    -fx-background-color: GREEN;
-}
-
-#sldVolReproductor .thumb:pressed {
-    -fx-background-color: GREEN;
-}
-
-.slider .thumb .thumb-area {
-    -fx-background-color: green;
-}
-.slider .thumb .thumb-overlay {
-    -fx-background-color: green;
-}
-
-
+/********************************************/
 .verListview{
 	-fx-background-color: white;
 	-fx-background-radius: 25px;
@@ -267,9 +305,6 @@ TextArea {
 	-fx-background-color: NONE; 
 	-fx-text-fill: #F2F7F9;
 	-fx-cell-size: 50px; /* altura de cada fila */
-	
-    
-	
 }
 
 .tablaMusica .column-header-background {
@@ -282,6 +317,7 @@ TextArea {
 .tablaMusica .column-header, .tablaMusica .filler{
 	-fx-border-width: 0 0 10 0;
 	-fx-background-color: transparent;
+	-fx-text-fill: BLACK;
 	-fx-font-weight: bold;
 	-fx-font-size: 20px;
 }
@@ -370,3 +406,139 @@ TextArea {
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,3,3 );
     -fx-padding: 20px;
 }
+
+
+/*Botones del panel administrativo*/
+#bAdminBotonUsuAceptar {
+	/*	-fx-background-color: #62B71E;*/
+	-fx-background-color: GREEN;
+	-fx-text-fill: black;
+	-fx-background-radius: 30px;
+	-fx-border-radius: 20px;
+	-fx-border-width: 4px;
+	-fx-border-color: black;
+}
+
+#bAdminBotonUsuAceptar:hover {
+	-fx-background-color: #80FA1F;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+	transition-delay:0.3s;
+}
+
+#bAdminBotonUsuCancelar {
+	-fx-background-color: #FF7400;
+	-fx-text-fill: black;
+	-fx-background-radius: 30px;
+	-fx-border-radius: 20px;
+	-fx-border-width: 4px;
+	-fx-border-color: black;
+}
+
+#bAdminBotonUsuCancelar:hover {
+	-fx-background-color: #FFC600;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+}
+
+#bAdminBotonUsuEliminar {
+	-fx-background-color:red;
+	-fx-text-fill: black;
+	-fx-background-radius: 30px;
+	-fx-border-radius: 20px;
+	-fx-border-width: 4px;
+	-fx-border-color: black;
+}
+
+#bAdminBotonUsuEliminar:hover {
+	-fx-background-color: #FE5627;
+	-fx-scale-x: 1.08;
+	-fx-scale-y: 1.08;
+}
+/*-----------------------------------------------*/ 
+
+
+.tablaAdmin .column-header{
+	-fx-border-color: black;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: solid;
+}
+
+.tablaAdmin .column-header-background {
+	-fx-background-color: NONE; 
+	-fx-background-radius: 27px; 
+	-fx-background-insets: 0 0 10 0;
+	
+}
+
+.tablaAdmin .column-header, .tablaAdmin .filler{
+	-fx-background-color: #BAC5C8;
+	-fx-text-fill: BLACK;
+	-fx-font-weight: bold;
+	-fx-font-size: 16px;
+}
+
+
+.tablaAdmin .cell {
+    -fx-font-size: 14px; 
+    -fx-text-fill: BLACK;
+    -fx-font-family: Arial;
+    -fx-alignment: CENTER;
+    
+}
+
+
+.tablaAdmin .table-row-cell {
+    -fx-background-color: WHITE; 
+    -fx-pref-height: 30px;   
+    -fx-border-width: 1px;
+    -fx-border-spacing: 30px 0;
+    
+     
+}
+.tablaAdmin .table-row-cell:hover {
+    -fx-background-color: BLACK; 
+    
+
+}
+.tablaAdmin .table-row-cell:hover .cell {
+    -fx-text-fill: WHITE;
+
+}
+
+.tablaAdmin .table-row-cell:empty {
+    -fx-background-color: TRANSPARENT; 
+    -fx-border-color: NONE;
+}
+
+.tablaAdmin .table-row-cell:empty .table-cell {
+    -fx-border-width: 0;
+}
+
+/*SCROLLBAR*/
+.tablaAdmin .scroll-bar:horizontal, .tablaAdmin .scroll-bar:vertical {
+    -fx-background-color: NONE; 
+  
+}
+
+.tablaAdmin .scroll-bar:horizontal .thumb, .tablaAdmin .scroll-bar:vertical .thumb {
+    -fx-background-color: NONE; 
+   
+}
+
+
+.tablaAdmin .scroll-bar:horizontal .increment-button, .tablaAdmin .scroll-bar:horizontal .decrement-button, 
+.tablaAdmin .scroll-bar:vertical .increment-button, .tablaAdmin .scroll-bar:vertical .decrement-button {
+    -fx-background-color: NONE; 
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pRootLibros" prefHeight="650.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LibrosController">
+   <children>
+      <Pane fx:id="pLibros" prefHeight="650.0" prefWidth="640.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pListaLibros.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibFavoritos" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="29.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibAmor" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="282.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibAventuras" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="153.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibTerror" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="409.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <ImageView id="fMusica1" fx:id="bLibComedia" fitHeight="91.0" fitWidth="90.0" layoutX="67.0" layoutY="539.0" onMouseClicked="#clickListaLibros" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/book.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pListaLibros" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pListaLibIndiv.png" />
+                     </image>
+                  </ImageView>
+                  <TableView fx:id="tablaLibros" layoutX="25.0" layoutY="282.0" onMouseClicked="#clickEligeLibro" prefHeight="340.0" prefWidth="592.0">
+                     <columns>
+                        <TableColumn fx:id="tituloLib" prefWidth="188.79998779296875" text="TITULO" />
+                        <TableColumn fx:id="autorLib" prefWidth="186.4000244140625" text="AUTOR" />
+                        <TableColumn fx:id="fechaLib" prefWidth="100.0" text="AÑO" />
+                        <TableColumn fx:id="nPagsLib" prefWidth="114.4000244140625" text="PÁGINAS" />
+                     </columns>
+                     <styleClass>
+                        <String fx:value="table-cell" />
+                        <String fx:value="tablaLibros" />
+                        <String fx:value="column-header-background" />
+                        <String fx:value="column-header" />
+                        <String fx:value="row-cell" />
+                        <String fx:value="cell" />
+                        <String fx:value="filler" />
+                        <String fx:value="label" />
+                        <String fx:value="scroll-bar" />
+                     </styleClass>
+                  </TableView>
+                  <ImageView id="bPerfil" fitHeight="50.0" fitWidth="41.0" layoutX="504.0" layoutY="218.0" onMouseClicked="#refreshTablaLib" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/refresh.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="bPerfil" fx:id="addBook" fitHeight="41.0" fitWidth="41.0" layoutX="560.0" layoutY="218.0" onMouseClicked="#agregaSinglePaneLib" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/addBook.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutX="31.0" layoutY="36.0" prefHeight="220.0" prefWidth="205.0" style="-fx-border-width: 5px; -fx-border-color: black;">
+                     <children>
+                        <ImageView fx:id="portadaListaLib" fitHeight="212.0" fitWidth="197.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView id="botones" fx:id="bFavLib" fitHeight="50.0" fitWidth="41.0" layoutX="170.0" layoutY="187.0" onMouseClicked="#clickBFavLib" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/favBlanco.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblTituloListaLib" alignment="CENTER" layoutX="257.0" layoutY="36.0" prefHeight="62.0" prefWidth="360.0" style="-fx-border-color: black; -fx-border-width: 3px; -fx-background-color: white; -fx-text-fill: black; -fx-border-radius: 15; -fx-background-radius: 15;" text="TITULO" underline="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="26.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </Label>
+                  <Pane id="verListView" layoutX="257.0" layoutY="105.0" onMouseClicked="#showSinglePaneLib" prefHeight="41.0" prefWidth="205.0" styleClass="verListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="30.0" prefWidth="137.0" style="-fx-text-fill: BLACK;" text="VER FICHA">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="35.0" fitWidth="41.0" layoutX="19.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/eye.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="257.0" layoutY="160.0" onMouseClicked="#editSinglePaneLib" prefHeight="41.0" prefWidth="205.0" styleClass="editListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="30.0" prefWidth="137.0" style="-fx-text-fill: BLACK;" text="EDITAR">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/editBook.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="257.0" layoutY="215.0" onMouseClicked="#clickBEliminaLibro" prefHeight="41.0" prefWidth="205.0" styleClass="deleteListview">
+                     <children>
+                        <Label alignment="CENTER" layoutX="54.0" layoutY="6.0" prefHeight="30.0" prefWidth="137.0" style="-fx-text-fill: BLACK;" text="ELIMINAR">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="21.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/deleteBook.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pFondoAvisoLib" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
+                  <Pane fx:id="pAvisoLib" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../backgrounds/avisoBorraLibro.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="bAceptaMus" alignment="CENTER" layoutX="366.0" layoutY="250.0" onMouseClicked="#clickAceptaAvisoLib" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="bRechazaMus" alignment="CENTER" layoutX="84.0" layoutY="250.0" onMouseClicked="#clickRechazaAvisoLib" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pLibroIndiv" prefHeight="650.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/ficha-libro.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="botones" fx:id="btnBackPaneLibros" fitHeight="50.0" fitWidth="58.0" layoutX="564.0" layoutY="586.0" onMouseClicked="#backSinglePane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/flechaBack.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblTituloLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="90.0" prefHeight="50.0" prefWidth="280.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField id="txtEditaElementos" fx:id="txtFieldTitLibro" layoutX="291.0" layoutY="93.0" prefHeight="45.0" prefWidth="277.0" promptText="Nuevo Titulo" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblAutorLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="176.0" prefHeight="50.0" prefWidth="280.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField id="txtEditaElementos" fx:id="txtFieldAutorLibro" layoutX="291.0" layoutY="178.0" prefHeight="45.0" prefWidth="277.0" promptText="Nuevo Autor" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblNPagsLibro" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="272.0" prefHeight="33.0" prefWidth="65.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField id="txtEditaElementos" fx:id="txtFieldPagLibro" layoutX="202.0" layoutY="271.0" prefHeight="30.0" prefWidth="65.0" promptText="Pags" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblYearLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="260.0" prefHeight="50.0" prefWidth="280.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <TextField id="txtEditaElementos" fx:id="txtFieldFechaLibro" layoutX="291.0" layoutY="262.0" prefHeight="45.0" prefWidth="277.0" promptText="Nueva Fecha" visible="false">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lblGeneroLibroInd" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="521.0" prefHeight="41.0" prefWidth="240.0" text="Label">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <ImageView fx:id="portadaLibro" fitHeight="212.0" fitWidth="197.0" layoutX="70.0" layoutY="57.0" onMouseClicked="#cambiaPortadaLibro" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea fx:id="txtAreaResumenLibro" layoutX="71.0" layoutY="369.0" prefHeight="153.0" prefWidth="496.0" visible="false" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="18.0" />
+                     </font>
+                  </TextArea>
+                  <Label fx:id="lblResumenLibroInd" alignment="TOP_LEFT" layoutX="71.0" layoutY="369.0" prefHeight="153.0" prefWidth="496.0" text="Label" wrapText="true">
+                     <font>
+                        <Font name="Franklin Gothic Heavy" size="17.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-1.0" />
+                     </effect>
+                  </Label>
+                  <Pane id="verListView" fx:id="bGuardaEditaLibro" layoutX="211.0" layoutY="594.0" onMouseClicked="#clickGuardaLibroEditado" prefHeight="41.0" prefWidth="217.0" styleClass="verListview" visible="false">
+                     <children>
+                        <Label alignment="CENTER" layoutX="46.0" layoutY="5.0" prefHeight="30.0" prefWidth="158.0" style="-fx-text-fill: BLACK;" text="GUARDAR LIBRO">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/editBook.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane id="verListView" fx:id="bGuardaAgregaLibro" layoutX="211.0" layoutY="594.0" onMouseClicked="#clickGuardaLibroAgregado" prefHeight="41.0" prefWidth="217.0" styleClass="verListview" visible="false">
+                     <children>
+                        <Label alignment="CENTER" layoutX="46.0" layoutY="5.0" prefHeight="30.0" prefWidth="158.0" style="-fx-text-fill: BLACK;" text="AÑADIR LIBRO">
+                           <font>
+                              <Font name="Franklin Gothic Heavy" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/addNegro.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Label fx:id="lblErrorLib" alignment="CENTER" layoutX="14.0" layoutY="599.0" prefHeight="30.0" prefWidth="180.0" style="-fx-border-width: 3;" text="ERROR: No se pudo añadir" underline="true" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

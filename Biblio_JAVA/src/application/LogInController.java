@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import AdminApp.AdminMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +31,7 @@ import javafx.scene.input.MouseEvent;
 public class LogInController{
 
 	//PANELES
-	@FXML Pane pInicio, pFondoIzq, pFondoDer, pIncioSesion, pRegistro;
+	@FXML public Pane pInicio, pFondoIzq, pFondoDer, pIncioSesion, pRegistro;
 
 	//LABELS
 	@FXML private Label lblshowPassReg, lblShowConfPassReg, lblshowPassLogin, lblErrorInicio;
@@ -55,15 +57,12 @@ public class LogInController{
 	//VARIABLES
 	private boolean cambiarLado=false;
 
-	//BBDD
-	Conexion c1;
 
 
 	public void initialize() { //FUNCION INICIAL (SE EJECUTA ANTES QUE EL CONSTRUCTOR)
-		c1 = new Conexion();
 		if(!Main.existeAdmin) {creaAdmin();}
 		initComponents();
-		
+
 
 	}
 
@@ -72,11 +71,10 @@ public class LogInController{
 		lblshowPassReg.setVisible(false);
 		lblShowConfPassReg.setVisible(false);
 		lblshowPassLogin.setVisible(false);
-		
+
 	}
 
-	@FXML
-	void clickbApagar(MouseEvent event) {
+	@FXML void clickbApagar(MouseEvent event) {
 		Stage stage = (Stage) this.bApagar.getScene().getWindow();
 		try {
 			Conexion.cerrar();
@@ -87,26 +85,23 @@ public class LogInController{
 
 	}
 
-	@FXML
-	void ClickbIni(MouseEvent event) { //PASAR A INICIOSESION DESDE VENTANA INCIAL 
+	@FXML void ClickbIni(MouseEvent event) { //PASAR A INICIOSESION DESDE VENTANA INCIAL 
 		pInicio.setVisible(false);
 		pFondoIzq.setVisible(false);
 		pRegistro.setVisible(false);
-		
+
 	}
 
-	
 
-	@FXML
-	void ClickbReg(MouseEvent event) { //PASAR A REGISTRAR DESDE VENTANA INCIAL
+
+	@FXML void ClickbReg(MouseEvent event) { //PASAR A REGISTRAR DESDE VENTANA INCIAL
 		pInicio.setVisible(false);
 		pFondoDer.setVisible(false);
 		pIncioSesion.setVisible(false);
 		pFondoIzq.setVisible(true);
 	}
 
-	@FXML
-	void clickBackLogin(ActionEvent event) { //PASAR DE REGISTRO A INICIO SESION
+	@FXML void clickBackLogin(ActionEvent event) { //PASAR DE REGISTRO A INICIO SESION
 
 		pFondoIzq.setVisible(false);
 		pRegistro.setVisible(false);
@@ -116,8 +111,7 @@ public class LogInController{
 		vaciarTxtField();
 	}
 
-	@FXML
-	void clickbVolverIni(MouseEvent event) { //VOLVER AL INICIO TOTAL DESDE INICIO SESION O REGISTRAR
+	@FXML void clickbVolverIni(MouseEvent event) { //VOLVER AL INICIO TOTAL DESDE INICIO SESION O REGISTRAR
 		pInicio.setVisible(true);
 		pIncioSesion.setVisible(true);
 		pRegistro.setVisible(true);
@@ -127,8 +121,7 @@ public class LogInController{
 		vaciarTxtField();
 	}
 
-	@FXML
-	void clickBackRegis(ActionEvent event) { //PASAR DE INICIO SESION A REGISTRO
+	@FXML void clickBackRegis(ActionEvent event) { //PASAR DE INICIO SESION A REGISTRO
 		pFondoDer.setVisible(false);
 		pIncioSesion.setVisible(false);
 		pFondoIzq.setVisible(true);
@@ -136,52 +129,84 @@ public class LogInController{
 		vaciarTxtField();
 	}
 
-	@FXML
-	void ClickbIniDef(ActionEvent event) {
+	@FXML void ClickbIniDef(ActionEvent event) {
 		String nickname = txtUsuISes.getText();
 		String password = txtPassISes.getText();
 		String correo = "";
 		try {
-			if(c1.compruebaLogIn(nickname, password)) {
+			if(Conexion.compruebaLogIn(nickname, password)) {
 				lblErrorInicio.setVisible(false);
 				try {
-					correo = c1.consultaStr("USUARIO", "CORREO", "NICKNAME = '"+nickname+"'");
+					correo = Conexion.consultaStr("USUARIO", "CORREO", "NICKNAME = '"+nickname+"'");
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 
 				Usuario u1 = new Usuario(nickname, password, correo);
 				try {
-					u1.setID_Usuario(c1.consultaNum("USUARIO", "ID", "NICKNAME = '"+nickname+"'"));
+					u1.setID_Usuario(Conexion.consultaNum("USUARIO", "ID", "NICKNAME = '"+nickname+"'"));
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}				
 				Usuario.setUsuario(u1); 
 
 				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuView.fxml"));
-					Parent root = loader.load();
-					MenuController controlador = loader.getController();
+					if(nickname.equals("ADMIN") && password.equals("ADMIN")) {
 
-					Scene scene = new Scene(root);
-					Stage venMenu = new Stage();
-					venMenu.setScene(scene);
-					venMenu.setResizable(false);
-					venMenu.setTitle("BiblioTech");
-					//venMenu.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
 
-					venMenu.show();
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminFXML/AdminMenuView.fxml"));
+						Parent root = loader.load();
+						AdminMenuController controlador = loader.getController();
 
-					//    		File file = new File("src/icons/logoNegroCF.png");		//CAMBIAR ICONO DEL PROGRAMA. FORMA ANTIGUA
-					//			venMenu.getIcons().add(new Image(file.toURI().toString())); 
+						Scene scene = new Scene(root);
+						scene.getStylesheets().add(getClass().getResource("/UserFXML/application.css").toExternalForm());
+						Stage venMenu = new Stage();
+						venMenu.setScene(scene);
+						venMenu.setResizable(false);
+						venMenu.setTitle("BiblioTech");
 
-					Image icon = new Image(getClass().getResourceAsStream("/icons/logoNegroCF.png"));//CAMBIAR ICONO DEL PROGRAMA
-					venMenu.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
+						venMenu.show();
 
-					venMenu.setOnCloseRequest(e->controlador.closeWindows());
+						Image icon = new Image(getClass().getResourceAsStream("/icons/logoNegroCF.png"));//CAMBIAR ICONO DEL PROGRAMA
+						venMenu.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
 
-					Stage myStage = (Stage) this.bISesionDef.getScene().getWindow();
-					myStage.close();
+						venMenu.setOnCloseRequest(e->controlador.closeWindows());
+
+						Stage myStage = (Stage) this.bISesionDef.getScene().getWindow();
+						myStage.close();
+
+
+
+
+
+					}
+					else {
+						Conexion.iniciaTiempo(u1); //INSERTAMOS HORA Y MINUTOS DESDE QUE EMPIEZA A USAR LA APP
+
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserFXML/MenuView.fxml"));
+						Parent root = loader.load();
+						MenuController controlador = loader.getController();
+
+						Scene scene = new Scene(root);
+						Stage venMenu = new Stage();
+						venMenu.setScene(scene);
+						venMenu.setResizable(false);
+						venMenu.setTitle("BiblioTech");
+						//venMenu.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
+
+						venMenu.show();
+
+						//    		File file = new File("src/icons/logoNegroCF.png");		//CAMBIAR ICONO DEL PROGRAMA. FORMA ANTIGUA
+						//			venMenu.getIcons().add(new Image(file.toURI().toString())); 
+
+						Image icon = new Image(getClass().getResourceAsStream("/icons/logoNegroCF.png"));//CAMBIAR ICONO DEL PROGRAMA
+						venMenu.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
+
+						venMenu.setOnCloseRequest(e->controlador.closeWindows());
+
+						Stage myStage = (Stage) this.bISesionDef.getScene().getWindow();
+						myStage.close();
+					}
 
 				} catch(IOException ex) {
 					Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE,null,ex);
@@ -195,10 +220,9 @@ public class LogInController{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	@FXML
-	void clickBRegisDef(ActionEvent event) {  //COMPRUEBA QUE CORREO VALIDO // PASSWORD Y CONFIRMPASSWORD COINCIDAN
+
+
+	@FXML void clickBRegisDef(ActionEvent event) {  //COMPRUEBA QUE CORREO VALIDO // PASSWORD Y CONFIRMPASSWORD COINCIDAN
 		String pass1 = txtPassRegis.getText();
 		String pass2 = txtConfPassRegis.getText();
 		String correo = txtCorreoReg.getText();
@@ -223,35 +247,35 @@ public class LogInController{
 				cambiarLado = false;
 			}
 			else {
-				
+
 				//DAR ALTA USUARIO EN BBDD (FUNCIONA PERFECTAMENTE)
 				String nom = txtUsuReg.getText();
 				Usuario u1 = new Usuario(nom, pass1, correo);
 				try {
-					if(c1.registraUsuario(u1)) { 
+					if(Conexion.registraUsuario(u1)) { 
 						System.out.println(Correo.enviarMailConf(correo, nom, pass1)); //MUESTRA SI HA PODIDO ENVIAR EL CORREO O NO
 						System.out.println("Usuario registrado correctamente");
 						btnCompRegis.setVisible(true);
 						btnCompRegis.setUnderline(true);
 						btnCompRegis.setStyle("-fx-text-fill: GREEN; -fx-background-color: White "); //
-						
+
 
 						btnCompRegis.setText("¡Cuenta creada con éxito!. Ir a iniciar sesión");
 						cambiarLado = true;
 					}
-					
+
 				} catch (SQLException e) {
 					System.out.println("No se pudo registrar el usuario");
 					btnCompRegis.setVisible(true);
 					btnCompRegis.setUnderline(false);
 					btnCompRegis.setStyle("-fx-text-fill: RED; -fx-background-color: White "); //
-					
+
 					if(e instanceof SQLIntegrityConstraintViolationException) {
 						btnCompRegis.setText("El usuario ya existe");
 					}
-					
+
 					cambiarLado = false;
-					
+
 				}
 
 			}
@@ -269,8 +293,7 @@ public class LogInController{
 
 	}
 
-	@FXML
-	void clickbRegExito(ActionEvent event) { //ESTE BOTON SOLO FUNCIONA CUANDO SE REGISTRA CON ÉXITO
+	@FXML void clickbRegExito(ActionEvent event) { //ESTE BOTON SOLO FUNCIONA CUANDO SE REGISTRA CON ÉXITO
 		if(cambiarLado==true) {
 			pRegistro.setVisible(false);
 			pIncioSesion.setVisible(true);
@@ -288,8 +311,7 @@ public class LogInController{
 
 	//MOSTRAR Y NO MOSTRAR CONTRASEÑAS
 
-	@FXML
-	void showPassReg(MouseEvent event) {
+	@FXML void showPassReg(MouseEvent event) {
 		lblshowPassReg.setText(txtPassRegis.getText());
 		lblShowConfPassReg.setText(txtConfPassRegis.getText());
 		lblshowPassReg.setVisible(true);
@@ -297,27 +319,24 @@ public class LogInController{
 
 	}
 
-	@FXML
-	void stopShowPassReg(MouseEvent event) {
+	@FXML void stopShowPassReg(MouseEvent event) {
 		lblshowPassReg.setVisible(false);
 		lblShowConfPassReg.setVisible(false);
 	}
 
-	@FXML
-	void showPassLogin(MouseEvent event) {
+	@FXML void showPassLogin(MouseEvent event) {
 		lblshowPassLogin.setText(txtPassISes.getText());
 		lblshowPassLogin.setVisible(true);
 	}
 
-	@FXML
-	void stopShowPassLogin(MouseEvent event) {
+	@FXML void stopShowPassLogin(MouseEvent event) {
 		lblshowPassLogin.setVisible(false);
 	}
 
 
 
 	//FUNCIONES VARIAS
-	
+
 	private void vaciarTxtField() {//VACIA TODOS LOS CAMPOS . 
 		txtUsuReg.setText("");
 		txtCorreoReg.setText("");
@@ -332,10 +351,10 @@ public class LogInController{
 
 	private void creaAdmin() { //COMPRUEBA NADA MÁS INICIAR QUE HAYA UN USUARIO ADMIN CREADO, SINO LO CREA. USUARIO ADMIN NO SE PUEDE BORRAR
 		try {
-			int num = c1.consultaNum("USUARIO", "ID", "UPPER(NICKNAME) = 'ADMIN'");
+			int num = Conexion.consultaNum("USUARIO", "ID", "UPPER(NICKNAME) = 'ADMIN'");
 			if(num==0) {
 				Usuario u = new Usuario("ADMIN", "ADMIN","admin@gmail.com" );
-				c1.registraUsuario(u);
+				Conexion.registraUsuario(u);
 				System.out.println("ADMIN CREADO");
 				Main.existeAdmin = true;
 
@@ -350,7 +369,7 @@ public class LogInController{
 		}
 
 	}
-	
+
 
 
 

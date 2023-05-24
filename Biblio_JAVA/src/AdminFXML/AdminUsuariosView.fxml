@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pRootUsuarios" prefHeight="650.0" prefWidth="640.0" stylesheets="@../UserFXML/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminApp.AdminUsuariosController">
+   <children>
+      <Pane id="pFondoAdmin" fx:id="pUsuarios" prefHeight="650.0" prefWidth="640.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0">
+               <image>
+                  <Image url="@../backgrounds/pUsuAdmin.png" />
+               </image>
+            </ImageView>
+            <ImageView id="botones" fitHeight="36.0" fitWidth="41.0" layoutX="553.0" layoutY="21.0" onMouseClicked="#refreshTablaUsu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/refreshAdmin.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="46.0" layoutY="73.0" prefHeight="57.0" prefWidth="548.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3px;">
+               <children>
+                  <ImageView id="botones" fitHeight="42.0" fitWidth="36.0" layoutX="12.0" layoutY="11.0" onMouseClicked="#muestraEliminados" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/angel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="botones" fitHeight="32.0" fitWidth="30.0" layoutX="500.0" layoutY="14.0" onMouseClicked="#clickBuscar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/buscar.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtFiltro" layoutX="233.0" layoutY="3.0" prefHeight="51.0" prefWidth="250.0" promptText="Filtrar por...">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <Pane fx:id="pFiltros" layoutX="72.0" layoutY="4.0" prefHeight="50.0" prefWidth="151.0">
+                     <children>
+                        <ImageView id="botones" fx:id="imgNickname" fitHeight="30.0" fitWidth="36.0" layoutX="3.0" layoutY="11.0" onMouseClicked="#clickAdminUsuarioGestionUsuario" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/user-negro.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="botones" fx:id="imgCorreo" fitHeight="30.0" fitWidth="36.0" layoutX="57.0" layoutY="11.0" onMouseClicked="#clickAdminCorreoGestionUsuario" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/correo-electronico.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="botones" fx:id="imgPassword" fitHeight="36.0" fitWidth="40.0" layoutX="109.0" layoutY="8.0" onMouseClicked="#clickAdminContraseñaGestionUsuario" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/bloqueado.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="botones" fx:id="imgNicknameVerde" fitHeight="30.0" fitWidth="36.0" layoutX="3.0" layoutY="11.0" onMouseClicked="#clickAdminUsuarioGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../icons/user-negro-verde.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="botones" fx:id="imgCorreoVerde" fitHeight="30.0" fitWidth="36.0" layoutX="57.0" layoutY="11.0" onMouseClicked="#clickAdminCorreoGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../icons/correo-verde.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="botones" fx:id="imgPasswordVerde" fitHeight="36.0" fitWidth="40.0" layoutX="109.0" layoutY="8.0" onMouseClicked="#clickAdminContraseñaGestionUsuarioVolver" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../icons/bloqueado-verde.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Line endX="186.0" layoutX="297.0" layoutY="3.0" startX="186.0" startY="51.0" />
+                  <Line endX="186.0" layoutX="-129.0" layoutY="3.0" startX="186.0" startY="51.0" />
+                  <Line endX="186.0" layoutX="46.0" layoutY="3.0" startX="186.0" startY="51.0" />
+               </children>
+            </Pane>
+            <TableView fx:id="tablaUsuarios" layoutX="50.0" layoutY="145.0" onMouseClicked="#clickEligeUsu" prefHeight="179.0" prefWidth="540.0" styleClass="tablaAdmin">
+               <columns>
+                  <TableColumn fx:id="idUsu" prefWidth="58.4000244140625" text="ID" />
+                  <TableColumn fx:id="nicknameUsu" prefWidth="140.79998779296875" text="USUARIO" />
+                  <TableColumn fx:id="correoUsu" prefWidth="172.79998779296875" text="CORREO" />
+                  <TableColumn fx:id="passwordUsu" minWidth="8.0" prefWidth="152.0" text="CONTRASEÑA" />
+               </columns>
+            </TableView>
+            <Button id="bAdminBotonUsuAceptar" alignment="CENTER" layoutX="59.0" layoutY="548.0" mnemonicParsing="false" onMouseClicked="#clickAplicaUsu" prefHeight="51.0" prefWidth="161.0" text="APLICAR">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button id="bAdminBotonUsuCancelar" alignment="CENTER" layoutX="238.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#clickCancelaUsu" prefHeight="51.0" prefWidth="161.0" text="CANCELAR">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button id="bAdminBotonUsuEliminar" alignment="CENTER" layoutX="421.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#clickEliminaUsu" prefHeight="51.0" prefWidth="161.0" text="ELIMINAR">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txtUserNickname" layoutX="298.0" layoutY="371.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
+            <TextField fx:id="txtUserCorreo" layoutX="298.0" layoutY="430.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
+            <TextField fx:id="txtUserPassword" layoutX="298.0" layoutY="489.0" prefHeight="42.0" prefWidth="284.0" style="-fx-border-color: black;" />
+            <Pane fx:id="pRestauraUsu" layoutY="336.0" prefHeight="300.0" prefWidth="640.0" visible="false">
+               <children>
+                  <ImageView fitHeight="301.0" fitWidth="561.0" layoutX="40.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/pRestauraUsu.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="bAdminBotonUsuAceptar" alignment="CENTER" layoutX="204.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#clickRestauraUsu" prefHeight="54.0" prefWidth="231.0" text="RESTAURAR">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="pFondoAvisoUsu" opacity="0.85" prefHeight="650.0" prefWidth="640.0" style="-fx-background-color: BLACK;" visible="false" />
+            <Pane fx:id="pAvisoUsu" layoutX="3.0" layoutY="150.0" prefHeight="333.0" prefWidth="633.0" visible="false">
+               <children>
+                  <ImageView fitHeight="351.0" fitWidth="624.0" layoutX="5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../backgrounds/avisoUsuAdmin.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="bAceptaMus" alignment="CENTER" layoutX="366.0" layoutY="251.0" onMouseClicked="#clickAceptaAvisoUsu" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="ACEPTAR">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label id="bRechazaMus" alignment="CENTER" layoutX="84.0" layoutY="251.0" onMouseClicked="#clickRechazaAvisoUsu" prefHeight="41.0" prefWidth="171.0" style="-fx-background-radius: 30px; -fx-border-radius: 20px; -fx-border-width: 4px; -fx-border-color: black;" text="CANCELAR" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
