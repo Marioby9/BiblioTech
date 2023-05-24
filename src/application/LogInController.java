@@ -159,7 +159,7 @@ public class LogInController{
 						AdminMenuController controlador = loader.getController();
 
 						Scene scene = new Scene(root);
-						scene.getStylesheets().add(getClass().getResource("/FXML/application.css").toExternalForm());
+						scene.getStylesheets().add(getClass().getResource("/UserFXML/application.css").toExternalForm());
 						Stage venMenu = new Stage();
 						venMenu.setScene(scene);
 						venMenu.setResizable(false);
@@ -183,7 +183,7 @@ public class LogInController{
 					else {
 						Conexion.iniciaTiempo(u1); //INSERTAMOS HORA Y MINUTOS DESDE QUE EMPIEZA A USAR LA APP
 
-						FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/MenuView.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserFXML/MenuView.fxml"));
 						Parent root = loader.load();
 						MenuController controlador = loader.getController();
 

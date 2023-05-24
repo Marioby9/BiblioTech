@@ -84,7 +84,7 @@ public class MenuController {
 
 		try { //INSTANCIAMOS LOS CONTROLADORES
 			//PERFIL:
-			FXMLLoader loaderPerfil = new FXMLLoader(getClass().getResource("/FXML/PerfilView.fxml"));
+			FXMLLoader loaderPerfil = new FXMLLoader(getClass().getResource("/UserFXML/PerfilView.fxml"));
 			loaderPerfil.load();
 			perfilController = loaderPerfil.getController();
 			perfilController.setMenuController(this);
@@ -95,7 +95,7 @@ public class MenuController {
 			perfilController.cambiaFPerfil();
 
 			//LIBROS
-			FXMLLoader loaderLibros = new FXMLLoader(getClass().getResource("/FXML/LibrosView.fxml"));
+			FXMLLoader loaderLibros = new FXMLLoader(getClass().getResource("/UserFXML/LibrosView.fxml"));
 			loaderLibros.load();
 			librosController = loaderLibros.getController();
 			librosController.setMenuController(this);
@@ -104,7 +104,7 @@ public class MenuController {
 			pLibros.setLayoutX(0); pLibros.setLayoutY(0);
 
 			//JUEGOS
-			FXMLLoader loaderJuegos = new FXMLLoader(getClass().getResource("/FXML/JuegosView.fxml"));
+			FXMLLoader loaderJuegos = new FXMLLoader(getClass().getResource("/UserFXML/JuegosView.fxml"));
 			loaderJuegos.load();
 			juegosController = loaderJuegos.getController();
 			juegosController.setMenuController(this);
@@ -113,7 +113,7 @@ public class MenuController {
 			pJuegos.setLayoutX(0); pJuegos.setLayoutY(0);
 			
 			//MUSICA
-			FXMLLoader loaderMusica = new FXMLLoader(getClass().getResource("/FXML/MusicaView.fxml"));
+			FXMLLoader loaderMusica = new FXMLLoader(getClass().getResource("/UserFXML/MusicaView.fxml"));
 			loaderMusica.load();
 			musicaController = loaderMusica.getController();
 			musicaController.setMenuController(this);
@@ -129,7 +129,7 @@ public class MenuController {
 			
 
 			//AJUSTES
-			FXMLLoader loaderAjustes = new FXMLLoader(getClass().getResource("/FXML/AjustesView.fxml"));
+			FXMLLoader loaderAjustes = new FXMLLoader(getClass().getResource("/UserFXML/AjustesView.fxml"));
 			loaderAjustes.load();
 			ajustesController = loaderAjustes.getController();
 			ajustesController.setMenuController(this);
@@ -162,7 +162,7 @@ public class MenuController {
 
 	public void closeWindows() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/LogInView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserFXML/LogInView.fxml"));
 			Parent root = loader.load();
 			controlador = loader.getController();
 

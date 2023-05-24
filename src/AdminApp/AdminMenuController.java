@@ -136,7 +136,7 @@ public class AdminMenuController {
 
 	public void closeWindows() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/LogInView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserFXML/LogInView.fxml"));
 			Parent root = loader.load();
 			controlador = loader.getController();
 
