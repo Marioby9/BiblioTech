@@ -13,6 +13,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.BarChart;
 
+/**
+ * Esta clase contiene todas las funciones que conectan la aplicacion con la Base de Datos
+ * @author Bibliotech
+ * @param login. Usuario de la Base de datos
+ * @param password. Contraseña del usuario de la Base de datos
+ * @param url. Host de la Base de datos
+ */
 public class Conexion {
 
 	private static String bd = "XE";
@@ -25,6 +32,10 @@ public class Conexion {
 	static Connection connection = null;
 
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static boolean conectar() {
 		boolean conectado = false;
 		try {
@@ -43,6 +54,7 @@ public class Conexion {
 
 	//CONSULTAS TABLA USUARIO
 	//HACER QUE RECIBA LAS COLUMNAS QUE QUIERA EL USUARIO
+	
 	public static String consultaStr(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS 
 		String str = "";
 
@@ -555,6 +567,7 @@ public class Conexion {
 
 
 	/* ----------------------------------FUNCIONES PARA EL ADMINISTRADOR------------------------------------- */
+	
 	public static ObservableList<Usuario> rellenaTablaUsu(String filtro, String paramFil) throws SQLException{
 		int id;
 		String nickname, password, correo, sql;

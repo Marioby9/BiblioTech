@@ -70,7 +70,6 @@ public class LibrosController {
 
 		if(event.getSource() == btnBackPaneLibros) {
 			pLibroIndiv.setVisible(false);
-
 		}
 	}
 

@@ -16,22 +16,24 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/***
+ * Esta clase envia un correo de confirmacion con los credenciales de la cuenta creada y abre URLs.
+ * @author BiblioTech
+ *
+ */
 
 public class Correo {
 
-	/*
-	 * RECIBE COMO PARAMETROS EL CORREO DESTINO, EL NOMBRE DE USUARIO (AL REGISTRARSE), CONTRASENA
-	 * ENVIA UN CORREO AL DESTINATARIO CON SUS CREDENCIALES UNA VEZ CREADA LA CUENTA
-	 * DEVUELVE UN MENSAJE DE CONFIRMACIÓN DE QUE SE HA CUMPLIDO LA FUNCIÓN (SE HA REGISTRADO, HA ENVIADO Y HA CERRADO CORRECTAMENTE LA SESIÓN)
-	 */
+	
 	
 	/**
-	 * 
+	 * Esta es la funcion que envia un mail al correo introducido en el apartado registro.
 	 * @param destinatario
 	 * @param nickname
 	 * @param password
-	 * @return
+	 * @return Mensaje de que el correo se haya enviado correctamente
 	 */
+	
 	public static String enviarMailConf(String destinatario, String nickname, String password) { //DEVUELVE UN MENSAJE EN FUNCIÓN DE SI SE HA ENVIADO O NO
 		String remitente = "probibliotech"; //lo que va antes de @gmail.com
 		String clave = "imxjsectmdojtian"; //GOOGLE desactivó en Mayo de 2022 el acceso a cuentas desde aplicaciones poco seguras. Hemos tenido que activar la verif. 2 pasos y añadir contraseña del correo para aplicación externa (Copiar desde generar contraseña para dispositivos (conf GMAIL))
@@ -73,6 +75,12 @@ public class Correo {
 		}
 	}
 
+	/***
+	 * Esta funcion abre la URL indicada en el navegador por defecto que tenga el sistema
+	 * @param url
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
 	public static void abrirURL(String url) throws IOException, URISyntaxException { //ABRE UN ENLACE WEB DESDE LA APLICACION
 	    if (Desktop.isDesktopSupported()) {
 	        Desktop desktop = Desktop.getDesktop();

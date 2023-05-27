@@ -248,7 +248,7 @@ public class LogInController{
 			}
 			else {
 
-				//DAR ALTA USUARIO EN BBDD (FUNCIONA PERFECTAMENTE)
+				//DAR ALTA USUARIO EN BBDD 
 				String nom = txtUsuReg.getText();
 				Usuario u1 = new Usuario(nom, pass1, correo);
 				try {
