@@ -31,10 +31,10 @@ public class MusicaController {
 	@FXML private Pane pMusica;
 
 	//MUSICA
-	@FXML protected Pane cabeceraMus, pListaMus, pFondoAvisoMus, pAvisoMus;
+	@FXML protected Pane cabeceraMus, pListaMus;
 	@FXML protected Label lblTitListaMus, lblTiempoCanc, lblNumCanciones, lblTitReproductor ;
 	@FXML protected ProgressBar barraMusica;
-	@FXML private ImageView bPlayMusica, btnBucle, imgIconoLista, btnBorraMusica;
+	@FXML private ImageView bPlayMusica, btnBucle, imgIconoLista;
 	protected Image imgPlayMus, imgPauseMus, imgBucleBlanco, imgBucleVerde, iconoLista;
 	private Timeline timeline;
 	private Duration duracionTotal;
@@ -295,47 +295,13 @@ public class MusicaController {
 	} 
 
 	
-	@FXML void clickBorraMusica(MouseEvent event) {
-		pFondoAvisoMus.setVisible(true);
-		pAvisoMus.setVisible(true);
-	}
+
 	
 
 	/*----------------------ARREGLAR---------------------*/
 	
-	@FXML void aceptaBorraMusica(MouseEvent event){ /*DA ERROR PORQUE NO SE PUEDE MOVER MIENTRAS ESTA SIENDO UTLIZADO POR OTRO PROCESO*/ 
-
-		if(cancActual!=null) {
-			try {
-			
-				reproductor.stop();
-				reproductor.dispose();
-				reproductor = null;
-				
-				
-			
-				String carpeta = menu.carpCanciones;
-				File cancion = new File(cancActual.getRuta());
-				
-				if(Ficheros.mueveCancion(cancion, carpeta)) {
-					System.out.println("Cancion movida a papelera correctamente");
-					pFondoAvisoMus.setVisible(false);
-					pAvisoMus.setVisible(false);
-				}
-
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 	
-	@FXML void rechazaBorraMusica(MouseEvent event){ /*DA ERROR PORQUE NO SE PUEDE MOVER MIENTRAS ESTA SIENDO UTLIZADO POR OTRO PROCESO*/
 
-		pFondoAvisoMus.setVisible(false);
-		pAvisoMus.setVisible(false);
-	}
-	
 	
 
 	private void rellenaTablaMus(String categoria) {
@@ -349,7 +315,6 @@ public class MusicaController {
 				//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA
 				if(listaMusica.size()!=0 && !activo) { 
 					
-					btnBorraMusica.setVisible(true);
 					cancActual = listaMusica.get(0);
 					barraMusica.setProgress(0);
 					lblTitReproductor.setText(cancActual.getArtista()+ "  |  "+cancActual.getNombre());
@@ -367,7 +332,6 @@ public class MusicaController {
 				}
 				else if(listaMusica.size()==0 && !activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
 					tablaMusica.setVisible(false);
-					btnBorraMusica.setVisible(false);
 					cancActual = null;
 					lblTitReproductor.setText("ARTISTA  |  TITULO CANCION  ");
 					
@@ -380,9 +344,7 @@ public class MusicaController {
 					barraMusica.setProgress(0);
 				}
 				else if(listaMusica.size()==0 && activo) { //SI NO HAY ELEMENTOS EN LA LISTA:
-					tablaMusica.setVisible(false);
-					btnBorraMusica.setVisible(true);
-					
+					tablaMusica.setVisible(false);					
 					
 				}
 
