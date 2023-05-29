@@ -62,6 +62,7 @@ public class AdminUsuariosController {
 		rellenaTablaUsu();
 		pFondoAvisoUsu.setVisible(false);
 		pAvisoUsu.setVisible(false);
+		vaciaTextos();
 	}
 	
 	

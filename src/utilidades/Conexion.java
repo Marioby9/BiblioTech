@@ -34,8 +34,8 @@ public class Conexion {
 
 
 	/**
-	 * 
-	 * @return
+	 * Metodo que conecta con la base de datos
+	 * @return boolean
 	 */
 	public static boolean conectar() {
 		boolean conectado = false;
@@ -53,8 +53,14 @@ public class Conexion {
 		return conectado;
 	}
 
-	//CONSULTAS TABLA USUARIO
-	//HACER QUE RECIBA LAS COLUMNAS QUE QUIERA EL USUARIO
+	/**
+	 * Funcion para hacer consultas de Strings
+	 * @param tabla elige la tabla para hacer la query
+	 * @param columna elige la tabla para hacer la query
+	 * @param condicion elige la condicion para hacer la query
+	 * @return str
+	 * @throws SQLException
+	 */
 	
 	public static String consultaStr(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS 
 		String str = "";
@@ -79,7 +85,14 @@ public class Conexion {
 		return str;
 	}
 
-
+	/**
+	 * Funcion para hacer consultas de Strings
+	 * @param tabla elige la tabla para hacer la query
+	 * @param columna elige la columna para hacer la query
+	 * @param condicion elige la condicion para hacer la query
+	 * @return num
+	 * @throws SQLException
+	 */
 	public static int consultaNum(String tabla, String columna, String condicion) throws SQLException{ //FUNCION PARA HACER CONSULTAS DE NUMEROS
 		int num = 0;
 
@@ -105,6 +118,13 @@ public class Conexion {
 
 
 	//REGISTRAR, ELIMINAR Y ACTUALIZAR USUARIO 
+	/**
+	 * Funcion para registrar un usuario
+	 * @param u Objeto de tipo usuario
+	 * @return boolean
+	 * @throws SQLException
+	 */
+
 	public static boolean registraUsuario (Usuario u) throws SQLException{ //MODIFICAR
 		boolean insertado = false;
 
@@ -142,6 +162,12 @@ public class Conexion {
 		return insertado;
 	}
 
+	/**
+	 * Funcion para modificar un usuario
+	 * @param u Objeto de tipo usuario
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean eliminarUsuario (Usuario u) throws SQLException{ //MODIFICAR
 
 		boolean eliminado = false;
@@ -157,6 +183,12 @@ public class Conexion {
 		return eliminado;
 	}
 
+	/**
+	 * Funcion para actualizar un usuario
+	 * @param u Objeto de tipo usuario
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean updateUsuario(Usuario u) throws SQLException{ 
 		boolean updated = false;
 
@@ -175,6 +207,13 @@ public class Conexion {
 
 
 	//QUERYS DEL LOGIN
+	/**
+	 * Funcion que comprueba las condiciones para iniciar sesion
+	 * @param nombre nombre de usuario
+	 * @param password contraseña
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean compruebaLogIn(String nombre, String password) throws SQLException  {  //MODIFICAR
 
 		boolean accede = false;
@@ -199,7 +238,12 @@ public class Conexion {
 		return accede;
 	}
 	
-	
+	/**
+	 * Funcion que inicia el tiempo cuando entra en la aplicacion
+	 * @param u Objeto de tipo usuario
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean iniciaTiempo(Usuario u) throws SQLException{ 
 		boolean updated = false;
 
@@ -213,6 +257,12 @@ public class Conexion {
 		return updated;
 	}
 	
+	/**
+	 * Funcion que termina el tiempo cuando sale en la aplicacion
+	 * @param u Objeto de tipo usuario
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean terminaTiempo(Usuario u) throws SQLException{ 
 		boolean updated = false;
 		
@@ -232,6 +282,15 @@ public class Conexion {
 	
 
 	//CAMBIAR VALORES PARA TABLAS
+	/**
+	 * Funcion que cambia los valores en las tablas
+	 * @param tabla Tabla donde se hace la query
+	 * @param columna columna donde se hace la query
+	 * @param valor tipo de valor
+	 * @param condicion condicion para hacer la query
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean updateTabla(String tabla, String columna, Object valor, String condicion) throws SQLException{
 		boolean updated = false;
 
@@ -247,6 +306,13 @@ public class Conexion {
 	}
 
 	//LIBROS:
+	/**
+	 * Funcion para agregar libro
+	 * @param libro libro que se quiere agregar
+	 * @param portada portada que se quiere agregar
+	 * @return boolean
+	 * @throws SQLException
+	 */
 
 	public static boolean agregaLibro(Libro libro, boolean portada) throws SQLException {
 		boolean insertado = false;
@@ -277,6 +343,12 @@ public class Conexion {
 		return insertado;
 	}
 
+	/**
+	 * Funcion que actualiza un libro
+	 * @param libro libro que se actualiza
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean updateLibro(Libro libro) throws SQLException{ 
 		boolean updated = false;
 
@@ -294,6 +366,13 @@ public class Conexion {
 		return updated;
 	}
 
+	/**
+	 * Funcion que actualiza la portada de un libro
+	 * @param libro libro a actualizar
+	 * @param portada portada que se actualiza
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean actualizaPortadaLib(Libro libro, boolean portada) throws SQLException {
 		boolean updated = false;
 		String sql;
@@ -318,6 +397,12 @@ public class Conexion {
 
 
 
+	/**
+	 * Funcion que elimina un libro
+	 * @param libro libro que se elimina
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean eliminaLibro(Libro libro) throws SQLException {
 		boolean eliminado = false;
 
@@ -333,6 +418,13 @@ public class Conexion {
 	}
 
 
+	/**
+	 * Funcion que rellena la lista libros
+	 * @param genero genero del libro
+	 * @param id_user id del usuario
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Libro> fillListBooks(String genero, int id_user) throws SQLException{ 
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, terminado, favorito;
@@ -368,6 +460,12 @@ public class Conexion {
 	}
 
 
+	/**
+	 * Funcion que rellena la lista favoritos de libros
+	 * @param id_user id del usuario
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Libro> fillFavBooks(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, terminado, genero;
@@ -404,6 +502,13 @@ public class Conexion {
 
 	//JUEGOS
 
+	/**
+	 * Funcion que agrega un juego
+	 * @param juego juego que se agrega
+	 * @param portada portada que se agrega
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean agregaJuego(Juego juego, boolean portada) throws SQLException {
 		boolean insertado = false;
 		String sql= "INSERT INTO JUEGOS (ID_JUEGO, ID_USUARIO, TITULO, EMPRESA, PLATAFORMA, GENERO, H_JUGADAS, LANZAMIENTO, RESUMEN, TERMINADO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -434,6 +539,12 @@ public class Conexion {
 		return insertado;
 	}
 
+	/**
+	 * Funcion que actualiza un juego
+	 * @param juego juego que se actualiza
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean updateJuego(Juego juego) throws SQLException{ 
 		boolean updated = false;
 
@@ -453,6 +564,13 @@ public class Conexion {
 		return updated;
 	}
 
+	/**
+	 * Funcion que actualiza la portada de un juego
+	 * @param juego juego que se actualiza
+	 * @param portada portada que se actualiza
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean actualizaPortadaJue(Juego juego, boolean portada) throws SQLException {
 		boolean updated = false;
 		String sql;
@@ -475,6 +593,13 @@ public class Conexion {
 		return updated;
 	}
 
+	
+	/**
+	 * Funcion que elimina un juego
+	 * @param juego juego que se elimina
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean eliminaJuego(Juego juego) throws SQLException {
 		boolean eliminado = false;
 
@@ -491,6 +616,13 @@ public class Conexion {
 
 
 
+	/**
+	 * Funcion que llena la tabla de juegos
+	 * @param genero genero de juego
+	 * @param id_user id del usuario
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Juego> fillListGames(String genero, int id_user) throws SQLException{ 
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, terminado, empresa, favorito;
@@ -529,6 +661,13 @@ public class Conexion {
 		return listaJuegos;
 	}
 
+	
+	/**
+	 * Funcion que rellena la lista favorita de juegos
+	 * @param id_user id del usuario
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Juego> fillFavGames(int id_user) throws SQLException{ //RELLENA LA TABLA SOLO CON LOS FAVORITOS
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, terminado, empresa, genero;
@@ -566,7 +705,13 @@ public class Conexion {
 	}
 
 	
-	
+	/**
+	 * Funcion que agrega las canciones encontradas a la BBDD
+	 * @param lista. Lista de canciones en carpetas
+	 * @param u. Usuario
+	 * @return boolean. True en caso de que haya sido agregada con exito.
+	 * @throws SQLException
+	 */
 	public static boolean agregaCanciones(ObservableList<Cancion> lista, Usuario u) throws SQLException {
 		boolean agregadas = false;
 		int nuevoId;
@@ -599,7 +744,12 @@ public class Conexion {
 		return agregadas;
 	}
 
-	
+	/**
+	 * Funcion que elimina una cancion de la base de datos (solo puede el admin)
+	 * @param cancion
+	 * @return boolean. True si se ha eliminado correctamente.
+	 * @throws SQLException
+	 */
 	public static boolean eliminaCancion(Cancion cancion) throws SQLException {
 		boolean eliminado = false;
 
@@ -614,7 +764,12 @@ public class Conexion {
 		return eliminado;
 	}
 	
-	
+	/**
+	 * Funcion que actualiza titulo, artista, genero o ruta de las canciones.
+	 * @param cancion. Recibida al hacer click en ella
+	 * @return boolean. True si se ha hecho con exito
+	 * @throws SQLException
+	 */
 	public static boolean updateCancion(Cancion cancion) throws SQLException{ 
 		boolean updated = false;
 
@@ -635,6 +790,14 @@ public class Conexion {
 
 	/* ----------------------------------FUNCIONES PARA EL ADMINISTRADOR------------------------------------- */
 	
+	
+	/**
+	 * Funcion que rellena la tabla de usuarios
+	 * @param filtro tipo de filtro usado
+	 * @param paramFil usuario a buscar
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Usuario> rellenaTablaUsu(String filtro, String paramFil) throws SQLException{
 		int id;
 		String nickname, password, correo, sql;
@@ -669,6 +832,12 @@ public class Conexion {
 	}
 
 
+	/**
+	 * Funcion que muestra los juegos en la pagina admin
+	 * @param id_user id del usuario
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Juego> adminListGames(int id_user) throws SQLException{ 
 		ObservableList<Juego> listaJuegos = FXCollections.observableArrayList();
 		String titulo, plataforma, portada, resumen, genero, terminado, empresa, favorito;
@@ -705,6 +874,12 @@ public class Conexion {
 	}
 
 
+	/**
+	 * Funcion que muestra la lista de libros en la pagina admin
+	 * @param id_user id del usuario
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<Libro> adminListBooks(int id_user) throws SQLException{ 
 		ObservableList<Libro> listaLibros = FXCollections.observableArrayList();
 		String titulo, autor, portada, resumen, genero, terminado, favorito;
@@ -737,7 +912,12 @@ public class Conexion {
 		return listaLibros;
 	}
 	
-	
+	/**
+	 * Funcion que muestra las canciones del usuario seleccionado.
+	 * @param id_user. ID del usuario seleccionado
+	 * @return ObservableList .Lista de canciones 
+	 * @throws SQLException
+	 */
 	public static ObservableList<Cancion> adminListSongs(int id_user) throws SQLException{ 
 		ObservableList<Cancion> listaCanciones = FXCollections.observableArrayList();
 		String titulo, artista, ruta, genero;
@@ -764,6 +944,12 @@ public class Conexion {
 		return listaCanciones;
 	}
 
+	
+	/**
+	 * Funcion que muestra el total de usuarios activos
+	 * @return int
+	 * @throws SQLException
+	 */
 	public static int usuTotales() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
@@ -781,6 +967,11 @@ public class Conexion {
 
 	}
 
+	/**
+	 * Funcion que muestra el total de autores
+	 * @return int
+	 * @throws SQLException
+	 */
 	public static int autoresTotales() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
@@ -803,6 +994,12 @@ public class Conexion {
 
 	}
 
+	
+	/**
+	 * Funcion que muestra el uso medio de todos los usuarios que la han usado alguna vez
+	 * @return String Uso medio de la app
+	 * @throws SQLException
+	 */
 	public static String usoMedio() throws SQLException { //DEVUELVE EL TIEMPO MEDIO QUE SE HA USADO LA APLICACION
 		String tiempo = "";
 		int minutos = 0;
@@ -835,6 +1032,12 @@ public class Conexion {
 		return tiempo;
 	}
 
+	
+	/**
+	 * Funcion que muestra todos los usuarios borrados
+	 * @return int
+	 * @throws SQLException
+	 */
 	public static int usuBorrados() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
@@ -849,6 +1052,12 @@ public class Conexion {
 		return total;
 	}
 
+	
+	/**
+	 * Funcion que muestra el total de elementos que hay
+	 * @return int
+	 * @throws SQLException
+	 */
 	public static int totalElementos() throws SQLException {
 		int total = 0;
 		st = connection.createStatement();
@@ -878,6 +1087,11 @@ public class Conexion {
 	}
 
 
+	/**
+	 * Funcion que devuelve el ultimo usuario registrado en la ultima semana
+	 * @return int
+	 * @throws SQLException
+	 */
 	public static int ultimosUsu() throws SQLException{ /*DEVUELVE EL NUMERO DE USUARIOS REGISTRADOS EN LA ULTIMA SEMANA*/
 		int total = 0;
 		st = connection.createStatement();
@@ -892,6 +1106,12 @@ public class Conexion {
 		return total;
 	}
 	
+	/**
+	 * Funcion que restaura el usuario eliminado
+	 * @param u Objeto de tipo usuario
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean restauraUsu(Usuario u) throws SQLException{ //ELIMINA EL USUARIO DE GESTION_ADMIN Y CON EL TRIGGER LO INSERTA EN USUARIO
 		boolean restaurado = false;
 
@@ -903,8 +1123,14 @@ public class Conexion {
 		return restaurado;
 	}
 
+	
 	/*ADMIN GRAFICOS*/
 
+	/**
+	 * Funcion que muestra la grafica de libros
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<BarChart.Data> graficaLibros() throws SQLException {
 		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
 		String nickname, sql;
@@ -924,6 +1150,12 @@ public class Conexion {
 		return datos;
 	}
 
+	
+	/**
+	 * Funcion que muestra la grafica de juegos
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<BarChart.Data> graficaJuegos() throws SQLException {
 		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
 		String nickname, sql;
@@ -943,7 +1175,11 @@ public class Conexion {
 		return datos;
 	}
 
-	
+	/**
+	 * Funcion que muestra la grafica de Musica
+	 * @return ObservableList
+	 * @throws SQLException
+	 */
 	public static ObservableList<BarChart.Data> graficaMusica() throws SQLException {
 		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
 		String nickname, sql;
@@ -968,6 +1204,11 @@ public class Conexion {
 
 
 	//CIERRE CONEXION
+	/**
+	 * Funcion que cierra la conexion con la base de datos
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public static boolean cerrar() throws SQLException {
 		boolean cerrado = false;
 		if(rs!=null) {
