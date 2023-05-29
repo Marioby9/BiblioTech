@@ -21,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import utilidades.Conexion;
 import utilidades.Ficheros;
 import utilidades.Usuario;
 
@@ -294,15 +295,6 @@ public class MusicaController {
 
 	} 
 
-	
-
-	
-
-	/*----------------------ARREGLAR---------------------*/
-	
-	
-
-	
 
 	private void rellenaTablaMus(String categoria) {
 
@@ -310,6 +302,9 @@ public class MusicaController {
 			try {
 				ObservableList<Cancion> listaMusica;
 				listaMusica = Ficheros.leeCarpetaMus(menu.carpCanciones, categMus);
+				
+				Conexion.agregaCanciones(listaMusica, u1);
+				
 				lblNumCanciones.setText(listaMusica.size()+" Canciones");
 
 				//CUANDO CAMBIAMOS DE CATEGORIA, PONEMOS EL TITULO Y LA PORTADA DEL PRIMER LIBRO DE LA LISTA

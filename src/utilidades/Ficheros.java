@@ -39,7 +39,7 @@ public class Ficheros {
 		Path directory = Paths.get(carpeta+"\\"+lista);
 		Stream<Path> archivos = Files.list(directory);
 		Iterator it = archivos.iterator();
-
+		
 		while(it.hasNext()) {
 			File file = ((Path)it.next()).toFile();
 			nomArch = file.getName().toString();
@@ -50,7 +50,7 @@ public class Ficheros {
 				artista = separados[0].replace("_", " ");
 				titulo = separados[1].replace("_", " ");
 				ruta = carpeta+"\\"+lista+"\\"+nomArch;
-				listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta, 0));
+				listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta));
 			}
 
 		}

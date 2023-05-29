@@ -2,6 +2,7 @@ package AdminApp;
 
 import java.io.File;
 
+import elementos.Cancion;
 import elementos.Juego;
 import elementos.Libro;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -53,6 +54,10 @@ public class AdminContenidoController {
 	@FXML private TableView<Juego> tablaJuegos;
 	@FXML private TableColumn<Juego, Integer> idJuego;
 	@FXML private TableColumn<Juego, String>  nombreJuego;
+	
+	@FXML private TableView<Cancion> tablaMusica;
+	@FXML private TableColumn<Cancion, Integer> idCancion;
+	@FXML private TableColumn<Cancion, String>  nombreCancion;
 
 
 	/*TEXTFIELDS*/
@@ -61,14 +66,15 @@ public class AdminContenidoController {
 
 	@FXML private TextField tituloJuego, empresaJuego, plataformaJuego, fechaJuego, horasJuego, generoJuego, portadaJuego;
 	@FXML private TextArea resumenJuego;
-
+	
+	@FXML private TextField tituloCancion, artistaCancion, generoCancion, rutaCancion;
 
 	private String filtro, paramFil;
 
 	private Usuario usuSelec;   
 	private Libro libSelec;
 	private Juego jueSelec;
-	//private Cancion canSelec;
+	private Cancion canSelec;
 
 	protected AdminMenuController menu;
 	
@@ -141,6 +147,7 @@ public class AdminContenidoController {
 		rellenaTablaUsu();
 		tablaJuegos.setItems(null); //VACIAMOS TABLAS DE ELEMENTOS
 		tablaLibros.setItems(null);
+		tablaMusica.setItems(null);
 	}
 
 
@@ -150,6 +157,7 @@ public class AdminContenidoController {
 			ocultaPaneles();
 			rellenaTablaLibros();
 			rellenaTablaJuegos();
+			rellenaTablaMusica();
 		}
 
 		libSelec = null; jueSelec = null;
@@ -192,6 +200,20 @@ public class AdminContenidoController {
 
 			idJuego.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getID_Juego()).asObject());
 			nombreJuego.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitulo()));
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected void rellenaTablaMusica() {
+		try {
+			int id = usuSelec.getID_Usuario();
+			ObservableList<Cancion> listaCanciones = Conexion.adminListSongs(id);
+			tablaMusica.setItems(listaCanciones);
+
+			idCancion.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getID_Cancion()).asObject());
+			nombreCancion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
 
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -270,11 +292,20 @@ public class AdminContenidoController {
 			portadaJuego.setText(jueSelec.getPortada());
 			resumenJuego.setText(jueSelec.getResumen());
 		}
-
+		
 
 	}
 	@FXML void clickCancion(MouseEvent event) {
+		
+		canSelec = tablaMusica.getSelectionModel().getSelectedItem();
+		if(canSelec!=null) {
+			pMusIndiv.setVisible(true);
 
+			tituloCancion.setText(canSelec.getNombre());
+			artistaCancion.setText(canSelec.getArtista());
+			generoCancion.setText(canSelec.getGenero());
+			rutaCancion.setText(canSelec.getRuta());
+		}
 	}
 
 
@@ -294,7 +325,43 @@ public class AdminContenidoController {
 		}
 	}
 	@FXML void aplicaLibro(MouseEvent event) {
-
+		try {
+			String titulo, autor, genero, portada, resumen;
+			int fecha, pags;
+			boolean actPortada = false;
+			
+			if(!tituloLibro.getText().equalsIgnoreCase("") && !autorLibro.getText().equalsIgnoreCase("") && !generoLibro.getText().equalsIgnoreCase("") && !pagsLibro.getText().equalsIgnoreCase("") && !fechaLibro.getText().equalsIgnoreCase("")) {
+				titulo = tituloLibro.getText();
+				autor = autorLibro.getText();
+				genero = generoLibro.getText();
+				pags = Integer.parseInt(pagsLibro.getText());
+				fecha = Integer.parseInt(fechaLibro.getText());
+				portada = portadaLibro.getText();
+				resumen = resumenLibro.getText();
+				Libro lNuevo = new Libro(libSelec.getID_Libro(), libSelec.getID_Usuario(), titulo, genero, autor, pags, fecha, libSelec.getTerminado(), portada, resumen);
+				Conexion.updateLibro(lNuevo);
+				
+				if(portadaLibro.getText().equals("")) {
+					actPortada = false;
+				}
+				else {
+					actPortada = true;
+				}
+				Conexion.actualizaPortadaLib(lNuevo, actPortada);
+				vaciaTextos();
+				rellenaTablaLibros();
+				pLibIndiv.setVisible(false);
+				System.out.println("Libro actualizado");
+			}
+			else {
+				System.out.println("No se pueden dejar campos vacios");
+			}
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error al actualizar el libro");
+		}
 	}
 
 	/*BOTONES JUEGO*/
@@ -312,18 +379,63 @@ public class AdminContenidoController {
 		}
 	}
 	@FXML void aplicaJuego(MouseEvent event) {
-
+		try {
+			String titulo, empresa, genero, plataforma, portada, resumen;
+			int fecha, horas;
+			boolean actPortada = false;
+			
+			if(!tituloJuego.getText().equalsIgnoreCase("") && !generoJuego.getText().equalsIgnoreCase("") && !plataformaJuego.getText().equalsIgnoreCase("") && !horasJuego.getText().equalsIgnoreCase("") && !fechaJuego.getText().equalsIgnoreCase("")) {
+				titulo = tituloJuego.getText();
+				empresa = empresaJuego.getText();
+				genero = generoJuego.getText();
+				plataforma = plataformaJuego.getText();
+				horas = Integer.parseInt(horasJuego.getText());
+				fecha = Integer.parseInt(fechaJuego.getText());
+				portada = portadaJuego.getText();
+				resumen = resumenJuego.getText();
+				Juego JNuevo = new Juego(jueSelec.getID_Juego(), jueSelec.getID_Usuario(), titulo, genero, plataforma, horas, fecha, jueSelec.getTerminado(), portada, resumen, empresa);
+				Conexion.updateJuego(JNuevo);
+				
+				if(portadaJuego.getText().equals("")) {
+					actPortada = false;
+				}
+				else {
+					actPortada = true;
+				}
+				Conexion.actualizaPortadaJue(JNuevo, actPortada);
+				vaciaTextos();
+				rellenaTablaJuegos();
+				pJueIndiv.setVisible(false);
+				System.out.println("Juego actualizado");
+			}
+			else {
+				System.out.println("No se pueden dejar campos vacios");
+			}
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error al actualizar el libro");
+		}
 	}
 
+	
 	/*BOTONES MUSICA*/
 	@FXML void cancelaCancion(MouseEvent event) {
-		pLibIndiv.setVisible(false);
+		vaciaTextos();
+		pMusIndiv.setVisible(false);
 	}
 	@FXML void eliminaCancion(MouseEvent event) {
-
+		try {
+			Conexion.eliminaCancion(canSelec);
+			pMusIndiv.setVisible(false);
+			rellenaTablaMusica();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML void aplicaCancion(MouseEvent event) {
-
+		
 	}
 
 
@@ -356,6 +468,12 @@ public class AdminContenidoController {
 		plataformaJuego.setText("");
 		portadaJuego.setText("");
 		resumenJuego.setText("");
+		
+		tituloCancion.setText("");
+		artistaCancion.setText("");
+		generoCancion.setText("");
+		rutaCancion.setText("");
+		
 	}
 
 	@FXML void cambiaPortadaLibro(MouseEvent event) {

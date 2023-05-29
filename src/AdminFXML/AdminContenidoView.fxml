@@ -94,10 +94,10 @@
                   <TableColumn fx:id="nombreJuego" prefWidth="120.0" text="JUEGOS" />
                </columns>
             </TableView>
-            <TableView layoutX="413.0" layoutY="347.0" onMouseClicked="#clickCancion" prefHeight="263.0" prefWidth="174.0" style="-fx-border-color: black;" styleClass="tablaAdmin">
+            <TableView fx:id="tablaMusica" layoutX="413.0" layoutY="347.0" onMouseClicked="#clickCancion" prefHeight="263.0" prefWidth="174.0" style="-fx-border-color: black;" styleClass="tablaAdmin">
                <columns>
-                  <TableColumn prefWidth="52.0" text="ID" />
-                  <TableColumn prefWidth="120.0" text="MUSICA" />
+                  <TableColumn fx:id="idCancion" prefWidth="52.0" text="ID" />
+                  <TableColumn fx:id="nombreCancion" prefWidth="120.0" text="MUSICA" />
                </columns>
             </TableView>
             <Pane fx:id="pLibIndiv" layoutX="23.0" layoutY="335.0" prefHeight="301.0" prefWidth="595.0" style="-fx-border-color: black; -fx-border-width: 3px;" visible="false">
@@ -185,6 +185,10 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="tituloCancion" layoutX="170.0" layoutY="36.0" prefHeight="33.0" prefWidth="185.0" />
+                  <TextField fx:id="artistaCancion" layoutX="170.0" layoutY="80.0" prefHeight="33.0" prefWidth="185.0" />
+                  <TextField fx:id="rutaCancion" layoutX="170.0" layoutY="125.0" prefHeight="33.0" prefWidth="185.0" />
+                  <TextField fx:id="generoCancion" layoutX="170.0" layoutY="169.0" prefHeight="33.0" prefWidth="185.0" />
                </children>
             </Pane>
          </children>

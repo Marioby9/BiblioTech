@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import elementos.Cancion;
 import elementos.Juego;
 import elementos.Libro;
 import javafx.collections.FXCollections;
@@ -564,7 +565,73 @@ public class Conexion {
 		return listaJuegos;
 	}
 
+	
+	
+	public static boolean agregaCanciones(ObservableList<Cancion> lista, Usuario u) throws SQLException {
+		boolean agregadas = false;
+		int nuevoId;
+	
+		for(Cancion cancion : lista) {
+			int cuantas = 0;
+			
+			cuantas = Conexion.consultaNum("Canciones", "COUNT(ID_CANCION)", "TITULO = '"+cancion.getNombre()+"' AND ID_USUARIO = "+ u.getID_Usuario());
+			if (cuantas == 0) {
+				
+				nuevoId = Conexion.consultaNum("Canciones", "MAX(ID_CANCION)", null) +1;
+				cancion.setID_Usuario(u.getID_Usuario());
+				
+				String sql= "INSERT INTO CANCIONES (ID_CANCION, ID_USUARIO, TITULO, ARTISTA, GENERO, RUTA) VALUES (?, ?, ?, ?, ?, ?)";
+				pst = connection.prepareStatement(sql);
+				pst.setInt(1, nuevoId);
+				pst.setInt(2, cancion.getID_Usuario());
+				pst.setString(3, cancion.getNombre());
+				pst.setString(4, cancion.getArtista());
+				pst.setString(5, cancion.getGenero());
+				pst.setString(6, cancion.getRuta());
+				
+				agregadas = pst.executeUpdate()>0;
+				
+			}
+			pst.close();
+			
+		}
+		
+		return agregadas;
+	}
 
+	
+	public static boolean eliminaCancion(Cancion cancion) throws SQLException {
+		boolean eliminado = false;
+
+		//LOS LIBROS POR DEFECTO NO SE BORRAN
+		String sql= "DELETE FROM CANCIONES WHERE ID_CANCION = "+cancion.getID_Cancion()+" AND ID_USUARIO IS NOT NULL";
+
+		pst = connection.prepareStatement(sql);
+
+		eliminado = pst.executeUpdate()>0;
+		pst.close();
+
+		return eliminado;
+	}
+	
+	
+	public static boolean updateCancion(Cancion cancion) throws SQLException{ 
+		boolean updated = false;
+
+		String sql= "UPDATE CANCIONES SET TITULO = ?, ARTISTA = ?, GENERO = ?, RUTA = ?  WHERE ID_CANCION = "+ cancion.getID_Cancion();
+		pst = connection.prepareStatement(sql);
+		pst.setObject(1, cancion.getNombre());
+		pst.setObject(2, cancion.getArtista());
+		pst.setObject(3, cancion.getGenero());
+		pst.setObject(4, cancion.getRuta());
+
+
+		updated = pst.executeUpdate()>0;
+		pst.close();
+
+
+		return updated;
+	}
 
 	/* ----------------------------------FUNCIONES PARA EL ADMINISTRADOR------------------------------------- */
 	
@@ -668,6 +735,33 @@ public class Conexion {
 		st.close();
 
 		return listaLibros;
+	}
+	
+	
+	public static ObservableList<Cancion> adminListSongs(int id_user) throws SQLException{ 
+		ObservableList<Cancion> listaCanciones = FXCollections.observableArrayList();
+		String titulo, artista, ruta, genero;
+		int id_cancion, id_usuario;
+
+		st = connection.createStatement();
+		String sql =  "SELECT ID_CANCION, ID_USUARIO, TITULO, ARTISTA, GENERO, RUTA FROM CANCIONES WHERE ID_USUARIO = "+id_user;
+
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			id_cancion = rs.getInt("ID_CANCION");
+			id_usuario = rs.getInt("ID_USUARIO");
+			titulo = rs.getString("TITULO");
+			artista = rs.getString("ARTISTA");
+			genero = rs.getString("GENERO");
+			ruta = rs.getString("RUTA");
+
+			Cancion cancion = new Cancion(id_cancion, id_usuario, titulo, artista, genero, ruta);
+			listaCanciones.add(cancion);
+		}
+		st.close();
+
+		return listaCanciones;
 	}
 
 	public static int usuTotales() throws SQLException {
