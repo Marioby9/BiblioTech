@@ -9,6 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
+/***
+ * Clase que inicializa toda la aplicacion.
+ * @author Bibliotech
+ *
+ */
 
 public class Main extends Application {
 	
