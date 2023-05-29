@@ -94,7 +94,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label id="bAdminStats" alignment="CENTER" layoutX="14.0" layoutY="472.0" onMouseClicked="#verGrafLibros" prefHeight="48.0" prefWidth="207.0" text="MUSICA">
+            <Label id="bAdminStats" alignment="CENTER" layoutX="14.0" layoutY="472.0" onMouseClicked="#verGrafMusica" prefHeight="48.0" prefWidth="207.0" text="MUSICA">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

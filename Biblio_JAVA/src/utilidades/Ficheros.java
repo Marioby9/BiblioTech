@@ -17,10 +17,21 @@ import elementos.Cancion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/***
+ * Esta clase contiene las funciones que crean carpetas o ficheros a nivel interno.
+ * @author mmart
+ *
+ */
 
 public class Ficheros {
 
-	
+	/***
+	 * Busca en la carpeta por defecto del usuario, la lista de reproduccion seleccinada, filtra por archivos .mp3 y rellena una coleccion con objetos cancion.
+	 * @param carpeta. La carpeta por defecto que haya seleccionado el usuario
+	 * @param lista. El nombre de la lista de reproduccion seleccionada
+	 * @return listaCanciones. Una lista de tipo cancion con todas las que haya encontrado en la carpeta.
+	 * @throws Exception
+	 */
 	public static ObservableList<Cancion> leeCarpetaMus(String carpeta, String lista) throws Exception {
 		ObservableList<Cancion> listaCanciones = FXCollections.observableArrayList();
 		String titulo, nomArch, artista, ruta, extension;
@@ -28,7 +39,7 @@ public class Ficheros {
 		Path directory = Paths.get(carpeta+"\\"+lista);
 		Stream<Path> archivos = Files.list(directory);
 		Iterator it = archivos.iterator();
-
+		
 		while(it.hasNext()) {
 			File file = ((Path)it.next()).toFile();
 			nomArch = file.getName().toString();
@@ -39,14 +50,18 @@ public class Ficheros {
 				artista = separados[0].replace("_", " ");
 				titulo = separados[1].replace("_", " ");
 				ruta = carpeta+"\\"+lista+"\\"+nomArch;
-				listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta, 0));
+				listaCanciones.add(new Cancion(0, 0, titulo, artista, lista, ruta));
 			}
 
 		}
 		return listaCanciones;
 	}
 
-
+	/**
+	 * Crea subcarpetas, una para cada lista de reproduccion, dentro de la carpeta por defecto del usuario.
+	 * @param carpeta
+	 * @throws IOException
+	 */
 	public static void creaCarpetasMus(String carpeta) throws IOException { //CREA LAS CARPETAS DE LAS LISTAS DE REPRODUCCION DE MUSICA
 		Path reggaeton = Paths.get(carpeta+"\\Reggaeton");
 		Path pop = Paths.get(carpeta+"\\Pop");
@@ -60,6 +75,13 @@ public class Ficheros {
 
 	}
 
+	/**
+	 * Esta funcion mueve una cancion de su ubicacion actual a la carpeta papelera para no perderla definitivamente
+	 * @param f. Archivo a eliminar
+	 * @param carpeta. Carpeta del usuario en la que buscar todos los elementos (entre ellos la carpeta papelera)
+	 * @return boolean
+	 * @throws IOException
+	 */
 	public static boolean mueveCancion(File f, String carpeta) throws IOException {
 		boolean movido = false;
 		String rutaPap = carpeta+"\\Papelera";
@@ -78,8 +100,10 @@ public class Ficheros {
 	}
 
 
+	/*
+	 Estas funciones son antiguas, ya que en lugar de un campo resumen en la BBDD, creabamos archivos .txt y escribiamos en ellos.
+	 */
 	//LEER RESUMENES Y FICHEROS
-
 	//HAY 2 FORMAS PARA GUARDAR LAS RUTAS (ABSOLUTA Y RELATIVA) Y PARA CADA UNA HAY QUE DECLARAR EL FILE DE FORMA DISTINTA
 	public static String leeResumen(String ruta) throws Exception {
 		String resumen = "";

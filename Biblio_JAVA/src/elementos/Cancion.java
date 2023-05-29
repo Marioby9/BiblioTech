@@ -8,17 +8,17 @@ public class Cancion {
 	private String genero;
 	private String artista;
 	private String ruta;
-	private int duracion;
+
 	
 	
-	public Cancion(int iD_Cancion, int iD_Usuario, String nombre, String artista, String genero, String ruta, int duracion) {
+	public Cancion(int iD_Cancion, int iD_Usuario, String nombre, String artista, String genero, String ruta) {
 		ID_Cancion = iD_Cancion;
 		ID_Usuario = iD_Usuario;
 		this.nombre = nombre;
 		this.artista = artista;
 		this.genero = genero;
 		this.ruta = ruta;
-		this.duracion = duracion;
+		
 	}
 
 
@@ -82,15 +82,6 @@ public class Cancion {
 	}
 
 
-	public int getDuracion() {
-		return duracion;
-	}
-
-
-	public void setDuracion(int duracion) {
-		this.duracion = duracion;
-	}
-	
 	
 	
 	

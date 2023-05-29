@@ -1,7 +1,6 @@
 /*SCRIPT BIBLIOTECH TOMAS, MARIO, RAUL 2023*/
 /*
 drop table Usuario;
-drop table Bibliotecas;
 drop table Juegos;
 drop table Libros;
 drop table Canciones;
@@ -22,15 +21,6 @@ Contraseña  varchar2(30) Not Null,
 Correo varchar(40) Not Null,
 Fecha date default sysdate,
 constraint Pk_Usuarioid Primary key(ID)
-);
-
-create table Bibliotecas
-(
-Cod_Biblioteca number(3),
-ID_biblio number(3),
-ID_Usuario  number(3) references Usuario on delete cascade,
-Nombre      varchar2(25) Not Null,
-constraint Pk_Bibliotecas Primary key(ID_biblio, ID_usuario)
 );
 
 
@@ -80,12 +70,11 @@ ID_Usuario  number(3) references Usuario on delete cascade,
 Titulo varchar2(40) Not Null,
 Artista     varchar2(30) Not Null,
 Genero      varchar2(30) Not Null,
-Favorito varchar2(2),
-Portada varchar2(500),
-Ruta    varchar2(50) Not Null,
+Ruta varchar2(200),
 
 constraint Pk_Cancion Primary key(ID_Cancion)
 );
+
 
 
 create table Ajustes
@@ -195,12 +184,6 @@ INSERT INTO LIBROS (id_libro, Titulo, Genero, n_paginas, autor ,ano_lanz, Termin
 INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (014,   'BARTLEBY EL ESCRIBIENTE', 'COMEDIA', 112, 'HERMAN MELVILLE', 1853,  'NO', '/caratulas/bartleby-el-escribiente.png');  
 INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)  VALUES (015,  'DIARIO DE GREG', 'COMEDIA', 240, 'JEFF KINNEY', 2007, 'NO', '/caratulas/diario-de-greg.png');  
 INSERT INTO LIBROS (id_libro,  Titulo, Genero, n_paginas, autor ,ano_lanz, Terminado, Portada)   VALUES (016,  'MORTADELO Y FILEMON',  'COMEDIA', 82, 'FRANCISCO IBAÑEZ', 1958, 'NO', '/caratulas/mortadelo-y-filemon.png');  
-
-/*----------------------- INSERTS MUSICA --------------------------*/
-
-INSERT INTO CANCIONES (ID_CANCION, TITULO, ARTISTA, GENERO, RUTA)  VALUES (1,'Shakira-Bzrp',  'Shakira',  'Reggaeton',  '/canciones/shakira-bzrp.mp3');  
-INSERT INTO CANCIONES (ID_CANCION, TITULO, ARTISTA, GENERO, RUTA)  VALUES (2,'Traductor',  'Myke Towers',  'Reggaeton',  '/canciones/mykeTowers-Traductor.mp3');  
-
 
 
 --AÑADIMOS RESUMENES JUEGOS: 

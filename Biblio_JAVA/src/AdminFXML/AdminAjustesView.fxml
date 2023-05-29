@@ -63,17 +63,17 @@
                         <Image url="@../icons/github.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fx:id="bWeb" fitHeight="84.0" fitWidth="99.0" layoutX="233.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bTwitter" fitHeight="84.0" fitWidth="99.0" layoutX="233.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/twitter.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fx:id="bTwitter" fitHeight="84.0" fitWidth="99.0" layoutX="337.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bInstagram" fitHeight="84.0" fitWidth="99.0" layoutX="337.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/instagram.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="bPerfil" fx:id="bInstagram" fitHeight="84.0" fitWidth="99.0" layoutX="125.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="bPerfil" fx:id="bWeb" fitHeight="84.0" fitWidth="99.0" layoutX="125.0" layoutY="22.0" onMouseClicked="#clickBInformacion" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/web.png" />
                      </image>

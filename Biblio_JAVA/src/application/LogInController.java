@@ -164,6 +164,7 @@ public class LogInController{
 						venMenu.setScene(scene);
 						venMenu.setResizable(false);
 						venMenu.setTitle("BiblioTech");
+						//venMenu.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
 
 						venMenu.show();
 
@@ -248,7 +249,7 @@ public class LogInController{
 			}
 			else {
 
-				//DAR ALTA USUARIO EN BBDD (FUNCIONA PERFECTAMENTE)
+				//DAR ALTA USUARIO EN BBDD 
 				String nom = txtUsuReg.getText();
 				Usuario u1 = new Usuario(nom, pass1, correo);
 				try {
