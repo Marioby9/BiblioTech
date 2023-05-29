@@ -13,11 +13,11 @@ Design: <br>![Adobe Photoshop](https://img.shields.io/badge/adobephotoshop-%2331
  
 
 # ⚖️  Dependencias
--Es necesario tener instalado java con un jdk 11.0.12
--Es necesario tener un entorno de oracle para la Base de datos
--Es necesario un IDE que compile el lenguaje Java
--Son necesarias las librerias JavaxMail y todas las de JavaFX
--Es necesario descargar y referenciar el OJDBC Driver de Oracle
+-Es necesario tener instalado java con un jdk 11.0.12<br>
+-Es necesario tener un entorno de oracle para la Base de datos<br>
+-Es necesario un IDE que compile el lenguaje Java<br>
+-Son necesarias las librerias JavaxMail y todas las de JavaFX<br>
+-Es necesario descargar y referenciar el OJDBC Driver de Oracle<br>
 
 # 🌐 Redes Sociales:
 Visita nuestra web:  [![Web](https://img.shields.io/badge/Web-BiblioTech-yellow?style=for-the-badge&logo=dev.to&logoColor=white&labelColor=101010)](https://byruby12.github.io/Bibliotech/)
