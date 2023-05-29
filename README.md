@@ -1,5 +1,6 @@
 # 📖 BiblioTech:
-Proyecto Final de 1º DAW<br>Mario Martin<br>Tomas Cano<br>Raul Magallón<br>30/05/2023
+#### Proyecto Final de 1º DAW 30/05/2023<br>
+-Mario Martin<br>-Tomas Cano<br>-Raul Magallón<br>
 
 
 
@@ -9,14 +10,18 @@ FrontEnd:<br>![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for
 Data Base:<br>![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)<br/> 
 Design: <br>![Adobe Photoshop](https://img.shields.io/badge/adobephotoshop-%2331A8FF.svg?style=for-the-badge&logo=adobephotoshop&logoColor=white)
 
+ 
+
+# ⚖️  Dependencias
+-Es necesario tener instalado java con un jdk 11.0.12
+-Es necesario tener un entorno de oracle para la Base de datos
+-Es necesario un IDE que compile el lenguaje Java
+-Son necesarias las librerias JavaxMail y todas las de JavaFX
+-Es necesario descargar y referenciar el OJDBC Driver de Oracle
+
 # 🌐 Redes Sociales:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/BiblioTech) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/Bibliotech2023) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@BiblioTech) 
+Visita nuestra web:  [![Web](https://img.shields.io/badge/Web-BiblioTech-yellow?style=for-the-badge&logo=dev.to&logoColor=white&labelColor=101010)](https://byruby12.github.io/Bibliotech/)
 
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/proBiblioTech) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/Bibliotech2023) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@BiblioTech2023)
 
-
-# 🐦 Latest Tweet
-[![](https://gtce.itsvg.in/api?username=Bibliotech2023)](https://github.com/VishwaGauravIn/github-twitter-card-embed)
-
----
-[![](https://visitcount.itsvg.in/api?id=BiblioTech&icon=0&color=0)](https://visitcount.itsvg.in)
 
