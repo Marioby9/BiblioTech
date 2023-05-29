@@ -943,6 +943,25 @@ public class Conexion {
 		return datos;
 	}
 
+	
+	public static ObservableList<BarChart.Data> graficaMusica() throws SQLException {
+		ObservableList<BarChart.Data> datos = FXCollections.observableArrayList();
+		String nickname, sql;
+		int num;
+
+		st = connection.createStatement();
+		sql =  "SELECT USUARIO.NICKNAME, COUNT(ID_CANCION) FROM CANCIONES JOIN USUARIO ON CANCIONES.ID_USUARIO = USUARIO.ID GROUP BY USUARIO.NICKNAME ";
+		ResultSet rs = st.executeQuery(sql);
+
+		while(rs.next()) {
+			nickname = rs.getString("NICKNAME");
+			num = rs.getInt("COUNT(ID_CANCION)");
+			datos.add(new BarChart.Data(nickname, num));
+
+		}
+		st.close();
+		return datos;
+	}
 
 
 

@@ -22,7 +22,9 @@ public class Main extends Application {
 
 			scene.getStylesheets().add(getClass().getResource("/UserFXML/application.css").toExternalForm());
 			ventana.setResizable(false);
+			
 			//ventana.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
+			
 			ventana.setScene(scene);
 			ventana.setTitle("BiblioTech");
 

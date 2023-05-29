@@ -164,6 +164,7 @@ public class LogInController{
 						venMenu.setScene(scene);
 						venMenu.setResizable(false);
 						venMenu.setTitle("BiblioTech");
+						//venMenu.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
 
 						venMenu.show();
 

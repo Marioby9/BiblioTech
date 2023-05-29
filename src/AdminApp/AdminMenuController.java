@@ -152,7 +152,9 @@ public class AdminMenuController {
 			ventana.getIcons().add(icon);//FUNCIONA PERFECTAMENTE
 
 			ventana.setResizable(false);
+			
 			//ventana.initStyle(StageStyle.UNDECORATED);//QUITAR BARRA
+			
 			ventana.show();
 
 

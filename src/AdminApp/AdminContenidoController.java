@@ -415,7 +415,7 @@ public class AdminContenidoController {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Error al actualizar el libro");
+			System.out.println("Error al actualizar el juego");
 		}
 	}
 
@@ -435,6 +435,32 @@ public class AdminContenidoController {
 		}
 	}
 	@FXML void aplicaCancion(MouseEvent event) {
+		try {
+			String titulo, artista, genero, ruta;
+			
+			if(!tituloCancion.getText().equalsIgnoreCase("") && !artistaCancion.getText().equalsIgnoreCase("") && !generoCancion.getText().equalsIgnoreCase("") && !rutaCancion.getText().equalsIgnoreCase("")) {
+				titulo = tituloCancion.getText();
+				artista = artistaCancion.getText();
+				genero = generoCancion.getText();
+				ruta = rutaCancion.getText();
+
+				Cancion CNuevo = new Cancion(canSelec.getID_Cancion(), canSelec.getID_Usuario(), titulo, artista, genero, ruta);
+				Conexion.updateCancion(CNuevo);
+				
+				vaciaTextos();
+				rellenaTablaMusica();
+				pMusIndiv.setVisible(false);
+				System.out.println("Cancion actualizada");
+			}
+			else {
+				System.out.println("No se pueden dejar campos vacios");
+			}
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error al actualizar la cancion");
+		}
 		
 	}
 
@@ -442,7 +468,7 @@ public class AdminContenidoController {
 
 
 
-
+	/************************  PANELES ************************/
 
 	protected void ocultaPaneles() {
 		pLibIndiv.setVisible(false);
@@ -497,6 +523,18 @@ public class AdminContenidoController {
 		File selectedFile = fChooser.showOpenDialog(null);
 		if (selectedFile != null) {
 			portadaJuego.setText(selectedFile.toURI().toString());;
+		}
+	}
+	
+	@FXML void cambiaRutaCancion(MouseEvent event) {
+		FileChooser fChooser = new FileChooser();
+		fChooser.setTitle("Selecciona una canción");
+		fChooser.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("Canciones", "*.mp3")
+				);
+		File selectedFile = fChooser.showOpenDialog(null);
+		if (selectedFile != null) {
+			rutaCancion.setText(selectedFile.toURI().toString());;
 		}
 	}
 

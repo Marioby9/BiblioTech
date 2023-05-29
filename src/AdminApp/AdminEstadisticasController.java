@@ -68,6 +68,23 @@ public class AdminEstadisticasController {
 		}
 	}
 	
+	@FXML void verGrafMusica(MouseEvent event) {
+		try {
+			pCarga.setVisible(false);
+			grafico.getData().clear();
+			ObservableList<BarChart.Data> datos = Conexion.graficaMusica();
+			XYChart.Series<String, Integer> series = new XYChart.Series<>();
+			for (BarChart.Data<String, Integer> dato : datos) {
+				series.getData().add(dato);
+			}	
+			grafico.getData().add(series);
+			
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	public Pane getPane() {
 		return pEstadisticas;

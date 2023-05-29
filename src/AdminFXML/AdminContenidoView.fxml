@@ -187,7 +187,7 @@
                   </Button>
                   <TextField fx:id="tituloCancion" layoutX="170.0" layoutY="36.0" prefHeight="33.0" prefWidth="185.0" />
                   <TextField fx:id="artistaCancion" layoutX="170.0" layoutY="80.0" prefHeight="33.0" prefWidth="185.0" />
-                  <TextField fx:id="rutaCancion" layoutX="170.0" layoutY="125.0" prefHeight="33.0" prefWidth="185.0" />
+                  <TextField fx:id="rutaCancion" layoutX="170.0" layoutY="125.0" onMouseClicked="#cambiaRutaCancion" prefHeight="33.0" prefWidth="185.0" />
                   <TextField fx:id="generoCancion" layoutX="170.0" layoutY="169.0" prefHeight="33.0" prefWidth="185.0" />
                </children>
             </Pane>
