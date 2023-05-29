@@ -351,7 +351,7 @@ public class MusicaController {
 				generoCanc.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGenero()));
 
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				System.out.println("Su carpeta contiene un error");
 			}
 		}
 	}
