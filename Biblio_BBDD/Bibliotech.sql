@@ -1,6 +1,7 @@
 /*SCRIPT BIBLIOTECH TOMAS, MARIO, RAUL 2023*/
 /*
 drop table Usuario;
+drop table Bibliotecas;
 drop table Juegos;
 drop table Libros;
 drop table Canciones;
@@ -136,9 +137,6 @@ BEGIN
     INSERT INTO TIEMPO_USUARIO (ID_USUARIO) VALUES (V_ID);
 END;
 
-commit;
-SELECT * FROM AJUSTES;
-SELECT * FROM TIEMPO_USUARIO;
 
 /*----------------------- INSERTS JUEGOS --------------------------*/
 
@@ -255,3 +253,5 @@ UPDATE LIBROS  SET  RESUMEN =  '"Diario de Greg" de Jeff Kinney. El libro es una
 
 UPDATE LIBROS  SET  RESUMEN =  '"Mortadelo y Filemón" de Francisco Ibáñez. El libro es una serie de historietas cómicas protagonizadas por dos agentes secretos llamados Mortadelo y Filemón. Cada historia sigue a los personajes mientras intentan resolver un caso, pero a menudo se encuentran en situaciones ridículas y divertidas.' WHERE ID_LIBRO = 016;
 
+
+commit;
