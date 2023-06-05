@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pRootEstadisticas" prefHeight="650.0" prefWidth="640.0" stylesheets="@../UserFXML/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminApp.AdminEstadisticasController">
+   <children>
+      <Pane fx:id="pEstadisticas" prefHeight="650.0" prefWidth="640.0">
+         <children>
+            <ImageView fitHeight="650.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../backgrounds/pEstadisticas.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="totalUsu" alignment="CENTER" layoutX="226.0" layoutY="131.0" prefHeight="38.0" prefWidth="87.0" text="0">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="17.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </Label>
+            <Label fx:id="cuentasBorradas" alignment="CENTER" layoutX="231.0" layoutY="187.0" prefHeight="38.0" prefWidth="77.0" text="0">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="17.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </Label>
+            <Label fx:id="totalAutores" alignment="CENTER" layoutX="231.0" layoutY="243.0" prefHeight="38.0" prefWidth="77.0" text="0">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="17.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </Label>
+            <Label fx:id="usoMedio" alignment="CENTER" layoutX="493.0" layoutY="243.0" prefHeight="38.0" prefWidth="129.0" text="0">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="17.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </Label>
+            <Label fx:id="totalElementos" alignment="CENTER" layoutX="534.0" layoutY="187.0" prefHeight="38.0" prefWidth="77.0" text="0">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="17.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </Label>
+            <Label fx:id="ultRegistros" alignment="CENTER" layoutX="534.0" layoutY="131.0" prefHeight="38.0" prefWidth="77.0" text="0">
+               <font>
+                  <Font name="Franklin Gothic Heavy" size="17.0" />
+               </font>
+               <effect>
+                  <ColorAdjust brightness="-1.0" />
+               </effect>
+            </Label>
+            <BarChart fx:id="grafico" categoryGap="20.0" layoutX="219.0" layoutY="359.0" legendVisible="false" prefHeight="259.0" prefWidth="411.0">
+              <xAxis>
+                <CategoryAxis endMargin="10.0" prefHeight="47.0" prefWidth="337.0" startMargin="10.0" tickLabelGap="10.0" tickLabelRotation="90.0" tickLength="10.0">
+                     <tickLabelFont>
+                        <Font size="12.0" />
+                     </tickLabelFont>
+                  </CategoryAxis>
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="CANTIDAD" prefHeight="193.0" prefWidth="44.0" side="LEFT" tickLabelGap="5.0" upperBound="25.0" />
+              </yAxis>
+            </BarChart>
+            <Pane fx:id="pCarga" layoutX="231.0" layoutY="367.0" prefHeight="259.0" prefWidth="391.0" style="-fx-background-color: WHITE;">
+               <children>
+                  <ImageView fitHeight="232.0" fitWidth="226.0" layoutX="82.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/logAzulSF.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label id="bAdminStats" alignment="CENTER" layoutX="14.0" layoutY="417.0" onMouseClicked="#verGrafLibros" prefHeight="48.0" prefWidth="207.0" text="LIBROS">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label id="bAdminStats" alignment="CENTER" layoutX="14.0" layoutY="472.0" onMouseClicked="#verGrafMusica" prefHeight="48.0" prefWidth="207.0" text="MUSICA">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label id="bAdminStats" alignment="CENTER" layoutX="14.0" layoutY="525.0" onMouseClicked="#verGrafJuegos" prefHeight="48.0" prefWidth="207.0" text="JUEGOS">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>
